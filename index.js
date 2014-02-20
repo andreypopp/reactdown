@@ -26,7 +26,7 @@ function compile(src, scope) {
     'var _Wrapper   = _runtime.Wrapper;',
     'var _Component = ' + component + ';',
     '',
-    '_runtime.merge(' + scope + ');',
+    '_runtime.mergeInto(global, ' + scope + ');',
     '',
     'var _markup    = <_Wrapper>' + compiled.html + '</_Wrapper>;',
     '',

@@ -11,7 +11,6 @@ module.exports = function reactdownTransform(filename, opts) {
     opts = filename;
     filename = undefined;
   }
-  console.log(filename, opts);
   if (filename && !/\.md$/.exec(filename)) {
     return new PassThrough();
   }

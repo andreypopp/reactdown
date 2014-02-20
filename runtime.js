@@ -1,11 +1,11 @@
 "use strict";
 
-var React   = require('react');
-var merge   = require('react/lib/merge');
-var toArray = require('react/lib/toArray');
+var React     = require('react');
+var merge     = require('react/lib/merge');
+var mergeInto = require('react/lib/mergeInto');
 
 function Wrapper() {
-  return toArray(arguments).slice(1);
+  return Array.prototype.slice.call(arguments, 1);
 }
 
 var Reactdown = React.createClass({
@@ -18,5 +18,6 @@ var Reactdown = React.createClass({
 module.exports = {
   Wrapper: Wrapper,
   Reactdown: Reactdown,
-  merge: merge
+  merge: merge,
+  mergeInto: mergeInto
 };
