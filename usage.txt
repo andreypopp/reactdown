@@ -1,4 +1,4 @@
-Usage: reactdown [-ohvs] [filename]
+Usage: reactdown [options] [filename]
 
 Compile reactdown into React component.
 
