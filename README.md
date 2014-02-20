@@ -11,7 +11,7 @@ Write React components using markdown syntax:
 
     But it's actually a React component.
 
-    You can call instantiate other components directly
+    You can instantiate other components directly:
 
     <TwitterFeed username="@andreypopp" />
 
