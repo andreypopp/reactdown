@@ -14,13 +14,13 @@ module.exports = function reactdownTransform(filename, opts) {
   if (filename && !/\.md$/.exec(filename)) {
     return new PassThrough();
   }
-  return new ReactdownTransform(opts && opts.scope);
+  return new ReactdownTransform(opts);
 }
 
-function ReactdownTransform(scope) {
+function ReactdownTransform(opts) {
   Transform.call(this);
   this._buffer = new Buffer('');
-  this._scope = scope;
+  this._opts = opts;
 }
 util.inherits(ReactdownTransform, Transform);
 
@@ -31,7 +31,7 @@ ReactdownTransform.prototype._transform = function(chunk, encoding, done) {
 
 ReactdownTransform.prototype._flush = function(done) {
   var src = this._buffer.toString();
-  this.push(reactdown(src, this._scope).code);
+  this.push(reactdown(src, this._opts).code);
   done();
 }
 

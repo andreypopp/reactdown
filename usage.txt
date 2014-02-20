@@ -4,10 +4,12 @@ Compile reactdown into React component.
 
 Options:
 
-   -s, --scope module   Module id which will be used as a scope.
+       -o, --output file   Specify output.
 
-    -o, --output file   Specify output.
+  -c, --component module   Module id which will be used as a component.
 
-           -h, --help   Show this message and exit.
+      -s, --scope module   Module id which will be used as a scope.
 
-        -v, --version   Show reactdown version and exit.
+              -h, --help   Show this message and exit.
+
+           -v, --version   Show reactdown version and exit.

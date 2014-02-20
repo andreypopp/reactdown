@@ -10,7 +10,8 @@ var argv = minimist(process.argv.slice(2), {
     version: 'v',
     help: 'h',
     output: 'o',
-    scope: 's'
+    scope: 's',
+    component: 'c'
   }
 });
 
@@ -27,7 +28,10 @@ if (argv.help) {
 
 var input = argv._[0] ? fs.createReadStream(argv._[0]) : process.stdin;
 var output = argv.output ? fs.createWriteStream(argv.output) : process.stdout;
-var tr = transform({scope: argv.scope});
+var tr = transform({
+  component: argv.component,
+  scope: argv.scope
+});
 
 pipe(input, tr);
 pipe(tr, output);

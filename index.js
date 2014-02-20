@@ -4,16 +4,18 @@ var marked       = require('meta-marked');
 var jsxTransform = require('react-tools').transform;
 var runtime      = require.resolve('./runtime');
 
-function compile(src, scope) {
+function compile(src, opts) {
   var compiled = marked(src);
   var meta = compiled.meta || {};
 
   var component = meta.component ?
     'require("' + meta.component + '")' :
+    opts.component ?
+    'require("' + opts.component + '")' :
     '_runtime.Reactdown'
 
-  scope = scope ?
-    'require(' + JSON.stringify(scope) + ')' :
+  var scope = opts.scope ?
+    'require(' + JSON.stringify(opts.scope) + ')' :
     '{}';
 
   delete meta.component;
