@@ -36,7 +36,7 @@ function compile(src, opts) {
     'var _markup    = <_Wrapper>' + compiled.html + '</_Wrapper>;',
     '',
     'module.exports = function create(props) {',
-    '  props = _runtime.merge(exports.meta, props);',
+    '  props = _runtime.merge(module.exports.meta, props);',
     '  return _Component.apply(_Component, [props].concat(_markup));',
     '};',
     'module.exports.meta   = ' + JSON.stringify(meta) + ';'
