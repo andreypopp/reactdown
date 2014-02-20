@@ -12,7 +12,7 @@ function compile(src, scope) {
     'require("' + meta.component + '")' :
     '_runtime.Reactdown'
 
-  var scope = scope ?
+  scope = scope ?
     'require(' + JSON.stringify(scope) + ')' :
     '{}';
 
