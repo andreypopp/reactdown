@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+
+var fs        = require('fs');
+var minimist  = require('minimist');
+var transform = require('./transform');
+
+var argv = minimist(process.argv.slice(2), {
+  boolean: ['version', 'help'],
+  alias: {
+    version: 'v',
+    help: 'h',
+    output: 'o',
+    scope: 's'
+  }
+});
+
+if (argv.version) {
+  console.log(require('./package.json').version);
+  process.exit(0);
+}
+
+if (argv.help) {
+  console.log(fs.readFileSync('./usage.txt', 'utf8'));
+  process.exit(0);
+}
+
+
+var input = argv._[0] ? fs.createReadStream(argv._[0]) : process.stdin;
+var output = argv.output ? fs.createWriteStream(argv.output) : process.stdout;
+var tr = transform({scope: argv.scope});
+
+pipe(input, tr);
+pipe(tr, output);
+
+function pipe(a, b) {
+  return a.on('error', b.emit.bind(b, 'error')).pipe(b);
+}

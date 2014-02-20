@@ -1,0 +1,13 @@
+Usage: reactdown [-ohvs] [filename]
+
+Compile reactdown into React component.
+
+Options:
+
+   -s, --scope module   Module id which will be used as a scope.
+
+    -o, --output file   Specify output.
+
+           -h, --help   Show this message and exit.
+
+        -v, --version   Show reactdown version and exit.
