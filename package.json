@@ -12,7 +12,8 @@
   },
   "keywords": [
     "react-component",
-    "react"
+    "react",
+    "browserify-transform"
   ],
   "author": "Andrey Popp <8mayday@gmail.com>",
   "license": "MIT",
