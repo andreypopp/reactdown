@@ -21,6 +21,7 @@ function compile(src, opts) {
     '{}';
 
   delete meta.component;
+  delete meta.scope;
 
   var code = [
     '/** @jsx React.DOM */',
