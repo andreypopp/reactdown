@@ -9,12 +9,14 @@ function compile(src, opts) {
   var meta = compiled.meta || {};
 
   var component = meta.component ?
-    'require("' + meta.component + '")' :
+    'require(' + JSON.stringify(meta.component) + ')' :
     opts.component ?
-    'require("' + opts.component + '")' :
+    'require(' + JSON.stringify(opts.component) + ')' :
     '_runtime.Reactdown'
 
-  var scope = opts.scope ?
+  var scope = meta.scope ?
+    'require(' + JSON.stringify(meta.scope) + ')' :
+    opts.scope ?
     'require(' + JSON.stringify(opts.scope) + ')' :
     '{}';
 
