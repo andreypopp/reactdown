@@ -1,6 +1,6 @@
 {
   "name": "reactdown",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Write React components with markdown syntax",
   "main": "index.js",
   "scripts": {
