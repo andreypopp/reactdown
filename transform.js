@@ -49,7 +49,7 @@ ReactdownTransform.prototype._transform = function(chunk, encoding, done) {
 ReactdownTransform.prototype._flush = function(done) {
   var src = this._buffer.toString();
   try {
-    this.push(reactdown(src, this._opts).code);
+    this.push(this._reactdown(src, this._opts).code);
   } catch(e) {
     return this.emit('error', e);
   }
