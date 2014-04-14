@@ -35,11 +35,8 @@ function compile(src, opts) {
 
   var scopeCode = [];
   for (var name in scope) {
-    var scopeId = scope[name];
-    if (opts.filename) {
-      scopeId = path.relative(path.dirname(opts.filename), scopeId);
-    }
-    scopeCode.push('var ' + name + ' = require(' + JSON.stringify(scope[name]) + ');');
+    scopeCode.push('var ' + name +
+        ' = require(' + JSON.stringify(scope[name]) + ');');
   }
 
   var code = [
