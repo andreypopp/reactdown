@@ -22,9 +22,9 @@
   },
   "homepage": "https://github.com/andreypopp/reactdown",
   "dependencies": {
-    "meta-marked": "~0.3.0",
-    "react-tools": "~0.10.0",
-    "minimist": "0.0.7"
+    "js-yaml": "^3.0.2",
+    "minimist": "0.0.7",
+    "react-tools": "~0.10.0"
   },
   "devDependencies": {
     "jshint": "~2.4.3",

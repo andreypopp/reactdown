@@ -1,7 +1,7 @@
 "use strict";
 
-var marked         = require('meta-marked');
 var jsxTransform   = require('react-tools').transform;
+var marked         = require('./lib/meta-marked');
 var parseScopeSpec = require('./lib/parseScopeSpec');
 var runtime        = require.resolve('./lib/runtime');
 
@@ -40,6 +40,8 @@ function make(marked) {
           ' = require(' + JSON.stringify(scope[name]) + ');');
     }
 
+    var html = compiled.html;
+
     var code = [
       '/** @jsx React.DOM */',
       'var React      = require("react");',
@@ -49,17 +51,24 @@ function make(marked) {
       'var _Component = ' + component + ';',
       '',
       'module.exports = function create(props) {',
-      '  var _markup    = <_Wrapper>' + compiled.html + '</_Wrapper>;',
+      '  var _markup    = <_Wrapper>' + html + '</_Wrapper>;',
       '  props = _runtime.merge(module.exports.meta, props);',
       '  return _Component.apply(_Component, [props].concat(_markup));',
       '};',
       'module.exports.meta   = ' + JSON.stringify(meta) + ';'
     ].concat(scopeCode).join('\n');
 
+ //   annotated(code);
     code = jsxTransform(code);
 
     return {code: code, meta: meta};
   }
+}
+
+function annotated(code) {
+  code.split('\n').forEach(function(line, idx) {
+    console.log('' + idx + '  ' + line);
+  });
 }
 
 module.exports = make(marked);

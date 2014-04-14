@@ -8,5 +8,6 @@ scope:
 <Component>
   ```
   hello world
+  var x = {a: 12};
   ```
 </Component>
