@@ -37,6 +37,7 @@ function ReactdownTransform(opts) {
   Transform.call(this);
   this._buffer = new Buffer('');
   this._opts = opts;
+  this._reactdown = opts.reactdown || reactdown;
 }
 util.inherits(ReactdownTransform, Transform);
 
