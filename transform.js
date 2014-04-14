@@ -1,19 +1,35 @@
 "use strict";
 
-var util        = require('util');
-var reactdown   = require('./index');
-var Transform   = require('stream').Transform;
-var PassThrough = require('stream').PassThrough;
-var Buffer      = require('buffer').Buffer;
+var path            = require('path');
+var util            = require('util');
+var Transform       = require('stream').Transform;
+var PassThrough     = require('stream').PassThrough;
+var Buffer          = require('buffer').Buffer;
+var reactdown       = require('./index');
+var isString        = require('./lib/isString');
+var parseScopeSpec  = require('./lib/parseScopeSpec');
+
+var cwd = process.cwd();
 
 module.exports = function reactdownTransform(filename, opts) {
   if (!isString(filename) && !opts) {
     opts = filename;
     filename = undefined;
   }
+
+
   if (filename && !/\.md$/.exec(filename)) {
     return new PassThrough();
   }
+
+  var scope = parseScopeSpec(opts.scope);
+
+  for (var k in scope) {
+    scope[k] = path.resolve(cwd, scope[k]);
+  }
+
+  opts.scope = scope;
+
   return new ReactdownTransform(opts);
 }
 
@@ -31,10 +47,10 @@ ReactdownTransform.prototype._transform = function(chunk, encoding, done) {
 
 ReactdownTransform.prototype._flush = function(done) {
   var src = this._buffer.toString();
-  this.push(reactdown(src, this._opts).code);
+  try {
+    this.push(reactdown(src, this._opts).code);
+  } catch(e) {
+    return this.emit('error', e);
+  }
   done();
-}
-
-function isString(o) {
-  return Object.prototype.toString.call(o) === '[object String]';
 }

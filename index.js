@@ -1,8 +1,9 @@
 "use strict";
 
-var marked       = require('meta-marked');
-var jsxTransform = require('react-tools').transform;
-var runtime      = require.resolve('./runtime');
+var marked         = require('meta-marked');
+var jsxTransform   = require('react-tools').transform;
+var parseScopeSpec = require('./lib/parseScopeSpec');
+var runtime        = require.resolve('./lib/runtime');
 
 function compile(src, opts) {
   var compiled = marked(src);
@@ -14,14 +15,32 @@ function compile(src, opts) {
     'require(' + JSON.stringify(opts.component) + ')' :
     '_runtime.Reactdown'
 
-  var scope = meta.scope ?
-    'require(' + JSON.stringify(meta.scope) + ')' :
-    opts.scope ?
-    'require(' + JSON.stringify(opts.scope) + ')' :
-    '{}';
+  var scope = {};
+
+  if (meta.scope) {
+    for (var k in meta.scope) {
+      scope[k] = meta.scope[k];
+    }
+  }
+
+  if (opts.scope) {
+    var optsScope = parseScopeSpec(opts.scope);
+    for (var n in optsScope) {
+      scope[n] = optsScope[n];
+    }
+  }
 
   delete meta.component;
   delete meta.scope;
+
+  var scopeCode = [];
+  for (var name in scope) {
+    var scopeId = scope[name];
+    if (opts.filename) {
+      scopeId = path.relative(path.dirname(opts.filename), scopeId);
+    }
+    scopeCode.push('var ' + name + ' = require(' + JSON.stringify(scope[name]) + ');');
+  }
 
   var code = [
     '/** @jsx React.DOM */',
@@ -31,16 +50,13 @@ function compile(src, opts) {
     'var _Wrapper   = _runtime.Wrapper;',
     'var _Component = ' + component + ';',
     '',
-    '_runtime.mergeInto(global, ' + scope + ');',
-    '',
-    'var _markup    = <_Wrapper>' + compiled.html + '</_Wrapper>;',
-    '',
     'module.exports = function create(props) {',
+    '  var _markup    = <_Wrapper>' + compiled.html + '</_Wrapper>;',
     '  props = _runtime.merge(module.exports.meta, props);',
     '  return _Component.apply(_Component, [props].concat(_markup));',
     '};',
     'module.exports.meta   = ' + JSON.stringify(meta) + ';'
-  ].join('\n');
+  ].concat(scopeCode).join('\n');
 
   code = jsxTransform(code);
 

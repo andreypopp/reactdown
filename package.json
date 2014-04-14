@@ -23,11 +23,12 @@
   "homepage": "https://github.com/andreypopp/reactdown",
   "dependencies": {
     "meta-marked": "~0.3.0",
-    "react-tools": "~0.8.0",
+    "react-tools": "~0.10.0",
     "minimist": "0.0.7"
   },
   "devDependencies": {
+    "jshint": "~2.4.3",
     "mocha": "~1.17.1",
-    "jshint": "~2.4.3"
+    "react": "^0.10.0"
   }
 }
