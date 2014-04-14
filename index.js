@@ -58,17 +58,10 @@ function make(marked) {
       'module.exports.meta   = ' + JSON.stringify(meta) + ';'
     ].concat(scopeCode).join('\n');
 
- //   annotated(code);
     code = jsxTransform(code);
 
     return {code: code, meta: meta};
   }
-}
-
-function annotated(code) {
-  code.split('\n').forEach(function(line, idx) {
-    console.log('' + idx + '  ' + line);
-  });
 }
 
 module.exports = make(marked);
