@@ -1,0 +1,59 @@
+{
+  "name": "reactdown",
+  "version": "1.0.0",
+  "description": "Markdown and React based live document format",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "babel": {
+    "presets": [
+      "prometheusresearch"
+    ]
+  },
+  "ava": {
+    "files": [
+      "src/**/__tests__/*-test.js"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "babel": {
+      "presets": [
+        "prometheusresearch"
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreypopp/reactdown.git"
+  },
+  "keywords": [
+    "react",
+    "markdown"
+  ],
+  "author": "Andrey Popp <8mayday@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andreypopp/reactdown/issues"
+  },
+  "homepage": "https://github.com/andreypopp/reactdown#readme",
+  "dependencies": {
+    "collapse-white-space": "^1.0.0",
+    "detab": "^1.0.2",
+    "normalize-uri": "^1.0.0",
+    "remark": "^4.1.2",
+    "trim": "0.0.1",
+    "trim-lines": "^1.0.0",
+    "unist-util-visit": "^1.1.0"
+  },
+  "devDependencies": {
+    "ava": "^0.13.0",
+    "babel-cli": "^6.6.5",
+    "babel-generator": "^6.7.2",
+    "babel-preset-prometheusresearch": "^0.1.0",
+    "babel-types": "^6.7.2",
+    "chokidar": "^1.4.3",
+    "nyc": "^6.1.1"
+  }
+}
