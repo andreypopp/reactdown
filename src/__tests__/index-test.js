@@ -7,5 +7,4 @@ import {render} from '../index';
 
 test('rendering paragraph', t => {
   let {code} = render('Hello, world!');
-  console.log(code);
 });

@@ -2,9 +2,9 @@
  * @copyright 2016, Andrey Popp <8mayday@gmail.com>
  */
 
-import {parse} from 'remark';
 import * as DEFAULT_TYPES from 'babel-types';
 import generate from 'babel-generator';
+import parse from './parse';
 import Renderer from './Renderer';
 
 const DEFAULT_RENDER = {
