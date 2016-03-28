@@ -22,3 +22,5 @@ export function render(value, options = {}) {
   let node = renderer.render(parse(value, markdownOptions));
   return generate(node);
 }
+
+export {parse};

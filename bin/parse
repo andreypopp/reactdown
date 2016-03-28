@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+import fs from 'fs';
+import {parse} from '../src';
+
+let filename = process.argv[2];
+
+if (!filename) {
+  console.error('usage: parse <filename>');
+  process.exit(1);
+}
+
+let src = fs.readFileSync(filename, 'utf8');
+let node = parse(src);
+
+console.log(JSON.stringify(node, null, 2));
