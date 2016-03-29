@@ -48,12 +48,11 @@
     "unist-util-visit": "^1.1.0"
   },
   "devDependencies": {
-    "ava": "^0.13.0",
     "babel-cli": "^6.6.5",
     "babel-generator": "^6.7.2",
     "babel-preset-prometheusresearch": "^0.1.0",
     "babel-types": "^6.7.2",
-    "chokidar": "^1.4.3",
+    "mocha": "^2.4.5",
     "nyc": "^6.1.1"
   }
 }

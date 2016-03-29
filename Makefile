@@ -12,13 +12,13 @@ lint::
 	@$(BIN)/eslint src
 
 test::
-	@$(BIN)/ava
+	@$(BIN)/mocha --require babel-core/register $(TESTS)
 
 test-cov::
 	@$(BIN)/nyc --all -- $(BIN)/ava
 
 ci::
-	@$(BIN)/ava --watch
+	@$(BIN)/mocha --require babel-core/register --watch --watch-extensions json,md $(TESTS)
 
 version-major version-minor version-patch:: lint test
 	@npm version $(@:version-%=%)

@@ -11,18 +11,26 @@ function parseCustomBlock(eat, value) {
 
   // Get next line and shift value.
   function nextLine() {
-    let index = value.indexOf('\n');
-    if (index === -1) {
+    if (value.length === 0) {
       return null;
     }
-    let line = value.slice(0, index);
-    value = value.slice(index + 1);
+    let line;
+    let index = value.indexOf('\n');
+    if (index > -1) {
+      line = value.slice(0, index);
+      value = value.slice(index + 1);
+    } else {
+      line = value;
+      value = '';
+    }
     return line;
   }
 
   function eatLine(line) {
     eat(line);
-    eat('\n');
+    if (value !== '') {
+      eat('\n');
+    }
   }
 
   let position = eat.now();
@@ -32,8 +40,6 @@ function parseCustomBlock(eat, value) {
   if (!CUSTOM_BLOCK_TEST.exec(value)) {
     return;
   }
-
-  let indent = position.column - 1 + CUSTOM_BLOCK_INDENT;
 
   // ::CustomBlockName
   let bannerLine = nextLine().trim();
@@ -50,9 +56,9 @@ function parseCustomBlock(eat, value) {
     if (currentLine === '') {
       eatLine(currentLine);
       children.push(NEWLINE);
-    } else if (hasIndent(currentLine, indent)) {
+    } else if (hasIndent(currentLine, CUSTOM_BLOCK_INDENT)) {
       eatLine(currentLine);
-      children.push(currentLine.slice(indent));
+      children.push(currentLine.slice(CUSTOM_BLOCK_INDENT));
     } else {
       break;
     }

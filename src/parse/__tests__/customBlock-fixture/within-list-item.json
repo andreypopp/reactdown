@@ -91,17 +91,17 @@
                   "children": [
                     {
                       "type": "text",
-                      "value": "  Hello",
+                      "value": "Hello",
                       "position": {
                         "start": {
-                          "line": 7,
-                          "column": 3,
-                          "offset": 33
+                          "line": 8,
+                          "column": 1,
+                          "offset": 41
                         },
                         "end": {
-                          "line": 7,
-                          "column": 10,
-                          "offset": 40
+                          "line": 8,
+                          "column": 6,
+                          "offset": 46
                         },
                         "indent": []
                       }
@@ -109,14 +109,14 @@
                   ],
                   "position": {
                     "start": {
-                      "line": 7,
-                      "column": 3,
-                      "offset": 33
+                      "line": 8,
+                      "column": 1,
+                      "offset": 41
                     },
                     "end": {
-                      "line": 7,
-                      "column": 10,
-                      "offset": 40
+                      "line": 8,
+                      "column": 6,
+                      "offset": 46
                     },
                     "indent": []
                   }
@@ -125,8 +125,8 @@
               "position": {
                 "start": {
                   "line": 7,
-                  "column": 3,
-                  "offset": 33
+                  "column": 10,
+                  "offset": 40
                 },
                 "end": {
                   "line": 7,

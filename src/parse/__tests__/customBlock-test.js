@@ -2,24 +2,30 @@
  * @copyright 2016, Andrey Popp <8mayday@gmail.com>
  */
 
-import test from 'ava';
+import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
 import parse from '../index';
 
-let fixtures = fs.readdirSync('./customBlock-fixture')
-                 .filter(fixture => /\.md$/.exec(fixture));
+let fixtures = fs.readdirSync(path.join(__dirname, 'customBlock-fixture'))
+                 .filter(name => /\.md$/.exec(name))
+                 .map(name => name.replace(/\.md$/, ''));
 
 let expectedOutput = name =>
-  fs.readFileSync(fixtureFilename(name.replace(/\.md$/, '.json')), 'utf8').trim();
+  fs.readFileSync(fixtureFilename(name + '.json'), 'utf8').trim();
 
 let fixtureFilename = name =>
-  path.join('./customBlock-fixture', name);
+  path.join(__dirname, 'customBlock-fixture', name);
 
-fixtures.forEach(name => {
-  test(`customBlock: ${name.replace(/\.md$/, '')}`, test => {
-    let src = fs.readFileSync(fixtureFilename(name), 'utf8');
-    let node = parse(src);
-    test.is(JSON.stringify(node, null, 2).trim(), expectedOutput(name));
+describe('reactdown/parse', function() {
+  describe('customBlock', function() {
+    fixtures.forEach(name => {
+      let test = name === 'within-blockquote' ? it : it;
+      test(`customBlock: ${name}`, function() {
+        let src = fs.readFileSync(fixtureFilename(name + '.md'), 'utf8');
+        let node = parse(src);
+        assert.equal(JSON.stringify(node, null, 2).trim(), expectedOutput(name));
+      });
+    });
   });
 });

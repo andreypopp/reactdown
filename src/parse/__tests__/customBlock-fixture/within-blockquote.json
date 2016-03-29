@@ -48,17 +48,17 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "  Hello",
+                  "value": "Hello",
                   "position": {
                     "start": {
-                      "line": 5,
-                      "column": 3,
-                      "offset": 22
+                      "line": 6,
+                      "column": 1,
+                      "offset": 30
                     },
                     "end": {
-                      "line": 5,
-                      "column": 10,
-                      "offset": 29
+                      "line": 6,
+                      "column": 6,
+                      "offset": 35
                     },
                     "indent": []
                   }
@@ -66,14 +66,14 @@
               ],
               "position": {
                 "start": {
-                  "line": 5,
-                  "column": 3,
-                  "offset": 22
+                  "line": 6,
+                  "column": 1,
+                  "offset": 30
                 },
                 "end": {
-                  "line": 5,
-                  "column": 10,
-                  "offset": 29
+                  "line": 6,
+                  "column": 6,
+                  "offset": 35
                 },
                 "indent": []
               }
@@ -82,8 +82,8 @@
           "position": {
             "start": {
               "line": 5,
-              "column": 3,
-              "offset": 22
+              "column": 10,
+              "offset": 29
             },
             "end": {
               "line": 5,
