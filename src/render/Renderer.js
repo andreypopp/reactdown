@@ -32,7 +32,7 @@ export default class Renderer {
     );
   }
 
-  renderElementProps(props) {
+  renderElementProps(_props) {
     return this.factory.nullLiteral();
   }
 
@@ -64,13 +64,11 @@ export default class Renderer {
    *   string, returns nothing otherwise.
    */
   failsafe(node, definition, context) {
-    var result;
-
     if (node.referenceType === 'shortcut' && !definition.url) {
-        result = node.children ? context.all(node).join('') : node.alt;
+      let result = node.children ? context.all(node).join('') : node.alt;
 
-        return (node.type === 'imageReference' ? '!' : '') +
-            '[' + result + ']';
+      return (node.type === 'imageReference' ? '!' : '') +
+          '[' + result + ']';
     }
 
     return '';
@@ -86,41 +84,39 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   generateFootnotes() {
-    var definitions = this.footnotes;
-    var length = definitions.length;
-    var index = -1;
-    var results = [];
-    var def;
+    let definitions = this.footnotes;
+    let index = -1;
+    let results = [];
 
-    if (!length) {
-        return '';
+    if (!definitions.length) {
+      return '';
     }
 
-    while (++index < length) {
-        def = definitions[index];
+    while (++index < definitions.length) {
+      let def = definitions[index];
 
-        results[index] = this.listItem({
-            'type': 'listItem',
-            'data': {
-                'htmlAttributes': {
-                    'id': 'fn-' + def.identifier
-                }
-            },
-            'children': def.children.concat({
-                'type': 'link',
-                'url': '#fnref-' + def.identifier,
-                'data': {
-                    'htmlAttributes': {
-                        'class': 'footnote-backref'
-                    }
-                },
-                'children': [{
-                    'type': 'text',
-                    'value': '↩'
-                }]
-            }),
-            'position': def.position
-        }, {});
+      results[index] = this.listItem({
+        'type': 'listItem',
+        'data': {
+          'htmlAttributes': {
+            'id': 'fn-' + def.identifier
+          }
+        },
+        'children': def.children.concat({
+          'type': 'link',
+          'url': '#fnref-' + def.identifier,
+          'data': {
+            'htmlAttributes': {
+              'class': 'footnote-backref'
+            }
+          },
+          'children': [{
+            'type': 'text',
+            'value': '↩'
+          }]
+        }),
+        'position': def.position
+      }, {});
     }
 
     return this.renderElement('footnotes', null, ...results);
@@ -172,19 +168,19 @@ export default class Renderer {
    * @return {string} - Compiled `node`.
    */
   visit(node, parent) {
-    var type = node && node.type;
-    var fn = this[type];
+    let type = node && node.type;
+    let fn = this[type];
 
     /*
      * Fail on non-nodes.
      */
 
     if (!type) {
-        throw new Error('Expected node `' + node + '`');
+      throw new Error('Expected node `' + node + '`');
     }
 
     if (typeof fn !== 'function') {
-        fn = this.unknown;
+      fn = this.unknown;
     }
 
     return fn.call(this, node, parent);
@@ -208,25 +204,23 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   all(parent) {
-    var nodes = parent.children;
-    var values = [];
-    var index = -1;
-    var length = nodes.length;
-    var value;
-    var prev;
+    let nodes = parent.children;
+    let values = [];
+    let index = -1;
+    let prev;
 
-    while (++index < length) {
-        value = this.visit(nodes[index], parent);
+    while (++index < nodes.length) {
+      let value = this.visit(nodes[index], parent);
 
-        if (value) {
-            if (prev && prev.type === 'break') {
-                value = trim.left(value);
-            }
-
-            values.push(value);
+      if (value) {
+        if (prev && prev.type === 'break') {
+          value = trim.left(value);
         }
 
-        prev = nodes[index];
+        values.push(value);
+      }
+
+      prev = nodes[index];
     }
 
     return values;
@@ -552,7 +546,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  rule(node) {
+  rule(_node) {
     return this.renderElement('rule');
   }
 
@@ -624,7 +618,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  hardBreak(node) {
+  hardBreak(_node) {
     return this.renderElement('break');
   }
 
@@ -674,8 +668,8 @@ export default class Renderer {
 
     return this.renderElement('sup', {id: 'fnref-' + identifier},
       this.renderElement('a', {
-          href: '#fn-' + identifier,
-          className: 'footnote-ref'
+        href: '#fn-' + identifier,
+        className: 'footnote-ref'
       }, identifier));
   }
 
@@ -695,7 +689,7 @@ export default class Renderer {
   linkReference(node) {
     let def = this.definitions[node.identifier.toUpperCase()] || {};
 
-    return failsafe(node, def, this) || this.renderElement('a', {
+    return this.failsafe(node, def, this) || this.renderElement('a', {
       href: normalizeURI(def.url || ''),
       title: def.title
     }, this.all(node));
@@ -717,7 +711,7 @@ export default class Renderer {
   imageReference(node) {
     let def = this.definitions[node.identifier.toUpperCase()] || {};
 
-    return failsafe(node, def, this) || this.renderElement('image', {
+    return this.failsafe(node, def, this) || this.renderElement('image', {
       src: normalizeURI(def.url || ''),
       alt: node.alt || '',
       title: def.title

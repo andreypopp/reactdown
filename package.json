@@ -11,18 +11,9 @@
       "prometheusresearch"
     ]
   },
-  "ava": {
-    "files": [
-      "src/**/__tests__/*-test.js"
-    ],
-    "require": [
-      "babel-register"
-    ],
-    "babel": {
-      "presets": [
-        "prometheusresearch"
-      ]
-    }
+  "eslintConfig": {
+    "extends": "prometheusresearch",
+    "env": {"mocha": true}
   },
   "repository": {
     "type": "git",
@@ -52,6 +43,8 @@
     "babel-generator": "^6.7.2",
     "babel-preset-prometheusresearch": "^0.1.0",
     "babel-types": "^6.7.2",
+    "eslint": "^2.5.3",
+    "eslint-config-prometheusresearch": "^0.2.0",
     "mocha": "^2.4.5",
     "nyc": "^6.1.1"
   }

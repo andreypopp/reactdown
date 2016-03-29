@@ -33,10 +33,7 @@ function parseCustomBlock(eat, value) {
     }
   }
 
-  let position = eat.now();
-
   // Smoke test for custom block.
-  let match = CUSTOM_BLOCK_TEST.exec(value);
   if (!CUSTOM_BLOCK_TEST.exec(value)) {
     return;
   }
