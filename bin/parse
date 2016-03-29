@@ -14,5 +14,3 @@ let src = fs.readFileSync(filename, 'utf8');
 let node = parse(src);
 
 console.log(JSON.stringify(node, null, 2));
-
-// vim: set ft=javascript:

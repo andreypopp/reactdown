@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import fs from 'fs';
-import {parse} from '../src';
+import {renderToString} from '../src';
 
 let filename = process.argv[2];
 
@@ -11,8 +11,7 @@ if (!filename) {
 }
 
 let src = fs.readFileSync(filename, 'utf8');
-let node = parse(src);
 
-console.log(JSON.stringify(node, null, 2));
+console.log(renderToString(src).code);
 
 // vim: set ft=javascript:

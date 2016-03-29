@@ -2,25 +2,17 @@
  * @copyright 2016, Andrey Popp <8mayday@gmail.com>
  */
 
-import * as DEFAULT_TYPES from 'babel-types';
 import generate from 'babel-generator';
 import parse from './parse';
-import Renderer from './Renderer';
+import render from './render';
 
-const DEFAULT_RENDER = {
-  'paragraph': 'p',
-  'root': 'div',
-};
-
-export function render(value, options = {}) {
-  let {
-    types = DEFAULT_TYPES,
-    render = DEFAULT_RENDER,
-    ...markdownOptions
-  } = options;
-  let renderer = new Renderer(types, render);
-  let node = renderer.render(parse(value, markdownOptions));
-  return generate(node);
+export function renderToString(value, options = {}) {
+  let mdast = parse(value, options);
+  let jsast = render(mdast, options);
+  return generate(jsast, {
+    compact: false,
+    concise: false
+  });
 }
 
-export {parse};
+export {parse, render};
