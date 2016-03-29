@@ -12,7 +12,7 @@ lint::
 	@$(BIN)/eslint src
 
 test::
-	@$(BIN)/mocha --require babel-core/register $(TESTS)
+	@$(BIN)/mocha -R dot --require babel-core/register $(TESTS)
 
 test-cov::
 	@$(BIN)/nyc --all -- $(BIN)/ava
