@@ -27,8 +27,12 @@ Example:
       This piece of markup will be handled by a special component.
 
     ::Element
-      :property: value
-      :key: value
+      ---
+      property: value
+      key: value
+      ---
+
+      Children
 
     ::Form
 
@@ -36,12 +40,16 @@ Example:
       ~~~~~~~~~~
 
       ::Field
-        :label: First Name
-        :key: firstName
+        ---
+        label: First Name
+        key: firstName
+        ---
 
       ::Field
-        :label: Last Name
-        :key: lastName
+        ---
+        label: Last Name
+        key: lastName
+        ---
 
 
     Custom inline elements
