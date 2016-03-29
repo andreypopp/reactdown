@@ -17,7 +17,7 @@ let fixtureFilename = name =>
   path.join('./customBlock-fixture', name);
 
 fixtures.forEach(name => {
-  test(`customBlock: ${name}`, test => {
+  test(`customBlock: ${name.replace(/\.md$/, '')}`, test => {
     let src = fs.readFileSync(fixtureFilename(name), 'utf8');
     let node = parse(src);
     test.is(JSON.stringify(node, null, 2).trim(), expectedOutput(name));
