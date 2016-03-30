@@ -20,8 +20,7 @@ let fixtureFilename = name =>
 describe('reactdown/parse', function() {
   describe('customBlock', function() {
     fixtures.forEach(name => {
-      let test = name === 'within-blockquote' ? it : it;
-      test(`customBlock: ${name}`, function() {
+      it(`customBlock: ${name}`, function() {
         let src = fs.readFileSync(fixtureFilename(name + '.md'), 'utf8');
         let node = parse(src);
         assert.equal(JSON.stringify(node, null, 2).trim(), expectedOutput(name));
