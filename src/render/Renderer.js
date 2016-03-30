@@ -584,7 +584,7 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   strong(node) {
-    return this.renderElement('strong', null, this.all(node));
+    return this.renderElement('strong', null, ...this.all(node));
   }
 
   /**
@@ -605,7 +605,7 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   emphasis(node) {
-    return this.renderElement('emphasis', null, this.all(node));
+    return this.renderElement('emphasis', null, ...this.all(node));
   }
 
   /**

@@ -1,0 +1,1 @@
+React.createElement("div", null, React.createElement("heading", null, "Hello"), React.createElement("p", null, "Hello, ", React.createElement("emphasis", null, "World"), "!"), React.createElement("p", null, "Bye,\nthis was a paragraph."))
