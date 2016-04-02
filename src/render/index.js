@@ -5,10 +5,7 @@
 import * as DEFAULT_TYPES from 'babel-types';
 import Renderer from './Renderer';
 
-const DEFAULT_RENDER = {
-  'paragraph': 'p',
-  'root': 'div',
-};
+const DEFAULT_RENDER = {};
 
 export default function render(node, options = {}) {
   let {

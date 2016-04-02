@@ -37,7 +37,11 @@ export default class Renderer {
   }
 
   renderText(value) {
-    return this.factory.stringLiteral(value);
+    if (value === null) {
+      return this.factory.nullLiteral();
+    } else {
+      return this.factory.stringLiteral(value);
+    }
   }
 
   /**
@@ -122,6 +126,10 @@ export default class Renderer {
     return this.renderElement('footnotes', null, ...results);
   }
 
+  break(node) {
+    return this.renderElement('break');
+  }
+
   /**
    * Stringify an unknown node.
    *
@@ -143,7 +151,9 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   unknown(node) {
-    let content = 'children' in node ? this.all(node) : [node.value];
+    let content = 'children' in node ?
+      this.all(node) :
+      [this.renderText(node.value)];
     let type = node.type || 'unknown';
     return this.renderElement(type, null, ...content);
   }
@@ -207,20 +217,12 @@ export default class Renderer {
     let nodes = parent.children;
     let values = [];
     let index = -1;
-    let prev;
 
     while (++index < nodes.length) {
       let value = this.visit(nodes[index], parent);
-
       if (value) {
-        if (prev && prev.type === 'break') {
-          value = trim.left(value);
-        }
-
         values.push(value);
       }
-
-      prev = nodes[index];
     }
 
     return values;
@@ -251,11 +253,11 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   root(node) {
-    visit(node, 'definition', function (definition) {
+    visit(node, 'definition', definition => {
       this.definitions[definition.identifier.toUpperCase()] = definition;
     });
 
-    visit(node, 'footnoteDefinition', function (definition) {
+    visit(node, 'footnoteDefinition', definition => {
       this.footnotes.push(definition);
     });
 
@@ -452,7 +454,9 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   paragraph(node) {
-    return this.renderElement('paragraph', null, ...this.all(node));
+    let children = this.all(node);
+    console.log('xx', children);
+    return this.renderElement('paragraph', null, ...children);
   }
 
   /**
@@ -469,7 +473,9 @@ export default class Renderer {
    */
   code(node) {
     let value = node.value ? detab(node.value + '\n') : '';
-    return this.renderElement('code', null, this.encode(value));
+    value = this.encode(value);
+    value = this.renderText(value);
+    return this.renderElement('code', null, value);
   }
 
   /**
@@ -563,7 +569,11 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   inlineCode(node) {
-    return this.renderElement('inline-code', null, collapse(this.encode(node.value)));
+    let value = node.value;
+    value = this.encode(value);
+    value = collapse(value);
+    value = this.renderText(value);
+    return this.renderElement('inline-code', null, value)
   }
 
   /**
@@ -644,7 +654,7 @@ export default class Renderer {
     return this.renderElement('link', {
       href: normalizeURI(node.url || ''),
       title: node.title
-    }, this.all(node));
+    }, ...this.all(node));
   }
 
   /**
@@ -692,7 +702,7 @@ export default class Renderer {
     return this.failsafe(node, def, this) || this.renderElement('a', {
       href: normalizeURI(def.url || ''),
       title: def.title
-    }, this.all(node));
+    }, ...this.all(node));
   }
 
   /**

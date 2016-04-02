@@ -1,0 +1,1 @@
+./node_modules/.bin/babel-node ./bin/reactdown-parse src/render/__tests__/markdown-fixture/code.md
