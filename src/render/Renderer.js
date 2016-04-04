@@ -2,7 +2,6 @@
  * @copyright 2016, Andrey Popp
  */
 
-import trim from 'trim';
 import detab from 'detab';
 import collapse from 'collapse-white-space';
 import normalizeURI from 'normalize-uri';
@@ -92,7 +91,7 @@ export default class Renderer {
     return this.renderElement('footnotes', null, ...results);
   }
 
-  break(node) {
+  break(_node) {
     return this.renderElement('break');
   }
 
@@ -117,7 +116,6 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   unknown(node) {
-    console.log(node);
     let content = 'children' in node ?
       this.all(node) :
       [this.renderText(node.value)];
@@ -539,7 +537,7 @@ export default class Renderer {
     value = this.encode(value);
     value = collapse(value);
     value = this.renderText(value);
-    return this.renderElement('inline-code', null, value)
+    return this.renderElement('inline-code', null, value);
   }
 
   /**
