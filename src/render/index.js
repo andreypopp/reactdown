@@ -15,4 +15,3 @@ export default function render(node, options = {}) {
   let renderer = new Renderer(types, render);
   return renderer.render(node);
 }
-

@@ -6,7 +6,13 @@ import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
 import generate from 'babel-generator';
-import render from '../index';
+import * as types from 'babel-types';
+import Renderer from '../Renderer';
+
+function render(node) {
+  let renderer = new Renderer(types);
+  return renderer.render(node);
+}
 
 let fixtures = fs.readdirSync(path.join(__dirname, 'markdown-fixture'))
                  .filter(name => /\.json$/.exec(name))
