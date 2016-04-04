@@ -18,8 +18,12 @@ export default class Renderer {
   }
 
   renderElement(name, props, ...children) {
-    let component = this.components[name] || name;
-    if (typeof component === 'string') {
+    let component = this.components[name];
+    if (component === undefined) {
+      component = this.factory.stringLiteral(name);
+    } else if (component === null) {
+      return this.factory.nullLiteral();
+    } else if (typeof component === 'string') {
       component = this.factory.stringLiteral(component);
     }
     let createElement = this.factory.memberExpression(
