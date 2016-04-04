@@ -6,40 +6,45 @@ import detab from 'detab';
 import collapse from 'collapse-white-space';
 import normalizeURI from 'normalize-uri';
 import trimLines from 'trim-lines';
+import * as babelTypes from 'babel-types';
 import visit from 'unist-util-visit';
 
 export default class Renderer {
 
-  constructor(factory, components = {}) {
+  constructor(types = babelTypes, components = {}) {
     this.definitions = {};
     this.footnotes = [];
-    this.factory = factory;
+    this.types = types;
     this.components = components;
+    this.identifiersUsed = [];
   }
 
   renderElement(name, props, ...children) {
     let component = this.components[name];
     if (component === undefined) {
-      component = this.factory.stringLiteral(name);
+      component = this.types.stringLiteral(name);
     }
-    let createElement = this.factory.memberExpression(
-      this.factory.identifier('React'),
-      this.factory.identifier('createElement'));
-    return this.factory.callExpression(
+    if (this.types.isIdentifier(component)) {
+      this.identifiersUsed.push(component);
+    }
+    let createElement = this.types.memberExpression(
+      this.types.identifier('React'),
+      this.types.identifier('createElement'));
+    return this.types.callExpression(
       createElement,
       [component, this.renderElementProps(props), ...children]
     );
   }
 
   renderElementProps(_props) {
-    return this.factory.nullLiteral();
+    return this.types.nullLiteral();
   }
 
   renderText(value) {
     if (value === null) {
-      return this.factory.nullLiteral();
+      return this.types.nullLiteral();
     } else {
-      return this.factory.stringLiteral(value);
+      return this.types.stringLiteral(value);
     }
   }
 

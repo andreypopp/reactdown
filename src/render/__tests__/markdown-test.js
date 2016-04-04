@@ -24,8 +24,8 @@ let expectedOutput = name =>
 let fixtureFilename = name =>
   path.join(__dirname, 'markdown-fixture', name);
 
-describe('reactdown/parse', function() {
-  describe('customBlock', function() {
+describe('reactdown/render', function() {
+  describe('markdown', function() {
     fixtures.forEach(name => {
       it(`render markdown: ${name}`, function() {
         let src = fs.readFileSync(fixtureFilename(name + '.json'), 'utf8');

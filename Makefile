@@ -4,6 +4,7 @@ BIN           = ./node_modules/.bin
 TESTS         = $(shell find src -path '*/__tests__/*-test.js')
 SRC           = $(filter-out $(TESTS), $(shell find src -name '*.js'))
 LIB           = $(SRC:src/%=lib/%)
+MOCHA_OPTS    = -R dot --require babel-core/register 
 
 build::
 	@$(MAKE) -j 8 $(LIB)
@@ -12,10 +13,10 @@ lint::
 	@$(BIN)/eslint src
 
 test::
-	@$(BIN)/mocha -R dot --require babel-core/register $(TESTS)
+	@$(BIN)/mocha $(MOCHA_OPTS) $(TESTS)
 
 ci::
-	@$(BIN)/mocha --require babel-core/register --watch --watch-extensions json,md $(TESTS)
+	@$(BIN)/mocha $(MOCHA_OPTS) --watch --watch-extensions json,md $(TESTS)
 
 version-major version-minor version-patch:: lint test
 	@npm version $(@:version-%=%)
