@@ -14,9 +14,6 @@ lint::
 test::
 	@$(BIN)/mocha -R dot --require babel-core/register $(TESTS)
 
-test-cov::
-	@$(BIN)/nyc --all -- $(BIN)/ava
-
 ci::
 	@$(BIN)/mocha --require babel-core/register --watch --watch-extensions json,md $(TESTS)
 
