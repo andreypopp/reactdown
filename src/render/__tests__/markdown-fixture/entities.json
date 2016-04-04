@@ -1,1 +1,848 @@
-./node_modules/.bin/babel-node ./bin/reactdown-parse src/render/__tests__/markdown-fixture/entities.md
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Lots of entities are supported: ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 33,
+              "offset": 32
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": " ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 33,
+              "offset": 32
+            },
+            "end": {
+              "line": 1,
+              "column": 39,
+              "offset": 38
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 39,
+              "offset": 38
+            },
+            "end": {
+              "line": 1,
+              "column": 41,
+              "offset": 40
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "&",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 41,
+              "offset": 40
+            },
+            "end": {
+              "line": 1,
+              "column": 46,
+              "offset": 45
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 46,
+              "offset": 45
+            },
+            "end": {
+              "line": 1,
+              "column": 48,
+              "offset": 47
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "©",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 48,
+              "offset": 47
+            },
+            "end": {
+              "line": 1,
+              "column": 54,
+              "offset": 53
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 54,
+              "offset": 53
+            },
+            "end": {
+              "line": 1,
+              "column": 56,
+              "offset": 55
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "Æ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 56,
+              "offset": 55
+            },
+            "end": {
+              "line": 1,
+              "column": 63,
+              "offset": 62
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ",\n",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 63,
+              "offset": 62
+            },
+            "end": {
+              "line": 2,
+              "column": 1,
+              "offset": 64
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "value": "Ď",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 1,
+              "offset": 64
+            },
+            "end": {
+              "line": 2,
+              "column": 9,
+              "offset": 72
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 9,
+              "offset": 72
+            },
+            "end": {
+              "line": 2,
+              "column": 11,
+              "offset": 74
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "¾",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 11,
+              "offset": 74
+            },
+            "end": {
+              "line": 2,
+              "column": 19,
+              "offset": 82
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 19,
+              "offset": 82
+            },
+            "end": {
+              "line": 2,
+              "column": 21,
+              "offset": 84
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "ℋ",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 21,
+              "offset": 84
+            },
+            "end": {
+              "line": 2,
+              "column": 35,
+              "offset": 98
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 35,
+              "offset": 98
+            },
+            "end": {
+              "line": 2,
+              "column": 37,
+              "offset": 100
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "ⅆ",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 37,
+              "offset": 100
+            },
+            "end": {
+              "line": 2,
+              "column": 52,
+              "offset": 115
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ",\n",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 52,
+              "offset": 115
+            },
+            "end": {
+              "line": 3,
+              "column": 1,
+              "offset": 117
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "value": "∲",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1,
+              "offset": 117
+            },
+            "end": {
+              "line": 3,
+              "column": 27,
+              "offset": 143
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", &c.  Even some entities with a missing\nterminal semicolon are parsed correctly (as per the HTML5 spec):\n",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 27,
+              "offset": 143
+            },
+            "end": {
+              "line": 5,
+              "column": 1,
+              "offset": 249
+            },
+            "indent": [
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "value": "ÿ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1,
+              "offset": 249
+            },
+            "end": {
+              "line": 5,
+              "column": 6,
+              "offset": 254
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 6,
+              "offset": 254
+            },
+            "end": {
+              "line": 5,
+              "column": 8,
+              "offset": 256
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "á",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 8,
+              "offset": 256
+            },
+            "end": {
+              "line": 5,
+              "column": 15,
+              "offset": 263
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 15,
+              "offset": 263
+            },
+            "end": {
+              "line": 5,
+              "column": 17,
+              "offset": 265
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "©",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 17,
+              "offset": 265
+            },
+            "end": {
+              "line": 5,
+              "column": 22,
+              "offset": 270
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", and ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 22,
+              "offset": 270
+            },
+            "end": {
+              "line": 5,
+              "column": 28,
+              "offset": 276
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "&",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 28,
+              "offset": 276
+            },
+            "end": {
+              "line": 5,
+              "column": 32,
+              "offset": 280
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 32,
+              "offset": 280
+            },
+            "end": {
+              "line": 5,
+              "column": 33,
+              "offset": 281
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 33,
+          "offset": 281
+        },
+        "indent": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "However, &MadeUpEntities; are kept in the document.",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1,
+              "offset": 283
+            },
+            "end": {
+              "line": 7,
+              "column": 52,
+              "offset": 334
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 283
+        },
+        "end": {
+          "line": 7,
+          "column": 52,
+          "offset": 334
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Entities even work in the language flag of fenced code blocks:",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 1,
+              "offset": 336
+            },
+            "end": {
+              "line": 9,
+              "column": 63,
+              "offset": 398
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1,
+          "offset": 336
+        },
+        "end": {
+          "line": 9,
+          "column": 63,
+          "offset": 398
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "code",
+      "lang": "some—language",
+      "value": "alert('Hello');",
+      "position": {
+        "start": {
+          "line": 11,
+          "column": 1,
+          "offset": 400
+        },
+        "end": {
+          "line": 13,
+          "column": 4,
+          "offset": 442
+        },
+        "indent": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Or in ",
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 1,
+              "offset": 444
+            },
+            "end": {
+              "line": 15,
+              "column": 7,
+              "offset": 450
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "link",
+          "title": "in some plæce",
+          "url": "~/some—file",
+          "children": [
+            {
+              "type": "text",
+              "value": "l",
+              "position": {
+                "start": {
+                  "line": 15,
+                  "column": 8,
+                  "offset": 451
+                },
+                "end": {
+                  "line": 15,
+                  "column": 9,
+                  "offset": 452
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "í",
+              "position": {
+                "start": {
+                  "line": 15,
+                  "column": 9,
+                  "offset": 452
+                },
+                "end": {
+                  "line": 15,
+                  "column": 17,
+                  "offset": 460
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "nks",
+              "position": {
+                "start": {
+                  "line": 15,
+                  "column": 17,
+                  "offset": 460
+                },
+                "end": {
+                  "line": 15,
+                  "column": 20,
+                  "offset": 463
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 7,
+              "offset": 450
+            },
+            "end": {
+              "line": 15,
+              "column": 62,
+              "offset": 505
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 15,
+          "column": 1,
+          "offset": 444
+        },
+        "end": {
+          "line": 15,
+          "column": 62,
+          "offset": 505
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Or in ",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 1,
+              "offset": 507
+            },
+            "end": {
+              "line": 17,
+              "column": 7,
+              "offset": 513
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "image",
+          "title": "© Someone",
+          "url": "~/an–image.png",
+          "alt": "ímages",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 7,
+              "offset": 513
+            },
+            "end": {
+              "line": 17,
+              "column": 61,
+              "offset": 567
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 17,
+          "column": 1,
+          "offset": 507
+        },
+        "end": {
+          "line": 17,
+          "column": 61,
+          "offset": 567
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "But, entities are not interpreted in ",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 1,
+              "offset": 569
+            },
+            "end": {
+              "line": 19,
+              "column": 38,
+              "offset": 606
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "inline c&ouml;de",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 38,
+              "offset": 606
+            },
+            "end": {
+              "line": 19,
+              "column": 56,
+              "offset": 624
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", or in\ncode blocks:",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 56,
+              "offset": 624
+            },
+            "end": {
+              "line": 20,
+              "column": 13,
+              "offset": 644
+            },
+            "indent": [
+              1
+            ]
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 19,
+          "column": 1,
+          "offset": 569
+        },
+        "end": {
+          "line": 20,
+          "column": 13,
+          "offset": 644
+        },
+        "indent": [
+          1
+        ]
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "C&Ouml;DE block.",
+      "position": {
+        "start": {
+          "line": 22,
+          "column": 1,
+          "offset": 646
+        },
+        "end": {
+          "line": 22,
+          "column": 18,
+          "offset": 663
+        },
+        "indent": []
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1,
+      "offset": 0
+    },
+    "end": {
+      "line": 23,
+      "column": 1,
+      "offset": 664
+    }
+  }
+}

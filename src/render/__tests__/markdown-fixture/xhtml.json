@@ -1,1 +1,142 @@
-./node_modules/.bin/babel-node ./bin/reactdown-parse src/render/__tests__/markdown-fixture/xhtml.md
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Hello",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 6,
+              "offset": 5
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "break",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 6,
+              "offset": 5
+            },
+            "end": {
+              "line": 2,
+              "column": 1,
+              "offset": 8
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "value": "world",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 1,
+              "offset": 8
+            },
+            "end": {
+              "line": 2,
+              "column": 6,
+              "offset": 13
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 6,
+          "offset": 13
+        },
+        "indent": [
+          1
+        ]
+      }
+    },
+    {
+      "type": "thematicBreak",
+      "position": {
+        "start": {
+          "line": 4,
+          "column": 1,
+          "offset": 15
+        },
+        "end": {
+          "line": 4,
+          "column": 4,
+          "offset": 18
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "image",
+          "title": "Example Favicon",
+          "url": "http://exaple.com/fav.ico",
+          "alt": "Favicon",
+          "position": {
+            "start": {
+              "line": 6,
+              "column": 1,
+              "offset": 20
+            },
+            "end": {
+              "line": 6,
+              "column": 56,
+              "offset": 75
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 6,
+          "column": 1,
+          "offset": 20
+        },
+        "end": {
+          "line": 6,
+          "column": 56,
+          "offset": 75
+        },
+        "indent": []
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1,
+      "offset": 0
+    },
+    "end": {
+      "line": 7,
+      "column": 1,
+      "offset": 76
+    }
+  }
+}

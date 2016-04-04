@@ -38,12 +38,14 @@ RENDER_FIXTURES_MD := $(shell find src/render/__tests__ -name '*.md')
 RENDER_FIXTURES_JSON := $(RENDER_FIXTURES_MD:%.md=%.json)
 RENDER_FIXTURES_JS := $(RENDER_FIXTURES_MD:%.md=%.js)
 
-render-fixtures:: $(RENDER_FIXTURES_JS) $(RENDER_FIXTURES_JSON)
+build-render-fixtures:: $(RENDER_FIXTURES_JS) $(RENDER_FIXTURES_JSON)
+clean-render-fixtures::
+	rm -f $(RENDER_FIXTURES_JSON) $(RENDER_FIXTURES_JS)
 
 src/render/__tests__/%.json: src/render/__tests__/%.md
 	@echo "Parsing $<"
-	$(BIN)/babel-node ./bin/reactdown-parse $< > $@
+	@$(BIN)/babel-node ./bin/reactdown-parse $< > $@
 
 src/render/__tests__/%.js: src/render/__tests__/%.md
 	@echo "Rendering $<"
-	$(BIN)/babel-node ./bin/reactdown-render $< > $@
+	@$(BIN)/babel-node ./bin/reactdown-render $< > $@

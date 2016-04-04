@@ -1,1 +1,2768 @@
-./node_modules/.bin/babel-node ./bin/reactdown-parse src/render/__tests__/markdown-fixture/entities-numerical.md
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "heading",
+      "depth": 1,
+      "children": [
+        {
+          "type": "text",
+          "value": "Entities",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 3,
+              "offset": 2
+            },
+            "end": {
+              "line": 1,
+              "column": 11,
+              "offset": 10
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 11,
+          "offset": 10
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Plain text:",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1,
+              "offset": 12
+            },
+            "end": {
+              "line": 3,
+              "column": 12,
+              "offset": 23
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1,
+          "offset": 12
+        },
+        "end": {
+          "line": 3,
+          "column": 12,
+          "offset": 23
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "AT",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1,
+              "offset": 25
+            },
+            "end": {
+              "line": 5,
+              "column": 3,
+              "offset": 27
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "&",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 3,
+              "offset": 27
+            },
+            "end": {
+              "line": 5,
+              "column": 8,
+              "offset": 32
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "T with entity, AT",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 8,
+              "offset": 32
+            },
+            "end": {
+              "line": 5,
+              "column": 25,
+              "offset": 49
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "&",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 25,
+              "offset": 49
+            },
+            "end": {
+              "line": 5,
+              "column": 31,
+              "offset": 55
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "T with numeric entity, AT&T without entity.",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 31,
+              "offset": 55
+            },
+            "end": {
+              "line": 5,
+              "column": 74,
+              "offset": 98
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 25
+        },
+        "end": {
+          "line": 5,
+          "column": 74,
+          "offset": 98
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Fenced code language flags:",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1,
+              "offset": 100
+            },
+            "end": {
+              "line": 7,
+              "column": 28,
+              "offset": 127
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 100
+        },
+        "end": {
+          "line": 7,
+          "column": 28,
+          "offset": 127
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "code",
+      "lang": "AT&T",
+      "value": "Something in the AT&amp;T language",
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1,
+          "offset": 129
+        },
+        "end": {
+          "line": 11,
+          "column": 4,
+          "offset": 179
+        },
+        "indent": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "type": "code",
+      "lang": "AT&T",
+      "value": "Something in the AT&#x26;T language",
+      "position": {
+        "start": {
+          "line": 13,
+          "column": 1,
+          "offset": 181
+        },
+        "end": {
+          "line": 15,
+          "column": 4,
+          "offset": 233
+        },
+        "indent": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "type": "code",
+      "lang": "AT&T",
+      "value": "Something in the AT&T language",
+      "position": {
+        "start": {
+          "line": 17,
+          "column": 1,
+          "offset": 235
+        },
+        "end": {
+          "line": 19,
+          "column": 4,
+          "offset": 277
+        },
+        "indent": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Automatic links:",
+          "position": {
+            "start": {
+              "line": 21,
+              "column": 1,
+              "offset": 279
+            },
+            "end": {
+              "line": 21,
+              "column": 17,
+              "offset": 295
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 21,
+          "column": 1,
+          "offset": 279
+        },
+        "end": {
+          "line": 21,
+          "column": 17,
+          "offset": 295
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "title": null,
+          "url": "http://at&t.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "http://at",
+              "position": {
+                "start": {
+                  "line": 23,
+                  "column": 2,
+                  "offset": 298
+                },
+                "end": {
+                  "line": 23,
+                  "column": 11,
+                  "offset": 307
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "&",
+              "position": {
+                "start": {
+                  "line": 23,
+                  "column": 11,
+                  "offset": 307
+                },
+                "end": {
+                  "line": 23,
+                  "column": 16,
+                  "offset": 312
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "t.com",
+              "position": {
+                "start": {
+                  "line": 23,
+                  "column": 16,
+                  "offset": 312
+                },
+                "end": {
+                  "line": 23,
+                  "column": 21,
+                  "offset": 317
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 1,
+              "offset": 297
+            },
+            "end": {
+              "line": 23,
+              "column": 22,
+              "offset": 318
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 22,
+              "offset": 318
+            },
+            "end": {
+              "line": 23,
+              "column": 24,
+              "offset": 320
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "http://at&t.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "http://at",
+              "position": {
+                "start": {
+                  "line": 23,
+                  "column": 25,
+                  "offset": 321
+                },
+                "end": {
+                  "line": 23,
+                  "column": 34,
+                  "offset": 330
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "&",
+              "position": {
+                "start": {
+                  "line": 23,
+                  "column": 34,
+                  "offset": 330
+                },
+                "end": {
+                  "line": 23,
+                  "column": 40,
+                  "offset": 336
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "t.com",
+              "position": {
+                "start": {
+                  "line": 23,
+                  "column": 40,
+                  "offset": 336
+                },
+                "end": {
+                  "line": 23,
+                  "column": 45,
+                  "offset": 341
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 24,
+              "offset": 320
+            },
+            "end": {
+              "line": 23,
+              "column": 46,
+              "offset": 342
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", and ",
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 46,
+              "offset": 342
+            },
+            "end": {
+              "line": 23,
+              "column": 52,
+              "offset": 348
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "http://at&t.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "http://at&t.com",
+              "position": {
+                "start": {
+                  "line": 23,
+                  "column": 53,
+                  "offset": 349
+                },
+                "end": {
+                  "line": 23,
+                  "column": 68,
+                  "offset": 364
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 52,
+              "offset": 348
+            },
+            "end": {
+              "line": 23,
+              "column": 69,
+              "offset": 365
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 69,
+              "offset": 365
+            },
+            "end": {
+              "line": 23,
+              "column": 70,
+              "offset": 366
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 23,
+          "column": 1,
+          "offset": 297
+        },
+        "end": {
+          "line": 23,
+          "column": 70,
+          "offset": 366
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Link ",
+          "position": {
+            "start": {
+              "line": 25,
+              "column": 1,
+              "offset": 368
+            },
+            "end": {
+              "line": 25,
+              "column": 6,
+              "offset": 373
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "href",
+          "position": {
+            "start": {
+              "line": 25,
+              "column": 6,
+              "offset": 373
+            },
+            "end": {
+              "line": 25,
+              "column": 12,
+              "offset": 379
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 25,
+              "column": 12,
+              "offset": 379
+            },
+            "end": {
+              "line": 25,
+              "column": 13,
+              "offset": 380
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 25,
+          "column": 1,
+          "offset": 368
+        },
+        "end": {
+          "line": 25,
+          "column": 13,
+          "offset": 380
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "title": null,
+          "url": "http://at&t.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "With entity",
+              "position": {
+                "start": {
+                  "line": 27,
+                  "column": 2,
+                  "offset": 383
+                },
+                "end": {
+                  "line": 27,
+                  "column": 13,
+                  "offset": 394
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 1,
+              "offset": 382
+            },
+            "end": {
+              "line": 27,
+              "column": 35,
+              "offset": 416
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 35,
+              "offset": 416
+            },
+            "end": {
+              "line": 27,
+              "column": 37,
+              "offset": 418
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "http://at&t.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "numeric entity",
+              "position": {
+                "start": {
+                  "line": 27,
+                  "column": 38,
+                  "offset": 419
+                },
+                "end": {
+                  "line": 27,
+                  "column": 52,
+                  "offset": 433
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 37,
+              "offset": 418
+            },
+            "end": {
+              "line": 27,
+              "column": 75,
+              "offset": 456
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 75,
+              "offset": 456
+            },
+            "end": {
+              "line": 27,
+              "column": 77,
+              "offset": 458
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "http://at&t.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "without entity",
+              "position": {
+                "start": {
+                  "line": 27,
+                  "column": 78,
+                  "offset": 459
+                },
+                "end": {
+                  "line": 27,
+                  "column": 92,
+                  "offset": 473
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 77,
+              "offset": 458
+            },
+            "end": {
+              "line": 27,
+              "column": 110,
+              "offset": 491
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 110,
+              "offset": 491
+            },
+            "end": {
+              "line": 27,
+              "column": 111,
+              "offset": 492
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 27,
+          "column": 1,
+          "offset": 382
+        },
+        "end": {
+          "line": 27,
+          "column": 111,
+          "offset": 492
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Link ",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 1,
+              "offset": 494
+            },
+            "end": {
+              "line": 29,
+              "column": 6,
+              "offset": 499
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "title",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 6,
+              "offset": 499
+            },
+            "end": {
+              "line": 29,
+              "column": 13,
+              "offset": 506
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 13,
+              "offset": 506
+            },
+            "end": {
+              "line": 29,
+              "column": 14,
+              "offset": 507
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 29,
+          "column": 1,
+          "offset": 494
+        },
+        "end": {
+          "line": 29,
+          "column": 14,
+          "offset": 507
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "title": "AT&T",
+          "url": "http://att.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "With entity",
+              "position": {
+                "start": {
+                  "line": 31,
+                  "column": 2,
+                  "offset": 510
+                },
+                "end": {
+                  "line": 31,
+                  "column": 13,
+                  "offset": 521
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 31,
+              "column": 1,
+              "offset": 509
+            },
+            "end": {
+              "line": 31,
+              "column": 41,
+              "offset": 549
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 31,
+              "column": 41,
+              "offset": 549
+            },
+            "end": {
+              "line": 31,
+              "column": 43,
+              "offset": 551
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "link",
+          "title": "AT&T",
+          "url": "http://att.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "numeric entity",
+              "position": {
+                "start": {
+                  "line": 31,
+                  "column": 44,
+                  "offset": 552
+                },
+                "end": {
+                  "line": 31,
+                  "column": 58,
+                  "offset": 566
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 31,
+              "column": 43,
+              "offset": 551
+            },
+            "end": {
+              "line": 31,
+              "column": 87,
+              "offset": 595
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 31,
+              "column": 87,
+              "offset": 595
+            },
+            "end": {
+              "line": 31,
+              "column": 89,
+              "offset": 597
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "link",
+          "title": "AT&T",
+          "url": "http://example.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "without entity",
+              "position": {
+                "start": {
+                  "line": 31,
+                  "column": 90,
+                  "offset": 598
+                },
+                "end": {
+                  "line": 31,
+                  "column": 104,
+                  "offset": 612
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 31,
+              "column": 89,
+              "offset": 597
+            },
+            "end": {
+              "line": 31,
+              "column": 132,
+              "offset": 640
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 31,
+              "column": 132,
+              "offset": 640
+            },
+            "end": {
+              "line": 31,
+              "column": 133,
+              "offset": 641
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 31,
+          "column": 1,
+          "offset": 509
+        },
+        "end": {
+          "line": 31,
+          "column": 133,
+          "offset": 641
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Image ",
+          "position": {
+            "start": {
+              "line": 33,
+              "column": 1,
+              "offset": 643
+            },
+            "end": {
+              "line": 33,
+              "column": 7,
+              "offset": 649
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "src",
+          "position": {
+            "start": {
+              "line": 33,
+              "column": 7,
+              "offset": 649
+            },
+            "end": {
+              "line": 33,
+              "column": 12,
+              "offset": 654
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 33,
+              "column": 12,
+              "offset": 654
+            },
+            "end": {
+              "line": 33,
+              "column": 13,
+              "offset": 655
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 33,
+          "column": 1,
+          "offset": 643
+        },
+        "end": {
+          "line": 33,
+          "column": 13,
+          "offset": 655
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "image",
+          "title": null,
+          "url": "http://at&t.com/fav.ico",
+          "alt": "With entity",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 1,
+              "offset": 657
+            },
+            "end": {
+              "line": 35,
+              "column": 44,
+              "offset": 700
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 44,
+              "offset": 700
+            },
+            "end": {
+              "line": 35,
+              "column": 46,
+              "offset": 702
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "image",
+          "title": null,
+          "url": "http://at&t.com/fav.ico",
+          "alt": "numeric entity",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 46,
+              "offset": 702
+            },
+            "end": {
+              "line": 35,
+              "column": 93,
+              "offset": 749
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 93,
+              "offset": 749
+            },
+            "end": {
+              "line": 35,
+              "column": 95,
+              "offset": 751
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "image",
+          "title": null,
+          "url": "http://at&t.com/fav.ico",
+          "alt": "without entity",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 95,
+              "offset": 751
+            },
+            "end": {
+              "line": 35,
+              "column": 137,
+              "offset": 793
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 137,
+              "offset": 793
+            },
+            "end": {
+              "line": 35,
+              "column": 138,
+              "offset": 794
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 35,
+          "column": 1,
+          "offset": 657
+        },
+        "end": {
+          "line": 35,
+          "column": 138,
+          "offset": 794
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Image ",
+          "position": {
+            "start": {
+              "line": 37,
+              "column": 1,
+              "offset": 796
+            },
+            "end": {
+              "line": 37,
+              "column": 7,
+              "offset": 802
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "alt",
+          "position": {
+            "start": {
+              "line": 37,
+              "column": 7,
+              "offset": 802
+            },
+            "end": {
+              "line": 37,
+              "column": 12,
+              "offset": 807
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 37,
+              "column": 12,
+              "offset": 807
+            },
+            "end": {
+              "line": 37,
+              "column": 13,
+              "offset": 808
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 37,
+          "column": 1,
+          "offset": 796
+        },
+        "end": {
+          "line": 37,
+          "column": 13,
+          "offset": 808
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "image",
+          "title": null,
+          "url": "http://att.com/fav.ico",
+          "alt": "AT&T with entity",
+          "position": {
+            "start": {
+              "line": 39,
+              "column": 1,
+              "offset": 810
+            },
+            "end": {
+              "line": 39,
+              "column": 48,
+              "offset": 857
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 39,
+              "column": 48,
+              "offset": 857
+            },
+            "end": {
+              "line": 39,
+              "column": 50,
+              "offset": 859
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "image",
+          "title": null,
+          "url": "http://att.com/fav.ico",
+          "alt": "AT&T with numeric entity",
+          "position": {
+            "start": {
+              "line": 39,
+              "column": 50,
+              "offset": 859
+            },
+            "end": {
+              "line": 39,
+              "column": 106,
+              "offset": 915
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 39,
+              "column": 106,
+              "offset": 915
+            },
+            "end": {
+              "line": 39,
+              "column": 108,
+              "offset": 917
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "image",
+          "title": null,
+          "url": "http://att.com/fav.ico",
+          "alt": "AT&T without entity",
+          "position": {
+            "start": {
+              "line": 39,
+              "column": 108,
+              "offset": 917
+            },
+            "end": {
+              "line": 39,
+              "column": 154,
+              "offset": 963
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 39,
+              "column": 154,
+              "offset": 963
+            },
+            "end": {
+              "line": 39,
+              "column": 155,
+              "offset": 964
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 39,
+          "column": 1,
+          "offset": 810
+        },
+        "end": {
+          "line": 39,
+          "column": 155,
+          "offset": 964
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Image ",
+          "position": {
+            "start": {
+              "line": 41,
+              "column": 1,
+              "offset": 966
+            },
+            "end": {
+              "line": 41,
+              "column": 7,
+              "offset": 972
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "title",
+          "position": {
+            "start": {
+              "line": 41,
+              "column": 7,
+              "offset": 972
+            },
+            "end": {
+              "line": 41,
+              "column": 14,
+              "offset": 979
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 41,
+              "column": 14,
+              "offset": 979
+            },
+            "end": {
+              "line": 41,
+              "column": 15,
+              "offset": 980
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 41,
+          "column": 1,
+          "offset": 966
+        },
+        "end": {
+          "line": 41,
+          "column": 15,
+          "offset": 980
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "image",
+          "title": "AT&T",
+          "url": "http://att.com/fav.ico",
+          "alt": "With entity",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 1,
+              "offset": 982
+            },
+            "end": {
+              "line": 43,
+              "column": 50,
+              "offset": 1031
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 50,
+              "offset": 1031
+            },
+            "end": {
+              "line": 43,
+              "column": 52,
+              "offset": 1033
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "image",
+          "title": "AT&T",
+          "url": "http://att.com/fav.ico",
+          "alt": "numeric entity",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 52,
+              "offset": 1033
+            },
+            "end": {
+              "line": 43,
+              "column": 105,
+              "offset": 1086
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 105,
+              "offset": 1086
+            },
+            "end": {
+              "line": 43,
+              "column": 107,
+              "offset": 1088
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "image",
+          "title": "AT&T",
+          "url": "http://att.com/fav.ico",
+          "alt": "without entity",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 107,
+              "offset": 1088
+            },
+            "end": {
+              "line": 43,
+              "column": 155,
+              "offset": 1136
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 155,
+              "offset": 1136
+            },
+            "end": {
+              "line": 43,
+              "column": 156,
+              "offset": 1137
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 43,
+          "column": 1,
+          "offset": 982
+        },
+        "end": {
+          "line": 43,
+          "column": 156,
+          "offset": 1137
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Reference ",
+          "position": {
+            "start": {
+              "line": 45,
+              "column": 1,
+              "offset": 1139
+            },
+            "end": {
+              "line": 45,
+              "column": 11,
+              "offset": 1149
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "link",
+          "position": {
+            "start": {
+              "line": 45,
+              "column": 11,
+              "offset": 1149
+            },
+            "end": {
+              "line": 45,
+              "column": 17,
+              "offset": 1155
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 45,
+              "column": 17,
+              "offset": 1155
+            },
+            "end": {
+              "line": 45,
+              "column": 18,
+              "offset": 1156
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 45,
+          "column": 1,
+          "offset": 1139
+        },
+        "end": {
+          "line": 45,
+          "column": 18,
+          "offset": 1156
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "linkReference",
+          "identifier": "entity",
+          "referenceType": "full",
+          "children": [
+            {
+              "type": "text",
+              "value": "Entity",
+              "position": {
+                "start": {
+                  "line": 47,
+                  "column": 2,
+                  "offset": 1159
+                },
+                "end": {
+                  "line": 47,
+                  "column": 8,
+                  "offset": 1165
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 47,
+              "column": 1,
+              "offset": 1158
+            },
+            "end": {
+              "line": 47,
+              "column": 17,
+              "offset": 1174
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 47,
+              "column": 17,
+              "offset": 1174
+            },
+            "end": {
+              "line": 47,
+              "column": 19,
+              "offset": 1176
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "numeric-entity",
+          "referenceType": "full",
+          "children": [
+            {
+              "type": "text",
+              "value": "Numeric entity",
+              "position": {
+                "start": {
+                  "line": 47,
+                  "column": 20,
+                  "offset": 1177
+                },
+                "end": {
+                  "line": 47,
+                  "column": 34,
+                  "offset": 1191
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 47,
+              "column": 19,
+              "offset": 1176
+            },
+            "end": {
+              "line": 47,
+              "column": 51,
+              "offset": 1208
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 47,
+              "column": 51,
+              "offset": 1208
+            },
+            "end": {
+              "line": 47,
+              "column": 53,
+              "offset": 1210
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "literal",
+          "referenceType": "full",
+          "children": [
+            {
+              "type": "text",
+              "value": "Literal",
+              "position": {
+                "start": {
+                  "line": 47,
+                  "column": 54,
+                  "offset": 1211
+                },
+                "end": {
+                  "line": 47,
+                  "column": 61,
+                  "offset": 1218
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 47,
+              "column": 53,
+              "offset": 1210
+            },
+            "end": {
+              "line": 47,
+              "column": 71,
+              "offset": 1228
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 47,
+              "column": 71,
+              "offset": 1228
+            },
+            "end": {
+              "line": 47,
+              "column": 72,
+              "offset": 1229
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 47,
+          "column": 1,
+          "offset": 1158
+        },
+        "end": {
+          "line": 47,
+          "column": 72,
+          "offset": 1229
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "imageReference",
+          "identifier": "entity",
+          "referenceType": "full",
+          "alt": "Entity",
+          "position": {
+            "start": {
+              "line": 49,
+              "column": 1,
+              "offset": 1231
+            },
+            "end": {
+              "line": 49,
+              "column": 18,
+              "offset": 1248
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 49,
+              "column": 18,
+              "offset": 1248
+            },
+            "end": {
+              "line": 49,
+              "column": 20,
+              "offset": 1250
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "imageReference",
+          "identifier": "numeric-entity",
+          "referenceType": "full",
+          "alt": "Numeric entity",
+          "position": {
+            "start": {
+              "line": 49,
+              "column": 20,
+              "offset": 1250
+            },
+            "end": {
+              "line": 49,
+              "column": 53,
+              "offset": 1283
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 49,
+              "column": 53,
+              "offset": 1283
+            },
+            "end": {
+              "line": 49,
+              "column": 55,
+              "offset": 1285
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "imageReference",
+          "identifier": "literal",
+          "referenceType": "full",
+          "alt": "Literal",
+          "position": {
+            "start": {
+              "line": 49,
+              "column": 55,
+              "offset": 1285
+            },
+            "end": {
+              "line": 49,
+              "column": 74,
+              "offset": 1304
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 49,
+              "column": 74,
+              "offset": 1304
+            },
+            "end": {
+              "line": 49,
+              "column": 75,
+              "offset": 1305
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 49,
+          "column": 1,
+          "offset": 1231
+        },
+        "end": {
+          "line": 49,
+          "column": 75,
+          "offset": 1305
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Reference ",
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 1,
+              "offset": 1307
+            },
+            "end": {
+              "line": 51,
+              "column": 11,
+              "offset": 1317
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "title",
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 11,
+              "offset": 1317
+            },
+            "end": {
+              "line": 51,
+              "column": 18,
+              "offset": 1324
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 18,
+              "offset": 1324
+            },
+            "end": {
+              "line": 51,
+              "column": 19,
+              "offset": 1325
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 51,
+          "column": 1,
+          "offset": 1307
+        },
+        "end": {
+          "line": 51,
+          "column": 19,
+          "offset": 1325
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "linkReference",
+          "identifier": "title-entity",
+          "referenceType": "full",
+          "children": [
+            {
+              "type": "text",
+              "value": "Entity",
+              "position": {
+                "start": {
+                  "line": 53,
+                  "column": 2,
+                  "offset": 1328
+                },
+                "end": {
+                  "line": 53,
+                  "column": 8,
+                  "offset": 1334
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 53,
+              "column": 1,
+              "offset": 1327
+            },
+            "end": {
+              "line": 53,
+              "column": 23,
+              "offset": 1349
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 53,
+              "column": 23,
+              "offset": 1349
+            },
+            "end": {
+              "line": 53,
+              "column": 25,
+              "offset": 1351
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "title-numeric-entity",
+          "referenceType": "full",
+          "children": [
+            {
+              "type": "text",
+              "value": "Numeric entity",
+              "position": {
+                "start": {
+                  "line": 53,
+                  "column": 26,
+                  "offset": 1352
+                },
+                "end": {
+                  "line": 53,
+                  "column": 40,
+                  "offset": 1366
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 53,
+              "column": 25,
+              "offset": 1351
+            },
+            "end": {
+              "line": 53,
+              "column": 63,
+              "offset": 1389
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 53,
+              "column": 63,
+              "offset": 1389
+            },
+            "end": {
+              "line": 53,
+              "column": 65,
+              "offset": 1391
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "title-literal",
+          "referenceType": "full",
+          "children": [
+            {
+              "type": "text",
+              "value": "Literal",
+              "position": {
+                "start": {
+                  "line": 53,
+                  "column": 66,
+                  "offset": 1392
+                },
+                "end": {
+                  "line": 53,
+                  "column": 73,
+                  "offset": 1399
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 53,
+              "column": 65,
+              "offset": 1391
+            },
+            "end": {
+              "line": 53,
+              "column": 89,
+              "offset": 1415
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 53,
+              "column": 89,
+              "offset": 1415
+            },
+            "end": {
+              "line": 53,
+              "column": 90,
+              "offset": 1416
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 53,
+          "column": 1,
+          "offset": 1327
+        },
+        "end": {
+          "line": 53,
+          "column": 90,
+          "offset": 1416
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "imageReference",
+          "identifier": "title-entity",
+          "referenceType": "full",
+          "alt": "Entity",
+          "position": {
+            "start": {
+              "line": 55,
+              "column": 1,
+              "offset": 1418
+            },
+            "end": {
+              "line": 55,
+              "column": 24,
+              "offset": 1441
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 55,
+              "column": 24,
+              "offset": 1441
+            },
+            "end": {
+              "line": 55,
+              "column": 26,
+              "offset": 1443
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "imageReference",
+          "identifier": "title-numeric-entity",
+          "referenceType": "full",
+          "alt": "Numeric entity",
+          "position": {
+            "start": {
+              "line": 55,
+              "column": 26,
+              "offset": 1443
+            },
+            "end": {
+              "line": 55,
+              "column": 65,
+              "offset": 1482
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 55,
+              "column": 65,
+              "offset": 1482
+            },
+            "end": {
+              "line": 55,
+              "column": 67,
+              "offset": 1484
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "imageReference",
+          "identifier": "title-literal",
+          "referenceType": "full",
+          "alt": "Literal",
+          "position": {
+            "start": {
+              "line": 55,
+              "column": 67,
+              "offset": 1484
+            },
+            "end": {
+              "line": 55,
+              "column": 92,
+              "offset": 1509
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 55,
+              "column": 92,
+              "offset": 1509
+            },
+            "end": {
+              "line": 55,
+              "column": 93,
+              "offset": 1510
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 55,
+          "column": 1,
+          "offset": 1418
+        },
+        "end": {
+          "line": 55,
+          "column": 93,
+          "offset": 1510
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Image Reference ",
+          "position": {
+            "start": {
+              "line": 57,
+              "column": 1,
+              "offset": 1512
+            },
+            "end": {
+              "line": 57,
+              "column": 17,
+              "offset": 1528
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "alt",
+          "position": {
+            "start": {
+              "line": 57,
+              "column": 17,
+              "offset": 1528
+            },
+            "end": {
+              "line": 57,
+              "column": 22,
+              "offset": 1533
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 57,
+              "column": 22,
+              "offset": 1533
+            },
+            "end": {
+              "line": 57,
+              "column": 23,
+              "offset": 1534
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 57,
+          "column": 1,
+          "offset": 1512
+        },
+        "end": {
+          "line": 57,
+          "column": 23,
+          "offset": 1534
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "imageReference",
+          "identifier": "reference",
+          "referenceType": "full",
+          "alt": "AT&T with entity",
+          "position": {
+            "start": {
+              "line": 59,
+              "column": 1,
+              "offset": 1536
+            },
+            "end": {
+              "line": 59,
+              "column": 35,
+              "offset": 1570
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 59,
+              "column": 35,
+              "offset": 1570
+            },
+            "end": {
+              "line": 59,
+              "column": 37,
+              "offset": 1572
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "imageReference",
+          "identifier": "reference",
+          "referenceType": "full",
+          "alt": "AT&T with numeric entity",
+          "position": {
+            "start": {
+              "line": 59,
+              "column": 37,
+              "offset": 1572
+            },
+            "end": {
+              "line": 59,
+              "column": 80,
+              "offset": 1615
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 59,
+              "column": 80,
+              "offset": 1615
+            },
+            "end": {
+              "line": 59,
+              "column": 82,
+              "offset": 1617
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "imageReference",
+          "identifier": "reference",
+          "referenceType": "full",
+          "alt": "AT&T without entity",
+          "position": {
+            "start": {
+              "line": 59,
+              "column": 82,
+              "offset": 1617
+            },
+            "end": {
+              "line": 59,
+              "column": 115,
+              "offset": 1650
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 59,
+              "column": 115,
+              "offset": 1650
+            },
+            "end": {
+              "line": 59,
+              "column": 116,
+              "offset": 1651
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 59,
+          "column": 1,
+          "offset": 1536
+        },
+        "end": {
+          "line": 59,
+          "column": 116,
+          "offset": 1651
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Definitions:",
+          "position": {
+            "start": {
+              "line": 61,
+              "column": 1,
+              "offset": 1653
+            },
+            "end": {
+              "line": 61,
+              "column": 13,
+              "offset": 1665
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 61,
+          "column": 1,
+          "offset": 1653
+        },
+        "end": {
+          "line": 61,
+          "column": 13,
+          "offset": 1665
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "reference",
+      "title": "AT&T favicon",
+      "url": "http://at&t.com/fav.ico",
+      "position": {
+        "start": {
+          "line": 63,
+          "column": 1,
+          "offset": 1667
+        },
+        "end": {
+          "line": 63,
+          "column": 52,
+          "offset": 1718
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "entity",
+      "title": "ATT favicon",
+      "url": "http://at&t.com/fav.ico",
+      "position": {
+        "start": {
+          "line": 65,
+          "column": 1,
+          "offset": 1720
+        },
+        "end": {
+          "line": 65,
+          "column": 52,
+          "offset": 1771
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "numeric-entity",
+      "title": "ATT favicon",
+      "url": "http://at&t.com/fav.ico",
+      "position": {
+        "start": {
+          "line": 66,
+          "column": 1,
+          "offset": 1772
+        },
+        "end": {
+          "line": 66,
+          "column": 61,
+          "offset": 1832
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "literal",
+      "title": "ATT favicon",
+      "url": "http://at&t.com/fav.ico",
+      "position": {
+        "start": {
+          "line": 67,
+          "column": 1,
+          "offset": 1833
+        },
+        "end": {
+          "line": 67,
+          "column": 49,
+          "offset": 1881
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "title-entity",
+      "title": "AT&T favicon",
+      "url": "http://at&t.com/fav.ico",
+      "position": {
+        "start": {
+          "line": 69,
+          "column": 1,
+          "offset": 1883
+        },
+        "end": {
+          "line": 69,
+          "column": 59,
+          "offset": 1941
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "title-numeric-entity",
+      "title": "AT&T favicon",
+      "url": "http://at&t.com/fav.ico",
+      "position": {
+        "start": {
+          "line": 70,
+          "column": 1,
+          "offset": 1942
+        },
+        "end": {
+          "line": 70,
+          "column": 68,
+          "offset": 2009
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "title-literal",
+      "title": "AT&T favicon",
+      "url": "http://at&t.com/fav.ico",
+      "position": {
+        "start": {
+          "line": 71,
+          "column": 1,
+          "offset": 2010
+        },
+        "end": {
+          "line": 71,
+          "column": 56,
+          "offset": 2065
+        },
+        "indent": []
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1,
+      "offset": 0
+    },
+    "end": {
+      "line": 72,
+      "column": 1,
+      "offset": 2066
+    }
+  }
+}

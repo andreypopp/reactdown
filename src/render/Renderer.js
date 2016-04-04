@@ -45,40 +45,6 @@ export default class Renderer {
   }
 
   /**
-   * Return the content of a reference without definition
-   * as markdown.
-   *
-   * @example
-   *   failsafe({
-   *     identifier: 'foo',
-   *     referenceType: 'shortcut',
-   *     children: [
-   *       {
-   *         type: 'text',
-   *         value: 'foo'
-   *       }
-   *     ]
-   *   }, {}); // '[foo]'
-   *
-   * @param {Node} node - Node to compile.
-   * @param {Node?} definition - Definition node, when
-   *   existing.
-   * @param {HTMLCompiler} context - Instance.
-   * @return {string?} - If without definition, returns a
-   *   string, returns nothing otherwise.
-   */
-  failsafe(node, definition, context) {
-    if (node.referenceType === 'shortcut' && !definition.url) {
-      let result = node.children ? context.all(node).join('') : node.alt;
-
-      return (node.type === 'imageReference' ? '!' : '') +
-          '[' + result + ']';
-    }
-
-    return '';
-  }
-
-  /**
    * Stringify all footnote definitions, if any.
    *
    * @example
@@ -151,6 +117,7 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   unknown(node) {
+    console.log(node);
     let content = 'children' in node ?
       this.all(node) :
       [this.renderText(node.value)];
@@ -455,7 +422,6 @@ export default class Renderer {
    */
   paragraph(node) {
     let children = this.all(node);
-    console.log('xx', children);
     return this.renderElement('paragraph', null, ...children);
   }
 
@@ -513,16 +479,16 @@ export default class Renderer {
         out[pos] = this.renderElement(
           name,
           {align: align[pos]},
-          cell ? this.all(cell) : undefined
+          ...(cell ? this.all(cell) : [])
         );
       }
 
-      result[index] = this.renderElement('table-row', null, out);
+      result[index] = this.renderElement('table-row', null, ...out);
     }
 
     return this.renderElement('table', null,
       this.renderElement('table-head', null, result[0]),
-      this.renderElement('table-body', null, result.slice(1))
+      this.renderElement('table-body', null, ...result.slice(1))
     );
   }
 
@@ -632,6 +598,10 @@ export default class Renderer {
     return this.renderElement('break');
   }
 
+  thematicBreak(_node) {
+    return this.renderElement('break');
+  }
+
   /**
    * Stringify a link.
    *
@@ -699,7 +669,7 @@ export default class Renderer {
   linkReference(node) {
     let def = this.definitions[node.identifier.toUpperCase()] || {};
 
-    return this.failsafe(node, def, this) || this.renderElement('a', {
+    return this.renderElement('a', {
       href: normalizeURI(def.url || ''),
       title: def.title
     }, ...this.all(node));
@@ -721,7 +691,7 @@ export default class Renderer {
   imageReference(node) {
     let def = this.definitions[node.identifier.toUpperCase()] || {};
 
-    return this.failsafe(node, def, this) || this.renderElement('image', {
+    return this.renderElement('image', {
       src: normalizeURI(def.url || ''),
       alt: node.alt || '',
       title: def.title
@@ -766,7 +736,11 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   strikethrough(node) {
-    return this.renderElement('strikethrough', null, this.all(node));
+    return this.renderElement('strikethrough', null, ...this.all(node));
+  }
+
+  delete(node) {
+    return this.renderElement('strikethrough', null, ...this.all(node));
   }
 
   /**
