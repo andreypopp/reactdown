@@ -13,7 +13,9 @@
   },
   "eslintConfig": {
     "extends": "prometheusresearch",
-    "env": {"mocha": true}
+    "env": {
+      "mocha": true
+    }
   },
   "repository": {
     "type": "git",
@@ -32,6 +34,7 @@
   "dependencies": {
     "collapse-white-space": "^1.0.0",
     "detab": "^1.0.2",
+    "loader-utils": "^0.2.13",
     "normalize-uri": "^1.0.0",
     "remark": "^4.1.2",
     "trim": "0.0.1",

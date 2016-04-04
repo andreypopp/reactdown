@@ -16,6 +16,8 @@ export default class Renderer {
     this.footnotes = [];
     this.types = types;
     this.components = components;
+
+    this.expression = null;
     this.identifiersUsed = [];
   }
 
@@ -784,7 +786,7 @@ export default class Renderer {
   }
 
   render(node) {
-    return this.visit(node);
+    this.expression = this.visit(node);
   }
 
 }

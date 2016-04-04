@@ -5,6 +5,6 @@
 import remark from 'remark';
 import customBlock from './customBlock';
 
-export default function parse(value, options) {
+export default function parse(value, options = {}) {
   return remark(options).use(customBlock).parse(value);
 }

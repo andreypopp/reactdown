@@ -7,12 +7,7 @@ import fs from 'fs';
 import path from 'path';
 import generate from 'babel-generator';
 import * as types from 'babel-types';
-import Renderer from '../Renderer';
-
-function render(node) {
-  let renderer = new Renderer(types);
-  return renderer.render(node);
-}
+import render from '../index';
 
 let fixtures = fs.readdirSync(path.join(__dirname, 'markdown-fixture'))
                  .filter(name => /\.json$/.exec(name))
@@ -30,7 +25,7 @@ describe('reactdown/render', function() {
       it(`render markdown: ${name}`, function() {
         let src = fs.readFileSync(fixtureFilename(name + '.json'), 'utf8');
         let node = JSON.parse(src);
-        let {code} = generate(render(node));
+        let {code} = generate(render(node).expression);
         assert.equal(code, expectedOutput(name));
       });
     });

@@ -13,5 +13,9 @@ export default function render(node, options = {}) {
     render = DEFAULT_RENDER,
   } = options;
   let renderer = new Renderer(types, render);
-  return renderer.render(node);
+  renderer.render(node);
+  return {
+    expression: renderer.expression,
+    identifiersUsed: renderer.identifiersUsed,
+  };
 }
