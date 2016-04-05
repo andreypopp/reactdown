@@ -34,6 +34,7 @@
   "dependencies": {
     "collapse-white-space": "^1.0.0",
     "detab": "^1.0.2",
+    "invariant": "^2.2.1",
     "loader-utils": "^0.2.13",
     "normalize-uri": "^1.0.0",
     "remark": "^4.1.2",

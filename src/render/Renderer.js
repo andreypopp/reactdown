@@ -15,6 +15,7 @@ import type {
   MDASTParentNode,
   MDASTTextNode,
 
+  MDASTCustomBlockNode,
   MDASTListNode,
   MDASTListItemNode,
   MDASTHeadingNode,
@@ -47,27 +48,32 @@ import type {
 } from '../types';
 
 type ComponentSymbolRegistry = {
-  [key: string]: JSAST;
+  [key: string]: ?JSAST;
 };
 
+type BabelTypes = typeof babelTypes;
+
 export type RendererConfig = {
-  types: typeof babelTypes;
-  components: ComponentSymbolRegistry;
+  types: ?typeof babelTypes;
+  markdownComponents: ?ComponentSymbolRegistry;
+  blockComponents: ?ComponentSymbolRegistry;
 };
 
 export default class Renderer {
 
+  types: typeof babelTypes;
+  markdownComponents: ComponentSymbolRegistry;
+  blockComponents: ComponentSymbolRegistry;
+
   definitions: {[key: string]: MDASTDefinitionNode};
   footnotes: Array<any>;
-  components: {[key: string]: JSAST};
-  types: typeof babelTypes;
   expression: ?JSAST;
   identifiersUsed: Array<JSAST>;
 
-
   constructor(config: RendererConfig) {
-    this.types = config.types;
-    this.components = config.components;
+    this.types = config.types || babelTypes;
+    this.markdownComponents = config.markdownComponents || {};
+    this.blockComponents = config.blockComponents || {};
 
     this.definitions = {};
     this.footnotes = [];
@@ -75,12 +81,20 @@ export default class Renderer {
     this.identifiersUsed = [];
   }
 
-  renderElement(name: string, props: any, ...children: Array<JSAST>): JSAST {
-    let component = this.components[name];
-    if (component === undefined) {
-      component = this.types.stringLiteral(name);
+  renderElement(
+      component: null | string | JSAST,
+      props: any, ...children: Array<JSAST>): JSAST {
+    if (typeof component === 'string') {
+      if (this.markdownComponents[component] !== undefined) {
+        component = this.markdownComponents[component];
+      } else {
+        component = this.types.stringLiteral(component);
+      }
     }
-    if (this.types.isIdentifier(component)) {
+    if (component === null) {
+      return this.renderNothing();
+    }
+    if (component !== null && this.types.isIdentifier(component)) {
       this.identifiersUsed.push(component);
     }
     let createElement = this.types.memberExpression(
@@ -837,6 +851,21 @@ export default class Renderer {
 
   footnoteDefinition(_node: MDASTFootnoteDefinitionNode): JSAST {
     return this.renderNothing();
+  }
+
+  customBlock(node: MDASTCustomBlockNode): JSAST {
+    let component = this.blockComponents[node.name];
+    if (component === undefined) {
+      return this.unknown({
+        type: 'code',
+        value: JSON.stringify(node),
+        position: null,
+      });
+    } else if (component === null) {
+      return  this.renderNothing();
+    } else {
+      return this.renderElement(component, null, ...this.all(node))
+    }
   }
 
   encode(value: string): string {

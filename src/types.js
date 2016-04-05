@@ -201,4 +201,4 @@ export type MDASTAnyNode
   | MDASTRootNode
   | MDASTDefinitionNode
 
-export type JSAST = {};
+export type JSAST = any;
