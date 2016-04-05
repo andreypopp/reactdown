@@ -197,6 +197,7 @@ export default class Renderer {
    */
   visit(node: MDASTAnyNode, parent: ?MDASTParentNode): JSAST {
     let type = node && node.type;
+    //$FlowIssue
     let fn = this[type];
 
     /*
@@ -422,14 +423,14 @@ export default class Renderer {
    */
   listItem(node: MDASTListItemNode, parent: ?MDASTParentNode): JSAST {
     let single = (
-      parent &&
-      !parent.loose &&
+      (!parent || !parent.loose) &&
       node.children.length === 1 &&
       'children' in node.children[0]
     );
     return this.renderElement(
       'list-item',
       null,
+      // $FlowIssue
       ...this.all(single ? node.children[0] : node)
     );
   }
