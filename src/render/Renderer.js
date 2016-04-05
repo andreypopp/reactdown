@@ -331,8 +331,8 @@ export default class Renderer {
     let index = -1;
     let identifiers = [];
 
-    while (++index < this.definitions.length) {
-      identifiers[index] = this.definitions[index].identifier;
+    while (++index < this.footnotes.length) {
+      identifiers[index] = this.footnotes[index].identifier;
     }
 
     index = -1;
