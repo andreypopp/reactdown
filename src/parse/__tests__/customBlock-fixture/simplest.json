@@ -38,8 +38,6 @@
     },
     {
       "type": "customBlock",
-      "name": "Block",
-      "children": [],
       "position": {
         "start": {
           "line": 5,
@@ -52,7 +50,9 @@
           "offset": 19
         },
         "indent": []
-      }
+      },
+      "name": "Block",
+      "children": []
     },
     {
       "type": "paragraph",

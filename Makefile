@@ -1,7 +1,7 @@
 .DELETE_ON_ERROR:
 
 BIN           = ./node_modules/.bin
-TESTS         = $(shell find src -path '*/__tests__/*-test.js')
+TESTS         = $(shell find src -path '*/__tests__/*.js')
 SRC           = $(filter-out $(TESTS), $(shell find src -name '*.js'))
 LIB           = $(SRC:src/%=lib/%)
 MOCHA_OPTS    = -R dot --require babel-core/register 
@@ -11,6 +11,9 @@ build::
 
 lint::
 	@$(BIN)/eslint src
+
+check::
+	@$(BIN)/flow --show-all-errors src
 
 test::
 	@$(BIN)/mocha $(MOCHA_OPTS) $(TESTS)
@@ -31,6 +34,17 @@ lib/%: src/%
 	@echo "Building $<"
 	@mkdir -p $(@D)
 	@$(BIN)/babel $(BABEL_OPTIONS) -o $@ $<
+
+PARSE_FIXTURES_MD := $(shell find src/parse/__tests__ -name '*.md')
+PARSE_FIXTURES_JSON := $(PARSE_FIXTURES_MD:%.md=%.json)
+
+build-parse-fixtures:: $(PARSE_FIXTURES_JSON)
+clean-parse-fixtures::
+	rm -f $(PARSE_FIXTURES_JSON)
+
+src/parse/__tests__/%.json: src/parse/__tests__/%.md
+	@echo "Parsing $<"
+	@$(BIN)/babel-node ./bin/reactdown-parse $< > $@
 
 RENDER_FIXTURES_MD := $(shell find src/render/__tests__ -name '*.md')
 RENDER_FIXTURES_JSON := $(RENDER_FIXTURES_MD:%.md=%.json)
