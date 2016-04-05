@@ -9,6 +9,7 @@ import normalizeURI from 'normalize-uri';
 import trimLines from 'trim-lines';
 import * as babelTypes from 'babel-types';
 import visit from 'unist-util-visit';
+import parseJSON from './parseJSON';
 
 import type {
   MDASTAnyNode,
@@ -85,7 +86,7 @@ export default class Renderer {
 
   renderElement(
       component: null | string | JSAST,
-      props: any, ...children: Array<JSAST>): JSAST {
+      props: any = null, ...children: Array<JSAST>): JSAST {
     if (typeof component === 'string') {
       if (this.markdownComponents[component] !== undefined) {
         component = this.markdownComponents[component];
@@ -108,8 +109,8 @@ export default class Renderer {
     );
   }
 
-  renderElementProps(_props: any): JSAST {
-    return this.types.nullLiteral();
+  renderElementProps(props: any = null): JSAST {
+    return parseJSON(props);
   }
 
   renderText(value: ?string): JSAST {
@@ -370,16 +371,17 @@ export default class Renderer {
     identifier = String(identifier);
 
     this.footnotes.push({
-      'type': 'footnoteDefinition',
-      'identifier': identifier,
-      'children': node.children,
-      'position': node.position
+      type: 'footnoteDefinition',
+      identifier: identifier,
+      children: node.children,
+      position: node.position
     });
 
     return this.footnoteReference({
-      'type': 'footnoteReference',
-      'identifier': identifier,
-      'position': node.position
+      type: 'footnoteReference',
+      identifier: identifier,
+      position: node.position,
+      data: null,
     });
   }
 
@@ -862,11 +864,12 @@ export default class Renderer {
         type: 'code',
         value: JSON.stringify(node),
         position: null,
+        data: null,
       });
     } else if (component === null) {
       return  this.renderNothing();
     } else {
-      return this.renderElement(component, null, ...this.all(node))
+      return this.renderElement(component, node.data, ...this.all(node))
     }
   }
 

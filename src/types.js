@@ -17,6 +17,7 @@ export type MDASTLocation = {
 
 export type MDASTNode = {
   position: ?MDASTLocation;
+  data: ?any;
 };
 
 export type MDASTParentNode = MDASTNode & {

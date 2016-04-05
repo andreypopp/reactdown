@@ -1,1 +1,3 @@
-React.createElement("root", null, null, React.createElement("heading", null, "Hello world"))
+React.createElement("root", null, null, React.createElement("heading", {
+  "level": 1
+}, "Hello world"))
