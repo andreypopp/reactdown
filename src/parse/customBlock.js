@@ -1,13 +1,18 @@
 /**
  * @copyright 2016, Andrey Popp <8mayday@gmail.com>
+ * @flow
  */
 
 const CUSTOM_BLOCK_TEST = /^::[a-zA-Z]+\s*\n/;
 const CUSTOM_BLOCK_INDENT = 2;
-const CUSTOM_BLOCK_TYPE = 'customBlock';
 const NEWLINE = '\n';
 
-function parseCustomBlock(eat, value) {
+import type {MDASTAnyNode} from '../types';
+
+type ProduceNode = (node: MDASTAnyNode) => void;
+type Eat = (value: string) => ProduceNode;
+
+function parseCustomBlock(eat: Eat, value: string): void {
 
   // Get next line and shift value.
   function nextLine() {
@@ -39,36 +44,42 @@ function parseCustomBlock(eat, value) {
   }
 
   // ::CustomBlockName
-  let bannerLine = nextLine().trim();
-  let name = bannerLine.slice(2);
+  let bannerLine = nextLine();
+  if (bannerLine === null) {
+    return;
+  }
+  let name = bannerLine.trim().slice(2);
 
   eatLine(bannerLine);
 
   let childrenPosition = eat.now();
 
   let currentLine = nextLine();
-  let children = [];
+  let content = [];
 
   while (currentLine !== null) {
     if (currentLine === '') {
       eatLine(currentLine);
-      children.push(NEWLINE);
+      content.push(NEWLINE);
     } else if (hasIndent(currentLine, CUSTOM_BLOCK_INDENT)) {
       eatLine(currentLine);
-      children.push(currentLine.slice(CUSTOM_BLOCK_INDENT));
+      content.push(currentLine.slice(CUSTOM_BLOCK_INDENT));
     } else {
       break;
     }
     currentLine = nextLine();
   }
 
-  if (children.length > 0) {
-    children = children.join(NEWLINE);
-    children = this.tokenizeBlock(children, childrenPosition);
+  let children: Array<MDASTAnyNode> = [];
+
+  if (content.length > 0) {
+    content = content.join(NEWLINE);
+    children = this.tokenizeBlock(content, childrenPosition);
   }
 
   eat('')({
-    type: CUSTOM_BLOCK_TYPE,
+    type: 'customBlock',
+    position: null,
     name,
     children,
   });
@@ -83,7 +94,7 @@ function hasIndent(line, size) {
   return true;
 }
 
-export default function customBlock(remark) {
+export default function customBlock(remark: any) {
 
   let ParserPrototype = remark.Parser.prototype;
 

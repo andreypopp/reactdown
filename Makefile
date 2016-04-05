@@ -12,6 +12,9 @@ build::
 lint::
 	@$(BIN)/eslint src
 
+check::
+	@$(BIN)/flow src
+
 test::
 	@$(BIN)/mocha $(MOCHA_OPTS) $(TESTS)
 

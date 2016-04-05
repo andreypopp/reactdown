@@ -1,5 +1,6 @@
 /**
  * @copyright 2016, Andrey Popp
+ * @flow
  */
 
 import detab from 'detab';
@@ -9,9 +10,53 @@ import trimLines from 'trim-lines';
 import * as babelTypes from 'babel-types';
 import visit from 'unist-util-visit';
 
+import type {
+  MDASTAnyNode,
+  MDASTParentNode,
+  MDASTTextNode,
+
+  MDASTListNode,
+  MDASTListItemNode,
+  MDASTHeadingNode,
+  MDASTCodeNode,
+  MDASTParagraphNode,
+  MDASTBreakNode,
+  MDASTHardBreakNode,
+  MDASTThematicBreakNode,
+  MDASTHTMLNode,
+  MDASTYAMLNode,
+  MDASTRuleNode,
+  MDASTLinkNode,
+  MDASTFootnoteNode,
+  MDASTFootnoteDefinitionNode,
+  MDASTFootnoteReferenceNode,
+  MDASTTableNode,
+  MDASTEmphasisNode,
+  MDASTStrongNode,
+  MDASTStrikethroughNode,
+  MDASTDeleteNode,
+  MDASTInlineCodeNode,
+  MDASTImageNode,
+  MDASTImageReferenceNode,
+  MDASTLinkReferenceNode,
+  MDASTDefinitionNode,
+  MDASTBlockquoteNode,
+  MDASTRootNode,
+
+  JSAST
+} from '../types';
+
 export default class Renderer {
 
-  constructor(types = babelTypes, components = {}) {
+  definitions: {[key: string]: MDASTDefinitionNode};
+  footnotes: Array<any>;
+  components: {[key: string]: JSAST};
+  types: typeof babelTypes;
+  expression: ?JSAST;
+  identifiersUsed: Array<JSAST>;
+
+
+  constructor(types: typeof babelTypes  = babelTypes, components: {[key: string]: JSAST} = {}) {
     this.definitions = {};
     this.footnotes = [];
     this.types = types;
@@ -21,7 +66,7 @@ export default class Renderer {
     this.identifiersUsed = [];
   }
 
-  renderElement(name, props, ...children) {
+  renderElement(name: string, props: any, ...children) {
     let component = this.components[name];
     if (component === undefined) {
       component = this.types.stringLiteral(name);
@@ -38,16 +83,20 @@ export default class Renderer {
     );
   }
 
-  renderElementProps(_props) {
+  renderElementProps(_props: any) {
     return this.types.nullLiteral();
   }
 
-  renderText(value) {
+  renderText(value: ?string): JSAST {
     if (value === null) {
       return this.types.nullLiteral();
     } else {
       return this.types.stringLiteral(value);
     }
+  }
+
+  renderNothing(): JSAST {
+    return this.types.nullLiteral();
   }
 
   /**
@@ -92,13 +141,13 @@ export default class Renderer {
           }]
         }),
         'position': def.position
-      }, {});
+      }, null);
     }
 
     return this.renderElement('footnotes', null, ...results);
   }
 
-  break(_node) {
+  break(_node: MDASTBreakNode): JSAST {
     return this.renderElement('break');
   }
 
@@ -122,12 +171,9 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  unknown(node) {
-    let content = 'children' in node ?
-      this.all(node) :
-      [this.renderText(node.value)];
-    let type = node.type || 'unknown';
-    return this.renderElement(type, null, ...content);
+  unknown(node: MDASTAnyNode): JSAST {
+    let content = this.renderText(JSON.stringify(node));
+    return this.renderElement('unknown', null, content);
   }
 
   /**
@@ -149,7 +195,7 @@ export default class Renderer {
    * @param {Object?} [parent] - `node`s parent.
    * @return {string} - Compiled `node`.
    */
-  visit(node, parent) {
+  visit(node: MDASTAnyNode, parent: ?MDASTParentNode): JSAST {
     let type = node && node.type;
     let fn = this[type];
 
@@ -158,7 +204,7 @@ export default class Renderer {
      */
 
     if (!type) {
-      throw new Error('Expected node `' + node + '`');
+      throw new Error('Expected node `' + JSON.stringify(node) + '`');
     }
 
     if (typeof fn !== 'function') {
@@ -185,7 +231,7 @@ export default class Renderer {
    * @return {Array.<string>} - List of compiled nodes.
    * @this {HTMLCompiler}
    */
-  all(parent) {
+  all(parent: MDASTParentNode): Array<JSAST> {
     let nodes = parent.children;
     let values = [];
     let index = -1;
@@ -224,12 +270,12 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  root(node) {
-    visit(node, 'definition', definition => {
+  root(node: MDASTRootNode): JSAST {
+    visit(node, 'definition', (definition: MDASTDefinitionNode) => {
       this.definitions[definition.identifier.toUpperCase()] = definition;
     });
 
-    visit(node, 'footnoteDefinition', definition => {
+    visit(node, 'footnoteDefinition', (definition: MDASTFootnoteDefinitionNode) => {
       this.footnotes.push(definition);
     });
 
@@ -258,7 +304,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  blockquote(node) {
+  blockquote(node: MDASTBlockquoteNode): JSAST {
     return this.renderElement('blockquote', null, ...this.all(node));
   }
 
@@ -281,7 +327,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  footnote(node) {
+  footnote(node: MDASTFootnoteNode): JSAST {
     let index = -1;
     let identifiers = [];
 
@@ -341,7 +387,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  list(node) {
+  list(node: MDASTListNode): JSAST {
     let name = node.ordered ? 'ordered-list' : 'unordered-list';
     return this.renderElement(
       name,
@@ -375,10 +421,13 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  listItem(node, parent) {
-    let single = !parent.loose &&
+  listItem(node: MDASTListItemNode, parent: ?MDASTParentNode): JSAST {
+    let single = (
+      parent &&
+      !parent.loose &&
       node.children.length === 1 &&
-      node.children[0].children;
+      'children' in node.children[0]
+    );
     return this.renderElement(
       'list-item',
       null,
@@ -404,7 +453,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  heading(node) {
+  heading(node: MDASTHeadingNode): JSAST {
     return this.renderElement('heading', {level: node.depth}, ...this.all(node));
   }
 
@@ -425,7 +474,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  paragraph(node) {
+  paragraph(node: MDASTParagraphNode): JSAST {
     let children = this.all(node);
     return this.renderElement('paragraph', null, ...children);
   }
@@ -442,7 +491,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  code(node) {
+  code(node: MDASTCodeNode): JSAST {
     let value = node.value ? detab(node.value + '\n') : '';
     value = this.encode(value);
     value = this.renderText(value);
@@ -466,7 +515,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  table(node) {
+  table(node: MDASTTableNode): JSAST {
     let rows = node.children;
     let index = rows.length;
     let align = node.align;
@@ -509,7 +558,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  html(node) {
+  html(node: MDASTHTMLNode): JSAST {
     return this.renderElement('html', {html: node.value});
   }
 
@@ -523,7 +572,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  rule(_node) {
+  rule(_node: MDASTRuleNode): JSAST {
     return this.renderElement('rule');
   }
 
@@ -539,7 +588,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  inlineCode(node) {
+  inlineCode(node: MDASTInlineCodeNode): JSAST {
     let value = node.value;
     value = this.encode(value);
     value = collapse(value);
@@ -564,7 +613,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  strong(node) {
+  strong(node: MDASTStrongNode): JSAST {
     return this.renderElement('strong', null, ...this.all(node));
   }
 
@@ -585,7 +634,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  emphasis(node) {
+  emphasis(node: MDASTEmphasisNode): JSAST {
     return this.renderElement('emphasis', null, ...this.all(node));
   }
 
@@ -599,11 +648,11 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  hardBreak(_node) {
+  hardBreak(_node: MDASTHardBreakNode): JSAST {
     return this.renderElement('break');
   }
 
-  thematicBreak(_node) {
+  thematicBreak(_node: MDASTThematicBreakNode): JSAST {
     return this.renderElement('break');
   }
 
@@ -625,7 +674,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  link(node) {
+  link(node: MDASTLinkNode): JSAST {
     return this.renderElement('link', {
       href: normalizeURI(node.url || ''),
       title: node.title
@@ -648,14 +697,14 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  footnoteReference(node) {
+  footnoteReference(node: MDASTFootnoteReferenceNode): JSAST {
     let identifier = node.identifier;
 
     return this.renderElement('sup', {id: 'fnref-' + identifier},
       this.renderElement('a', {
         href: '#fn-' + identifier,
         className: 'footnote-ref'
-      }, identifier));
+      }, this.renderText(identifier)));
   }
 
   /**
@@ -671,7 +720,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  linkReference(node) {
+  linkReference(node: MDASTLinkReferenceNode): JSAST {
     let def = this.definitions[node.identifier.toUpperCase()] || {};
 
     return this.renderElement('a', {
@@ -693,7 +742,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  imageReference(node) {
+  imageReference(node: MDASTImageReferenceNode): JSAST {
     let def = this.definitions[node.identifier.toUpperCase()] || {};
 
     return this.renderElement('image', {
@@ -715,7 +764,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  image(node) {
+  image(node: MDASTImageNode): JSAST {
     return this.renderElement('image', {
       src: normalizeURI(node.url || ''),
       alt: node.alt || '',
@@ -740,11 +789,11 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  strikethrough(node) {
+  strikethrough(node: MDASTStrikethroughNode): JSAST {
     return this.renderElement('strikethrough', null, ...this.all(node));
   }
 
-  delete(node) {
+  delete(node: MDASTDeleteNode): JSAST {
     return this.renderElement('strikethrough', null, ...this.all(node));
   }
 
@@ -760,7 +809,7 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  text(node) {
+  text(node: MDASTTextNode): JSAST {
     let value = trimLines(this.encode(node.value));
     return this.renderText(value);
   }
@@ -769,23 +818,23 @@ export default class Renderer {
    * Ignored nodes.
    */
 
-  yaml() {
-    return null;
+  yaml(_node: MDASTYAMLNode): JSAST {
+    return this.renderNothing();
   }
 
-  definition() {
-    return null;
+  definition(_node: MDASTDefinitionNode): JSAST {
+    return this.renderNothing();
   }
 
-  footnoteDefinition() {
-    return null;
+  footnoteDefinition(_node: MDASTFootnoteDefinitionNode): JSAST {
+    return this.renderNothing();
   }
 
-  encode(value) {
+  encode(value: string): string {
     return value;
   }
 
-  render(node) {
+  render(node: MDASTAnyNode): void {
     this.expression = this.visit(node);
   }
 
