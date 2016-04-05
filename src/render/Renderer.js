@@ -110,7 +110,7 @@ export default class Renderer {
   }
 
   renderElementProps(props: any = null): JSAST {
-    return parseJSON(props);
+    return parseJSON(props, this.types);
   }
 
   renderText(value: ?string): JSAST {
