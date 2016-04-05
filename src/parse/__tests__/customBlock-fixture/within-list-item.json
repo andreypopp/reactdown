@@ -84,6 +84,19 @@
             },
             {
               "type": "customBlock",
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 10,
+                  "offset": 40
+                },
+                "end": {
+                  "line": 7,
+                  "column": 10,
+                  "offset": 40
+                },
+                "indent": []
+              },
               "name": "Block",
               "children": [
                 {
@@ -121,20 +134,7 @@
                     "indent": []
                   }
                 }
-              ],
-              "position": {
-                "start": {
-                  "line": 7,
-                  "column": 10,
-                  "offset": 40
-                },
-                "end": {
-                  "line": 7,
-                  "column": 10,
-                  "offset": 40
-                },
-                "indent": []
-              }
+              ]
             }
           ],
           "position": {
