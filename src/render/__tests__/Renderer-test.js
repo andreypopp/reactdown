@@ -16,11 +16,9 @@ describe('reactdown/render', function() {
 
     it('keeps track of used identifiers', function() {
       let renderer = new Renderer({
-        types: null,
         markdownComponents: {
           paragraph: types.identifier('Paragraph')
-        },
-        blockComponents: null,
+        }
       });
       renderer.render({
         type: 'paragraph',

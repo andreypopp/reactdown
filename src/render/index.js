@@ -23,7 +23,7 @@ type RenderResult = {
 
 export default function render(
     node: MDASTAnyNode,
-    config: RendererConfig = DEFAULT_RENDERER_CONFIG): RenderResult {
+    config: $Shape<RendererConfig> = DEFAULT_RENDERER_CONFIG): RenderResult {
   if (config !== DEFAULT_RENDERER_CONFIG) {
     config = {...config, ...DEFAULT_RENDERER_CONFIG};
   }

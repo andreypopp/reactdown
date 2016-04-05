@@ -70,7 +70,7 @@ export default class Renderer {
   expression: ?JSAST;
   identifiersUsed: Array<JSAST>;
 
-  constructor(config: RendererConfig) {
+  constructor(config: $Shape<RendererConfig>) {
     this.types = config.types || babelTypes;
     this.markdownComponents = config.markdownComponents || {};
     this.blockComponents = config.blockComponents || {};
