@@ -1,11 +1,15 @@
 /**
  * @copyright 2016, Andrey Popp <8mayday@gmail.com>
+ * @flow
  */
 
 import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
 import parse from '../index';
+
+declare function describe(description: string, body: any): void;
+declare function it(description: string, body: any): void;
 
 let fixtures = fs.readdirSync(path.join(__dirname, 'customBlock-fixture'))
                  .filter(name => /\.md$/.exec(name))

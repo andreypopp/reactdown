@@ -46,6 +46,15 @@ import type {
   JSAST
 } from '../types';
 
+type ComponentSymbolRegistry = {
+  [key: string]: JSAST;
+};
+
+export type RendererConfig = {
+  types: typeof babelTypes;
+  components: ComponentSymbolRegistry;
+};
+
 export default class Renderer {
 
   definitions: {[key: string]: MDASTDefinitionNode};
@@ -56,17 +65,17 @@ export default class Renderer {
   identifiersUsed: Array<JSAST>;
 
 
-  constructor(types: typeof babelTypes  = babelTypes, components: {[key: string]: JSAST} = {}) {
+  constructor(config: RendererConfig) {
+    this.types = config.types;
+    this.components = config.components;
+
     this.definitions = {};
     this.footnotes = [];
-    this.types = types;
-    this.components = components;
-
     this.expression = null;
     this.identifiersUsed = [];
   }
 
-  renderElement(name: string, props: any, ...children) {
+  renderElement(name: string, props: any, ...children: Array<JSAST>): JSAST {
     let component = this.components[name];
     if (component === undefined) {
       component = this.types.stringLiteral(name);
@@ -83,7 +92,7 @@ export default class Renderer {
     );
   }
 
-  renderElementProps(_props: any) {
+  renderElementProps(_props: any): JSAST {
     return this.types.nullLiteral();
   }
 
@@ -108,13 +117,13 @@ export default class Renderer {
    * @return {string} - Compiled footnotes, if any.
    * @this {HTMLCompiler}
    */
-  generateFootnotes() {
+  generateFootnotes(): JSAST {
     let definitions = this.footnotes;
     let index = -1;
     let results = [];
 
     if (!definitions.length) {
-      return '';
+      return this.renderNothing();
     }
 
     while (++index < definitions.length) {
