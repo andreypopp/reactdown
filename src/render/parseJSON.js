@@ -8,7 +8,6 @@ import type {JSAST} from '../types';
 
 type JSON
   = null
-  | undefined
   | string
   | number
   | boolean
@@ -32,15 +31,14 @@ export default function parseJSON(value: JSON, types = babelTypes): JSAST {
   } else if (typeof value === 'object') {
     let properties = [];
     for (let key in value) {
-      if (!value.hasOwnProperty(key)) {
-        continue;
+      if (value.hasOwnProperty(key)) {
+        properties.push(
+          types.objectProperty(
+            types.stringLiteral(key),
+            parseJSON(value[key], types)
+          )
+        );
       }
-      properties.push(
-        types.objectProperty(
-          types.stringLiteral(key),
-          parseJSON(value[key], types)
-        )
-      );
     }
     return types.objectExpression(properties);
   } else {
