@@ -53,11 +53,13 @@ type ComponentSymbolRegistry = {
 
 type BabelTypes = typeof babelTypes;
 
-export type RendererConfig = {
+type CompleteRendererConfig = {
   types: ?typeof babelTypes;
   markdownComponents: ?ComponentSymbolRegistry;
   blockComponents: ?ComponentSymbolRegistry;
 };
+
+export type RendererConfig = $Shape<CompleteRendererConfig>;
 
 export default class Renderer {
 
@@ -70,7 +72,7 @@ export default class Renderer {
   expression: ?JSAST;
   identifiersUsed: Array<JSAST>;
 
-  constructor(config: $Shape<RendererConfig>) {
+  constructor(config: RendererConfig) {
     this.types = config.types || babelTypes;
     this.markdownComponents = config.markdownComponents || {};
     this.blockComponents = config.blockComponents || {};
