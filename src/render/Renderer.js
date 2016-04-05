@@ -335,7 +335,6 @@ export default class Renderer {
       identifiers[index] = this.footnotes[index].identifier;
     }
 
-    index = -1;
     let identifier = 1;
 
     while (identifiers.indexOf(String(identifier)) !== -1) {
