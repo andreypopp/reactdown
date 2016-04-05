@@ -140,7 +140,8 @@
                 "indent": []
               }
             }
-          ]
+          ],
+          "data": null
         },
         {
           "type": "paragraph",
@@ -177,7 +178,8 @@
             "indent": []
           }
         }
-      ]
+      ],
+      "data": null
     },
     {
       "type": "paragraph",

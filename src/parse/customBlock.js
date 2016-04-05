@@ -7,6 +7,7 @@ const CUSTOM_BLOCK_TEST = /^::[a-zA-Z]+\s*\n/;
 const CUSTOM_BLOCK_INDENT = 2;
 const NEWLINE = '\n';
 
+import jsYAML from 'js-yaml';
 import type {MDASTAnyNode} from '../types';
 
 type ProduceNode = (node: MDASTAnyNode) => void;
@@ -56,6 +57,33 @@ function parseCustomBlock(eat: Eat, value: string): void {
 
   let currentLine = nextLine();
   let content = [];
+  let dataContent = [];
+
+  if (
+    currentLine !== null &&
+    hasIndent(currentLine, CUSTOM_BLOCK_INDENT) &&
+    currentLine.trim() === '---'
+  ) {
+    eatLine(currentLine);
+    currentLine = nextLine();
+    while (currentLine !== null) {
+      if (currentLine === '') {
+        eatLine(currentLine);
+        dataContent.push(currentLine);
+      } else if (hasIndent(currentLine, CUSTOM_BLOCK_INDENT)) {
+        eatLine(currentLine);
+        if (currentLine.trim() === '---') {
+          currentLine = nextLine();
+          break;
+        } else {
+          dataContent.push(currentLine.slice(CUSTOM_BLOCK_INDENT));
+        }
+      } else {
+        break;
+      }
+      currentLine = nextLine();
+    }
+  }
 
   while (currentLine !== null) {
     if (currentLine === '') {
@@ -71,6 +99,12 @@ function parseCustomBlock(eat: Eat, value: string): void {
   }
 
   let children: Array<MDASTAnyNode> = [];
+  let data = null;
+
+  if (dataContent.length > 0) {
+    dataContent = dataContent.join(NEWLINE);
+    data = jsYAML.safeLoad(dataContent);
+  }
 
   if (content.length > 0) {
     content = content.join(NEWLINE);
@@ -82,6 +116,7 @@ function parseCustomBlock(eat: Eat, value: string): void {
     position: null,
     name,
     children,
+    data,
   });
 }
 
