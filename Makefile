@@ -1,7 +1,7 @@
 .DELETE_ON_ERROR:
 
 BIN           = ./node_modules/.bin
-TESTS         = $(shell find src -path '*/__tests__/*-test.js')
+TESTS         = $(shell find src -path '*/__tests__/*.js')
 SRC           = $(filter-out $(TESTS), $(shell find src -name '*.js'))
 LIB           = $(SRC:src/%=lib/%)
 MOCHA_OPTS    = -R dot --require babel-core/register 
