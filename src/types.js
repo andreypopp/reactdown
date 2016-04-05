@@ -10,13 +10,13 @@ export type MDASTPosition = {
 };
 
 export type MDASTLocation = {
-  start: Position;
-  end: Position;
+  start: MDASTPosition;
+  end: MDASTPosition;
   indent: ?number;
 };
 
 export type MDASTNode = {
-  position: ?MDASTPosition;
+  position: ?MDASTLocation;
 };
 
 export type MDASTParentNode = MDASTNode & {

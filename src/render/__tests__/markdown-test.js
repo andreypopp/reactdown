@@ -6,7 +6,6 @@ import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
 import generate from 'babel-generator';
-import * as types from 'babel-types';
 import render from '../index';
 
 let fixtures = fs.readdirSync(path.join(__dirname, 'markdown-fixture'))

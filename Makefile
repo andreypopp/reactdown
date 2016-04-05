@@ -13,7 +13,7 @@ lint::
 	@$(BIN)/eslint src
 
 check::
-	@$(BIN)/flow src
+	@$(BIN)/flow --show-all-errors src
 
 test::
 	@$(BIN)/mocha $(MOCHA_OPTS) $(TESTS)
