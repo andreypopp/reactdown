@@ -6,12 +6,12 @@
 import type {MDASTAnyNode, JSAST} from '../types';
 import type {RendererConfig} from './Renderer';
 
-import * as DEFAULT_TYPES from 'babel-types';
+import * as build from 'babel-types';
 import invariant from 'invariant';
 import Renderer from './Renderer';
 
 const DEFAULT_RENDERER_CONFIG: RendererConfig = {
-  types: DEFAULT_TYPES,
+  build: build,
   markdownComponents: {},
   blockComponents: {},
 };
@@ -20,6 +20,13 @@ type RenderResult = {
   expression: JSAST;
   identifiersUsed: Array<JSAST>;
 };
+
+export function renderToFile(
+    node: MDASTAnyNode,
+    config: RendererConfig = DEFAULT_RENDERER_CONFIG): JSAST {
+  let {expression, identifiersUsed} = render(node, config);
+  return expression;
+}
 
 export default function render(
     node: MDASTAnyNode,

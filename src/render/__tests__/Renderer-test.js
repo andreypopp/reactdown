@@ -4,7 +4,7 @@
  */
 
 import assert from 'assert';
-import * as types from 'babel-types';
+import * as build from 'babel-types';
 import Renderer from '../Renderer';
 
 declare function describe(description: string, body: any): void;
@@ -17,7 +17,7 @@ describe('reactdown/render', function() {
     it('keeps track of used identifiers', function() {
       let renderer = new Renderer({
         markdownComponents: {
-          paragraph: types.identifier('Paragraph')
+          paragraph: build.identifier('Paragraph')
         }
       });
       renderer.render({

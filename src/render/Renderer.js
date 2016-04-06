@@ -7,7 +7,7 @@ import detab from 'detab';
 import collapse from 'collapse-white-space';
 import normalizeURI from 'normalize-uri';
 import trimLines from 'trim-lines';
-import * as babelTypes from 'babel-types';
+import * as build from 'babel-types';
 import visit from 'unist-util-visit';
 import buildJSON from './buildJSON';
 
@@ -45,17 +45,16 @@ import type {
   MDASTBlockquoteNode,
   MDASTRootNode,
 
-  JSAST
+  JSAST,
+  JSASTFactory
 } from '../types';
 
 type ComponentSymbolRegistry = {
   [key: string]: ?JSAST;
 };
 
-type BabelTypes = typeof babelTypes;
-
 type CompleteRendererConfig = {
-  types: ?typeof babelTypes;
+  build: JSASTFactory;
   markdownComponents: ?ComponentSymbolRegistry;
   blockComponents: ?ComponentSymbolRegistry;
 };
@@ -64,7 +63,7 @@ export type RendererConfig = $Shape<CompleteRendererConfig>;
 
 export default class Renderer {
 
-  types: typeof babelTypes;
+  build: JSASTFactory;
   markdownComponents: ComponentSymbolRegistry;
   blockComponents: ComponentSymbolRegistry;
 
@@ -74,7 +73,7 @@ export default class Renderer {
   identifiersUsed: Array<JSAST>;
 
   constructor(config: RendererConfig) {
-    this.types = config.types || babelTypes;
+    this.build = config.build || build;
     this.markdownComponents = config.markdownComponents || {};
     this.blockComponents = config.blockComponents || {};
 
@@ -91,38 +90,38 @@ export default class Renderer {
       if (this.markdownComponents[component] !== undefined) {
         component = this.markdownComponents[component];
       } else {
-        component = this.types.stringLiteral(component);
+        component = this.build.stringLiteral(component);
       }
     }
     if (component === null) {
       return this.renderNothing();
     }
-    if (component !== null && this.types.isIdentifier(component)) {
+    if (component !== null && this.build.isIdentifier(component)) {
       this.identifiersUsed.push(component);
     }
-    let createElement = this.types.memberExpression(
-      this.types.identifier('React'),
-      this.types.identifier('createElement'));
-    return this.types.callExpression(
+    let createElement = this.build.memberExpression(
+      this.build.identifier('React'),
+      this.build.identifier('createElement'));
+    return this.build.callExpression(
       createElement,
       [component, this.renderElementProps(props), ...children]
     );
   }
 
   renderElementProps(props: any = null): JSAST {
-    return buildJSON(this.types, props);
+    return buildJSON(this.build, props);
   }
 
   renderText(value: ?string): JSAST {
     if (value === null) {
-      return this.types.nullLiteral();
+      return this.build.nullLiteral();
     } else {
-      return this.types.stringLiteral(value);
+      return this.build.stringLiteral(value);
     }
   }
 
   renderNothing(): JSAST {
-    return this.types.nullLiteral();
+    return this.build.nullLiteral();
   }
 
   /**
