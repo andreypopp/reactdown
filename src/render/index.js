@@ -25,7 +25,7 @@ export default function render(
     node: MDASTAnyNode,
     config: RendererConfig = DEFAULT_RENDERER_CONFIG): RenderResult {
   if (config !== DEFAULT_RENDERER_CONFIG) {
-    config = {...config, ...DEFAULT_RENDERER_CONFIG};
+    config = {...DEFAULT_RENDERER_CONFIG, ...config};
   }
   let renderer = new Renderer(config);
   renderer.render(node);
