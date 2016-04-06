@@ -3,6 +3,10 @@
  * @flow
  */
 
+import * as build from 'babel-types';
+
+export type JSASTFactory = typeof build;
+
 export type MDASTPosition = {
   line: number;
   column: number;

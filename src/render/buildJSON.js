@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type {JSAST} from '../types';
+import type {JSAST, JSASTFactory} from '../types';
 
 type JSON
   = null
@@ -13,7 +13,7 @@ type JSON
   | Array<JSON>
   | {[key: string]: JSON};
 
-export default function buildJSON(build, value: JSON): JSAST {
+export default function buildJSON(build: JSASTFactory, value: JSON): JSAST {
   if (value === undefined) {
     return build.identifier('undefined');
   } else if (value === null) {
