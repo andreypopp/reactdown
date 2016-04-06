@@ -9,7 +9,7 @@ import normalizeURI from 'normalize-uri';
 import trimLines from 'trim-lines';
 import * as babelTypes from 'babel-types';
 import visit from 'unist-util-visit';
-import parseJSON from './parseJSON';
+import buildJSON from './buildJSON';
 
 import type {
   MDASTAnyNode,
@@ -110,7 +110,7 @@ export default class Renderer {
   }
 
   renderElementProps(props: any = null): JSAST {
-    return parseJSON(props, this.types);
+    return buildJSON(this.types, props);
   }
 
   renderText(value: ?string): JSAST {

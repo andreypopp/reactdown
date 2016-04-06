@@ -5,17 +5,18 @@
 
 import assert from 'assert';
 import generate from 'babel-generator';
-import parseJSON from '../parseJSON';
+import * as build from 'babel-types';
+import buildJSON from '../buildJSON';
 
 declare function describe(description: string, body: any): void;
 declare function it(description: string, body: any): void;
 
 describe('reactdown/render', function() {
 
-  describe('parseJSON', function() {
+  describe('buildJSON', function() {
 
     function render(value) {
-      return generate(parseJSON(value)).code;
+      return generate(buildJSON(build, value)).code;
     }
 
     it('parses null', function() {
