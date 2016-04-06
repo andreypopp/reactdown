@@ -112,7 +112,7 @@ function parseCustomBlock(eat: Eat, value: string): void {
   }
 
   eat('')({
-    type: 'customBlock',
+    type: 'directive',
     position: null,
     name,
     children,
@@ -129,11 +129,11 @@ function hasIndent(line, size) {
   return true;
 }
 
-export default function customBlock(remark: any) {
+export default function directive(remark: any) {
 
   let ParserPrototype = remark.Parser.prototype;
 
-  ParserPrototype.blockTokenizers.customBlock = parseCustomBlock;
+  ParserPrototype.blockTokenizers.directive = parseCustomBlock;
   ParserPrototype.blockMethods.splice(
-    ParserPrototype.blockMethods.indexOf('fences') + 1, 0, 'customBlock');
+    ParserPrototype.blockMethods.indexOf('fences') + 1, 0, 'directive');
 }

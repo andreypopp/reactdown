@@ -40,7 +40,7 @@
       "type": "blockquote",
       "children": [
         {
-          "type": "customBlock",
+          "type": "directive",
           "position": {
             "start": {
               "line": 5,

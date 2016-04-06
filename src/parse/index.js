@@ -4,9 +4,9 @@
  */
 
 import remark from 'remark';
-import customBlock from './customBlock';
+import directive from './directive';
 import type {MDASTAnyNode} from '../types';
 
 export default function parse(value: string, options: any = {}): MDASTAnyNode {
-  return remark(options).use(customBlock).parse(value);
+  return remark(options).use(directive).parse(value);
 }

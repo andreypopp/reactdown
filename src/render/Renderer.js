@@ -56,7 +56,7 @@ type ComponentSymbolRegistry = {
 type CompleteRendererConfig = {
   build: JSASTFactory;
   markdownComponents: ?ComponentSymbolRegistry;
-  blockComponents: ?ComponentSymbolRegistry;
+  directives: ?ComponentSymbolRegistry;
 };
 
 export type RendererConfig = $Shape<CompleteRendererConfig>;
@@ -65,7 +65,7 @@ export default class Renderer {
 
   build: JSASTFactory;
   markdownComponents: ComponentSymbolRegistry;
-  blockComponents: ComponentSymbolRegistry;
+  directives: ComponentSymbolRegistry;
 
   definitions: {[key: string]: MDASTDefinitionNode};
   footnotes: Array<any>;
@@ -75,7 +75,7 @@ export default class Renderer {
   constructor(config: RendererConfig) {
     this.build = config.build || build;
     this.markdownComponents = config.markdownComponents || {};
-    this.blockComponents = config.blockComponents || {};
+    this.directives = config.directives || {};
 
     this.definitions = {};
     this.footnotes = [];
@@ -856,8 +856,8 @@ export default class Renderer {
     return this.renderNothing();
   }
 
-  customBlock(node: MDASTCustomBlockNode): JSAST {
-    let component = this.blockComponents[node.name];
+  directive(node: MDASTCustomBlockNode): JSAST {
+    let component = this.directives[node.name];
     if (component === undefined) {
       return this.unknown({
         type: 'code',

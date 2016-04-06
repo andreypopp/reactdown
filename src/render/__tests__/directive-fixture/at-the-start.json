@@ -2,7 +2,7 @@
   "type": "root",
   "children": [
     {
-      "type": "customBlock",
+      "type": "directive",
       "position": {
         "start": {
           "line": 5,

@@ -8,12 +8,14 @@ import type {RendererConfig} from './Renderer';
 
 import * as build from 'babel-types';
 import invariant from 'invariant';
+
 import Renderer from './Renderer';
+import buildImport from './buildImport';
 
 const DEFAULT_RENDERER_CONFIG: RendererConfig = {
   build: build,
   markdownComponents: {},
-  blockComponents: {},
+  directives: {},
 };
 
 type RenderResult = {
@@ -21,19 +23,36 @@ type RenderResult = {
   identifiersUsed: Array<JSAST>;
 };
 
-export function renderToFile(
+function applyDefaults(config: RendererConfig): RendererConfig {
+  if (config !== DEFAULT_RENDERER_CONFIG) {
+    config = {...DEFAULT_RENDERER_CONFIG, ...config};
+  }
+  return config;
+}
+
+type CodeRef = {
+  source: string;
+  name: string;
+};
+
+type DirectiveConfig = {
+  [name: string]: CodeRef;
+};
+
+export function renderToProgram(
     node: MDASTAnyNode,
     config: RendererConfig = DEFAULT_RENDERER_CONFIG): JSAST {
+  config = applyDefaults(config);
+  let build = config.build;
   let {expression, identifiersUsed} = render(node, config);
-  return expression;
+  let statements = [];
+  return build.program(statements);
 }
 
 export default function render(
     node: MDASTAnyNode,
     config: RendererConfig = DEFAULT_RENDERER_CONFIG): RenderResult {
-  if (config !== DEFAULT_RENDERER_CONFIG) {
-    config = {...DEFAULT_RENDERER_CONFIG, ...config};
-  }
+  config = applyDefaults(config);
   let renderer = new Renderer(config);
   renderer.render(node);
   invariant(

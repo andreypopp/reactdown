@@ -31,7 +31,7 @@ function readFixtures(dir) {
 }
 
 let config = {
-  blockComponents: {
+  directives: {
     Block: build.identifier('Block'),
     SubBlock: build.identifier('SubBlock'),
   }
@@ -54,7 +54,7 @@ describe('reactdown/render', function() {
   describe('markdown', function() {
     generateCases('markdown-fixture');
   });
-  describe('customBlock', function() {
-    generateCases('customBlock-fixture');
+  describe('directive', function() {
+    generateCases('directive-fixture');
   });
 });

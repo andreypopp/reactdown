@@ -33,7 +33,7 @@ export type MDASTTextNode = MDASTNode & {
 };
 
 export type MDASTCustomBlockNode = MDASTParentNode & {
-  type: 'customBlock';
+  type: 'directive';
   name: string;
 };
 

@@ -37,17 +37,17 @@
       }
     },
     {
-      "type": "customBlock",
+      "type": "directive",
       "position": {
         "start": {
-          "line": 13,
+          "line": 12,
           "column": 1,
-          "offset": 59
+          "offset": 76
         },
         "end": {
-          "line": 13,
+          "line": 12,
           "column": 1,
-          "offset": 59
+          "offset": 76
         },
         "indent": []
       },
@@ -89,38 +89,41 @@
           }
         },
         {
-          "type": "customBlock",
-          "position": {
-            "start": {
-              "line": 15,
-              "column": 1,
-              "offset": 69
-            },
-            "end": {
-              "line": 15,
-              "column": 1,
-              "offset": 69
-            },
-            "indent": []
-          },
-          "name": "SubBlock",
+          "type": "paragraph",
           "children": [
             {
-              "type": "paragraph",
+              "type": "text",
+              "value": "This is ",
+              "position": {
+                "start": {
+                  "line": 9,
+                  "column": 1,
+                  "offset": 64
+                },
+                "end": {
+                  "line": 9,
+                  "column": 9,
+                  "offset": 72
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "emphasis",
               "children": [
                 {
                   "type": "text",
-                  "value": "ok",
+                  "value": "just",
                   "position": {
                     "start": {
-                      "line": 14,
-                      "column": 1,
-                      "offset": 68
+                      "line": 9,
+                      "column": 10,
+                      "offset": 73
                     },
                     "end": {
-                      "line": 14,
-                      "column": 3,
-                      "offset": 70
+                      "line": 9,
+                      "column": 14,
+                      "offset": 77
                     },
                     "indent": []
                   }
@@ -128,37 +131,70 @@
               ],
               "position": {
                 "start": {
-                  "line": 14,
-                  "column": 1,
-                  "offset": 68
+                  "line": 9,
+                  "column": 9,
+                  "offset": 72
                 },
                 "end": {
-                  "line": 14,
-                  "column": 3,
-                  "offset": 70
+                  "line": 9,
+                  "column": 15,
+                  "offset": 78
                 },
                 "indent": []
               }
+            },
+            {
+              "type": "text",
+              "value": " some\nparagraph.",
+              "position": {
+                "start": {
+                  "line": 9,
+                  "column": 15,
+                  "offset": 78
+                },
+                "end": {
+                  "line": 10,
+                  "column": 11,
+                  "offset": 75
+                },
+                "indent": [
+                  1
+                ]
+              }
             }
           ],
-          "data": null
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 1,
+              "offset": 64
+            },
+            "end": {
+              "line": 10,
+              "column": 11,
+              "offset": 75
+            },
+            "indent": [
+              1
+            ]
+          }
         },
         {
           "type": "paragraph",
           "children": [
             {
               "type": "text",
-              "value": "bye!",
+              "value": "Cheers!",
               "position": {
                 "start": {
-                  "line": 15,
+                  "line": 13,
                   "column": 1,
-                  "offset": 69
+                  "offset": 85
                 },
                 "end": {
-                  "line": 15,
-                  "column": 5,
-                  "offset": 73
+                  "line": 13,
+                  "column": 8,
+                  "offset": 92
                 },
                 "indent": []
               }
@@ -166,14 +202,14 @@
           ],
           "position": {
             "start": {
-              "line": 15,
+              "line": 13,
               "column": 1,
-              "offset": 69
+              "offset": 85
             },
             "end": {
-              "line": 15,
-              "column": 5,
-              "offset": 73
+              "line": 13,
+              "column": 8,
+              "offset": 92
             },
             "indent": []
           }
@@ -189,14 +225,14 @@
           "value": "Epilogue",
           "position": {
             "start": {
-              "line": 13,
+              "line": 12,
               "column": 1,
-              "offset": 59
+              "offset": 76
             },
             "end": {
-              "line": 13,
+              "line": 12,
               "column": 9,
-              "offset": 67
+              "offset": 84
             },
             "indent": []
           }
@@ -204,14 +240,14 @@
       ],
       "position": {
         "start": {
-          "line": 13,
+          "line": 12,
           "column": 1,
-          "offset": 59
+          "offset": 76
         },
         "end": {
-          "line": 13,
+          "line": 12,
           "column": 9,
-          "offset": 67
+          "offset": 84
         },
         "indent": []
       }
@@ -224,9 +260,9 @@
       "offset": 0
     },
     "end": {
-      "line": 15,
+      "line": 14,
       "column": 1,
-      "offset": 69
+      "offset": 86
     }
   }
 }
