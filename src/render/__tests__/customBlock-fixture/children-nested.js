@@ -1,0 +1,1 @@
+React.createElement("root", null, React.createElement("paragraph", null, "Prologue"), React.createElement(Block, null, React.createElement("paragraph", null, "Hello,"), React.createElement(SubBlock, null, React.createElement("paragraph", null, "ok")), React.createElement("paragraph", null, "bye!")), React.createElement("paragraph", null, "Epilogue"))

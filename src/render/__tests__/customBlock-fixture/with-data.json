@@ -1,0 +1,81 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Prologue",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 9,
+              "offset": 8
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 9,
+          "offset": 8
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "customBlock",
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 6,
+          "offset": 65
+        },
+        "end": {
+          "line": 9,
+          "column": 6,
+          "offset": 65
+        },
+        "indent": []
+      },
+      "name": "Block",
+      "children": [],
+      "data": {
+        "a": 1,
+        "b": [
+          1,
+          2,
+          3
+        ],
+        "c": {
+          "d": 4
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1,
+      "offset": 0
+    },
+    "end": {
+      "line": 10,
+      "column": 1,
+      "offset": 66
+    }
+  }
+}
