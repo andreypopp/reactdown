@@ -55,7 +55,7 @@ type ComponentSymbolRegistry = {
 
 type CompleteRendererConfig = {
   build: JSASTFactory;
-  markdownComponents: ?ComponentSymbolRegistry;
+  elements: ?ComponentSymbolRegistry;
   directives: ?ComponentSymbolRegistry;
 };
 
@@ -64,7 +64,7 @@ export type RendererConfig = $Shape<CompleteRendererConfig>;
 export default class Renderer {
 
   build: JSASTFactory;
-  markdownComponents: ComponentSymbolRegistry;
+  elements: ComponentSymbolRegistry;
   directives: ComponentSymbolRegistry;
 
   definitions: {[key: string]: MDASTDefinitionNode};
@@ -74,7 +74,7 @@ export default class Renderer {
 
   constructor(config: RendererConfig) {
     this.build = config.build || build;
-    this.markdownComponents = config.markdownComponents || {};
+    this.elements = config.elements || {};
     this.directives = config.directives || {};
 
     this.definitions = {};
@@ -87,8 +87,8 @@ export default class Renderer {
       component: null | string | JSAST,
       props: any = null, ...children: Array<JSAST>): JSAST {
     if (typeof component === 'string') {
-      if (this.markdownComponents[component] !== undefined) {
-        component = this.markdownComponents[component];
+      if (this.elements[component] !== undefined) {
+        component = this.elements[component];
       } else {
         component = this.build.stringLiteral(component);
       }

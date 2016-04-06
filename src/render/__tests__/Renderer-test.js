@@ -16,7 +16,7 @@ describe('reactdown/render', function() {
 
     it('keeps track of used identifiers', function() {
       let renderer = new Renderer({
-        markdownComponents: {
+        elements: {
           paragraph: build.identifier('Paragraph')
         }
       });

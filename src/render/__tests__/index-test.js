@@ -8,7 +8,7 @@ import fs from 'fs';
 import path from 'path';
 import generate from 'babel-generator';
 import * as build from 'babel-types';
-import render from '../index';
+import {renderToParts as render} from '../index';
 
 declare function describe(description: string, body: any): void;
 declare function it(description: string, body: any): void;

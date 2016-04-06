@@ -5,15 +5,15 @@
 
 import generate from 'babel-generator';
 import parse from './parse';
-import render from './render';
+import {renderToProgram} from './render';
 
 export function renderToString(value: string, options: any = {}): string {
   let mdast = parse(value, options);
-  let jsast = render(mdast, options).expression;
+  let jsast = renderToProgram(mdast, options);
   return generate(jsast, {
     compact: false,
     concise: false
   });
 }
 
-export {parse, render};
+export {parse};
