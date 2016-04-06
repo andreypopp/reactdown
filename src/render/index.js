@@ -32,26 +32,26 @@ type RenderConfig = {
   directives: DirectiveConfig;
 };
 
-const DEFAULT_RENDERER_CONFIG: RendererConfig = {
+const defaultRendererConfig: RendererConfig = {
   build: build,
   elements: {},
   directives: {},
 };
 
-const DEFAULT_RENDER_CONFIG: RenderConfig = {
+const defaultRenderConfig: RenderConfig = {
   build: build,
   elements: {},
   directives: {},
 };
 
-function applyDefaults<T>(config: T, defaultConfig: T): T {
+function applyDefaultConfig<T>(config: T, defaultConfig: T): T {
   if (config !== defaultConfig) {
     config = {...defaultConfig, ...config};
   }
   return config;
 }
 
-function mirrorKeyToJSAST(build, obj): {[name: string]: JSAST} {
+function keyMirrorToJSAST(build, obj): {[name: string]: JSAST} {
   let result = {};
   for (let key in obj) {
     result[key] = build.identifier(key);
@@ -61,13 +61,13 @@ function mirrorKeyToJSAST(build, obj): {[name: string]: JSAST} {
 
 export function renderToProgram(
     node: MDASTAnyNode,
-    config: RenderConfig = DEFAULT_RENDER_CONFIG): JSAST {
-  config = applyDefaults(config, DEFAULT_RENDER_CONFIG);
+    config: RenderConfig = defaultRenderConfig): JSAST {
+  config = applyDefaultConfig(config, defaultRenderConfig);
   let {build, elements, directives} = config;
   let rendererConfig = {
     build,
-    elements: mirrorKeyToJSAST(build, elements),
-    directives: mirrorKeyToJSAST(build, directives),
+    elements: keyMirrorToJSAST(build, elements),
+    directives: keyMirrorToJSAST(build, directives),
   };
   let {expression, identifiersUsed} = renderToParts(node, rendererConfig);
   let statements = [
@@ -80,20 +80,22 @@ export function renderToProgram(
     )
   ];
   identifiersUsed.forEach(identifier => {
-    statements.push(buildImport(
+    statements.push(
+      buildImport(
         build,
         directives[identifier.name].source,
         identifier.name,
         directives[identifier.name].name
-    ));
+      )
+    );
   });
   return build.program(statements);
 }
 
 export function renderToParts(
     node: MDASTAnyNode,
-    config: RendererConfig = DEFAULT_RENDERER_CONFIG): RenderPartsResult {
-  config = applyDefaults(config, DEFAULT_RENDERER_CONFIG);
+    config: RendererConfig = defaultRendererConfig): RenderPartsResult {
+  config = applyDefaultConfig(config, defaultRendererConfig);
   let renderer = new Renderer(config);
   renderer.render(node);
   invariant(
