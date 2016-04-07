@@ -1,7 +1,7 @@
-#!/usr/bin/env node
+#!/usr/bin/env babel-node
 
 import fs from 'fs';
-import {parse} from '../src';
+import {parse} from '../';
 
 let filename = process.argv[2];
 
