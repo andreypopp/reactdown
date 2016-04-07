@@ -97,7 +97,9 @@ export default class Renderer {
       return this.renderNothing();
     }
     if (component !== null && this.build.isIdentifier(component)) {
-      this.identifiersUsed.push(component);
+      if (this.identifiersUsed.indexOf(component) === -1) {
+        this.identifiersUsed.push(component);
+      }
     }
     let createElement = this.build.memberExpression(
       this.build.identifier('React'),

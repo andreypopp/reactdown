@@ -21,9 +21,41 @@ describe('reactdown/render', function() {
         }
       });
       renderer.render({
-        type: 'paragraph',
+        type: 'root',
         children: [
-          {type: 'text', value: 'Hello'}
+          {
+            type: 'paragraph',
+            children: [
+              {type: 'text', value: 'Hello'}
+            ]
+          }
+        ]
+      });
+      assert(renderer.identifiersUsed.length === 1);
+      assert(renderer.identifiersUsed[0].name === 'Paragraph');
+    });
+
+    it('do not duplicatyes usages', function() {
+      let renderer = new Renderer({
+        elements: {
+          paragraph: build.identifier('Paragraph')
+        }
+      });
+      renderer.render({
+        type: 'root',
+        children: [
+          {
+            type: 'paragraph',
+            children: [
+              {type: 'text', value: 'Hello'}
+            ]
+          },
+          {
+            type: 'paragraph',
+            children: [
+              {type: 'text', value: 'Hello'}
+            ]
+          }
         ]
       });
       assert(renderer.identifiersUsed.length === 1);
