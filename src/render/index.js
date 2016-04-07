@@ -82,13 +82,13 @@ export function renderToProgram(
     )
   ];
   identifiersUsed.forEach(identifier => {
+    let spec = directives[identifier.name] || elements[identifier.name];
+    invariant(
+      spec !== undefined,
+      'Cannot resolve identifier to spec'
+    )
     statements.unshift(
-      buildImport(
-        build,
-        directives[identifier.name].source,
-        identifier.name,
-        directives[identifier.name].name
-      )
+      buildImport(build, spec.source, identifier.name, spec.name)
     );
   });
   return build.program(statements);

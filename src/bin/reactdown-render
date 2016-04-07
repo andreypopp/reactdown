@@ -1,17 +1,40 @@
 #!/usr/bin/env node
 
 import fs from 'fs';
+import program from 'commander';
 import {renderToString} from '../';
+import pkg from '../../package.json';
 
-let filename = process.argv[2];
-
-if (!filename) {
-  console.error('usage: parse <filename>');
+function error(message) {
+  console.error('error:', message);
   process.exit(1);
 }
 
+function collectSpec(value, config) {
+  let [name, source] = value.split('=');
+  if (source === undefined) {
+    error('directive should be in form of: <directive name>=<module>');
+  }
+  config[name] = {source};
+  return config;
+}
+
+program
+  .version(pkg.version)
+  .arguments('<file>')
+  .option('-d, --directive [directive]', 'Register directive', collectSpec, {})
+  .option('-e, --element [element]', 'Register element', collectSpec, {})
+  .parse(process.argv);
+
+let filename = program.args[0];
+
 let src = fs.readFileSync(filename, 'utf8');
 
-console.log(renderToString(src).code);
+let config = {
+  directives: program.directive,
+  elements: program.element,
+};
+
+console.log(renderToString(src, config).code);
 
 // vim: set ft=javascript:
