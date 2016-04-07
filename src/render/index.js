@@ -19,7 +19,7 @@ type RenderPartsResult = {
 };
 
 type DirectiveConfig = {
-  [name: string]: ComponentRef;
+  [name: string]: ComponentRef | string;
 };
 
 type CompleteRenderConfig = {
