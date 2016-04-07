@@ -12,9 +12,14 @@ export default function buildImport(
     importedName: string = 'default'): JSAST {
   let specifier;
   if (importedName === 'default') {
-    specifier = build.importDefaultSpecifier(localName);
+    specifier = build.importDefaultSpecifier(
+      build.identifier(localName));
   } else {
-    specifier = build.importSpecifier(localName, importedName);
+    specifier = build.importSpecifier(
+      build.identifier(localName),
+      build.identifier(importedName));
   }
-  return build.importDeclaration([specifier], source);
+  return build.importDeclaration(
+    [specifier],
+    build.stringLiteral(source));
 }

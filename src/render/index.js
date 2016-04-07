@@ -26,11 +26,13 @@ type DirectiveConfig = {
   [name: string]: CodeRef;
 };
 
-type RenderConfig = {
+type CompleteRenderConfig = {
   build: JSASTFactory;
   elements: DirectiveConfig;
   directives: DirectiveConfig;
 };
+
+export type RenderConfig = $Shape<CompleteRenderConfig>;
 
 const defaultRendererConfig: RendererConfig = {
   build: build,
@@ -38,7 +40,7 @@ const defaultRendererConfig: RendererConfig = {
   directives: {},
 };
 
-const defaultRenderConfig: RenderConfig = {
+const defaultRenderConfig: CompleteRenderConfig = {
   build: build,
   elements: {},
   directives: {},
@@ -80,7 +82,7 @@ export function renderToProgram(
     )
   ];
   identifiersUsed.forEach(identifier => {
-    statements.push(
+    statements.unshift(
       buildImport(
         build,
         directives[identifier.name].source,
