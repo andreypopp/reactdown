@@ -13,7 +13,7 @@ describe('reactdown', function() {
 
   describe('ComponentRef', function() {
 
-    function generateCases(func, cases) {
+    function generateCases(func, cases: any) {
       cases.forEach(c => {
         let {input, expectation} = c;
         it(`handles "${input}"`, function() {
