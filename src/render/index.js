@@ -91,6 +91,9 @@ export function renderToProgram(
       buildImport(build, spec.source, identifier.name, spec.name)
     );
   });
+  statements.unshift(
+    buildImport(build, 'react', 'React')
+  );
   return build.program(statements);
 }
 
