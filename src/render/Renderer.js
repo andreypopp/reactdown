@@ -842,10 +842,6 @@ export default class Renderer {
     return this.renderText(value);
   }
 
-  /*
-   * Ignored nodes.
-   */
-
   yaml(_node: MDASTYAMLNode): JSAST {
     return this.renderNothing();
   }
@@ -875,6 +871,7 @@ export default class Renderer {
   }
 
   encode(value: string): string {
+    // TODO: make sure we do right here
     return value;
   }
 
