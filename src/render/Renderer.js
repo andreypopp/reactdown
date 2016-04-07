@@ -416,10 +416,9 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   list(node: MDASTListNode): JSAST {
-    let name = node.ordered ? 'ordered-list' : 'unordered-list';
     return this.renderElement(
-      name,
-      {start: node.start !== 1 ? node.start : null},
+      'list',
+      {start: node.start !== 1 ? node.start : null, ordered: node.ordered},
       ...this.all(node)
     );
   }

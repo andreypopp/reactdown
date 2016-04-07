@@ -40,6 +40,9 @@ const defaultRenderConfig: CompleteRenderConfig = {
   build: build,
   elements: {
     'paragraph': 'p',
+    'link': 'a',
+    'list-item': 'li',
+    'list': {source: 'reactdown/lib/components', name: 'list'},
     'heading': {source: 'reactdown/lib/components', name: 'heading'},
   },
   directives: {},
