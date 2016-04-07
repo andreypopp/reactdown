@@ -86,7 +86,7 @@ export function renderToProgram(
     invariant(
       spec !== undefined,
       'Cannot resolve identifier to spec'
-    )
+    );
     statements.unshift(
       buildImport(build, spec.source, identifier.name, spec.name)
     );

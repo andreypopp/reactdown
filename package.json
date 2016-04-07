@@ -15,6 +15,9 @@
     "extends": "prometheusresearch",
     "env": {
       "mocha": true
+    },
+    "globals": {
+      "$Shape": true
     }
   },
   "repository": {

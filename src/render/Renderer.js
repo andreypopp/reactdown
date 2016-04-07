@@ -866,7 +866,7 @@ export default class Renderer {
     } else if (component === null) {
       return  this.renderNothing();
     } else {
-      return this.renderElement(component, node.data, ...this.all(node))
+      return this.renderElement(component, node.data, ...this.all(node));
     }
   }
 

@@ -41,7 +41,7 @@ describe('reactdown/render', function() {
     });
 
     it('parses objects', function() {
-      assert.equal(render({a: 42, b: ["x"]}), '{\n  "a": 42,\n  "b": ["x"]\n}');
+      assert.equal(render({a: 42, b: ['x']}), '{\n  "a": 42,\n  "b": ["x"]\n}');
     });
 
   });
