@@ -4,6 +4,7 @@
  */
 
 import type {MDASTAnyNode, JSAST, JSASTFactory} from '../types';
+import type {ComponentRef} from '../ComponentRef';
 import type {RendererConfig} from './Renderer';
 
 import * as build from 'babel-types';
@@ -17,13 +18,8 @@ type RenderPartsResult = {
   identifiersUsed: Array<JSAST>;
 };
 
-type CodeRef = {
-  source: string;
-  name: string;
-};
-
 type DirectiveConfig = {
-  [name: string]: CodeRef;
+  [name: string]: ComponentRef;
 };
 
 type CompleteRenderConfig = {
@@ -42,13 +38,27 @@ const defaultRendererConfig: RendererConfig = {
 
 const defaultRenderConfig: CompleteRenderConfig = {
   build: build,
-  elements: {},
+  elements: {
+    'paragraph': 'p',
+    'heading': {source: 'reactdown/lib/components', name: 'heading'},
+  },
   directives: {},
 };
 
 function applyDefaultConfig<T>(config: T, defaultConfig: T): T {
   if (config !== defaultConfig) {
-    config = {...defaultConfig, ...config};
+    config = {
+      ...defaultConfig,
+      ...config,
+      directives: {
+        ...defaultConfig.directives,
+        ...config.directives,
+      },
+      elements: {
+        ...defaultConfig.elements,
+        ...config.elements,
+      },
+    };
   }
   return config;
 }
@@ -56,7 +66,11 @@ function applyDefaultConfig<T>(config: T, defaultConfig: T): T {
 function keyMirrorToJSAST(build, obj): {[name: string]: JSAST} {
   let result = {};
   for (let key in obj) {
-    result[key] = build.identifier(key);
+    if (typeof obj[key] === 'string') {
+      result[key] = build.stringLiteral(obj[key]);
+    } else {
+      result[key] = build.identifier(key);
+    }
   }
   return result;
 }
@@ -87,6 +101,9 @@ export function renderToProgram(
       spec !== undefined,
       'Cannot resolve identifier to spec'
     );
+    if (typeof spec === 'string') {
+      return;
+    }
     statements.unshift(
       buildImport(build, spec.source, identifier.name, spec.name)
     );
