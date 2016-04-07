@@ -3,6 +3,7 @@
 import fs from 'fs';
 import program from 'commander';
 import {renderToString} from '../';
+import {parseNamed} from '../ComponentRef';
 import pkg from '../../package.json';
 
 function error(message) {
@@ -10,20 +11,28 @@ function error(message) {
   process.exit(1);
 }
 
-function collectSpec(value, config) {
-  let [name, source] = value.split('=');
-  if (source === undefined) {
-    error('directive should be in form of: <directive name>=<module>');
+function collectComponentRef(value, config) {
+  let ref = parseNamed(value);
+  if (ref === null) {
+    error('directive should be in form of: <id>=<source>(:<name>)?');
   }
-  config[name] = {source};
+  config[ref.id] = ref.ref;
   return config;
 }
 
 program
   .version(pkg.version)
   .arguments('<file>')
-  .option('-d, --directive [directive]', 'Register directive', collectSpec, {})
-  .option('-e, --element [element]', 'Register element', collectSpec, {})
+  .option(
+    '-d, --directive [component-ref]',
+    'Register component for a directive',
+    collectComponentRef, {}
+  )
+  .option(
+    '-e, --element [component-ref]',
+    'Register component for an element',
+    collectComponentRef, {}
+  )
   .parse(process.argv);
 
 let filename = program.args[0];
