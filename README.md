@@ -3,6 +3,14 @@ Reactdown
 
 Markdown based live document format.
 
+Motivation
+----------
+
+* Easy to write.
+* Produce live documents.
+* Extend with new constructs.
+* Integrate with the whole JS ecosystem.
+
 Primer
 ------
 
