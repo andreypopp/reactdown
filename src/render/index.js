@@ -48,7 +48,7 @@ const defaultRenderConfig: CompleteRenderConfig = {
   directives: {},
 };
 
-function applyDefaultConfig<T>(config: T, defaultConfig: T): T {
+function applyDefaultConfig<T: {directives: Object, elements: Object}>(config: T, defaultConfig: T): T {
   if (config !== defaultConfig) {
     config = {
       ...defaultConfig,

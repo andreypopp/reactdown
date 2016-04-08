@@ -1,5 +1,6 @@
 [ignore]
 .*/node_modules/esformatter/.*
+.*/node_modules/fbjs/.*.flow
 
 [include]
 

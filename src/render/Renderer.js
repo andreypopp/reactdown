@@ -55,8 +55,8 @@ type ComponentSymbolRegistry = {
 
 type CompleteRendererConfig = {
   build: JSASTFactory;
-  elements: ?ComponentSymbolRegistry;
-  directives: ?ComponentSymbolRegistry;
+  elements: ComponentSymbolRegistry;
+  directives: ComponentSymbolRegistry;
 };
 
 export type RendererConfig = $Shape<CompleteRendererConfig>;
