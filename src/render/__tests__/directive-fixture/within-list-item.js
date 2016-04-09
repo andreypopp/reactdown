@@ -4,7 +4,9 @@ import { list } from "reactdown/lib/elements";
 import { Block } from "lib";
 export default function Document() {
   return React.createElement(DocumentContext, {
-    "metadata": metadata
+    "context": {
+      "metadata": metadata
+    }
   }, React.createElement("div", null, React.createElement("p", null, "List:"), React.createElement(list, {
     "start": null,
     "ordered": false

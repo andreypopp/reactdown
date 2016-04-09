@@ -1,6 +1,15 @@
+---
+title: Hello, world
+published: 2016-12-12
+---
+
 # Hello
 
 Reactdown is cool! This **is** cool! Isn't *it*?
+
+Meta:
+
+::meta
 
 Ok [some](http://google.com) link.
 

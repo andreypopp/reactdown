@@ -18,6 +18,8 @@ export default function buildJSON(build: JSASTFactory, value: JSON): JSAST {
     return build.numericLiteral(value);
   } else if (typeof value === 'boolean') {
     return build.booleanLiteral(value);
+  } else if (value instanceof Date) {
+    return build.stringLiteral(value.toISOString());
   } else if (Array.isArray(value)) {
     return build.arrayExpression(value.map(item =>
       buildJSON(build, item)));

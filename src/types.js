@@ -11,6 +11,7 @@ export type JSON
   | string
   | number
   | boolean
+  | Date
   | Array<JSON>
   | {[key: string]: JSON};
 

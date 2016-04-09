@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = {
   entry: './index.js',
   output: {
@@ -6,7 +8,10 @@ module.exports = {
   },
   devtool: 'cheap-eval-source-map',
   resolve: {
-    fallback: './node_modules'
+    fallback: path.join(__dirname, 'node_modules'),
+  },
+  resolveLoader: {
+    fallback: path.join(__dirname, 'node_modules'),
   },
   module: {
     loaders: [

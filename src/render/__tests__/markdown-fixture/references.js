@@ -3,7 +3,9 @@ import DocumentContext from "reactdown/lib/DocumentContext";
 import { heading } from "reactdown/lib/elements";
 export default function Document() {
   return React.createElement(DocumentContext, {
-    "metadata": metadata
+    "context": {
+      "metadata": metadata
+    }
   }, React.createElement("div", null, React.createElement(heading, {
     "level": 1
   }, "References"), React.createElement("p", null, "Entities contains some serious entity tests relating to titles and links\nin definitions."), React.createElement("p", null, "However, the ", React.createElement("a", {

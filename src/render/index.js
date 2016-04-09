@@ -75,7 +75,7 @@ const defaultRenderConfig: CompleteRenderConfig = {
     'heading': element('heading'),
   },
   directives: {
-    'reactdown/meta': directive('meta'),
+    'meta': directive('meta'),
   },
 };
 
@@ -129,7 +129,7 @@ export function renderToProgram(
   expression = buildReactElement(
     build,
     build.identifier('DocumentContext'),
-    {metadata: build.identifier('metadata')},
+    {context: {metadata: build.identifier('metadata')}},
     expression
   );
 
