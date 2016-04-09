@@ -198,8 +198,11 @@ export default class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  unknown(node: MDASTAnyNode): JSAST {
-    let content = this.renderText(JSON.stringify(node));
+  unknown(node: MDASTAnyNode | string): JSAST {
+    if (typeof node !== 'string') {
+      node = JSON.stringify(node, null, 2);
+    }
+    let content = this.renderText(node);
     return this.renderElement('unknown', null, content);
   }
 
@@ -856,12 +859,7 @@ export default class Renderer {
   directive(node: MDASTCustomBlockNode): JSAST {
     let component = this.directives[node.name];
     if (component === undefined) {
-      return this.unknown({
-        type: 'code',
-        value: JSON.stringify(node),
-        position: null,
-        data: null,
-      });
+      return this.unknown(node);
     } else if (component === null) {
       return  this.renderNothing();
     } else {

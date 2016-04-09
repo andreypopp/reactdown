@@ -36,10 +36,15 @@ const defaultRendererConfig: RendererConfig = {
   directives: {},
 };
 
+function component(name: string): ComponentRef {
+  return {source: 'reactdown/lib/components', name};
+}
+
 const defaultRenderConfig: CompleteRenderConfig = {
   build: build,
   elements: {
     'root': 'div',
+    'unknown': component('unknown'),
     'paragraph': 'p',
     'strikethrough': 'del',
     'image': 'img',
@@ -48,7 +53,7 @@ const defaultRenderConfig: CompleteRenderConfig = {
     'strong': 'strong',
     'inline-code': 'code',
     'rule': 'hr',
-    'html': {source: 'reactdown/lib/components', name: 'html'},
+    'html': component('html'),
     'table': 'table',
     'table-body': 'tbody',
     'table-head': 'thead',
@@ -56,11 +61,11 @@ const defaultRenderConfig: CompleteRenderConfig = {
     'table-header-cell': 'th',
     'table-cell': 'td',
     'blockquote': 'blockquote',
-    'code': {source: 'reactdown/lib/components', name: 'code'},
+    'code': component('code'),
     'link': 'a',
     'list-item': 'li',
-    'list': {source: 'reactdown/lib/components', name: 'list'},
-    'heading': {source: 'reactdown/lib/components', name: 'heading'},
+    'list': component('list'),
+    'heading': component('heading'),
   },
   directives: {},
 };
