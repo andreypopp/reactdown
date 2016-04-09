@@ -1,6 +1,6 @@
 import React from "react";
 import DocumentContext from "reactdown/lib/DocumentContext";
-import { list } from "reactdown/elements";
+import { list } from "reactdown/lib/elements";
 import { Block } from "lib";
 export default function Document() {
   return React.createElement(DocumentContext, {

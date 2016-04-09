@@ -1,6 +1,6 @@
 import React from "react";
 import DocumentContext from "reactdown/lib/DocumentContext";
-import { html } from "reactdown/elements";
+import { html } from "reactdown/lib/elements";
 export default function Document() {
   return React.createElement(DocumentContext, {
     "metadata": metadata

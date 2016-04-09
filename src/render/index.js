@@ -40,7 +40,7 @@ const defaultRendererConfig: RendererConfig = {
 };
 
 function element(name: string): ComponentRef {
-  return {source: 'reactdown/elements', name};
+  return {source: 'reactdown/lib/elements', name};
 }
 
 function directive(name: string): ComponentRef {
