@@ -14,3 +14,15 @@ export function list({ordered, ...props} : {ordered: boolean}) {
   let Component = ordered ? 'ol' : 'ul';
   return <Component {...props} />;
 }
+
+export function html({html} : {html: string}) {
+  return <div dangerouslySetInnerHTML={{__html: html}} />;
+}
+
+export function code({children} : {children: any}) {
+  return (
+    <pre>
+      <code>{children}</code>
+    </pre>
+  );
+}
