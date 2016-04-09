@@ -451,7 +451,7 @@ export default class Renderer {
       'children' in node.children[0]
     );
     return this.renderElement(
-      'list-item',
+      'listItem',
       null,
       // $FlowIssue
       ...this.all(single ? node.children[0] : node)
@@ -549,7 +549,7 @@ export default class Renderer {
       let pos = alignLength;
       let row = rows[index].children;
       let out = [];
-      let name = index === 0 ? 'table-header-cell' : 'table-cell';
+      let name = index === 0 ? 'tableHeaderCell' : 'tableCell';
 
       while (pos--) {
         let cell = row[pos];
@@ -560,12 +560,12 @@ export default class Renderer {
         );
       }
 
-      result[index] = this.renderElement('table-row', null, ...out);
+      result[index] = this.renderElement('tableRow', null, ...out);
     }
 
     return this.renderElement('table', null,
-      this.renderElement('table-head', null, result[0]),
-      this.renderElement('table-body', null, ...result.slice(1))
+      this.renderElement('tableHead', null, result[0]),
+      this.renderElement('tableBody', null, ...result.slice(1))
     );
   }
 
@@ -616,7 +616,7 @@ export default class Renderer {
     value = this.encode(value);
     value = collapse(value);
     value = this.renderText(value);
-    return this.renderElement('inline-code', null, value);
+    return this.renderElement('inlineCode', null, value);
   }
 
   /**
