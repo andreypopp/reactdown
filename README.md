@@ -1,5 +1,7 @@
 # Reactdown
 
+[![Travis build status](https://img.shields.io/travis/andreypopp/reactdown/master.svg)](https://travis-ci.org/andreypopp/reactdown)
+
 Markdown based live document format.
 
 ## Motivation
