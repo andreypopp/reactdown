@@ -1,49 +1,53 @@
-React.createElement("root", null, React.createElement("table", null, React.createElement("table-head", null, React.createElement("table-row", null, React.createElement("table-header-cell", {
-  "align": null
-}, "Alpha"), React.createElement("table-header-cell", {
-  "align": "left"
-}, "Bravo"), React.createElement("table-header-cell", {
-  "align": "right"
-}, "Charlie"), React.createElement("table-header-cell", {
-  "align": "center"
-}, "Delta"))), React.createElement("table-body", null, React.createElement("table-row", null, React.createElement("table-cell", {
-  "align": null
-}, "Echo"), React.createElement("table-cell", {
-  "align": "left"
-}, "Foxtrot"), React.createElement("table-cell", {
-  "align": "right"
-}, React.createElement("strong", null, "Golf")), React.createElement("table-cell", {
-  "align": "center"
-})), React.createElement("table-row", null, React.createElement("table-cell", {
-  "align": null
-}, "India"), React.createElement("table-cell", {
-  "align": "left"
-}, "Juliett"), React.createElement("table-cell", {
-  "align": "right"
-}, "Kilo"), React.createElement("table-cell", {
-  "align": "center"
-}, "Lima")), React.createElement("table-row", null, React.createElement("table-cell", {
-  "align": null
-}, "Mike"), React.createElement("table-cell", {
-  "align": "left"
-}, "November"), React.createElement("table-cell", {
-  "align": "right"
-}, "Oscar"), React.createElement("table-cell", {
-  "align": "center"
-}, React.createElement("strikethrough", null, "Papa"))), React.createElement("table-row", null, React.createElement("table-cell", {
-  "align": null
-}, "Quebec"), React.createElement("table-cell", {
-  "align": "left"
-}, React.createElement("emphasis", null, "Romeo")), React.createElement("table-cell", {
-  "align": "right"
-}, "Sierra"), React.createElement("table-cell", {
-  "align": "center"
-}, "Tango")), React.createElement("table-row", null, React.createElement("table-cell", {
-  "align": null
-}, "Uniform"), React.createElement("table-cell", {
-  "align": "left"
-}, "Victor"), React.createElement("table-cell", {
-  "align": "right"
-}, "Whiskey"), React.createElement("table-cell", {
-  "align": "center"
-})))))
+import React from "react";
+export default function Document() {
+  return React.createElement("div", null, React.createElement("table", null, React.createElement("thead", null, React.createElement("tr", null, React.createElement("th", {
+    "align": null
+  }, "Alpha"), React.createElement("th", {
+    "align": "left"
+  }, "Bravo"), React.createElement("th", {
+    "align": "right"
+  }, "Charlie"), React.createElement("th", {
+    "align": "center"
+  }, "Delta"))), React.createElement("tbody", null, React.createElement("tr", null, React.createElement("td", {
+    "align": null
+  }, "Echo"), React.createElement("td", {
+    "align": "left"
+  }, "Foxtrot"), React.createElement("td", {
+    "align": "right"
+  }, React.createElement("strong", null, "Golf")), React.createElement("td", {
+    "align": "center"
+  })), React.createElement("tr", null, React.createElement("td", {
+    "align": null
+  }, "India"), React.createElement("td", {
+    "align": "left"
+  }, "Juliett"), React.createElement("td", {
+    "align": "right"
+  }, "Kilo"), React.createElement("td", {
+    "align": "center"
+  }, "Lima")), React.createElement("tr", null, React.createElement("td", {
+    "align": null
+  }, "Mike"), React.createElement("td", {
+    "align": "left"
+  }, "November"), React.createElement("td", {
+    "align": "right"
+  }, "Oscar"), React.createElement("td", {
+    "align": "center"
+  }, React.createElement("del", null, "Papa"))), React.createElement("tr", null, React.createElement("td", {
+    "align": null
+  }, "Quebec"), React.createElement("td", {
+    "align": "left"
+  }, React.createElement("em", null, "Romeo")), React.createElement("td", {
+    "align": "right"
+  }, "Sierra"), React.createElement("td", {
+    "align": "center"
+  }, "Tango")), React.createElement("tr", null, React.createElement("td", {
+    "align": null
+  }, "Uniform"), React.createElement("td", {
+    "align": "left"
+  }, "Victor"), React.createElement("td", {
+    "align": "right"
+  }, "Whiskey"), React.createElement("td", {
+    "align": "center"
+  })))));
+}
+export let metadata = null;

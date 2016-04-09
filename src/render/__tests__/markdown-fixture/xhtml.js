@@ -1,5 +1,9 @@
-React.createElement("root", null, React.createElement("paragraph", null, "Hello", React.createElement("break", null), "world"), React.createElement("break", null), React.createElement("paragraph", null, React.createElement("image", {
-  "src": "http://exaple.com/fav.ico",
-  "alt": "Favicon",
-  "title": "Example Favicon"
-})))
+import React from "react";
+export default function Document() {
+  return React.createElement("div", null, React.createElement("p", null, "Hello", React.createElement("br", null), "world"), React.createElement("br", null), React.createElement("p", null, React.createElement("img", {
+    "src": "http://exaple.com/fav.ico",
+    "alt": "Favicon",
+    "title": "Example Favicon"
+  })));
+}
+export let metadata = null;
