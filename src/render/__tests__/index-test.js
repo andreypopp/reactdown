@@ -7,7 +7,6 @@ import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
 import generate from 'babel-generator';
-import * as build from 'babel-types';
 import {renderToProgram as render} from '../index';
 
 declare function describe(description: string, body: any): void;
