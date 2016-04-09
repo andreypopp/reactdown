@@ -14,4 +14,4 @@ module.exports = function reactdown(source: string): string {
     elements: query.elements || {},
   };
   return renderToString(source, config).code;
-}
+};
