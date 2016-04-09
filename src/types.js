@@ -5,6 +5,15 @@
 
 import * as build from 'babel-types';
 
+export type JSON
+  = null
+  | void
+  | string
+  | number
+  | boolean
+  | Array<JSON>
+  | {[key: string]: JSON};
+
 export type JSASTFactory = typeof build;
 
 export type MDASTPosition = {

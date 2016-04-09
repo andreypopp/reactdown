@@ -3,18 +3,12 @@
  * @flow
  */
 
-import type {JSAST, JSASTFactory} from '../types';
-
-type JSON
-  = null
-  | string
-  | number
-  | boolean
-  | Array<JSON>
-  | {[key: string]: JSON};
+import type {JSON, JSAST, JSASTFactory} from '../types';
 
 export default function buildJSON(build: JSASTFactory, value: JSON): JSAST {
-  if (value === undefined) {
+  if (build.isNode(value)) {
+    return value;
+  } else if (value === undefined) {
     return build.identifier('undefined');
   } else if (value === null) {
     return build.nullLiteral();

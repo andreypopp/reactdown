@@ -10,7 +10,7 @@ import trimLines from 'trim-lines';
 import * as build from 'babel-types';
 import visit from 'unist-util-visit';
 import jsYAML from 'js-yaml';
-import buildJSON from './buildJSON';
+import buildReactElement from './buildReactElement';
 
 import type {
   MDASTAnyNode,
@@ -104,17 +104,7 @@ export default class Renderer {
         this.identifiersUsed.push(component);
       }
     }
-    let createElement = this.build.memberExpression(
-      this.build.identifier('React'),
-      this.build.identifier('createElement'));
-    return this.build.callExpression(
-      createElement,
-      [component, this.renderElementProps(props), ...children]
-    );
-  }
-
-  renderElementProps(props: any = null): JSAST {
-    return buildJSON(this.build, props);
+    return buildReactElement(this.build, component, props, ...children);
   }
 
   renderText(value: ?string): JSAST {

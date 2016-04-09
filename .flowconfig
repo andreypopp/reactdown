@@ -7,4 +7,5 @@
 [libs]
 
 [options]
+esproposal.class_static_fields=enable
 suppress_comment=\\(.\\|\n\\)*\\$FlowIssue

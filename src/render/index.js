@@ -13,10 +13,12 @@ import invariant from 'invariant';
 import Renderer from './Renderer';
 import buildImport from './buildImport';
 import buildJSON from './buildJSON';
+import buildReactElement from './buildReactElement';
 
 type RenderPartsResult = {
   expression: JSAST;
   identifiersUsed: Array<JSAST>;
+  metadata: ?JSON;
 };
 
 type DirectiveConfig = {
@@ -39,6 +41,10 @@ const defaultRendererConfig: RendererConfig = {
 
 function element(name: string): ComponentRef {
   return {source: 'reactdown/elements', name};
+}
+
+function directive(name: string): ComponentRef {
+  return {source: `reactdown/lib/directives/${name}`, name: 'default'};
 }
 
 const defaultRenderConfig: CompleteRenderConfig = {
@@ -68,7 +74,9 @@ const defaultRenderConfig: CompleteRenderConfig = {
     'list': element('list'),
     'heading': element('heading'),
   },
-  directives: {},
+  directives: {
+    'reactdown/meta': directive('meta'),
+  },
 };
 
 function applyDefaultConfig<T: {directives: Object, elements: Object}>(config: T, defaultConfig: T): T {
@@ -118,6 +126,13 @@ export function renderToProgram(
     metadata
   } = renderToParts(node, rendererConfig);
 
+  expression = buildReactElement(
+    build,
+    build.identifier('DocumentContext'),
+    {metadata: build.identifier('metadata')},
+    expression
+  );
+
   let statements = [
     build.exportDefaultDeclaration(
       build.functionDeclaration(
@@ -151,6 +166,10 @@ export function renderToProgram(
       buildImport(build, spec.source, identifier.name, spec.name)
     );
   });
+
+  statements.unshift(
+    buildImport(build, 'reactdown/lib/DocumentContext', 'DocumentContext')
+  );
 
   statements.unshift(
     buildImport(build, 'react', 'React')
