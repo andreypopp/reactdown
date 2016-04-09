@@ -30,19 +30,19 @@ describe('reactdown', function() {
           expectation: {source: 'module', name: 'default'}
         },
         {
-          input: 'module:',
+          input: 'module?',
           expectation: null
         },
         {
-          input: 'module:name',
+          input: 'module?name',
           expectation: {source: 'module', name: 'name'}
         },
         {
-          input: './module/lib:name',
+          input: './module/lib?name',
           expectation: {source: './module/lib', name: 'name'}
         },
         {
-          input: ':name',
+          input: '?name',
           expectation: null
         },
       ]);
@@ -57,11 +57,11 @@ describe('reactdown', function() {
           expectation: null
         },
         {
-          input: 'module:',
+          input: 'module.',
           expectation: null
         },
         {
-          input: 'module:name',
+          input: 'module?name',
           expectation: null
         },
         {
@@ -69,15 +69,15 @@ describe('reactdown', function() {
           expectation: {id: 'id', ref: {source: 'module', name: 'default'}}
         },
         {
-          input: 'id=module:name',
+          input: 'id=module?name',
           expectation: {id: 'id', ref: {source: 'module', name: 'name'}}
         },
         {
-          input: 'id=:name',
+          input: 'id=?name',
           expectation: null
         },
         {
-          input: 'id=module:',
+          input: 'id=module?',
           expectation: null
         },
       ]);
