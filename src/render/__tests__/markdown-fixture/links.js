@@ -1,6 +1,9 @@
 import React from "react";
+import DocumentContext from "reactdown/lib/DocumentContext";
 export default function Document() {
-  return React.createElement("div", null, React.createElement("p", null, React.createElement("a", {
+  return React.createElement(DocumentContext, {
+    "metadata": metadata
+  }, React.createElement("div", null, React.createElement("p", null, React.createElement("a", {
     "href": "http://example.com",
     "title": "Example Link"
   }, "Example")), React.createElement("p", null, React.createElement("a", {
@@ -18,6 +21,6 @@ export default function Document() {
   })), React.createElement("p", null, React.createElement("a", {
     "href": "",
     "title": null
-  })));
+  }))));
 }
 export let metadata = null;

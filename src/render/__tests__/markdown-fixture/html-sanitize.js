@@ -1,7 +1,10 @@
 import React from "react";
+import DocumentContext from "reactdown/lib/DocumentContext";
 import { html } from "reactdown/elements";
 export default function Document() {
-  return React.createElement("div", null, React.createElement(html, {
+  return React.createElement(DocumentContext, {
+    "metadata": metadata
+  }, React.createElement("div", null, React.createElement(html, {
     "html": "<h1>Alpha</h1>"
   }), React.createElement("p", null, React.createElement(html, {
     "html": "<strong>"
@@ -19,6 +22,6 @@ export default function Document() {
     "html": "<sub>"
   }), "qux", React.createElement(html, {
     "html": "</sub>"
-  }), "."));
+  }), ".")));
 }
 export let metadata = null;

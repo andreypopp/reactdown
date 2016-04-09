@@ -1,6 +1,9 @@
 import React from "react";
+import DocumentContext from "reactdown/lib/DocumentContext";
 export default function Document() {
-  return React.createElement("div", null, React.createElement("table", null, React.createElement("thead", null, React.createElement("tr", null, React.createElement("th", {
+  return React.createElement(DocumentContext, {
+    "metadata": metadata
+  }, React.createElement("div", null, React.createElement("table", null, React.createElement("thead", null, React.createElement("tr", null, React.createElement("th", {
     "align": null
   }, "Alpha"), React.createElement("th", {
     "align": "left"
@@ -48,6 +51,6 @@ export default function Document() {
     "align": "right"
   }, "Whiskey"), React.createElement("td", {
     "align": "center"
-  })))));
+  }))))));
 }
 export let metadata = null;

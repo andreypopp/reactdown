@@ -1,8 +1,11 @@
 import React from "react";
+import DocumentContext from "reactdown/lib/DocumentContext";
 import { code } from "reactdown/elements";
 import { heading } from "reactdown/elements";
 export default function Document() {
-  return React.createElement("div", null, React.createElement(heading, {
+  return React.createElement(DocumentContext, {
+    "metadata": metadata
+  }, React.createElement("div", null, React.createElement(heading, {
     "level": 1
   }, "Entities"), React.createElement("p", null, "Plain text:"), React.createElement("p", null, "AT", "&", "T with entity, AT", "&", "T with numeric entity, AT&T without entity."), React.createElement("p", null, "Fenced code language flags:"), React.createElement(code, null, "Something in the AT&amp;T language\n"), React.createElement(code, null, "Something in the AT&#x26;T language\n"), React.createElement(code, null, "Something in the AT&T language\n"), React.createElement("p", null, "Automatic links:"), React.createElement("p", null, React.createElement("a", {
     "href": "http://at&t.com",
@@ -121,6 +124,6 @@ export default function Document() {
     "src": "http://at&t.com/fav.ico",
     "alt": "AT&T without entity",
     "title": "AT&T favicon"
-  }), "."), React.createElement("p", null, "Definitions:"), null, null, null, null, null, null, null);
+  }), "."), React.createElement("p", null, "Definitions:"), null, null, null, null, null, null, null));
 }
 export let metadata = null;

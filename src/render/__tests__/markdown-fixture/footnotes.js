@@ -1,8 +1,11 @@
 import React from "react";
+import DocumentContext from "reactdown/lib/DocumentContext";
 import { list } from "reactdown/elements";
 import { heading } from "reactdown/elements";
 export default function Document() {
-  return React.createElement("div", null, React.createElement(heading, {
+  return React.createElement(DocumentContext, {
+    "metadata": metadata
+  }, React.createElement("div", null, React.createElement(heading, {
     "level": 1
   }, "Footnotes"), React.createElement("p", null, "Alpha bravo", React.createElement("a", {
     "href": "",
@@ -22,6 +25,6 @@ export default function Document() {
   }, React.createElement("li", null, "and lists")), React.createElement("p", null, React.createElement("a", {
     "href": "",
     "title": undefined
-  }, "^2"), ": Normal footnote."));
+  }, "^2"), ": Normal footnote.")));
 }
 export let metadata = null;
