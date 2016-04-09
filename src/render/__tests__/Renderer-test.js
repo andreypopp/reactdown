@@ -17,7 +17,7 @@ describe('reactdown/render', function() {
     it('keeps track of used identifiers', function() {
       let renderer = new Renderer({
         elements: {
-          paragraph: build.identifier('Paragraph')
+          Paragraph: build.identifier('Paragraph')
         }
       });
       renderer.render({
@@ -38,7 +38,7 @@ describe('reactdown/render', function() {
     it('do not duplicatyes usages', function() {
       let renderer = new Renderer({
         elements: {
-          paragraph: build.identifier('Paragraph')
+          Paragraph: build.identifier('Paragraph')
         }
       });
       renderer.render({

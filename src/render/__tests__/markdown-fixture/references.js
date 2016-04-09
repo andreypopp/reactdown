@@ -1,14 +1,11 @@
 import React from "react";
 import DocumentContext from "reactdown/lib/DocumentContext";
-import { heading } from "reactdown/lib/elements";
 export default function Document() {
   return React.createElement(DocumentContext, {
     "context": {
       "metadata": metadata
     }
-  }, React.createElement("div", null, React.createElement(heading, {
-    "level": 1
-  }, "References"), React.createElement("p", null, "Entities contains some serious entity tests relating to titles and links\nin definitions."), React.createElement("p", null, "However, the ", React.createElement("a", {
+  }, React.createElement("div", null, React.createElement("h1", "References"), React.createElement("p", null, "Entities contains some serious entity tests relating to titles and links\nin definitions."), React.createElement("p", null, "However, the ", React.createElement("a", {
     "href": "",
     "title": undefined
   }, "missing"), ", ", React.createElement("a", {

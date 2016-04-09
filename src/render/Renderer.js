@@ -164,11 +164,11 @@ export default class Renderer {
       }, null);
     }
 
-    return this.renderElement('footnotes', null, ...results);
+    return this.renderElement('Footnotes', null, ...results);
   }
 
   break(_node: MDASTBreakNode): JSAST {
-    return this.renderElement('break');
+    return this.renderElement('Break');
   }
 
   /**
@@ -196,7 +196,7 @@ export default class Renderer {
       node = JSON.stringify(node, null, 2);
     }
     let content = this.renderText(node);
-    return this.renderElement('unknown', null, content);
+    return this.renderElement('Unknown', null, content);
   }
 
   /**
@@ -303,7 +303,7 @@ export default class Renderer {
       this.footnotes.push(definition);
     });
 
-    return this.renderElement('root', null, ...this.all(node));
+    return this.renderElement('Root', null, ...this.all(node));
   }
 
   /**
@@ -329,7 +329,7 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   blockquote(node: MDASTBlockquoteNode): JSAST {
-    return this.renderElement('blockquote', null, ...this.all(node));
+    return this.renderElement('Blockquote', null, ...this.all(node));
   }
 
   /**
@@ -412,9 +412,10 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   list(node: MDASTListNode): JSAST {
+    let component = node.ordered ? 'OrderedList' : 'UnorderedList';
     return this.renderElement(
-      'list',
-      {start: node.start !== 1 ? node.start : null, ordered: node.ordered},
+      component,
+      null,
       ...this.all(node)
     );
   }
@@ -451,7 +452,7 @@ export default class Renderer {
       'children' in node.children[0]
     );
     return this.renderElement(
-      'listItem',
+      'ListItem',
       null,
       // $FlowIssue
       ...this.all(single ? node.children[0] : node)
@@ -477,7 +478,8 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   heading(node: MDASTHeadingNode): JSAST {
-    return this.renderElement('heading', {level: node.depth}, ...this.all(node));
+    let component = 'Heading' + Math.min(node.depth, 6);
+    return this.renderElement(component, ...this.all(node));
   }
 
   /**
@@ -499,7 +501,7 @@ export default class Renderer {
    */
   paragraph(node: MDASTParagraphNode): JSAST {
     let children = this.all(node);
-    return this.renderElement('paragraph', null, ...children);
+    return this.renderElement('Paragraph', null, ...children);
   }
 
   /**
@@ -518,7 +520,7 @@ export default class Renderer {
     let value = node.value ? detab(node.value + '\n') : '';
     value = this.encode(value);
     value = this.renderText(value);
-    return this.renderElement('code', null, value);
+    return this.renderElement('Code', null, value);
   }
 
   /**
@@ -549,7 +551,7 @@ export default class Renderer {
       let pos = alignLength;
       let row = rows[index].children;
       let out = [];
-      let name = index === 0 ? 'tableHeaderCell' : 'tableCell';
+      let name = index === 0 ? 'TableHeaderCell' : 'TableCell';
 
       while (pos--) {
         let cell = row[pos];
@@ -560,12 +562,12 @@ export default class Renderer {
         );
       }
 
-      result[index] = this.renderElement('tableRow', null, ...out);
+      result[index] = this.renderElement('TableRow', null, ...out);
     }
 
-    return this.renderElement('table', null,
-      this.renderElement('tableHead', null, result[0]),
-      this.renderElement('tableBody', null, ...result.slice(1))
+    return this.renderElement('Table', null,
+      this.renderElement('TableHead', null, result[0]),
+      this.renderElement('TableBody', null, ...result.slice(1))
     );
   }
 
@@ -582,7 +584,7 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   html(node: MDASTHTMLNode): JSAST {
-    return this.renderElement('html', {html: node.value});
+    return this.renderElement('HTML', {html: node.value});
   }
 
   /**
@@ -596,7 +598,7 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   rule(_node: MDASTRuleNode): JSAST {
-    return this.renderElement('rule');
+    return this.renderElement('Rule');
   }
 
   /**
@@ -616,7 +618,7 @@ export default class Renderer {
     value = this.encode(value);
     value = collapse(value);
     value = this.renderText(value);
-    return this.renderElement('inlineCode', null, value);
+    return this.renderElement('InlineCode', null, value);
   }
 
   /**
@@ -637,7 +639,7 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   strong(node: MDASTStrongNode): JSAST {
-    return this.renderElement('strong', null, ...this.all(node));
+    return this.renderElement('Strong', null, ...this.all(node));
   }
 
   /**
@@ -658,7 +660,7 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   emphasis(node: MDASTEmphasisNode): JSAST {
-    return this.renderElement('emphasis', null, ...this.all(node));
+    return this.renderElement('Emphasis', null, ...this.all(node));
   }
 
   /**
@@ -672,11 +674,11 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   hardBreak(_node: MDASTHardBreakNode): JSAST {
-    return this.renderElement('break');
+    return this.renderElement('Break');
   }
 
   thematicBreak(_node: MDASTThematicBreakNode): JSAST {
-    return this.renderElement('break');
+    return this.renderElement('Break');
   }
 
   /**
@@ -698,7 +700,7 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   link(node: MDASTLinkNode): JSAST {
-    return this.renderElement('link', {
+    return this.renderElement('Link', {
       href: normalizeURI(node.url || ''),
       title: node.title
     }, ...this.all(node));
@@ -723,8 +725,8 @@ export default class Renderer {
   footnoteReference(node: MDASTFootnoteReferenceNode): JSAST {
     let identifier = node.identifier;
 
-    return this.renderElement('sup', {id: 'fnref-' + identifier},
-      this.renderElement('a', {
+    return this.renderElement('Sup', {id: 'fnref-' + identifier},
+      this.renderElement('Link', {
         href: '#fn-' + identifier,
         className: 'footnote-ref'
       }, this.renderText(identifier)));
@@ -746,7 +748,7 @@ export default class Renderer {
   linkReference(node: MDASTLinkReferenceNode): JSAST {
     let def = this.definitions[node.identifier.toUpperCase()] || {};
 
-    return this.renderElement('a', {
+    return this.renderElement('Link', {
       href: normalizeURI(def.url || ''),
       title: def.title
     }, ...this.all(node));
@@ -768,7 +770,7 @@ export default class Renderer {
   imageReference(node: MDASTImageReferenceNode): JSAST {
     let def = this.definitions[node.identifier.toUpperCase()] || {};
 
-    return this.renderElement('image', {
+    return this.renderElement('Image', {
       src: normalizeURI(def.url || ''),
       alt: node.alt || '',
       title: def.title
@@ -788,7 +790,7 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   image(node: MDASTImageNode): JSAST {
-    return this.renderElement('image', {
+    return this.renderElement('Image', {
       src: normalizeURI(node.url || ''),
       alt: node.alt || '',
       title: node.title
@@ -813,11 +815,11 @@ export default class Renderer {
    * @this {HTMLCompiler}
    */
   strikethrough(node: MDASTStrikethroughNode): JSAST {
-    return this.renderElement('strikethrough', null, ...this.all(node));
+    return this.renderElement('Strikethrough', null, ...this.all(node));
   }
 
   delete(node: MDASTDeleteNode): JSAST {
-    return this.renderElement('strikethrough', null, ...this.all(node));
+    return this.renderElement('Strikethrough', null, ...this.all(node));
   }
 
   /**

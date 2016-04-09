@@ -1,28 +1,28 @@
 import React from "react";
 import DocumentContext from "reactdown/lib/DocumentContext";
-import { html } from "reactdown/lib/elements";
+import { HTML } from "reactdown/lib/elements";
 export default function Document() {
   return React.createElement(DocumentContext, {
     "context": {
       "metadata": metadata
     }
-  }, React.createElement("div", null, React.createElement(html, {
+  }, React.createElement("div", null, React.createElement(HTML, {
     "html": "<h1>Alpha</h1>"
-  }), React.createElement("p", null, React.createElement(html, {
+  }), React.createElement("p", null, React.createElement(HTML, {
     "html": "<strong>"
-  }), "Foo", React.createElement(html, {
+  }), "Foo", React.createElement(HTML, {
     "html": "</strong>"
-  }), " ", React.createElement(html, {
+  }), " ", React.createElement(HTML, {
     "html": "<em>"
-  }), "bar", React.createElement(html, {
+  }), "bar", React.createElement(HTML, {
     "html": "</em>"
-  }), " ", React.createElement(html, {
+  }), " ", React.createElement(HTML, {
     "html": "<sup>"
-  }), "baz", React.createElement(html, {
+  }), "baz", React.createElement(HTML, {
     "html": "</sup>"
-  }), " ", React.createElement(html, {
+  }), " ", React.createElement(HTML, {
     "html": "<sub>"
-  }), "qux", React.createElement(html, {
+  }), "qux", React.createElement(HTML, {
     "html": "</sub>"
   }), ".")));
 }
