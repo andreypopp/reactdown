@@ -1,5 +1,5 @@
 import React from "react";
-import { html } from "reactdown/lib/components";
+import { html } from "reactdown/elements";
 export default function Document() {
   return React.createElement("div", null, React.createElement(html, {
     "html": "<h1>Alpha</h1>"

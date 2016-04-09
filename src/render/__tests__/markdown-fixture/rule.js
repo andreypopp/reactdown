@@ -1,5 +1,5 @@
 import React from "react";
-import { heading } from "reactdown/lib/components";
+import { heading } from "reactdown/elements";
 export default function Document() {
   return React.createElement("div", null, React.createElement(heading, {
     "level": 1

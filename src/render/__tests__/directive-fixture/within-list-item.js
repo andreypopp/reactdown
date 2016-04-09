@@ -1,5 +1,5 @@
 import React from "react";
-import { list } from "reactdown/lib/components";
+import { list } from "reactdown/elements";
 import { Block } from "lib";
 export default function Document() {
   return React.createElement("div", null, React.createElement("p", null, "List:"), React.createElement(list, {

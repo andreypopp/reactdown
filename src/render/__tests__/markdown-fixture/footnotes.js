@@ -1,6 +1,6 @@
 import React from "react";
-import { list } from "reactdown/lib/components";
-import { heading } from "reactdown/lib/components";
+import { list } from "reactdown/elements";
+import { heading } from "reactdown/elements";
 export default function Document() {
   return React.createElement("div", null, React.createElement(heading, {
     "level": 1
