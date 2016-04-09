@@ -16,6 +16,12 @@ Ordered:
 2. b
 3. c
 
+Code:
+
+    Some code wooo
+
+Inline `code` works too!
+
 > Blockquote...
 
 ::CustomBlock

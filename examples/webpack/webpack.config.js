@@ -5,6 +5,9 @@ module.exports = {
     filename: 'bundle.js',
   },
   devtool: 'cheap-eval-source-map',
+  resolve: {
+    fallback: './node_modules'
+  },
   module: {
     loaders: [
       {
