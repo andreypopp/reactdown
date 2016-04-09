@@ -1,18 +1,42 @@
-Reactdown
-=========
+# Reactdown
 
 Markdown based live document format.
 
-Motivation
-----------
+## Motivation
 
 * Easy to write.
 * Produce live documents.
 * Extend with new constructs.
 * Integrate with the whole JS ecosystem.
 
-Primer
-------
+## Installation & Usage
+
+First, install from npm:
+
+    % npm install reactdown
+
+### Command line interface
+
+There's command line utility which helps converting your reactdown documents to
+ES2015 modules:
+
+    % ./node_modules/.bin/reactdown-render --help
+
+## Webpack
+
+There's webpack loader, configure it like so:
+
+    module.exports = {
+      module: {
+        loaders: [
+          {
+            test: /\.md$/,
+            loader: 'babel!reactdown/webpack'
+        ]
+      }
+    }
+
+## Primer
 
 Example:
 
