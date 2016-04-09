@@ -9,6 +9,7 @@ import normalizeURI from 'normalize-uri';
 import trimLines from 'trim-lines';
 import * as build from 'babel-types';
 import visit from 'unist-util-visit';
+import jsYAML from 'js-yaml';
 import buildJSON from './buildJSON';
 
 import type {
@@ -71,6 +72,7 @@ export default class Renderer {
   footnotes: Array<any>;
   expression: ?JSAST;
   identifiersUsed: Array<JSAST>;
+  metadata: ?Object;
 
   constructor(config: RendererConfig) {
     this.build = config.build || build;
@@ -81,6 +83,7 @@ export default class Renderer {
     this.footnotes = [];
     this.expression = null;
     this.identifiersUsed = [];
+    this.metadata = null;
   }
 
   renderElement(
@@ -844,7 +847,8 @@ export default class Renderer {
     return this.renderText(value);
   }
 
-  yaml(_node: MDASTYAMLNode): JSAST {
+  yaml(node: MDASTYAMLNode): JSAST {
+    this.metadata = jsYAML.safeLoad(node.value);
     return this.renderNothing();
   }
 

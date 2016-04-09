@@ -12,6 +12,7 @@ import invariant from 'invariant';
 
 import Renderer from './Renderer';
 import buildImport from './buildImport';
+import buildJSON from './buildJSON';
 
 type RenderPartsResult = {
   expression: JSAST;
@@ -110,7 +111,13 @@ export function renderToProgram(
     elements: keyMirrorToJSAST(build, elements),
     directives: keyMirrorToJSAST(build, directives),
   };
-  let {expression, identifiersUsed} = renderToParts(node, rendererConfig);
+
+  let {
+    expression,
+    identifiersUsed,
+    metadata
+  } = renderToParts(node, rendererConfig);
+
   let statements = [
     build.exportDefaultDeclaration(
       build.functionDeclaration(
@@ -118,8 +125,19 @@ export function renderToProgram(
         [],
         build.blockStatement([build.returnStatement(expression)])
       )
+    ),
+    build.exportNamedDeclaration(
+      build.variableDeclaration(
+        'let',
+        [build.variableDeclarator(
+          build.identifier('metadata'),
+          buildJSON(build, metadata))]
+      ),
+      [],
+      null
     )
   ];
+
   identifiersUsed.forEach(identifier => {
     let spec = directives[identifier.name] || elements[identifier.name];
     invariant(
@@ -133,9 +151,11 @@ export function renderToProgram(
       buildImport(build, spec.source, identifier.name, spec.name)
     );
   });
+
   statements.unshift(
     buildImport(build, 'react', 'React')
   );
+
   return build.program(statements);
 }
 
@@ -152,5 +172,6 @@ export function renderToParts(
   return {
     expression: renderer.expression,
     identifiersUsed: renderer.identifiersUsed,
+    metadata: renderer.metadata,
   };
 }
