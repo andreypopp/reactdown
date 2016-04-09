@@ -40,6 +40,7 @@ let unknownStyle = {
   },
   report: {
     padding: 10,
+    margin: 0,
   }
 };
 
