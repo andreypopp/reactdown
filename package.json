@@ -4,7 +4,7 @@
   "description": "Markdown and React based live document format",
   "main": "lib/index.js",
   "scripts": {
-    "test": "make lint test"
+    "test": "make lint check test"
   },
   "babel": {
     "presets": [
