@@ -3,8 +3,8 @@ import DocumentContext from "reactdown/lib/DocumentContext";
 import { HTML } from "reactdown/lib/elements";
 export default function Document() {
   return React.createElement(DocumentContext, {
-    "context": {
-      "metadata": metadata
+    context: {
+      metadata
     }
   }, React.createElement("div", null, React.createElement("h1", "List"), React.createElement("ul", null, React.createElement("li", null, React.createElement("p", null, React.createElement("strong", null, "One"), ";")), React.createElement("li", null, React.createElement("p", null, React.createElement("em", null, "Two"), ";")), React.createElement("li", null, React.createElement("p", null, React.createElement("del", null, "Three"), ".")), React.createElement("li", null, React.createElement("p", null, "One;")), React.createElement("li", null, React.createElement("p", null, "Two;"))), React.createElement(HTML, {
     "html": "<!--  -->"

@@ -3,8 +3,8 @@ import DocumentContext from "reactdown/lib/DocumentContext";
 import { HTML } from "reactdown/lib/elements";
 export default function Document() {
   return React.createElement(DocumentContext, {
-    "context": {
-      "metadata": metadata
+    context: {
+      metadata
     }
   }, React.createElement("div", null, React.createElement(HTML, {
     "html": "<h1>Alpha</h1>"

@@ -3,8 +3,8 @@ import DocumentContext from "reactdown/lib/DocumentContext";
 import { Block } from "lib";
 export default function Document() {
   return React.createElement(DocumentContext, {
-    "context": {
-      "metadata": metadata
+    context: {
+      metadata
     }
   }, React.createElement("div", null, React.createElement("p", null, "Prologue"), React.createElement(Block, {
     "a": 1,

@@ -2,8 +2,8 @@ import React from "react";
 import DocumentContext from "reactdown/lib/DocumentContext";
 export default function Document() {
   return React.createElement(DocumentContext, {
-    "context": {
-      "metadata": metadata
+    context: {
+      metadata
     }
   }, React.createElement("div", null, React.createElement("h1", "Entities"), React.createElement("p", null, "Plain text:"), React.createElement("p", null, "AT", "&", "T with entity, AT", "&", "T with numeric entity, AT&T without entity."), React.createElement("p", null, "Fenced code language flags:"), React.createElement("code", null, "Something in the AT&amp;T language\n"), React.createElement("code", null, "Something in the AT&#x26;T language\n"), React.createElement("code", null, "Something in the AT&T language\n"), React.createElement("p", null, "Automatic links:"), React.createElement("p", null, React.createElement("a", {
     "href": "http://at&t.com",

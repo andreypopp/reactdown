@@ -2,8 +2,8 @@ import React from "react";
 import DocumentContext from "reactdown/lib/DocumentContext";
 export default function Document() {
   return React.createElement(DocumentContext, {
-    "context": {
-      "metadata": metadata
+    context: {
+      metadata
     }
   }, React.createElement("div", null, React.createElement("table", null, React.createElement("thead", null, React.createElement("tr", null, React.createElement("th", {
     "align": null

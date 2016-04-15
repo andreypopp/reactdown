@@ -2,8 +2,8 @@ import React from "react";
 import DocumentContext from "reactdown/lib/DocumentContext";
 export default function Document() {
   return React.createElement(DocumentContext, {
-    "context": {
-      "metadata": metadata
+    context: {
+      metadata
     }
   }, React.createElement("div", null, React.createElement("h1", "References"), React.createElement("p", null, "Entities contains some serious entity tests relating to titles and links\nin definitions."), React.createElement("p", null, "However, the ", React.createElement("a", {
     "href": "",
