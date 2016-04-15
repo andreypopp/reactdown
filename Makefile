@@ -75,6 +75,6 @@ src/render/__tests__/%.json: src/render/__tests__/%.md
 src/render/__tests__/%.js: src/render/__tests__/%.md
 	@echo "Rendering $<"
 	@$(BIN)/babel-node ./src/bin/reactdown-render \
-		--directive Block=lib?Bloc_k \
+		--directive Block=lib?Block \
 		--directive SubBlock=lib/SubBlock \
 		$< > $@

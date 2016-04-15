@@ -11,9 +11,7 @@ import * as build from 'babel-types';
 import invariant from 'invariant';
 
 import Renderer from './Renderer';
-import buildImport from './buildImport';
 import buildJSON from './buildJSON';
-import buildReactElement from './buildReactElement';
 
 type RenderPartsResult = {
   expression: JSAST;
@@ -132,32 +130,17 @@ export function renderToProgram(
     metadata
   } = renderToParts(node, rendererConfig);
 
-  expression = buildReactElement(
-    build,
-    build.identifier('DocumentContext'),
-    {context: {metadata: build.identifier('metadata')}},
-    expression
-  );
+  expression = expr`
+    React.createElement(DocumentContext, {context: {metadata}},
+      ${expression})
+  `;
 
-  let statements = [
-    build.exportDefaultDeclaration(
-      build.functionDeclaration(
-        build.identifier('Document'),
-        [],
-        build.blockStatement([build.returnStatement(expression)])
-      )
-    ),
-    build.exportNamedDeclaration(
-      build.variableDeclaration(
-        'let',
-        [build.variableDeclarator(
-          build.identifier('metadata'),
-          buildJSON(build, metadata))]
-      ),
-      [],
-      null
-    )
-  ];
+  let statements = stmt`
+    export default function Document() {
+      return ${expression};
+    }
+    export let metadata = ${buildJSON(build, metadata)};
+  `;
 
   identifiersUsed.forEach(identifier => {
     let spec = directives[identifier.name] || elements[identifier.name];
@@ -168,18 +151,21 @@ export function renderToProgram(
     if (typeof spec === 'string') {
       return;
     }
-    statements.unshift(
-      buildImport(build, spec.source, identifier.name, spec.name)
-    );
+    if (spec.name === 'default') {
+      statements.unshift(
+        stmt`import ${identifier} from "${build.stringLiteral(spec.source)}"`
+      );
+    } else {
+      statements.unshift(
+        stmt`import { ${build.identifier(spec.name)} as ${identifier} } from "${build.stringLiteral(spec.source)}"`
+      );
+    }
   });
 
-  statements.unshift(
-    buildImport(build, 'reactdown/lib/DocumentContext', 'DocumentContext')
-  );
-
-  statements.unshift(
-    buildImport(build, 'react', 'React')
-  );
+  statements = stmt`
+    import React from "react";
+    import DocumentContext from "reactdown/lib/DocumentContext";
+  `.concat(statements);
 
   return build.program(statements);
 }

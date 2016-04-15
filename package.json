@@ -9,6 +9,9 @@
   "babel": {
     "presets": [
       "prometheusresearch"
+    ],
+    "plugins": [
+      "ast-literal"
     ]
   },
   "eslintConfig": {
@@ -17,7 +20,9 @@
       "mocha": true
     },
     "globals": {
-      "$Shape": true
+      "$Shape": true,
+      "expr": true,
+      "stmt": true
     }
   },
   "repository": {
@@ -50,6 +55,7 @@
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-generator": "^6.7.2",
+    "babel-plugin-ast-literal": "^0.4.0",
     "babel-preset-prometheusresearch": "^0.1.0",
     "babel-types": "^6.7.2",
     "eslint": "^2.5.3",

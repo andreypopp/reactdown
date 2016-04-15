@@ -12,9 +12,7 @@ export default function buildReactElement(
     props: JSON,
     ...children: Array<JSAST>
   ) {
-  let createElement = build.memberExpression(
-    build.identifier('React'),
-    build.identifier('createElement'));
+  let createElement = expr`React.createElement`;
   return build.callExpression(
     createElement,
     [name, buildJSON(build, props), ...children]
