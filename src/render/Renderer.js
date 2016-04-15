@@ -17,7 +17,7 @@ import type {
   MDASTParentNode,
   MDASTTextNode,
 
-  MDASTCustomBlockNode,
+  MDASTDirective,
   MDASTListNode,
   MDASTListItemNode,
   MDASTHeadingNode,
@@ -852,14 +852,16 @@ export default class Renderer {
     return this.renderNothing();
   }
 
-  directive(node: MDASTCustomBlockNode): JSAST {
+  directive(node: MDASTDirective): JSAST {
     let component = this.directives[node.name];
     if (component === undefined) {
       return this.unknown(node);
     } else if (component === null) {
       return  this.renderNothing();
-    } else {
+    } else if (node.children) {
       return this.renderElement(component, node.data, ...this.all(node));
+    } else {
+      return this.renderElement(component, node.data, this.renderText(node.value));
     }
   }
 

@@ -8,5 +8,5 @@ import directive from './directive';
 import type {MDASTAnyNode} from '../types';
 
 export default function parse(value: string, options: any = {}): MDASTAnyNode {
-  return remark(options).use(directive).parse(value);
+  return remark(options).use(directive(options.directives)).parse(value);
 }

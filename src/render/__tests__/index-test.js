@@ -33,6 +33,7 @@ let config = {
   directives: {
     Block: {source: 'lib', name: 'Block'},
     SubBlock: {source: 'lib/SubBlock', name: 'default'},
+    pre: {source: 'lib/pre', name: 'default'},
   }
 };
 

@@ -23,10 +23,17 @@ let fixtureFilename = name =>
 
 describe('reactdown/parse', function() {
   describe('directive', function() {
+
+    let options = {
+      directives: {
+        pre: {preformatted: true},
+      },
+    };
+
     fixtures.forEach(name => {
       it(`directive: ${name}`, function() {
         let src = fs.readFileSync(fixtureFilename(name + '.md'), 'utf8');
-        let node = parse(src);
+        let node = parse(src, options);
         assert.equal(JSON.stringify(node, null, 2).trim(), expectedOutput(name));
       });
     });

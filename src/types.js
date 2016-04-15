@@ -42,9 +42,11 @@ export type MDASTTextNode = MDASTNode & {
   value: string;
 };
 
-export type MDASTCustomBlockNode = MDASTParentNode & {
+export type MDASTDirective = MDASTNode & {
   type: 'directive';
   name: string;
+  children: ?Array<MDASTAnyNode>,
+  value: ?string;
 };
 
 export type MDASTListItemNode = MDASTParentNode & {
@@ -187,7 +189,7 @@ export type MDASTImageReferenceNode = {
 };
 
 export type MDASTAnyNode
-  = MDASTCustomBlockNode
+  = MDASTDirective
   | MDASTListItemNode
   | MDASTListNode
   | MDASTHeadingNode

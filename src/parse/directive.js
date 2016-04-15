@@ -13,7 +13,7 @@ import type {MDASTAnyNode} from '../types';
 type ProduceNode = (node: MDASTAnyNode) => void;
 type Eat = (value: string) => ProduceNode;
 
-function parseCustomBlock(eat: Eat, value: string): void {
+function parseDirective(directives: any, eat: Eat, value: string): void {
 
   // Get next line and shift value.
   function nextLine() {
@@ -44,12 +44,15 @@ function parseCustomBlock(eat: Eat, value: string): void {
     return;
   }
 
-  // ::CustomBlockName
+  // ::DirectiveName
   let bannerLine = nextLine();
   if (bannerLine === null) {
     return;
   }
   let name = bannerLine.trim().slice(2);
+
+  let config = directives[name] || {};
+  let preformatted = config.preformatted;
 
   eatLine(bannerLine);
 
@@ -106,8 +109,8 @@ function parseCustomBlock(eat: Eat, value: string): void {
     data = jsYAML.safeLoad(dataContent);
   }
 
-  if (content.length > 0) {
-    content = content.join(NEWLINE);
+  content = content.join(NEWLINE);
+  if (content.length > 0 && !preformatted) {
     children = this.tokenizeBlock(content, childrenPosition);
   }
 
@@ -115,7 +118,8 @@ function parseCustomBlock(eat: Eat, value: string): void {
     type: 'directive',
     position: null,
     name,
-    children,
+    children: preformatted ? undefined : children,
+    value: preformatted ? content.trim() : undefined,
     data,
   });
 }
@@ -129,11 +133,18 @@ function hasIndent(line, size) {
   return true;
 }
 
-export default function directive(remark: any) {
+export default function directive(directives: any = {}) {
 
-  let ParserPrototype = remark.Parser.prototype;
+  return function(remark: any) {
 
-  ParserPrototype.blockTokenizers.directive = parseCustomBlock;
-  ParserPrototype.blockMethods.splice(
-    ParserPrototype.blockMethods.indexOf('fences') + 1, 0, 'directive');
+    function directive(...args) {
+      return parseDirective.call(this, directives, ...args);
+    }
+
+    let ParserPrototype = remark.Parser.prototype;
+
+    ParserPrototype.blockTokenizers.directive = directive;
+    ParserPrototype.blockMethods.splice(
+      ParserPrototype.blockMethods.indexOf('fences') + 1, 0, 'directive');
+  };
 }
