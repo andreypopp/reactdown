@@ -13,7 +13,15 @@ import type {MDASTAnyNode} from '../types';
 type ProduceNode = (node: MDASTAnyNode) => void;
 type Eat = (value: string) => ProduceNode;
 
-function parseDirective(directives: any, eat: Eat, value: string): void {
+export type DirectiveConfig = {
+  preformatted: ?boolean;
+};
+
+export type DirectiveMapping = {
+  [name: string]: DirectiveConfig;
+};
+
+function parseDirective(directives: DirectiveMapping, eat: Eat, value: string): void {
 
   // Get next line and shift value.
   function nextLine() {
@@ -133,7 +141,7 @@ function hasIndent(line, size) {
   return true;
 }
 
-export default function directive(directives: any = {}) {
+export default function directive(directives: DirectiveMapping = {}) {
 
   return function(remark: any) {
 
