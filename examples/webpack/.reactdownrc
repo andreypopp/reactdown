@@ -1,0 +1,9 @@
+{
+  "directives": {
+    "FancyCode": {
+      "source": "./lib/FancyCode",
+      "name": "default",
+      "preformatted": true
+    }
+  }
+}

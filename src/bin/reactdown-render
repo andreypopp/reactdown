@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
 import fs from 'fs';
+import path from 'path';
 import program from 'commander';
 import {renderToString} from '../';
 import {parseNamed} from '../ComponentRef';
 import pkg from '../../package.json';
+import {findConfig, mergeConfig} from '../Config';
 
 function error(message) {
   console.error('error:', message);
@@ -39,10 +41,11 @@ let filename = program.args[0];
 
 let src = fs.readFileSync(filename, 'utf8');
 
-let config = {
+let config = findConfig(path.dirname(path.resolve(filename))).config;
+config = mergeConfig(config, {
   directives: program.directive,
   elements: program.element,
-};
+});
 
 console.log(renderToString(src, config).code);
 

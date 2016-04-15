@@ -19,14 +19,20 @@ type RenderPartsResult = {
   metadata: ?JSON;
 };
 
-type DirectiveConfig = {
+export type DirectiveConfig = ComponentRef | string;
+
+type DirectiveMapping = {
+  [name: string]: ComponentRef | string;
+};
+
+type ElementMapping = {
   [name: string]: ComponentRef | string;
 };
 
 type CompleteRenderConfig = {
   build: JSASTFactory;
-  elements: DirectiveConfig;
-  directives: DirectiveConfig;
+  elements: ElementMapping;
+  directives: DirectiveMapping;
 };
 
 export type RenderConfig = $Shape<CompleteRenderConfig>;

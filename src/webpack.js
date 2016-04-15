@@ -3,15 +3,18 @@
  * @flow
  */
 
-import {parseQuery} from 'loader-utils';
 import {renderToString} from './index';
+import {findConfig, mergeConfig, parseConfigFromQuery} from './Config';
 
 module.exports = function reactdown(source: string): string {
   this.cacheable();
-  let query = parseQuery(this.query);
-  let config = {
-    directives: query.directives || {},
-    elements: query.elements || {},
-  };
+  let compiler = this._compiler;
+  if (compiler.__reactdownConfig === undefined) {
+    compiler.__reactdownConfig = findConfig(compiler.context).config;
+  }
+  let config = mergeConfig(
+    compiler.__reactdownConfig,
+    parseConfigFromQuery(this.query)
+  );
   return renderToString(source, config).code;
 };

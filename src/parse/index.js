@@ -4,10 +4,12 @@
  */
 
 import type {MDASTAnyNode} from '../types';
-import type {DirectiveMapping} from './directive';
+import type {DirectiveMapping, DirectiveConfig} from './directive';
 
 import remark from 'remark';
 import directive from './directive';
+
+export type {DirectiveConfig};
 
 export type ParseConfig = {
   directives: DirectiveMapping;

@@ -11,6 +11,10 @@ Meta:
 
 ::meta
 
+::FancyCode
+
+  Ok, this is some fancy code.
+
 Ok [some](http://google.com) link.
 
 Some list:
