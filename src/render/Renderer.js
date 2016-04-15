@@ -858,10 +858,12 @@ export default class Renderer {
       return this.unknown(node);
     } else if (component === null) {
       return  this.renderNothing();
-    } else if (node.children) {
+    } else if (node.children !== undefined) {
       return this.renderElement(component, node.data, ...this.all(node));
-    } else {
+    } else if (node.value !== undefined) {
       return this.renderElement(component, node.data, this.renderText(node.value));
+    } else {
+      return this.renderElement(component, node.data);
     }
   }
 
