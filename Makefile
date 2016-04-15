@@ -29,6 +29,10 @@ test::
 ci::
 	@$(BIN)/mocha $(MOCHA_OPTS) --watch --watch-extensions json,md $(TESTS)
 
+sloc::
+	@$(BIN)/sloc -e __tests__ src
+
+
 version-major version-minor version-patch:: lint test
 	@npm version $(@:version-%=%)
 
