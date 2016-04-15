@@ -3,8 +3,13 @@
  * @flow
  */
 
+import invariant from 'invariant';
 import {renderToString} from './index';
-import {findConfig, mergeConfig, parseConfigFromQuery} from './Config';
+import {
+  findConfig,
+  mergeConfig,
+  parseConfigFromQuery
+} from './Config';
 
 module.exports = function reactdown(source: string): string {
   this.cacheable();
@@ -17,4 +22,4 @@ module.exports = function reactdown(source: string): string {
     parseConfigFromQuery(this.query)
   );
   return renderToString(source, config).code;
-};
+}

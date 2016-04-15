@@ -19,10 +19,10 @@ type RenderPartsResult = {
   metadata: ?JSON;
 };
 
-export type DirectiveConfig = ComponentRef | string;
+export type DirectiveConfig = ComponentRef;
 
 type DirectiveMapping = {
-  [name: string]: ComponentRef | string;
+  [name: string]: ComponentRef;
 };
 
 type CompleteRenderConfig = {

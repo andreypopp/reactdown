@@ -13,12 +13,18 @@ import type {MDASTAnyNode} from '../types';
 type ProduceNode = (node: MDASTAnyNode) => void;
 type Eat = (value: string) => ProduceNode;
 
-export type DirectiveConfig = {
+type CompleteDirectiveConfig = {
   preformatted: ?boolean;
 };
 
+export type DirectiveConfig = $Shape<CompleteDirectiveConfig>;
+
 export type DirectiveMapping = {
   [name: string]: DirectiveConfig;
+};
+
+const defautlDirectiveConfig: CompleteDirectiveConfig = {
+  preformatted: false,
 };
 
 function parseDirective(directives: DirectiveMapping, eat: Eat, value: string): void {
@@ -59,7 +65,7 @@ function parseDirective(directives: DirectiveMapping, eat: Eat, value: string): 
   }
   let name = bannerLine.trim().slice(2);
 
-  let config = directives[name] || {};
+  let config = {...defautlDirectiveConfig, ...directives[name]};
   let preformatted = config.preformatted;
 
   eatLine(bannerLine);

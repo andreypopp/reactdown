@@ -31,7 +31,7 @@ export function HTML({html} : {html: string}) {
   return <div dangerouslySetInnerHTML={{__html: html}} />;
 }
 
-export function Heading({level, ...props}) {
+export function Heading({level, ...props}: {level: number}) {
   let Component = 'h' + Math.min(level, 6);
   return <Component {...props} />;
 }

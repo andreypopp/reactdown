@@ -3,14 +3,16 @@
  * @flow
  */
 
-import type {RenderConfig} from './render';
+import type {Config} from './Config';
 
 import generate from 'babel-generator';
 import parse from './parse';
 import {renderToProgram} from './render';
+import {mergeConfig, defaultConfig} from './Config';
 
-export function renderToString(value: string, config: RenderConfig = {}): {code: string} {
-  let mdast = parse(value);
+export function renderToString(value: string, config: Config = {}): {code: string} {
+  config = mergeConfig(defaultConfig, config);
+  let mdast = parse(value, config);
   let jsast = renderToProgram(mdast, config);
   return generate(jsast, {
     compact: false,

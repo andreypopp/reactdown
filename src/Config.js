@@ -11,26 +11,26 @@ import path from 'path';
 import JSON5 from 'json5';
 import {parseQuery} from 'loader-utils';
 
-export type DirectiveConfig
-  = string
-  | (DirectiveParseConfig & DirectiveRenderConfig);
+export type DirectiveConfig = DirectiveParseConfig & DirectiveRenderConfig;
 
 export type DirectiveMapping = {
   [name: string]: DirectiveConfig;
 };
 
-export type Config = {
-  directives: DirectiveMapping;
+export type CompleteConfig = {
+  directives: ?DirectiveMapping;
 };
+
+export type Config = $Shape<CompleteConfig>;
 
 const CONFIG_FILENAME = '.reactdownrc';
 const PACKAGE_FILENAME = 'package.json';
 
-const defaultConfig = {
+export const defaultConfig: CompleteConfig = {
   directives: {},
 };
 
-export function mergeConfig(config: Config, merge: ?Config): Config {
+export function mergeConfig(config: CompleteConfig, merge: ?Config): CompleteConfig {
   if (!merge) {
     return config;
   }
@@ -44,7 +44,7 @@ export function mergeConfig(config: Config, merge: ?Config): Config {
   };
 }
 
-export function findConfig(loc: string): {config: Config, sourceList: Array<string>} {
+export function findConfig(loc: string): {config: CompleteConfig, sourceList: Array<string>} {
   let seenConfig = false;
   let seenPackage = false;
   let config = defaultConfig;
@@ -69,7 +69,7 @@ export function findConfig(loc: string): {config: Config, sourceList: Array<stri
   return {config, sourceList};
 }
 
-export function parseConfigFromQuery(query: string): Config {
+export function parseConfigFromQuery(query: string): CompleteConfig {
   query = parseQuery(query);
   return {
     directives: query.directives || {},
@@ -80,3 +80,4 @@ export function parseConfigFromQuery(query: string): Config {
 function readJSON(loc, syntax = JSON) {
   return syntax.parse(fs.readFileSync(loc, {flag: 'r'}).toString('utf8'));
 }
+
