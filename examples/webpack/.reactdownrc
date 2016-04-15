@@ -1,9 +1,11 @@
 {
-  "directives": {
-    "FancyCode": {
-      "source": "./lib/FancyCode",
-      "name": "default",
-      "preformatted": true
+  directives: {
+
+    // render source code listing, a fancy way
+    FancyCode: {
+      source: './lib/FancyCode',
+      name: 'default',
+      preformatted: true,
     }
   }
 }
