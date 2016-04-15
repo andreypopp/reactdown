@@ -5,6 +5,7 @@ import path from 'path';
 import program from 'commander';
 import {renderToString} from '../';
 import {parseNamed} from '../ComponentRef';
+import {sync as resolveSync} from 'resolve';
 import pkg from '../../package.json';
 import {findConfig, mergeConfig} from '../Config';
 
@@ -31,20 +32,23 @@ program
     collectComponentRef, {}
   )
   .option(
-    '-e, --element [component-ref]',
-    'Register component for an element',
-    collectComponentRef, {}
+    '-e, --elements [module-ref]',
+    'Module with HTML elements',
+    String, 'reactdown/lib/elements'
   )
   .parse(process.argv);
 
-let filename = program.args[0];
+let filename = path.resolve(program.args[0]);
+let dirname = path.dirname(filename);
 
 let src = fs.readFileSync(filename, 'utf8');
 
-let config = findConfig(path.dirname(path.resolve(filename))).config;
+let config = findConfig(dirname).config;
 config = mergeConfig(config, {
   directives: program.directive,
-  elements: program.element,
+  elements: program.elements === 'reactdown/lib/elements' ?
+    program.elements :
+    resolveSync(program.elements)
 });
 
 console.log(renderToString(src, config).code);

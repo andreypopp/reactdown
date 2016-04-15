@@ -49,6 +49,7 @@
     "loader-utils": "^0.2.13",
     "normalize-uri": "^1.0.0",
     "remark": "^4.1.2",
+    "resolve": "^1.1.7",
     "trim": "0.0.1",
     "trim-lines": "^1.0.0",
     "unist-util-visit": "^1.1.0"

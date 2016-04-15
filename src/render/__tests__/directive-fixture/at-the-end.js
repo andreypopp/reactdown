@@ -1,11 +1,12 @@
 import React from "react";
 import DocumentContext from "reactdown/lib/DocumentContext";
+import * as elements from "reactdown/lib/elements";
 import { Block } from "lib";
 export default function Document() {
   return React.createElement(DocumentContext, {
     context: {
       metadata
     }
-  }, React.createElement("div", null, React.createElement("p", null, "Hello,"), React.createElement(Block, null, React.createElement("p", null, "Bye!"))));
+  }, React.createElement(elements.Root, null, React.createElement(elements.Paragraph, null, "Hello,"), React.createElement(Block, null, React.createElement(elements.Paragraph, null, "Bye!"))));
 }
 export let metadata = null;

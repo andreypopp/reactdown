@@ -73,7 +73,7 @@ export function parseConfigFromQuery(query: string): Config {
   query = parseQuery(query);
   return {
     directives: query.directives || {},
-    elements: query.elements || {},
+    elements: query.elements || 'reactdown/lib/elements',
   };
 }
 

@@ -25,13 +25,9 @@ type DirectiveMapping = {
   [name: string]: ComponentRef | string;
 };
 
-type ElementMapping = {
-  [name: string]: ComponentRef | string;
-};
-
 type CompleteRenderConfig = {
   build: JSASTFactory;
-  elements: ElementMapping;
+  elements: string;
   directives: DirectiveMapping;
 };
 
@@ -39,13 +35,8 @@ export type RenderConfig = $Shape<CompleteRenderConfig>;
 
 const defaultRendererConfig: RendererConfig = {
   build: build,
-  elements: {},
   directives: {},
 };
-
-function element(name: string): ComponentRef {
-  return {source: 'reactdown/lib/elements', name};
-}
 
 function directive(name: string): ComponentRef {
   return {source: `reactdown/lib/directives/${name}`, name: 'default'};
@@ -53,43 +44,13 @@ function directive(name: string): ComponentRef {
 
 const defaultRenderConfig: CompleteRenderConfig = {
   build: build,
-  elements: {
-    'Root': 'div',
-    'Unknown': element('Unknown'),
-    'Paragraph': 'p',
-    'Strikethrough': 'del',
-    'Image': 'img',
-    'Break': 'br',
-    'Emphasis': 'em',
-    'Strong': 'strong',
-    'InlineCode': 'code',
-    'Rule': 'hr',
-    'HTML': element('HTML'),
-    'Table': 'table',
-    'TableBody': 'tbody',
-    'TableHead': 'thead',
-    'TableRow': 'tr',
-    'TableHeaderCell': 'th',
-    'TableCell': 'td',
-    'Blockquote': 'blockquote',
-    'Code': 'code',
-    'Link': 'a',
-    'ListItem': 'li',
-    'OrderedList': 'ol',
-    'UnorderedList': 'ul',
-    'Heading1': 'h1',
-    'Heading2': 'h2',
-    'Heading3': 'h4',
-    'Heading4': 'h4',
-    'Heading5': 'h5',
-    'Heading6': 'h6',
-  },
+  elements: 'reactdown/lib/elements',
   directives: {
     'meta': directive('meta'),
   },
 };
 
-function applyDefaultConfig<T: {directives: Object, elements: Object}>(config: T, defaultConfig: T): T {
+function applyDefaultConfig<T: {directives: Object}>(config: T, defaultConfig: T): T {
   if (config !== defaultConfig) {
     config = {
       ...defaultConfig,
@@ -97,10 +58,6 @@ function applyDefaultConfig<T: {directives: Object, elements: Object}>(config: T
       directives: {
         ...defaultConfig.directives,
         ...config.directives,
-      },
-      elements: {
-        ...defaultConfig.elements,
-        ...config.elements,
       },
     };
   }
@@ -126,7 +83,6 @@ export function renderToProgram(
   let {build, elements, directives} = config;
   let rendererConfig = {
     build,
-    elements: keyMirrorToJSAST(build, elements),
     directives: keyMirrorToJSAST(build, directives),
   };
 
@@ -149,7 +105,7 @@ export function renderToProgram(
   `;
 
   identifiersUsed.forEach(identifier => {
-    let spec = directives[identifier.name] || elements[identifier.name];
+    let spec = directives[identifier.name];
     invariant(
       spec !== undefined,
       'Cannot resolve identifier to spec'
@@ -171,6 +127,7 @@ export function renderToProgram(
   statements = stmt`
     import React from "react";
     import DocumentContext from "reactdown/lib/DocumentContext";
+    import * as elements from "${build.stringLiteral(elements)}";
   `.concat(statements);
 
   return build.program(statements);

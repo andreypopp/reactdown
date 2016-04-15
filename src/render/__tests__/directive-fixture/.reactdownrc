@@ -1,0 +1,9 @@
+{
+  directives: {
+    pre: {
+      source: 'lib/pre',
+      name: 'default',
+      preformatted: true,
+    }
+  }
+}

@@ -16,7 +16,7 @@ describe('reactdown/render', function() {
 
     it('keeps track of used identifiers', function() {
       let renderer = new Renderer({
-        elements: {
+        directives: {
           Paragraph: build.identifier('Paragraph')
         }
       });
@@ -24,7 +24,8 @@ describe('reactdown/render', function() {
         type: 'root',
         children: [
           {
-            type: 'paragraph',
+            type: 'directive',
+            name: 'Paragraph',
             children: [
               {type: 'text', value: 'Hello'}
             ]
@@ -37,7 +38,7 @@ describe('reactdown/render', function() {
 
     it('do not duplicatyes usages', function() {
       let renderer = new Renderer({
-        elements: {
+        directives: {
           Paragraph: build.identifier('Paragraph')
         }
       });
@@ -45,7 +46,8 @@ describe('reactdown/render', function() {
         type: 'root',
         children: [
           {
-            type: 'paragraph',
+            type: 'directive',
+            name: 'Paragraph',
             children: [
               {type: 'text', value: 'Hello'}
             ]
