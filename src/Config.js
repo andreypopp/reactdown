@@ -11,14 +11,18 @@ import path from 'path';
 import JSON5 from 'json5';
 import {parseQuery} from 'loader-utils';
 
-export type DirectiveConfig = DirectiveParseConfig & DirectiveRenderConfig;
+export type DirectiveConfig = $Shape<{
+  render: DirectiveRenderConfig;
+  parse: DirectiveParseConfig;
+}>;
 
 export type DirectiveMapping = {
   [name: string]: DirectiveConfig;
 };
 
 export type CompleteConfig = {
-  directives: ?DirectiveMapping;
+  elements: string;
+  directives: DirectiveMapping;
 };
 
 export type Config = $Shape<CompleteConfig>;
@@ -27,7 +31,8 @@ const CONFIG_FILENAME = '.reactdownrc';
 const PACKAGE_FILENAME = 'package.json';
 
 export const defaultConfig: CompleteConfig = {
-  directives: {},
+  elements: 'reactdown/lib/elements',
+  directives: {}
 };
 
 export function mergeConfig(config: CompleteConfig, merge: ?Config): CompleteConfig {

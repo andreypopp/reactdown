@@ -10,10 +10,18 @@ import parse from './parse';
 import {renderToProgram} from './render';
 import {mergeConfig, defaultConfig} from './Config';
 
+
 export function renderToString(value: string, config: Config = {}): {code: string} {
   config = mergeConfig(defaultConfig, config);
-  let mdast = parse(value, config);
-  let jsast = renderToProgram(mdast, config);
+  let parseConfig = {
+    directives: extractObject(config.directives, config => config.parse),
+  };
+  let renderConfig = {
+    directives: extractObject(config.directives, config => config.render),
+    elements: config.elements,
+  };
+  let mdast = parse(value, parseConfig);
+  let jsast = renderToProgram(mdast, renderConfig);
   return generate(jsast, {
     compact: false,
     concise: false
@@ -21,3 +29,16 @@ export function renderToString(value: string, config: Config = {}): {code: strin
 }
 
 export {parse};
+
+function extractObject(object, extract) {
+  let result = {};
+  for (let key in object) {
+    if (object.hasOwnProperty(key)) {
+      let value = extract(object[key]);
+      if (value !== undefined) {
+        result[key] = value;
+      }
+    }
+  }
+  return result;
+}

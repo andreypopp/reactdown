@@ -13,7 +13,7 @@ import type {MDASTAnyNode} from '../types';
 type ProduceNode = (node: MDASTAnyNode) => void;
 type Eat = (value: string) => ProduceNode;
 
-type CompleteDirectiveConfig = {
+export type CompleteDirectiveConfig = {
   preformatted: ?boolean;
 };
 
