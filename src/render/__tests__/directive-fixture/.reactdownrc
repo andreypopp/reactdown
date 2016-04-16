@@ -1,9 +1,13 @@
 {
   directives: {
     pre: {
-      source: 'lib/pre',
-      name: 'default',
-      preformatted: true,
+      render: {
+        source: 'lib/pre',
+        name: 'default',
+      },
+      parse: {
+        preformatted: true,
+      }
     }
   }
 }

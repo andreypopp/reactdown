@@ -3,9 +3,13 @@
 
     // render source code listing, a fancy way
     FancyCode: {
-      source: './lib/FancyCode',
-      name: 'default',
-      preformatted: true,
+      render: {
+        source: './lib/FancyCode',
+        name: 'default',
+      },
+      parse: {
+        preformatted: true,
+      }
     }
   }
 }
