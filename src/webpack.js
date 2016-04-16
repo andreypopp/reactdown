@@ -3,7 +3,6 @@
  * @flow
  */
 
-import invariant from 'invariant';
 import {renderToString} from './index';
 import {
   findConfig,
@@ -22,4 +21,4 @@ module.exports = function reactdown(source: string): string {
     parseConfigFromQuery(this.query)
   );
   return renderToString(source, config).code;
-}
+};
