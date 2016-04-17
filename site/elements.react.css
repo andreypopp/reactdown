@@ -1,0 +1,51 @@
+Root {
+  base: div;
+
+  width: 800px;
+  margin: 0 auto;
+  padding: 1em 0;
+
+  font-family: Menlo, Monaco, monospace;
+  font-size: 11pt;
+}
+
+Paragraph {
+  base: p;
+
+  margin-bottom: 1em;
+}
+
+OrderedList {
+  base: ol;
+
+  margin-bottom: 1em;
+}
+
+UnorderedList {
+  base: ul;
+
+  margin-bottom: 1em;
+}
+
+InlineCode {
+  base: code;
+  font-family: Menlo, Monaco, monospace;
+  background: #eaeaea;
+  padding: 0 0.1em;
+}
+
+Code {
+  base: pre;
+
+  margin-bottom: 1em;
+  font-family: Menlo, Monaco, monospace;
+  font-size: 10pt;
+  padding: 1em;
+}
+
+Heading {
+  base: h1;
+
+  text-align: center;
+}
+

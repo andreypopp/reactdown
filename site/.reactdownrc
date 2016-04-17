@@ -1,0 +1,18 @@
+{
+
+  elements: './elements.react.css',
+
+  directives: {
+
+    // render source code listing, a fancy way
+    FancyCode: {
+      render: {
+        source: './lib/FancyCode',
+        name: 'default',
+      },
+      parse: {
+        preformatted: true,
+      }
+    }
+  }
+}
