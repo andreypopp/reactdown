@@ -127,7 +127,10 @@ export function renderToProgram(
   statements = stmt`
     import React from "react";
     import DocumentContext from "reactdown/lib/DocumentContext";
-    import * as elements from "${build.stringLiteral(elements)}";
+    import * as defaultElements from "reactdown/lib/elements";
+    import * as customElements from "${build.stringLiteral(elements)}";
+
+    let elements = {...defaultElements, ...customElements};
   `.concat(statements);
 
   return build.program(statements);

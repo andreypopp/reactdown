@@ -74,12 +74,16 @@ export function findConfig(loc: string): {config: CompleteConfig, sourceList: Ar
   return {config, sourceList};
 }
 
-export function parseConfigFromQuery(query: string): CompleteConfig {
+export function parseConfigFromQuery(query: string): Config {
+  let config = {};
   query = parseQuery(query);
-  return {
-    directives: query.directives || {},
-    elements: query.elements || 'reactdown/lib/elements',
-  };
+  if (query.directives) {
+    config.directives = query.directives;
+  }
+  if (query.elements) {
+    config.elements = query.elements;
+  }
+  return config;
 }
 
 function readJSON(loc, syntax = JSON) {
