@@ -1,6 +1,8 @@
 import React from "react";
 import DocumentContext from "reactdown/lib/DocumentContext";
-import * as elements from "reactdown/lib/elements";
+import * as defaultElements from "reactdown/lib/elements";
+import * as customElements from "reactdown/lib/elements";
+let elements = { ...defaultElements, ...customElements };
 import { Block } from "lib";
 import SubBlock from "lib/SubBlock";
 export default function Document() {

@@ -19,7 +19,9 @@ function collectComponentRef(value, config) {
   if (ref === null) {
     error('directive should be in form of: <id>=<source>(:<name>)?');
   }
-  config[ref.id] = ref.ref;
+  config[ref.id] = {
+    render: ref.ref
+  };
   return config;
 }
 
