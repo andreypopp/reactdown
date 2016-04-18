@@ -14,7 +14,7 @@ Root {
 
   width: 400px;
   margin: 0 auto;
-  padding: 6em 0;
+  padding: 20% 0;
   padding-left: 200px;
 
   font-family: Muli, sans-serif;
@@ -89,6 +89,7 @@ Heading {
 }
 
 Heading:prop(level == 1) {
+  margin-top: 0;
   font-size: 3rem;
 }
 
