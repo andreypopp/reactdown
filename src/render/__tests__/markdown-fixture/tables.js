@@ -6,7 +6,8 @@ let elements = { ...defaultElements, ...customElements };
 export default function Document() {
   return React.createElement(DocumentContext, {
     context: {
-      metadata
+      metadata,
+      model
     }
   }, React.createElement(elements.Root, null, React.createElement(elements.Table, null, React.createElement(elements.TableHead, null, React.createElement(elements.TableRow, null, React.createElement(elements.TableHeaderCell, {
     "align": null
@@ -59,3 +60,6 @@ export default function Document() {
   }))))));
 }
 export let metadata = null;
+export let model = {
+  "toc": []
+};

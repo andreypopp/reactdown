@@ -7,8 +7,12 @@ import pre from "lib/pre";
 export default function Document() {
   return React.createElement(DocumentContext, {
     context: {
-      metadata
+      metadata,
+      model
     }
   }, React.createElement(elements.Root, null, React.createElement(elements.Paragraph, null, "Hello,"), React.createElement(pre, null, "ok, *this* is **just** some code"), React.createElement(elements.Paragraph, null, "Bye")));
 }
 export let metadata = null;
+export let model = {
+  "toc": []
+};

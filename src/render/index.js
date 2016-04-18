@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type {MDASTAnyNode, JSAST, JSASTFactory} from '../types';
+import type {MDASTRootNode, JSAST, JSASTFactory} from '../types';
 import type {ComponentRef} from '../ComponentRef';
 import type {RendererConfig} from './Renderer';
 
@@ -12,6 +12,7 @@ import invariant from 'invariant';
 
 import Renderer from './Renderer';
 import buildJSON from './buildJSON';
+import toc from '../model/toc';
 
 type RenderPartsResult = {
   expression: JSAST;
@@ -29,6 +30,7 @@ type CompleteRenderConfig = {
   build: JSASTFactory;
   elements: string;
   directives: DirectiveMapping;
+  model: {[attribute: string]: (node: MDASTRootNode) => any};
 };
 
 export type RenderConfig = $Shape<CompleteRenderConfig>;
@@ -48,6 +50,7 @@ const defaultRenderConfig: CompleteRenderConfig = {
   directives: {
     'meta': directive('meta'),
   },
+  model: {toc},
 };
 
 function applyDefaultConfig<T: {directives: Object}>(config: T, defaultConfig: T): T {
@@ -77,7 +80,7 @@ function keyMirrorToJSAST(build, obj): {[name: string]: JSAST} {
 }
 
 export function renderToProgram(
-    node: MDASTAnyNode,
+    node: MDASTRootNode,
     config: RenderConfig = defaultRenderConfig): JSAST {
   config = applyDefaultConfig(config, defaultRenderConfig);
   let {build, elements, directives} = config;
@@ -92,8 +95,16 @@ export function renderToProgram(
     metadata
   } = renderToParts(node, rendererConfig);
 
+  let model = {};
+
+  for (let attr in config.model) {
+    if (config.model.hasOwnProperty(attr)) {
+      model[attr] = config.model[attr](node);
+    }
+  }
+
   expression = expr`
-    React.createElement(DocumentContext, {context: {metadata}},
+    React.createElement(DocumentContext, {context: {metadata, model}},
       ${expression})
   `;
 
@@ -102,6 +113,7 @@ export function renderToProgram(
       return ${expression};
     }
     export let metadata = ${buildJSON(build, metadata)};
+    export let model = ${buildJSON(build, model)};
   `;
 
   identifiersUsed.forEach(identifier => {
@@ -137,7 +149,7 @@ export function renderToProgram(
 }
 
 export function renderToParts(
-    node: MDASTAnyNode,
+    node: MDASTRootNode,
     config: RendererConfig = defaultRendererConfig): RenderPartsResult {
   config = applyDefaultConfig(config, defaultRendererConfig);
   let renderer = new Renderer(config);

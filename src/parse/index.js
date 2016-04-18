@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type {MDASTAnyNode} from '../types';
+import type {MDASTRootNode} from '../types';
 import type {
   DirectiveMapping,
   DirectiveConfig,
@@ -23,6 +23,6 @@ const defaultConfig = {
   directives: {},
 };
 
-export default function parse(value: string, options: ParseConfig = defaultConfig): MDASTAnyNode {
+export default function parse(value: string, options: ParseConfig = defaultConfig): MDASTRootNode {
   return remark(options).use(directive(options.directives)).parse(value);
 }

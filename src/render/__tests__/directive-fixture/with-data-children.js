@@ -7,7 +7,8 @@ import { Block } from "lib";
 export default function Document() {
   return React.createElement(DocumentContext, {
     context: {
-      metadata
+      metadata,
+      model
     }
   }, React.createElement(elements.Root, null, React.createElement(elements.Paragraph, null, "Prologue"), React.createElement(Block, {
     "a": 1,
@@ -15,3 +16,6 @@ export default function Document() {
   }, React.createElement(elements.Paragraph, null, "Ok, ", React.createElement(elements.Emphasis, null, "some"), " paragraph."))));
 }
 export let metadata = null;
+export let model = {
+  "toc": []
+};

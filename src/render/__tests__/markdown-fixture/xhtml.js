@@ -6,7 +6,8 @@ let elements = { ...defaultElements, ...customElements };
 export default function Document() {
   return React.createElement(DocumentContext, {
     context: {
-      metadata
+      metadata,
+      model
     }
   }, React.createElement(elements.Root, null, React.createElement(elements.Paragraph, null, "Hello", React.createElement(elements.Break, null), "world"), React.createElement(elements.Break, null), React.createElement(elements.Paragraph, null, React.createElement(elements.Image, {
     "src": "http://exaple.com/fav.ico",
@@ -15,3 +16,6 @@ export default function Document() {
   }))));
 }
 export let metadata = null;
+export let model = {
+  "toc": []
+};

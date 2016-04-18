@@ -6,7 +6,8 @@ let elements = { ...defaultElements, ...customElements };
 export default function Document() {
   return React.createElement(DocumentContext, {
     context: {
-      metadata
+      metadata,
+      model
     }
   }, React.createElement(elements.Root, null, React.createElement(elements.Heading, {
     "level": 1
@@ -41,3 +42,9 @@ export default function Document() {
   }), "."), null));
 }
 export let metadata = null;
+export let model = {
+  "toc": [{
+    "value": "References",
+    "depth": 1
+  }]
+};
