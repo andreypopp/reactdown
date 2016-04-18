@@ -4,32 +4,31 @@ import React from 'react';
 import {
   Root as BaseRoot,
   Link,
-  Heading as BaseHeading
+  Heading as BaseHeading,
+  HeadingAnchor,
+
+  ToC as BaseToC,
+  ToCItem
 } from './theme.react.css';
 
 import {contextTypes} from 'reactdown/lib/DocumentContext';
 
-class ToC extends React.Component {
-
-  static contextTypes = contextTypes;
-
-  render() {
-    let {toc} = this.context.reactdown.model;
-    let items = toc.map(item =>
-      <div style={{marginBottom: 2, paddingLeft: (item.depth - 1) * 20}}>
-        <Link href={'#' + item.value}>{item.value}</Link>
-      </div>
-    );
-    return <div>{items}</div>;
-  }
-
+function ToC(_props, context) {
+  let {toc} = context.reactdown.model;
+  let items = toc.map(item =>
+    <ToCItem style={{marginLeft: (item.depth - 1) * 20}}>
+      <Link href={'#' + item.value}>{item.value}</Link>
+    </ToCItem>
+  );
+  return <BaseToC>{items}</BaseToC>;
 }
+ToC.contextTypes = contextTypes;
 
 export function Heading({children, ...props}) {
   return (
     <BaseHeading {...props}>
       {children}
-      <a style={{visibility: 'hidden', top: -50, position: 'relative'}} name={children}>#</a>
+      <HeadingAnchor name={children}>#</HeadingAnchor>
     </BaseHeading>
   );
 }
@@ -38,9 +37,7 @@ export function Root({children, ...props}) {
   return (
     <div>
       <BaseRoot>
-        <div style={{position: 'fixed', left: 50}}>
-          <ToC />
-        </div>
+        <ToC />
         {children}
       </BaseRoot>
     </div>

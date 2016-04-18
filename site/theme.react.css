@@ -14,7 +14,7 @@ Root {
 
   width: 400px;
   margin: 0 auto;
-  padding: 20% 0;
+  padding: 15% 0;
   padding-left: 200px;
 
   font-family: Muli, sans-serif;
@@ -101,4 +101,29 @@ Heading:prop(level >=  3) {
   color: #6999A0;
   margin-top: 2em;
   font-size: 1.0rem;
+}
+
+HeadingAnchor {
+  base: a;
+  visibility: hidden;
+  top: -50px;
+  position: relative;
+}
+
+ToC {
+  position: fixed;
+  top: 0;
+  max-width: 200px;
+  left: calc(50% - 550px);
+  background: #393F5A;
+  padding: 20px;
+  padding-top: 100px;
+}
+
+ToCItem {
+  font-size: 10pt;
+  margin-bottom: 5px;
+}
+ToCItem Link {
+  color: #B7B8BF;
 }
