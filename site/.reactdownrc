@@ -1,6 +1,6 @@
 {
 
-  elements: './elements.react.css',
+  elements: './theme.react.css',
 
   directives: {
 

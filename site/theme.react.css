@@ -40,6 +40,10 @@ Strong {
 Link {
   base: a;
   color: #AF9453;
+  text-decoration: none;
+}
+Link:hover {
+  text-decoration: underline;
 }
 
 Paragraph {
@@ -92,18 +96,8 @@ Heading:prop(level == 2) {
   font-size: 1.75rem;
 }
 
-Heading:prop(level == 3) {
-  font-size: 1.5rem;
-}
-
-Heading:prop(level == 4) {
-  font-size: 1.25rem;
-}
-
-Heading:prop(level == 5) {
-  font-size: 1rem;
-}
-
-Heading:prop(level == 6) {
-  font-size: 0.75rem;
+Heading:prop(level >=  3) {
+  color: #6999A0;
+  margin-top: 2em;
+  font-size: 1.0rem;
 }
