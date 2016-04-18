@@ -1,33 +1,65 @@
----
-title: Hello, world
----
-
 # Reactdown
 
-Reactdown is cool! This **is** cool! Isn't *it*?
+Reactdown is a markdown based live document format.
 
-Meta:
+There are two main extensions to markdown syntax: directives and roles
+its semantics and appearance are configured through React components.
 
-Ok [some](http://google.com) link.
+An entire document renders into a React element tree with directives, roles and
+regular markdown markup mapped onto a collection of React components.
 
-Some list:
+## Custom Directives
 
-* a
-* b
-* c
+Custom directives are used to insert block-level markup constructs into
+document. They are modelled after [ReStructured Text][] directives.
 
-Ordered:
+The simplest form of a custom directive is:
 
-1. a
-2. b
-3. c
+    ::TOC
 
-Code:
+They also coould have any other markdown content (indented by two spaces):
 
-    Some code wooo
+    ::Note
 
-Inline `code` works too!
+      Some *markdown* content.
 
-> Blockquote...
+Metadata, encoded as YAML document:
 
-::CustomBlock
+    ::TOC
+      ---
+      depth: 3
+      ---
+
+Or even both metadata and content:
+
+    ::form
+      ---
+      action: /form
+      ---
+
+      ::field
+        ---
+        name: first_name
+        ---
+
+      ::field
+        ---
+        name: last_name
+        ---
+
+## Installation & Usage
+
+Install via npm:
+
+    % npm install reactdown
+
+The current implementation relies on [Webpack][] and [Babel][], which is why you
+also need to install them:
+
+    % npm install webpack babel-loader
+
+## Development
+
+[Webpack]: https://webpack.github.io/
+[Babel]: http://babeljs.io/
+[ReStructured Text]: http://docutils.sourceforge.net/rst.html

@@ -1,51 +1,109 @@
+@import 'normalize.css/normalize.css';
+
+@import url(https://fonts.googleapis.com/css?family=Ovo);
+@import url(https://fonts.googleapis.com/css?family=Muli:400,400italic,300,300italic);
+
+body {
+  color: #B7B8BF;
+  background: #2E334A;
+  overflow-x: hidden;
+}
+
 Root {
   base: div;
 
-  width: 800px;
+  width: 400px;
   margin: 0 auto;
-  padding: 1em 0;
+  padding: 6em 0;
+  padding-left: 200px;
 
-  font-family: Menlo, Monaco, monospace;
+  font-family: Muli, sans-serif;
+  font-weight: 300;
   font-size: 11pt;
+}
+
+Paragraph, OrderedList, UnorderedList, Code {
+  margin-bottom: 2em;
+  text-align: justify;
+}
+
+Emphasis {
+  base: em;
+  font-style: italic;
+}
+
+Strong {
+  base: strong;
+  font-weight: 400;
+}
+
+Link {
+  base: a;
+  color: #AF9453;
 }
 
 Paragraph {
   base: p;
 
-  margin-bottom: 1em;
+  line-height: 1.4em;
 }
 
 OrderedList {
   base: ol;
-
-  margin-bottom: 1em;
 }
 
 UnorderedList {
   base: ul;
-
-  margin-bottom: 1em;
 }
 
 InlineCode {
   base: code;
   font-family: Menlo, Monaco, monospace;
-  background: #eaeaea;
+  background: #393F5A;
   padding: 0 0.1em;
 }
 
 Code {
   base: pre;
 
-  margin-bottom: 1em;
+  background: #393F5A;
   font-family: Menlo, Monaco, monospace;
-  font-size: 10pt;
-  padding: 1em;
+  font-size: 9pt;
+  padding: 1.5em 0;
+  margin-right: -10000px;
+  margin-left: -100px;
+  padding-left: 100px;
 }
 
 Heading {
-  base: h1;
+  base: reactdown/elements?Heading;
 
-  text-align: center;
+  margin-top: 3em;
+  margin-bottom: 1em;
+  font-family: Ovo, serif;
+  color: #8EC9D2;
 }
 
+Heading:prop(level == 1) {
+  font-size: 3rem;
+}
+
+Heading:prop(level == 2) {
+  font-size: 1.75rem;
+}
+
+Heading:prop(level == 3) {
+  font-size: 1.5rem;
+}
+
+Heading:prop(level == 4) {
+  font-size: 1.25rem;
+}
+
+Heading:prop(level == 5) {
+  font-size: 1rem;
+}
+
+Heading:prop(level == 6) {
+  font-size: 0.75rem;
+}

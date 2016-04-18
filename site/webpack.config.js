@@ -24,6 +24,11 @@ module.exports = {
         loader: 'babel-loader!react-css-components/webpack',
       },
       {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader',
+        exclude: /\.react\.css$/,
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
