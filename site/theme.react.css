@@ -23,6 +23,7 @@ Root {
 }
 
 Paragraph, OrderedList, UnorderedList, Code {
+  margin-top: 0em;
   margin-bottom: 1.7em;
   text-align: justify;
 }

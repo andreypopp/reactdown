@@ -41,6 +41,8 @@ The following Webpack configuration would suit the needs and would allow to
 compile any `*.md` file into JavaScript modules which then could be imported and
 processed liek regular React components:
 
+..ref webpack-config
+
     module.exports = {
       module: {
         loaders: [
@@ -123,6 +125,8 @@ Example:
     ..ref see-more
 
     Some important text.
+
+See [Webpack configuration example](#webpack-config)
 
 Later in the document we can place a hyperlink to a referenced content using a
 regular markdown syntax:
