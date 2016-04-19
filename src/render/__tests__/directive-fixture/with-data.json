@@ -52,6 +52,7 @@
         "indent": []
       },
       "name": "Block",
+      "line": null,
       "children": [],
       "data": {
         "a": 1,

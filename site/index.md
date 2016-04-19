@@ -17,8 +17,6 @@ Install via npm:
 
 ### Command Line Interface
 
-#### ok
-
 Reactdown documents can be rendered into JavaScript modules using a CLI utility:
 
     % reactdown-render --help
@@ -108,7 +106,7 @@ There are a couple of built-in directives.
 
 ### Meta
 
-Directive `::meta` is used for debug purposes to render metadata attached to a
+Directive `..meta` is used for debug purposes to render metadata attached to a
 document.
 
 Example:
@@ -117,7 +115,7 @@ Example:
 
 ### Ref
 
-Directive `::ref` can be used to place anchors within a document which then can
+Directive `..ref` can be used to place anchors within a document which then can
 be references using hyperlinks.
 
 Example:

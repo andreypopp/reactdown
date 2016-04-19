@@ -52,6 +52,7 @@
         "indent": []
       },
       "name": "Block",
+      "line": null,
       "children": [
         {
           "type": "paragraph",
@@ -104,6 +105,7 @@
             "indent": []
           },
           "name": "SubBlock",
+          "line": null,
           "children": [
             {
               "type": "paragraph",

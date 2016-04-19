@@ -851,11 +851,23 @@ export default class Renderer {
     } else if (component === null) {
       return  this.renderNothing();
     } else if (node.children !== undefined) {
-      return this.renderElement(component, node.data, ...this.all(node));
+      let props = node.data;
+      if (node.line != null) {
+        props = {line: node.line, ...props};
+      }
+      return this.renderElement(component, props, ...this.all(node));
     } else if (node.value !== undefined) {
-      return this.renderElement(component, node.data, this.renderText(node.value));
+      let props = node.data;
+      if (node.line != null) {
+        props = {line: node.line, ...props};
+      }
+      return this.renderElement(component, props, this.renderText(node.value));
     } else {
-      return this.renderElement(component, node.data);
+      let props = node.data;
+      if (node.line != null) {
+        props = {line: node.line, ...props};
+      }
+      return this.renderElement(component, props);
     }
   }
 

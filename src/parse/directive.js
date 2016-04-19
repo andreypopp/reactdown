@@ -3,7 +3,7 @@
  * @flow
  */
 
-const CUSTOM_BLOCK_TEST = /^\.\.[a-zA-Z]+\s*\n/;
+const CUSTOM_BLOCK_TEST = /^\.\.([a-zA-Z]+) *([^\n]*)?\n/;
 const CUSTOM_BLOCK_INDENT = 2;
 const NEWLINE = '\n';
 
@@ -53,8 +53,9 @@ function parseDirective(directives: DirectiveMapping, eat: Eat, value: string): 
     }
   }
 
-  // Smoke test for custom block.
-  if (!CUSTOM_BLOCK_TEST.exec(value)) {
+  let match = CUSTOM_BLOCK_TEST.exec(value);
+
+  if (!match) {
     return;
   }
 
@@ -63,7 +64,7 @@ function parseDirective(directives: DirectiveMapping, eat: Eat, value: string): 
   if (bannerLine === null) {
     return;
   }
-  let name = bannerLine.trim().slice(2);
+  let [_, name, line = null] = match;
 
   let config = {...defautlDirectiveConfig, ...directives[name]};
   let preformatted = config.preformatted;
@@ -132,6 +133,7 @@ function parseDirective(directives: DirectiveMapping, eat: Eat, value: string): 
     type: 'directive',
     position: null,
     name,
+    line: line ? line.trim() : line,
     children: preformatted ? undefined : children,
     value: preformatted ? content.trim() : undefined,
     data,

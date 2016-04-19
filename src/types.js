@@ -47,6 +47,7 @@ export type MDASTDirective = MDASTNode & {
   name: string;
   children: ?Array<MDASTAnyNode>,
   value: ?string;
+  line: ?string;
 };
 
 export type MDASTListItemNode = MDASTParentNode & {

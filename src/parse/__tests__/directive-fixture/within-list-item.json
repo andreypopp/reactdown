@@ -98,6 +98,7 @@
                 "indent": []
               },
               "name": "Block",
+              "line": null,
               "children": [
                 {
                   "type": "paragraph",
