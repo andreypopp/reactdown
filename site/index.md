@@ -14,11 +14,10 @@ Reactdown also provides two main extension points for Markdown syntax:
 Custom directives are used to insert block-level markup constructs into
 document. They are modelled after [ReStructured Text][] directives.
 
-### Simple form
-
 The simplest form of a custom directive is:
 
     ::TOC
+
 
 ### Content
 
@@ -39,24 +38,17 @@ Metadata, encoded as YAML document:
       depth: 3
       ---
 
-### Content & Properties
+## Custom Roles
 
-Or even both metadata and content:
+TK Describe what custom roles are and what are their usecases.
 
-    ::form
-      ---
-      action: /form
-      ---
+## Built-in Directives
 
-      ::field
-        ---
-        name: first_name
-        ---
+There are a couple of built-in directives.
 
-      ::field
-        ---
-        name: last_name
-        ---
+### Meta
+
+## Runtime Representation
 
 ## Installation & Usage
 
@@ -79,7 +71,7 @@ Reactdown documents can be rendered into JavaScript modules using a CLI utility:
       -e, --elements [module-ref]      Module with HTML elements
 
 
-### Webpack loader
+### Webpack Loader
 
 The current implementation relies on [Webpack][] and [Babel][], which is why you
 also need to install them:
@@ -100,6 +92,8 @@ processed liek regular React components:
         ]
       }
     }
+
+### Configuration
 
 ## Development
 

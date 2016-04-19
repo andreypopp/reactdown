@@ -43,7 +43,8 @@ Link {
   text-decoration: none;
 }
 Link:hover {
-  text-decoration: underline;
+  background: #AF9453;
+  color: #2E334A;
 }
 
 Paragraph {
@@ -82,10 +83,11 @@ Code {
 Heading {
   base: reactdown/elements?Heading;
 
+  position: relative;
   margin-top: 3em;
   margin-bottom: 1em;
   font-family: Ovo, serif;
-  color: #8EC9D2;
+  color: #7FB3BB;
 }
 
 Heading:prop(level == 1) {
@@ -98,32 +100,38 @@ Heading:prop(level == 2) {
 }
 
 Heading:prop(level >=  3) {
-  color: #6999A0;
-  margin-top: 2em;
+  margin-top: 3em;
+  font-family: Muli, sans-serif;
+  text-transform: uppercase;
   font-size: 1.0rem;
 }
 
-HeadingAnchor {
-  base: a;
-  visibility: hidden;
-  top: -50px;
-  position: relative;
-}
-
-ToC {
+Sidebar {
   position: fixed;
   top: 0;
   max-width: 200px;
   left: calc(50% - 550px);
   background: #393F5A;
   padding: 20px;
-  padding-top: 100px;
+}
+
+Sidebar Heading {
+  text-align: center;
+  margin-top: 1em;
+}
+
+ToC {
 }
 
 ToCItem {
   font-size: 10pt;
+  font-weight: bold;
   margin-bottom: 5px;
 }
 ToCItem Link {
   color: #B7B8BF;
+}
+ToCItem Link:hover {
+  color: #2E334A;
+  background: #B7B8BF;
 }

@@ -49,6 +49,7 @@ const defaultRenderConfig: CompleteRenderConfig = {
   elements: 'reactdown/lib/elements',
   directives: {
     'meta': directive('meta'),
+    'ref': directive('ref'),
   },
   model: {toc},
 };
