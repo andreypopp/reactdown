@@ -32,7 +32,7 @@ ToC.contextTypes = contextTypes;
 export function Heading({children, ...props}) {
   return (
     <BaseHeading {...props}>
-      <Ref name={children} />
+      <Ref style={{top: '-1em'}} name={children} />
       {children}
     </BaseHeading>
   );

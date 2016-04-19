@@ -10,10 +10,11 @@ let refStyle = {
     height: 0,
     width: 0,
     visibility: 'hidden',
+    position: 'relative',
   }
 };
 
-export default function ref({name}: {name: string}) {
-  return <div style={refStyle.root}><a name={name}>#</a></div>;
+export default function ref({name, style}: {name: string, style: Object}) {
+  return <div style={{...refStyle.root, ...style}}><a name={name}>#</a></div>;
 }
 
