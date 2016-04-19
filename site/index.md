@@ -3,8 +3,8 @@
 Reactdown is a Markdown based live document format.
 
 It is implemented as a compiler from Markdown to React components. This is what
-makes reactdown documents "live" — you can use any React component to drive
-interactions beyween a user and a Reactdown document.
+makes Reactdown documents "live" — you can use any React component to drive
+interactions between a user and a Reactdown document.
 
 Reactdown also provides two main extension points for Markdown syntax:
 **directives** and **roles**.
@@ -14,6 +14,11 @@ Reactdown also provides two main extension points for Markdown syntax:
 Install via npm:
 
     % npm install reactdown
+
+..note Tool Integrations
+
+  Reactdown currently provides basic command line utilities and a Webpack loader.
+  Support for other integrations is on the way, help is highly appreciated.
 
 ### Command Line Interface
 
@@ -53,6 +58,17 @@ processed liek regular React components:
         ]
       }
     }
+
+..note Babel is Required
+
+  Currently Reactdown emits ES2015 code which must be compiled by Babel before
+  it can be execute in browsers. The relevant poriton of Babel config is:
+
+      {
+        "presets": ["es2015", "stage-1"]
+      }
+
+  Make sure you out these line in your `.babelrc`.
 
 ### Configuration
 

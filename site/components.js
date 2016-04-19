@@ -8,7 +8,11 @@ import {
   Sidebar,
 
   ToC as BaseToC,
-  ToCItem
+  ToCItem,
+
+  NoteRoot,
+  NoteTitle,
+  NoteContent
 } from './theme.react.css';
 
 import Ref from 'reactdown/lib/directives/ref';
@@ -53,6 +57,15 @@ export function Root({children, ...props}) {
         {children}
       </BaseRoot>
     </div>
+  );
+}
+
+export function Note({children, line}) {
+  return (
+    <NoteRoot>
+      {line && <NoteTitle>{line}</NoteTitle>}
+      <NoteContent>{children}</NoteContent>
+    </NoteRoot>
   );
 }
 

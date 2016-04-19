@@ -4,14 +4,10 @@
 
   directives: {
 
-    // render source code listing, a fancy way
-    FancyCode: {
+    note: {
       render: {
-        source: './lib/FancyCode',
-        name: 'default',
-      },
-      parse: {
-        preformatted: true,
+        source: './components',
+        name: 'Note',
       }
     }
   }
