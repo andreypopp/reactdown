@@ -107,7 +107,12 @@ function parseDirective(directives: DirectiveMapping, eat: Eat, value: string): 
     if (currentLine === '') {
       eatLine(currentLine);
       content.push(NEWLINE);
-    } else if (hasIndent(currentLine, CUSTOM_BLOCK_INDENT)) {
+    } else if (
+        hasIndent(currentLine, CUSTOM_BLOCK_INDENT)
+        && !(hasIndent(currentLine, 4) &&
+             !hasIndent(currentLine, 5) &&
+             !content.some(line => line !== '\n'))
+    ) {
       eatLine(currentLine);
       content.push(currentLine.slice(CUSTOM_BLOCK_INDENT));
     } else {
