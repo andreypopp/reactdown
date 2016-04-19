@@ -103,9 +103,7 @@ Heading:prop(level == 2) {
 
 Heading:prop(level >=  3) {
   margin-top: 3em;
-  font-family: Muli, sans-serif;
-  text-transform: uppercase;
-  font-size: 1.0rem;
+  font-size: 1.2rem;
 }
 
 Sidebar {
