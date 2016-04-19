@@ -23,7 +23,7 @@ Root {
 }
 
 Paragraph, OrderedList, UnorderedList, Code {
-  margin-bottom: 2em;
+  margin-bottom: 1.7em;
   text-align: justify;
 }
 
@@ -64,8 +64,9 @@ UnorderedList {
 InlineCode {
   base: code;
   font-family: Menlo, Monaco, monospace;
+  font-size: 10pt;
   background: #393F5A;
-  padding: 0 0.1em;
+  padding: 0 0.2em;
 }
 
 Code {
@@ -76,8 +77,8 @@ Code {
   font-size: 9pt;
   padding: 1.5em 0;
   margin-right: -10000px;
-  margin-left: -100px;
-  padding-left: 100px;
+  margin-left: -20px;
+  padding-left: 20px;
 }
 
 Heading {
@@ -128,6 +129,23 @@ ToCItem {
   font-weight: bold;
   margin-bottom: 5px;
 }
+
+ToCItem:prop(level >= 2) {
+  font-size: 9pt;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+ToCItem:prop(level == 2):before {
+  content: '— ';
+}
+ToCItem:prop(level == 3):before {
+  content: '—— ';
+}
+ToCItem:prop(level >= 4):before {
+  content: '——— ';
+}
+
 ToCItem Link {
   color: #B7B8BF;
 }

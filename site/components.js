@@ -14,13 +14,17 @@ import {
 import Ref from 'reactdown/lib/directives/ref';
 import {contextTypes} from 'reactdown/lib/DocumentContext';
 
-function ToC(_props, context) {
+function ToC({fromDepth = 1, toDepth = 6}, context) {
   let {toc} = context.reactdown.model;
-  let items = toc.map(item =>
-    <ToCItem key={item.value} style={{marginLeft: (item.depth - 1) * 20}}>
-      <Link href={'#' + item.value}>{item.value}</Link>
-    </ToCItem>
-  );
+  let items = toc
+    .filter(item => item.depth >= fromDepth && item.depth <= toDepth)
+    .map(item =>
+      <ToCItem
+        key={item.value}
+        level={item.depth - fromDepth + 1}>
+        <Link href={'#' + item.value}>{item.value}</Link>
+      </ToCItem>
+    );
   return (
     <BaseToC>
       {items}
@@ -44,7 +48,7 @@ export function Root({children, ...props}) {
       <BaseRoot>
         <Sidebar>
           <Heading level={2}>Reactdown</Heading>
-          <ToC />
+          <ToC fromDepth={2} />
         </Sidebar>
         {children}
       </BaseRoot>

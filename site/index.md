@@ -1,4 +1,4 @@
-# Reactdown
+## Overview & Motivation
 
 Reactdown is a Markdown based live document format.
 
@@ -9,54 +9,15 @@ interactions beyween a user and a Reactdown document.
 Reactdown also provides two main extension points for Markdown syntax:
 **directives** and **roles**.
 
-## Custom Directives
-
-Custom directives are used to insert block-level markup constructs into
-document. They are modelled after [ReStructured Text][] directives.
-
-The simplest form of a custom directive is:
-
-    ::TOC
-
-
-### Content
-
-They also could have any other markdown content. It is up to directives to
-process the content. The rule is everything which is indented up to a directive
-name becomes a directive's content:
-
-    ::Note
-
-      Some *markdown* content.
-
-### Properties
-
-Metadata, encoded as YAML document:
-
-    ::TOC
-      ---
-      depth: 3
-      ---
-
-## Custom Roles
-
-TK Describe what custom roles are and what are their usecases.
-
-## Built-in Directives
-
-There are a couple of built-in directives.
-
-### Meta
-
-## Runtime Representation
-
-## Installation & Usage
+## Installation & Configuration
 
 Install via npm:
 
     % npm install reactdown
 
 ### Command Line Interface
+
+#### ok
 
 Reactdown documents can be rendered into JavaScript modules using a CLI utility:
 
@@ -94,6 +55,89 @@ processed liek regular React components:
     }
 
 ### Configuration
+
+## Usage
+
+### Document metadata
+
+Documents can attach arbitrary metadata using YAML frontmatter:
+
+    ---
+    title: Document
+    published: 2017-12-01
+    ---
+
+    Document
+
+## Directives
+
+Directives are used to insert block-level markup constructs into
+document. They are modelled after [ReStructured Text][] directives.
+
+The simplest form of a custom directive is:
+
+    ..toc
+
+
+### Syntax
+
+They also could have any other markdown content. It is up to directives to
+process the content. The rule is everything which is indented up to a directive
+name becomes a directive's content:
+
+    ..note Title
+
+      Some *markdown* content.toc
+
+Metadata, encoded as YAML document:
+
+    ..toc
+      ---
+      depth: 3
+      ---
+
+### Creating new directives
+
+## Roles
+
+TK Describe what roles are and what are their usecases.
+
+## Built-in Directives
+
+There are a couple of built-in directives.
+
+### Meta
+
+Directive `::meta` is used for debug purposes to render metadata attached to a
+document.
+
+Example:
+
+    ..meta
+
+### Ref
+
+Directive `::ref` can be used to place anchors within a document which then can
+be references using hyperlinks.
+
+Example:
+
+    ..ref see-more
+
+    Some important text.
+
+Later in the document we can place a hyperlink to a referenced content using a
+regular markdown syntax:
+
+    [See more info](#see-more)
+
+## Document API
+
+### Component
+
+### Metadata
+
+### Model
 
 ## Development
 
