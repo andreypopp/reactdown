@@ -1,10 +1,10 @@
 Prologue
 
-::Block
+..Block
 
   Hello,
 
-  ::SubBlock
+  ..SubBlock
 
     ok
 

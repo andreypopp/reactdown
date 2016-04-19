@@ -3,7 +3,7 @@
  * @flow
  */
 
-const CUSTOM_BLOCK_TEST = /^::[a-zA-Z]+\s*\n/;
+const CUSTOM_BLOCK_TEST = /^\.\.[a-zA-Z]+\s*\n/;
 const CUSTOM_BLOCK_INDENT = 2;
 const NEWLINE = '\n';
 
@@ -58,7 +58,7 @@ function parseDirective(directives: DirectiveMapping, eat: Eat, value: string): 
     return;
   }
 
-  // ::DirectiveName
+  // ..DirectiveName
   let bannerLine = nextLine();
   if (bannerLine === null) {
     return;

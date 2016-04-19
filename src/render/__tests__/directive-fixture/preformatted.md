@@ -1,6 +1,6 @@
 Hello,
 
-::pre
+..pre
 
   ok, *this* is **just** some code
 

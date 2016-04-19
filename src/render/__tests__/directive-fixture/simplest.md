@@ -1,5 +1,5 @@
 Prologue
 
-::Block
+..Block
 
 Epilogue

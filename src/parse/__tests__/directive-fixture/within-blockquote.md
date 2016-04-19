@@ -1,6 +1,6 @@
 Hello,
 
-> ::Block
+> ..Block
 >
 >   Hello
 
