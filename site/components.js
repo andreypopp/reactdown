@@ -1,5 +1,12 @@
+/**
+ * @copyright 2016-present, Reactdown team
+ */
 
 import React from 'react';
+
+import Ref from 'reactdown/lib/directives/ref';
+import {contextTypes} from 'reactdown/lib/DocumentContext';
+import Helmet from 'react-helmet';
 
 import {
   Root as BaseRoot,
@@ -13,10 +20,7 @@ import {
   NoteRoot,
   NoteTitle,
   NoteContent
-} from './theme.react.css';
-
-import Ref from 'reactdown/lib/directives/ref';
-import {contextTypes} from 'reactdown/lib/DocumentContext';
+} from './components.rcss';
 
 function ToC({fromDepth = 1, toDepth = 6}, context) {
   let {toc} = context.reactdown.model;
@@ -46,20 +50,6 @@ export function Heading({children, ...props}) {
   );
 }
 
-export function Root({children, ...props}) {
-  return (
-    <div>
-      <BaseRoot>
-        <Sidebar>
-          <Heading level={2}>Reactdown</Heading>
-          <ToC fromDepth={2} />
-        </Sidebar>
-        {children}
-      </BaseRoot>
-    </div>
-  );
-}
-
 export function Note({children, line}) {
   return (
     <NoteRoot>
@@ -68,6 +58,21 @@ export function Note({children, line}) {
     </NoteRoot>
   );
 }
+
+export function Root({children, ...props}, {reactdown: {model, metadata}}) {
+  console.log(model, metadata);
+  return (
+    <BaseRoot>
+      <Helmet title={metadata.title || model.title} />
+      <Sidebar>
+        <Heading level={2}>Reactdown</Heading>
+        <ToC fromDepth={2} />
+      </Sidebar>
+      {children}
+    </BaseRoot>
+  );
+}
+Root.contextTypes = contextTypes;
 
 export {
   Paragraph,
@@ -78,4 +83,4 @@ export {
   Strong,
   Code,
   Link
-} from './theme.react.css';
+} from './components.rcss';

@@ -1,6 +1,6 @@
 {
 
-  elements: './components.js',
+  components: './components.js',
 
   directives: {
 

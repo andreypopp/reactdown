@@ -1,5 +1,5 @@
 {
-  "name": "reactdown-example-webpack",
+  "name": "reactdown-site",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,7 @@
     "react": "^15.0.0",
     "react-css-components": "^0.6.2",
     "react-dom": "^15.0.0",
+    "react-helmet": "^3.0.2",
     "style-loader": "^0.13.1",
     "webpack": "^1.12.14"
   }

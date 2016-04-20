@@ -81,7 +81,7 @@ Code {
 }
 
 Heading {
-  base: reactdown/elements?Heading;
+  base: reactdown/components?Heading;
 
   position: relative;
   margin-top: 3em;

@@ -1,6 +1,10 @@
+---
+title: Reactdown
+---
+
 ## Overview & Motivation
 
-Reactdown is a Markdown based live document format.
+Markdown based live document format.
 
 It is implemented as a compiler from Markdown to React components. This is what
 makes Reactdown documents "live" — you can use any React component to drive
@@ -32,7 +36,7 @@ Reactdown documents can be rendered into JavaScript modules using a CLI utility:
       -h, --help                       output usage information
       -V, --version                    output the version number
       -d, --directive [component-ref]  Register component for a directive
-      -e, --elements [module-ref]      Module with HTML elements
+      -e, --components [module-ref]    Module with HTML components
 
 
 ### Webpack Loader

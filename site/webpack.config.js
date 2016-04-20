@@ -20,7 +20,7 @@ module.exports = {
         loader: 'babel-loader!reactdown/webpack',
       },
       {
-        test: /\.react\.css$/,
+        test: /\.rcss$/,
         loader: 'babel-loader!react-css-components/webpack',
       },
       {
