@@ -18,5 +18,6 @@ export let model = {
   "toc": [{
     "value": "Horizontal Rules",
     "depth": 1
-  }]
+  }],
+  "title": "Horizontal Rules"
 };

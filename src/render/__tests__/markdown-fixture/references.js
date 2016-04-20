@@ -46,5 +46,6 @@ export let model = {
   "toc": [{
     "value": "References",
     "depth": 1
-  }]
+  }],
+  "title": "References"
 };

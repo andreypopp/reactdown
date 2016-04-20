@@ -17,5 +17,6 @@ export default function Document() {
 }
 export let metadata = null;
 export let model = {
-  "toc": []
+  "toc": [],
+  "title": null
 };

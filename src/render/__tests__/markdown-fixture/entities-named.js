@@ -135,5 +135,6 @@ export let model = {
   "toc": [{
     "value": "Entities",
     "depth": 1
-  }]
+  }],
+  "title": "Entities"
 };

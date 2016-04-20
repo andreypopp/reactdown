@@ -18,5 +18,6 @@ export let model = {
   "toc": [{
     "value": "Block Quote",
     "depth": 1
-  }]
+  }],
+  "title": "Block Quote"
 };

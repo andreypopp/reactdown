@@ -20,5 +20,6 @@ export let model = {
   "toc": [{
     "value": "Hello world",
     "depth": 1
-  }]
+  }],
+  "title": "Hello world"
 };
