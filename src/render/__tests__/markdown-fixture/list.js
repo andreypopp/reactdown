@@ -1,19 +1,19 @@
 import React from "react";
 import DocumentContext from "reactdown/lib/DocumentContext";
-import * as defaultElements from "reactdown/lib/elements";
-import * as customElements from "reactdown/lib/elements";
-let elements = { ...defaultElements, ...customElements };
+import * as defaultComponents from "reactdown/lib/components";
+import * as customComponents from "reactdown/lib/components";
+let components = { ...defaultComponents, ...customComponents };
 export default function Document() {
   return React.createElement(DocumentContext, {
     context: {
       metadata,
       model
     }
-  }, React.createElement(elements.Root, null, React.createElement(elements.Heading, {
+  }, React.createElement(components.Root, null, React.createElement(components.Heading, {
     "level": 1
-  }, "List"), React.createElement(elements.UnorderedList, null, React.createElement(elements.ListItem, null, React.createElement(elements.Paragraph, null, React.createElement(elements.Strong, null, "One"), ";")), React.createElement(elements.ListItem, null, React.createElement(elements.Paragraph, null, React.createElement(elements.Emphasis, null, "Two"), ";")), React.createElement(elements.ListItem, null, React.createElement(elements.Paragraph, null, React.createElement(elements.Strikethrough, null, "Three"), ".")), React.createElement(elements.ListItem, null, React.createElement(elements.Paragraph, null, "One;")), React.createElement(elements.ListItem, null, React.createElement(elements.Paragraph, null, "Two;"))), React.createElement(elements.HTML, {
+  }, "List"), React.createElement(components.UnorderedList, null, React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, React.createElement(components.Strong, null, "One"), ";")), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, React.createElement(components.Emphasis, null, "Two"), ";")), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, React.createElement(components.Strikethrough, null, "Three"), ".")), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, "One;")), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, "Two;"))), React.createElement(components.HTML, {
     "html": "<!--  -->"
-  }), React.createElement(elements.OrderedList, null, React.createElement(elements.ListItem, null, React.createElement(elements.Paragraph, null, "Four.")), React.createElement(elements.ListItem, null, React.createElement(elements.Paragraph, null, "Five.")), React.createElement(elements.ListItem, null, React.createElement(elements.Paragraph, null, "Loose:"), React.createElement(elements.UnorderedList, null, React.createElement(elements.ListItem, null, "Alpha;"), React.createElement(elements.ListItem, null, "Bravo;"), React.createElement(elements.ListItem, null, "Charlie."))), React.createElement(elements.ListItem, null, React.createElement(elements.Paragraph, null, "Loose 2:"), React.createElement(elements.UnorderedList, null, React.createElement(elements.ListItem, null, "Delta;"), React.createElement(elements.ListItem, null, "Echo;"), React.createElement(elements.ListItem, null, "Foxtrot.")))), React.createElement(elements.Break, null), React.createElement(elements.Code, null, "And a rule.\n")));
+  }), React.createElement(components.OrderedList, null, React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, "Four.")), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, "Five.")), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, "Loose:"), React.createElement(components.UnorderedList, null, React.createElement(components.ListItem, null, "Alpha;"), React.createElement(components.ListItem, null, "Bravo;"), React.createElement(components.ListItem, null, "Charlie."))), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, "Loose 2:"), React.createElement(components.UnorderedList, null, React.createElement(components.ListItem, null, "Delta;"), React.createElement(components.ListItem, null, "Echo;"), React.createElement(components.ListItem, null, "Foxtrot.")))), React.createElement(components.Break, null), React.createElement(components.Code, null, "And a rule.\n")));
 }
 export let metadata = {};
 export let model = {

@@ -1,17 +1,17 @@
 import React from "react";
 import DocumentContext from "reactdown/lib/DocumentContext";
-import * as defaultElements from "reactdown/lib/elements";
-import * as customElements from "reactdown/lib/elements";
-let elements = { ...defaultElements, ...customElements };
+import * as defaultComponents from "reactdown/lib/components";
+import * as customComponents from "reactdown/lib/components";
+let components = { ...defaultComponents, ...customComponents };
 export default function Document() {
   return React.createElement(DocumentContext, {
     context: {
       metadata,
       model
     }
-  }, React.createElement(elements.Root, null, React.createElement(elements.Heading, {
+  }, React.createElement(components.Root, null, React.createElement(components.Heading, {
     "level": 1
-  }, "Block Quote"), React.createElement(elements.Blockquote, null, React.createElement(elements.UnorderedList, null, React.createElement(elements.ListItem, null, React.createElement(elements.Code, null, "code.in.a.list();\n")), React.createElement(elements.ListItem, null, React.createElement(elements.Paragraph, null, "Paragraph.")), React.createElement(elements.ListItem, null, React.createElement(elements.Paragraph, null, "Normal list"), React.createElement(elements.Paragraph, null, "Paragraph."))))));
+  }, "Block Quote"), React.createElement(components.Blockquote, null, React.createElement(components.UnorderedList, null, React.createElement(components.ListItem, null, React.createElement(components.Code, null, "code.in.a.list();\n")), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, "Paragraph.")), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, "Normal list"), React.createElement(components.Paragraph, null, "Paragraph."))))));
 }
 export let metadata = {};
 export let model = {

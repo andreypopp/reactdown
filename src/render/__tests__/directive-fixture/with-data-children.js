@@ -1,8 +1,8 @@
 import React from "react";
 import DocumentContext from "reactdown/lib/DocumentContext";
-import * as defaultElements from "reactdown/lib/elements";
-import * as customElements from "reactdown/lib/elements";
-let elements = { ...defaultElements, ...customElements };
+import * as defaultComponents from "reactdown/lib/components";
+import * as customComponents from "reactdown/lib/components";
+let components = { ...defaultComponents, ...customComponents };
 import { Block } from "lib";
 export default function Document() {
   return React.createElement(DocumentContext, {
@@ -10,10 +10,10 @@ export default function Document() {
       metadata,
       model
     }
-  }, React.createElement(elements.Root, null, React.createElement(elements.Paragraph, null, "Prologue"), React.createElement(Block, {
+  }, React.createElement(components.Root, null, React.createElement(components.Paragraph, null, "Prologue"), React.createElement(Block, {
     "a": 1,
     "b": 2
-  }, React.createElement(elements.Paragraph, null, "Ok, ", React.createElement(elements.Emphasis, null, "some"), " paragraph."))));
+  }, React.createElement(components.Paragraph, null, "Ok, ", React.createElement(components.Emphasis, null, "some"), " paragraph."))));
 }
 export let metadata = {};
 export let model = {

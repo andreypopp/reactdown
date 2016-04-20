@@ -1,61 +1,61 @@
 import React from "react";
 import DocumentContext from "reactdown/lib/DocumentContext";
-import * as defaultElements from "reactdown/lib/elements";
-import * as customElements from "reactdown/lib/elements";
-let elements = { ...defaultElements, ...customElements };
+import * as defaultComponents from "reactdown/lib/components";
+import * as customComponents from "reactdown/lib/components";
+let components = { ...defaultComponents, ...customComponents };
 export default function Document() {
   return React.createElement(DocumentContext, {
     context: {
       metadata,
       model
     }
-  }, React.createElement(elements.Root, null, React.createElement(elements.Table, null, React.createElement(elements.TableHead, null, React.createElement(elements.TableRow, null, React.createElement(elements.TableHeaderCell, {
+  }, React.createElement(components.Root, null, React.createElement(components.Table, null, React.createElement(components.TableHead, null, React.createElement(components.TableRow, null, React.createElement(components.TableHeaderCell, {
     "align": null
-  }, "Alpha"), React.createElement(elements.TableHeaderCell, {
+  }, "Alpha"), React.createElement(components.TableHeaderCell, {
     "align": "left"
-  }, "Bravo"), React.createElement(elements.TableHeaderCell, {
+  }, "Bravo"), React.createElement(components.TableHeaderCell, {
     "align": "right"
-  }, "Charlie"), React.createElement(elements.TableHeaderCell, {
+  }, "Charlie"), React.createElement(components.TableHeaderCell, {
     "align": "center"
-  }, "Delta"))), React.createElement(elements.TableBody, null, React.createElement(elements.TableRow, null, React.createElement(elements.TableCell, {
+  }, "Delta"))), React.createElement(components.TableBody, null, React.createElement(components.TableRow, null, React.createElement(components.TableCell, {
     "align": null
-  }, "Echo"), React.createElement(elements.TableCell, {
+  }, "Echo"), React.createElement(components.TableCell, {
     "align": "left"
-  }, "Foxtrot"), React.createElement(elements.TableCell, {
+  }, "Foxtrot"), React.createElement(components.TableCell, {
     "align": "right"
-  }, React.createElement(elements.Strong, null, "Golf")), React.createElement(elements.TableCell, {
+  }, React.createElement(components.Strong, null, "Golf")), React.createElement(components.TableCell, {
     "align": "center"
-  })), React.createElement(elements.TableRow, null, React.createElement(elements.TableCell, {
+  })), React.createElement(components.TableRow, null, React.createElement(components.TableCell, {
     "align": null
-  }, "India"), React.createElement(elements.TableCell, {
+  }, "India"), React.createElement(components.TableCell, {
     "align": "left"
-  }, "Juliett"), React.createElement(elements.TableCell, {
+  }, "Juliett"), React.createElement(components.TableCell, {
     "align": "right"
-  }, "Kilo"), React.createElement(elements.TableCell, {
+  }, "Kilo"), React.createElement(components.TableCell, {
     "align": "center"
-  }, "Lima")), React.createElement(elements.TableRow, null, React.createElement(elements.TableCell, {
+  }, "Lima")), React.createElement(components.TableRow, null, React.createElement(components.TableCell, {
     "align": null
-  }, "Mike"), React.createElement(elements.TableCell, {
+  }, "Mike"), React.createElement(components.TableCell, {
     "align": "left"
-  }, "November"), React.createElement(elements.TableCell, {
+  }, "November"), React.createElement(components.TableCell, {
     "align": "right"
-  }, "Oscar"), React.createElement(elements.TableCell, {
+  }, "Oscar"), React.createElement(components.TableCell, {
     "align": "center"
-  }, React.createElement(elements.Strikethrough, null, "Papa"))), React.createElement(elements.TableRow, null, React.createElement(elements.TableCell, {
+  }, React.createElement(components.Strikethrough, null, "Papa"))), React.createElement(components.TableRow, null, React.createElement(components.TableCell, {
     "align": null
-  }, "Quebec"), React.createElement(elements.TableCell, {
+  }, "Quebec"), React.createElement(components.TableCell, {
     "align": "left"
-  }, React.createElement(elements.Emphasis, null, "Romeo")), React.createElement(elements.TableCell, {
+  }, React.createElement(components.Emphasis, null, "Romeo")), React.createElement(components.TableCell, {
     "align": "right"
-  }, "Sierra"), React.createElement(elements.TableCell, {
+  }, "Sierra"), React.createElement(components.TableCell, {
     "align": "center"
-  }, "Tango")), React.createElement(elements.TableRow, null, React.createElement(elements.TableCell, {
+  }, "Tango")), React.createElement(components.TableRow, null, React.createElement(components.TableCell, {
     "align": null
-  }, "Uniform"), React.createElement(elements.TableCell, {
+  }, "Uniform"), React.createElement(components.TableCell, {
     "align": "left"
-  }, "Victor"), React.createElement(elements.TableCell, {
+  }, "Victor"), React.createElement(components.TableCell, {
     "align": "right"
-  }, "Whiskey"), React.createElement(elements.TableCell, {
+  }, "Whiskey"), React.createElement(components.TableCell, {
     "align": "center"
   }))))));
 }
