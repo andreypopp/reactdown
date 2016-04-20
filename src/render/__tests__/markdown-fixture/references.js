@@ -41,7 +41,7 @@ export default function Document() {
     "title": undefined
   }), "."), null));
 }
-export let metadata = null;
+export let metadata = {};
 export let model = {
   "toc": [{
     "value": "References",

@@ -13,7 +13,7 @@ export default function Document() {
     "level": 1
   }, "Code"), React.createElement(elements.Code, null, "alert('some JavaScript code.');\n"), React.createElement(elements.Code, null, "foo bar baz\n"), React.createElement(elements.Code, null, "alpha bravo charlie\n"), React.createElement(elements.Code, null, ""), React.createElement(elements.Code, null, "  two spaces\n    one\n        two\n    one\n      mixed.\n")));
 }
-export let metadata = null;
+export let metadata = {};
 export let model = {
   "toc": [{
     "value": "Code",

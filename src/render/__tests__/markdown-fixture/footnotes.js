@@ -28,7 +28,7 @@ export default function Document() {
     "title": undefined
   }, "^2"), ": Normal footnote.")));
 }
-export let metadata = null;
+export let metadata = {};
 export let model = {
   "toc": [{
     "value": "Footnotes",

@@ -15,7 +15,7 @@ export default function Document() {
     "b": 2
   }, React.createElement(elements.Paragraph, null, "Ok, ", React.createElement(elements.Emphasis, null, "some"), " paragraph."))));
 }
-export let metadata = null;
+export let metadata = {};
 export let model = {
   "toc": [],
   "title": null

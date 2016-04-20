@@ -35,7 +35,7 @@ export default function Document() {
     "title": null
   }))));
 }
-export let metadata = null;
+export let metadata = {};
 export let model = {
   "toc": [],
   "title": null

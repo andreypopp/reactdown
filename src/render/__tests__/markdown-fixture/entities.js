@@ -18,7 +18,7 @@ export default function Document() {
     "title": "© Someone"
   })), React.createElement(elements.Paragraph, null, "But, entities are not interpreted in ", React.createElement(elements.InlineCode, null, "inline c&ouml;de"), ", or in\ncode blocks:"), React.createElement(elements.Code, null, "C&Ouml;DE block.\n")));
 }
-export let metadata = null;
+export let metadata = {};
 export let model = {
   "toc": [],
   "title": null

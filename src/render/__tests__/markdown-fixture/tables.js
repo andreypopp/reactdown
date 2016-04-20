@@ -59,7 +59,7 @@ export default function Document() {
     "align": "center"
   }))))));
 }
-export let metadata = null;
+export let metadata = {};
 export let model = {
   "toc": [],
   "title": null

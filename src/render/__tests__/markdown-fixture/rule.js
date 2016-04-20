@@ -13,7 +13,7 @@ export default function Document() {
     "level": 1
   }, "Horizontal Rules"), React.createElement(elements.Break, null), React.createElement(elements.Break, null), React.createElement(elements.Break, null)));
 }
-export let metadata = null;
+export let metadata = {};
 export let model = {
   "toc": [{
     "value": "Horizontal Rules",

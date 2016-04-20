@@ -130,7 +130,7 @@ export default function Document() {
     "title": "AT&T favicon"
   }), "."), React.createElement(elements.Paragraph, null, "Definitions:"), null, null, null, null, null, null, null));
 }
-export let metadata = null;
+export let metadata = {};
 export let model = {
   "toc": [{
     "value": "Entities",

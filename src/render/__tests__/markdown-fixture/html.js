@@ -29,7 +29,7 @@ export default function Document() {
     "html": "</sub>"
   }), ".")));
 }
-export let metadata = null;
+export let metadata = {};
 export let model = {
   "toc": [],
   "title": null

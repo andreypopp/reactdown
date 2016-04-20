@@ -15,7 +15,7 @@ export default function Document() {
     "html": "<!--  -->"
   }), React.createElement(elements.OrderedList, null, React.createElement(elements.ListItem, null, React.createElement(elements.Paragraph, null, "Four.")), React.createElement(elements.ListItem, null, React.createElement(elements.Paragraph, null, "Five.")), React.createElement(elements.ListItem, null, React.createElement(elements.Paragraph, null, "Loose:"), React.createElement(elements.UnorderedList, null, React.createElement(elements.ListItem, null, "Alpha;"), React.createElement(elements.ListItem, null, "Bravo;"), React.createElement(elements.ListItem, null, "Charlie."))), React.createElement(elements.ListItem, null, React.createElement(elements.Paragraph, null, "Loose 2:"), React.createElement(elements.UnorderedList, null, React.createElement(elements.ListItem, null, "Delta;"), React.createElement(elements.ListItem, null, "Echo;"), React.createElement(elements.ListItem, null, "Foxtrot.")))), React.createElement(elements.Break, null), React.createElement(elements.Code, null, "And a rule.\n")));
 }
-export let metadata = null;
+export let metadata = {};
 export let model = {
   "toc": [{
     "value": "List",

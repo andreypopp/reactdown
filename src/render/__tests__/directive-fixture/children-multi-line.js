@@ -12,7 +12,7 @@ export default function Document() {
     }
   }, React.createElement(elements.Root, null, React.createElement(elements.Paragraph, null, "Prologue"), React.createElement(Block, null, React.createElement(elements.Paragraph, null, "Hello,"), React.createElement(elements.Paragraph, null, "This is ", React.createElement(elements.Emphasis, null, "just"), " some\nparagraph."), React.createElement(elements.Paragraph, null, "Cheers!")), React.createElement(elements.Paragraph, null, "Epilogue")));
 }
-export let metadata = null;
+export let metadata = {};
 export let model = {
   "toc": [],
   "title": null

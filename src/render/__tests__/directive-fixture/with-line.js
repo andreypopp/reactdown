@@ -14,7 +14,7 @@ export default function Document() {
     "line": "some-ref"
   }), React.createElement(elements.Paragraph, null, "wow")));
 }
-export let metadata = null;
+export let metadata = {};
 export let model = {
   "toc": [],
   "title": null
