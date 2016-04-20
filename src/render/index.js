@@ -13,6 +13,7 @@ import invariant from 'invariant';
 import Renderer from './Renderer';
 import buildJSON from './buildJSON';
 import toc from '../model/toc';
+import title from '../model/title';
 
 type RenderPartsResult = {
   expression: JSAST;
@@ -51,7 +52,7 @@ const defaultRenderConfig: CompleteRenderConfig = {
     'meta': directive('meta'),
     'ref': directive('ref'),
   },
-  model: {toc},
+  model: {toc, title},
 };
 
 function applyDefaultConfig<T: {directives: Object}>(config: T, defaultConfig: T): T {
