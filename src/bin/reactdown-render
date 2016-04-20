@@ -34,9 +34,9 @@ program
     collectComponentRef, {}
   )
   .option(
-    '-e, --elements [module-ref]',
-    'Module with HTML elements',
-    String, 'reactdown/lib/elements'
+    '-e, --components [module-ref]',
+    'Module with HTML components',
+    String, 'reactdown/lib/components'
   )
   .parse(process.argv);
 
@@ -48,9 +48,9 @@ let src = fs.readFileSync(filename, 'utf8');
 let config = findConfig(dirname).config;
 config = mergeConfig(config, {
   directives: program.directive,
-  elements: program.elements === 'reactdown/lib/elements' ?
-    program.elements :
-    resolveSync(program.elements)
+  components: program.components === 'reactdown/lib/components' ?
+    program.components :
+    resolveSync(program.components)
 });
 
 console.log(renderToString(src, config).code);

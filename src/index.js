@@ -18,7 +18,7 @@ export function renderToString(value: string, config: Config = {}): {code: strin
   };
   let renderConfig = {
     directives: extractObject(config.directives, config => config.render),
-    elements: config.elements,
+    components: config.components,
   };
   let mdast = parse(value, parseConfig);
   let jsast = renderToProgram(mdast, renderConfig);

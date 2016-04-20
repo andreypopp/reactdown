@@ -87,7 +87,7 @@ export default class Renderer {
       component: null | string | JSAST,
       props: any = null, ...children: Array<JSAST>): JSAST {
     if (typeof component === 'string') {
-      component = expr`elements.${this.build.identifier(component)}`;
+      component = expr`components.${this.build.identifier(component)}`;
     }
     if (component === null) {
       return this.renderNothing();

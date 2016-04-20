@@ -29,7 +29,7 @@ type DirectiveMapping = {
 
 type CompleteRenderConfig = {
   build: JSASTFactory;
-  elements: string;
+  components: string;
   directives: DirectiveMapping;
   model: {[attribute: string]: (node: MDASTRootNode) => any};
 };
@@ -47,7 +47,7 @@ function directive(name: string): ComponentRef {
 
 const defaultRenderConfig: CompleteRenderConfig = {
   build: build,
-  elements: 'reactdown/lib/elements',
+  components: 'reactdown/lib/components',
   directives: {
     'meta': directive('meta'),
     'ref': directive('ref'),
@@ -85,7 +85,7 @@ export function renderToProgram(
     node: MDASTRootNode,
     config: RenderConfig = defaultRenderConfig): JSAST {
   config = applyDefaultConfig(config, defaultRenderConfig);
-  let {build, elements, directives} = config;
+  let {build, components, directives} = config;
   let rendererConfig = {
     build,
     directives: keyMirrorToJSAST(build, directives),
@@ -141,10 +141,10 @@ export function renderToProgram(
   statements = stmt`
     import React from "react";
     import DocumentContext from "reactdown/lib/DocumentContext";
-    import * as defaultElements from "reactdown/lib/elements";
-    import * as customElements from "${build.stringLiteral(elements)}";
+    import * as defaultComponents from "reactdown/lib/components";
+    import * as customComponents from "${build.stringLiteral(components)}";
 
-    let elements = {...defaultElements, ...customElements};
+    let components = {...defaultComponents, ...customComponents};
   `.concat(statements);
 
   return build.program(statements);

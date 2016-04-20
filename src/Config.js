@@ -21,7 +21,7 @@ export type DirectiveMapping = {
 };
 
 export type CompleteConfig = {
-  elements: string;
+  components: string;
   directives: DirectiveMapping;
 };
 
@@ -31,7 +31,7 @@ const CONFIG_FILENAME = '.reactdownrc';
 const PACKAGE_FILENAME = 'package.json';
 
 export const defaultConfig: CompleteConfig = {
-  elements: 'reactdown/lib/elements',
+  components: 'reactdown/lib/components',
   directives: {}
 };
 
@@ -80,8 +80,8 @@ export function parseConfigFromQuery(query: string): Config {
   if (query.directives) {
     config.directives = query.directives;
   }
-  if (query.elements) {
-    config.elements = query.elements;
+  if (query.components) {
+    config.components = query.components;
   }
   return config;
 }
