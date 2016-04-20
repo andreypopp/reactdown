@@ -80,7 +80,7 @@ export default class Renderer {
     this.footnotes = [];
     this.expression = null;
     this.identifiersUsed = [];
-    this.metadata = null;
+    this.metadata = {};
   }
 
   renderElement(
