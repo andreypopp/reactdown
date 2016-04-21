@@ -1,5 +1,5 @@
 /**
- * @copyright 2016-present, Reactdown team
+ * @copyright 2016-present, Reactdown Team
  * @flow
  */
 

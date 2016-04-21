@@ -1,5 +1,5 @@
 /**
- * @copyright 2016, Andrey Popp
+ * @copyright 2016-present, Reactdown Team
  * @flow
  */
 

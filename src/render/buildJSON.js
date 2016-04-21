@@ -1,5 +1,5 @@
 /**
- * @copyright 2016, Andrey Popp <8mayday@gmail.com>
+ * @copyright 2016-present, Reactdown Team
  * @flow
  */
 
