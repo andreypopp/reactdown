@@ -27,11 +27,15 @@ type DirectiveMapping = {
   [name: string]: ComponentRef;
 };
 
+export type ModelConfig = {
+  [attribute: string]: (node: MDASTRootNode) => any
+};
+
 type CompleteRenderConfig = {
   build: JSASTFactory;
   components: string;
   directives: DirectiveMapping;
-  model: {[attribute: string]: (node: MDASTRootNode) => any};
+  model: ModelConfig;
 };
 
 export type RenderConfig = $Shape<CompleteRenderConfig>;

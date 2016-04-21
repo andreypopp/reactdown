@@ -29,3 +29,14 @@ export function parseNamed(ref: string): ?{id: string; ref: ComponentRef} {
   let [_everything, id, source, _nothing, name = 'default'] = match;
   return {id, ref: {source, name}};
 }
+
+export function resolve(ref: string | ?ComponentRef): any {
+  if (typeof ref === 'string') {
+    ref = parse(ref);
+  }
+  if (ref == null) {
+    return null;
+  }
+  // $FlowIssue: not a flow issue, we are just being smart here
+  return require(ref.source)[ref.name];
+}

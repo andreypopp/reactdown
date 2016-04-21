@@ -3,13 +3,28 @@
  * @flow
  */
 
-import type {DirectiveConfig as DirectiveParseConfig} from './parse';
-import type {DirectiveConfig as DirectiveRenderConfig} from './render';
+import type {
+  ParseConfig,
+  DirectiveConfig as DirectiveParseConfig
+} from './parse';
+import type {
+  RenderConfig,
+  DirectiveConfig as DirectiveRenderConfig,
+  ModelConfig as ModelRenderConfig
+} from './render';
 
 import fs from 'fs';
 import path from 'path';
 import JSON5 from 'json5';
 import {parseQuery} from 'loader-utils';
+
+import * as model from './model';
+import * as ComponentRef from './ComponentRef';
+
+export type ModelConfig
+  // $FlowIssue: report it
+  = {[attribute: string]: string}
+  | ModelRenderConfig;
 
 export type DirectiveConfig = $Shape<{
   render: DirectiveRenderConfig;
@@ -23,6 +38,7 @@ export type DirectiveMapping = {
 export type CompleteConfig = {
   components: string;
   directives: DirectiveMapping;
+  model: ModelConfig;
 };
 
 export type Config = $Shape<CompleteConfig>;
@@ -32,7 +48,8 @@ const PACKAGE_FILENAME = 'package.json';
 
 export const defaultConfig: CompleteConfig = {
   components: 'reactdown/lib/components',
-  directives: {}
+  directives: {},
+  model: model,
 };
 
 export function mergeConfig(config: CompleteConfig, merge: ?Config): CompleteConfig {
@@ -45,7 +62,11 @@ export function mergeConfig(config: CompleteConfig, merge: ?Config): CompleteCon
     directives: {
       ...config.directives,
       ...merge.directives,
-    }
+    },
+    model: {
+      ...config.model,
+      ...merge.model,
+    },
   };
 }
 
@@ -86,7 +107,41 @@ export function parseConfigFromQuery(query: string): Config {
   return config;
 }
 
+export function toRenderConfig(config: CompleteConfig): RenderConfig {
+  let renderConfig = {
+    components: config.components,
+    directives: mapObject(config.directives, config => config.render),
+    model: mapObject(config.model, analyzer => {
+      if (typeof analyzer === 'string') {
+        return ComponentRef.resolve(analyzer)
+      } else {
+        return analyzer;
+      }
+    }),
+  };
+  return renderConfig;
+}
+
+export function toParseConfig(config: CompleteConfig): ParseConfig {
+  let parseConfig = {
+    directives: mapObject(config.directives, config => config.parse),
+  };
+  return parseConfig;
+}
+
 function readJSON(loc, syntax = JSON) {
   return syntax.parse(fs.readFileSync(loc, {flag: 'r'}).toString('utf8'));
 }
 
+function mapObject<V1, V2>(object: {[k: string]: V1}, map: (v: V1) => V2): {[k: string]: V2} {
+  let result = {};
+  for (let key in object) {
+    if (object.hasOwnProperty(key)) {
+      let value = map(object[key]);
+      if (value !== undefined) {
+        result[key] = value;
+      }
+    }
+  }
+  return result;
+}
