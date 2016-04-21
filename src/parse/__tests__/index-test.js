@@ -49,5 +49,6 @@ function generateCases(dir, only = null) {
 describe('reactdown/parse', function() {
   describe('directive', function() {
     generateCases('directive-fixture');
+    generateCases('role-fixture');
   });
 });

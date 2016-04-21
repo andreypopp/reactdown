@@ -17,7 +17,7 @@ import type {
   MDASTParentNode,
   MDASTTextNode,
 
-  MDASTDirective,
+  MDASTDirectiveNode,
   MDASTListNode,
   MDASTListItemNode,
   MDASTHeadingNode,
@@ -844,7 +844,7 @@ export default class Renderer {
     return this.renderNothing();
   }
 
-  directive(node: MDASTDirective): JSAST {
+  directive(node: MDASTDirectiveNode): JSAST {
     let component = this.directives[node.name];
     if (component === undefined) {
       return this.unknown(node);

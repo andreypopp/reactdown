@@ -42,12 +42,18 @@ export type MDASTTextNode = MDASTNode & {
   value: string;
 };
 
-export type MDASTDirective = MDASTNode & {
+export type MDASTDirectiveNode = MDASTNode & {
   type: 'directive';
   name: string;
-  children: ?Array<MDASTAnyNode>,
+  children: ?Array<MDASTAnyNode>;
   value: ?string;
   line: ?string;
+};
+
+export type MDASTRoleNode = MDASTNode & {
+  type: 'role';
+  name: string;
+  words: ?Array<string>;
 };
 
 export type MDASTListItemNode = MDASTParentNode & {
@@ -190,7 +196,8 @@ export type MDASTImageReferenceNode = {
 };
 
 export type MDASTAnyNode
-  = MDASTDirective
+  = MDASTDirectiveNode
+  | MDASTRoleNode
   | MDASTListItemNode
   | MDASTListNode
   | MDASTHeadingNode
