@@ -113,7 +113,7 @@ export function toRenderConfig(config: CompleteConfig): RenderConfig {
     directives: mapObject(config.directives, config => config.render),
     model: mapObject(config.model, analyzer => {
       if (typeof analyzer === 'string') {
-        return ComponentRef.resolve(analyzer)
+        return ComponentRef.resolve(analyzer);
       } else {
         return analyzer;
       }
