@@ -34,6 +34,11 @@ let config = {
     Block: {source: 'lib', name: 'Block'},
     SubBlock: {source: 'lib/SubBlock', name: 'default'},
     pre: {source: 'lib/pre', name: 'default'},
+  },
+  roles: {
+    mod: {source: 'roles', name: 'mod'},
+    GHIssue: {source: 'roles', name: 'GHIssue'},
+    GHBranch: {source: 'roles', name: 'GHBranch'},
   }
 };
 
@@ -57,5 +62,8 @@ describe('reactdown/render', function() {
   });
   describe('directive', function() {
     generateCases('directive-fixture');
+  });
+  describe('role', function() {
+    generateCases('role-fixture');
   });
 });

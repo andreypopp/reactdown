@@ -1,0 +1,7 @@
+{
+  roles: {
+    mod: {source: 'roles', name: 'mod'},
+    GHIssue: {source: 'roles', name: 'GHIssue'},
+    GHBranch: {source: 'roles', name: 'GHBranch'},
+  }
+}

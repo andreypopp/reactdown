@@ -18,6 +18,7 @@ import type {
   MDASTTextNode,
 
   MDASTDirectiveNode,
+  MDASTRoleNode,
   MDASTListNode,
   MDASTListItemNode,
   MDASTHeadingNode,
@@ -57,6 +58,7 @@ type ComponentSymbolRegistry = {
 type CompleteRendererConfig = {
   build: JSASTFactory;
   directives: ComponentSymbolRegistry;
+  roles: ComponentSymbolRegistry;
 };
 
 export type RendererConfig = $Shape<CompleteRendererConfig>;
@@ -65,6 +67,7 @@ export default class Renderer {
 
   build: JSASTFactory;
   directives: ComponentSymbolRegistry;
+  roles: ComponentSymbolRegistry;
 
   definitions: {[key: string]: MDASTDefinitionNode};
   footnotes: Array<any>;
@@ -75,6 +78,7 @@ export default class Renderer {
   constructor(config: RendererConfig) {
     this.build = config.build || build;
     this.directives = config.directives || {};
+    this.roles = config.roles || {};
 
     this.definitions = {};
     this.footnotes = [];
@@ -842,6 +846,17 @@ export default class Renderer {
 
   footnoteDefinition(_node: MDASTFootnoteDefinitionNode): JSAST {
     return this.renderNothing();
+  }
+
+  role(node: MDASTRoleNode): JSAST {
+    let component = this.roles[node.name];
+    if (component === undefined) {
+      return this.unknown(node);
+    } else if (component === null) {
+      return  this.renderNothing();
+    } else {
+      return this.renderElement(component, {words: node.words});
+    }
   }
 
   directive(node: MDASTDirectiveNode): JSAST {

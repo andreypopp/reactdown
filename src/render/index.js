@@ -23,7 +23,7 @@ type RenderPartsResult = {
 
 export type DirectiveConfig = ComponentRef;
 
-type DirectiveMapping = {
+type ComponentMapping = {
   [name: string]: ComponentRef;
 };
 
@@ -34,7 +34,8 @@ export type ModelConfig = {
 type CompleteRenderConfig = {
   build: JSASTFactory;
   components: string;
-  directives: DirectiveMapping;
+  directives: ComponentMapping;
+  roles: ComponentMapping;
   model: ModelConfig;
 };
 
@@ -43,6 +44,7 @@ export type RenderConfig = $Shape<CompleteRenderConfig>;
 const defaultRendererConfig: RendererConfig = {
   build: build,
   directives: {},
+  roles: {},
 };
 
 function directive(name: string): ComponentRef {
@@ -56,10 +58,11 @@ const defaultRenderConfig: CompleteRenderConfig = {
     'meta': directive('meta'),
     'ref': directive('ref'),
   },
+  roles: {},
   model: {toc, title},
 };
 
-function applyDefaultConfig<T: {directives: Object}>(config: T, defaultConfig: T): T {
+function applyDefaultConfig(config: RendererConfig, defaultConfig: RendererConfig): RendererConfig {
   if (config !== defaultConfig) {
     config = {
       ...defaultConfig,
@@ -67,6 +70,10 @@ function applyDefaultConfig<T: {directives: Object}>(config: T, defaultConfig: T
       directives: {
         ...defaultConfig.directives,
         ...config.directives,
+      },
+      roles: {
+        ...defaultConfig.roles,
+        ...config.roles,
       },
     };
   }
@@ -89,10 +96,11 @@ export function renderToProgram(
     node: MDASTRootNode,
     config: RenderConfig = defaultRenderConfig): JSAST {
   config = applyDefaultConfig(config, defaultRenderConfig);
-  let {build, components, directives} = config;
+  let {build, components, directives, roles} = config;
   let rendererConfig = {
     build,
     directives: keyMirrorToJSAST(build, directives),
+    roles: keyMirrorToJSAST(build, roles),
   };
 
   let {
@@ -123,7 +131,7 @@ export function renderToProgram(
   `;
 
   identifiersUsed.forEach(identifier => {
-    let spec = directives[identifier.name];
+    let spec = directives[identifier.name] || roles[identifier.name];
     invariant(
       spec !== undefined,
       'Cannot resolve identifier to spec'

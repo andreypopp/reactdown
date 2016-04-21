@@ -38,6 +38,7 @@ export type DirectiveMapping = {
 export type CompleteConfig = {
   components: string;
   directives: DirectiveMapping;
+  roles: DirectiveMapping;
   model: ModelConfig;
 };
 
@@ -49,6 +50,7 @@ const PACKAGE_FILENAME = 'package.json';
 export const defaultConfig: CompleteConfig = {
   components: 'reactdown/lib/components',
   directives: {},
+  roles: {},
   model: model,
 };
 
@@ -62,6 +64,10 @@ export function mergeConfig(config: CompleteConfig, merge: ?Config): CompleteCon
     directives: {
       ...config.directives,
       ...merge.directives,
+    },
+    roles: {
+      ...config.roles,
+      ...merge.roles,
     },
     model: {
       ...config.model,
@@ -101,6 +107,9 @@ export function parseConfigFromQuery(query: string): Config {
   if (query.directives) {
     config.directives = query.directives;
   }
+  if (query.roles) {
+    config.roles = query.roles;
+  }
   if (query.components) {
     config.components = query.components;
   }
@@ -111,6 +120,7 @@ export function toRenderConfig(config: CompleteConfig): RenderConfig {
   let renderConfig = {
     components: config.components,
     directives: mapObject(config.directives, config => config.render),
+    roles: config.roles,
     model: mapObject(config.model, analyzer => {
       if (typeof analyzer === 'string') {
         return ComponentRef.resolve(analyzer);

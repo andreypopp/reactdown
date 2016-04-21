@@ -14,7 +14,7 @@ function error(message) {
   process.exit(1);
 }
 
-function collectComponentRef(value, config) {
+function collectDirective(value, config) {
   let ref = parseNamed(value);
   if (ref === null) {
     error('directive should be in form of: <id>=<source>(:<name>)?');
@@ -25,13 +25,27 @@ function collectComponentRef(value, config) {
   return config;
 }
 
+function collectRole(value, config) {
+  let ref = parseNamed(value);
+  if (ref === null) {
+    error('role should be in form of: <id>=<source>(:<name>)?');
+  }
+  config[ref.id] = ref.ref;
+  return config;
+}
+
 program
   .version(pkg.version)
   .arguments('<file>')
   .option(
     '-d, --directive [component-ref]',
     'Register component for a directive',
-    collectComponentRef, {}
+    collectDirective, {}
+  )
+  .option(
+    '-r, --role [component-ref]',
+    'Register component for a role',
+    collectRole, {}
   )
   .option(
     '-e, --components [module-ref]',
@@ -48,6 +62,7 @@ let src = fs.readFileSync(filename, 'utf8');
 let config = findConfig(dirname).config;
 config = mergeConfig(config, {
   directives: program.directive,
+  roles: program.role,
   components: program.components === 'reactdown/lib/components' ?
     program.components :
     resolveSync(program.components)
