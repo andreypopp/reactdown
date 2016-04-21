@@ -22,6 +22,7 @@ type RenderPartsResult = {
 };
 
 export type DirectiveConfig = ComponentRef;
+export type RoleConfig = ComponentRef;
 
 type ComponentMapping = {
   [name: string]: ComponentRef;
@@ -62,7 +63,7 @@ const defaultRenderConfig: CompleteRenderConfig = {
   model: {toc, title},
 };
 
-function applyDefaultConfig(config: RendererConfig, defaultConfig: RendererConfig): RendererConfig {
+function applyDefaultConfig<T: {directives: any; roles: any}>(config: T, defaultConfig: T): T {
   if (config !== defaultConfig) {
     config = {
       ...defaultConfig,

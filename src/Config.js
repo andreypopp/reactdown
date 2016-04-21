@@ -10,6 +10,7 @@ import type {
 import type {
   RenderConfig,
   DirectiveConfig as DirectiveRenderConfig,
+  RoleConfig as RoleRenderConfig,
   ModelConfig as ModelRenderConfig
 } from './render';
 
@@ -31,14 +32,20 @@ export type DirectiveConfig = $Shape<{
   parse: DirectiveParseConfig;
 }>;
 
+export type RoleConfig = RoleRenderConfig;
+
 export type DirectiveMapping = {
   [name: string]: DirectiveConfig;
+};
+
+export type RoleMapping = {
+  [name: string]: RoleConfig;
 };
 
 export type CompleteConfig = {
   components: string;
   directives: DirectiveMapping;
-  roles: DirectiveMapping;
+  roles: RoleMapping;
   model: ModelConfig;
 };
 
