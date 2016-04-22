@@ -32,7 +32,7 @@ on npm) can be used to process and render your documents.
 
 Install via npm:
 
-    % npm install reactdown
+    % npm install reactdown@alpha
 
 ..note Integrations
 
