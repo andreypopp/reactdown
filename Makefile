@@ -8,6 +8,7 @@ SRC_CMD       = $(shell find src/bin -type f -name '*')
 LIB           = $(SRC:src/%=lib/%)
 LIB_CMD       = $(SRC_CMD:src/%=lib/%)
 MOCHA_OPTS    = -R dot --require babel-core/register
+VERSION       = $(shell node -e 'console.log(require("./package.json").version)')
 
 build:: build-lib build-cmd
 
@@ -31,6 +32,15 @@ ci::
 
 sloc::
 	@$(BIN)/sloc -e __tests__ src
+
+_publish-git:
+	git tag $(VERSION)
+	git push --tags origin HEAD:develop
+
+_publish-alpha-npm: build
+	npm publish --tag alpha
+
+publish: _publish-git _publish-alpha-npm
 
 site-develop:
 	@$(MAKE) -C site develop
