@@ -12,6 +12,7 @@ import type {
 
 import remark from 'remark';
 import directive from './directive';
+import tk from './tk';
 import role from './role';
 
 export type {DirectiveConfig, CompleteDirectiveConfig};
@@ -27,6 +28,7 @@ const defaultConfig = {
 export default function parse(value: string, options: ParseConfig = defaultConfig): MDASTRootNode {
   return remark(options)
     .use(directive(options.directives))
+    .use(tk())
     .use(role())
     .parse(value);
 }
