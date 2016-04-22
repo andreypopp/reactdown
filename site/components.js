@@ -19,7 +19,10 @@ import {
 
   NoteRoot,
   NoteTitle,
-  NoteContent
+  NoteContent,
+
+  TKRoot,
+  TKTitle
 } from './components.rcss';
 
 function ToC({fromDepth = 1, toDepth = 6}, context) {
@@ -73,6 +76,10 @@ export function Root({children, ...props}, {reactdown: {model, metadata}}) {
   );
 }
 Root.contextTypes = contextTypes;
+
+export function TK({line, ...props}) {
+  return <TKRoot><TKTitle>TK</TKTitle> {line}</TKRoot>;
+}
 
 export {
   Paragraph,

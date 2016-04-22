@@ -9,6 +9,13 @@
         source: './components',
         name: 'Note',
       }
+    },
+
+    TK: {
+      render: {
+        source: './components',
+        name: 'TK',
+      }
     }
   }
 }

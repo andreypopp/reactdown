@@ -22,7 +22,7 @@ Root {
   font-size: 11pt;
 }
 
-Paragraph, OrderedList, UnorderedList, Code {
+Paragraph, OrderedList, UnorderedList, Code, NoteRoot, TKRoot {
   margin-top: 0em;
   margin-bottom: 1.7em;
   text-align: justify;
@@ -99,9 +99,12 @@ Heading:prop(level == 2) {
   font-size: 1.75rem;
 }
 
-Heading:prop(level >=  3) {
-  margin-top: 3em;
+Heading:prop(level == 3) {
   font-size: 1.2rem;
+}
+
+Heading:prop(level >= 4) {
+  font-size: 1rem;
 }
 
 Sidebar {
@@ -177,4 +180,24 @@ NoteContent Code,
 NoteContent UnorderedList,
 NoteContent OrderedList {
   margin: 0;
+}
+
+TKRoot {
+  background: #8A1E1E;
+  color: #D29F9F;
+
+  font-size: 9pt;
+  font-weight: bold;
+
+  padding: 1.5em 0;
+  margin-right: -10000px;
+  padding-right: 10000px;
+  margin-left: -20px;
+  padding-left: 20px;
+}
+
+TKTitle {
+  base: span;
+  font-size: 15pt;
+  margin-right: 0.5em;
 }
