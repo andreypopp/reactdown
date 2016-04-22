@@ -45,8 +45,8 @@ Install via npm:
 Reactdown documents can be rendered into JavaScript modules using a command line
 utility:
 
-    % reactdown-render --help
-    Usage: reactdown-render [options] <file>
+    % reactdown --help
+    Usage: reactdown [options] <file>
 
     Options:
 
