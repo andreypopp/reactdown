@@ -42,6 +42,9 @@ _publish-alpha-npm: build
 
 publish: _publish-git _publish-alpha-npm
 
+site-build:
+	@$(MAKE) -C site build
+
 site-develop:
 	@$(MAKE) -C site develop
 
