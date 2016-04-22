@@ -1,5 +1,6 @@
 # Reactdown
 
+[![Join the chat at https://gitter.im/andreypopp/sitegen](https://img.shields.io/badge/gitter-join%20chat-green.svg)](https://gitter.im/andreypopp/sitegen)
 [![Travis build status](https://img.shields.io/travis/andreypopp/reactdown/master.svg)](https://travis-ci.org/andreypopp/reactdown)
 [![Type System](https://img.shields.io/badge/typesystem-flowtype-green.svg)](http://flowtype.org/)
 
