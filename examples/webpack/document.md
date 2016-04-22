@@ -9,9 +9,9 @@ Reactdown is cool! This **is** cool! Isn't *it*?
 
 Meta:
 
-::meta
+..meta
 
-::FancyCode
+..FancyCode
 
   Ok, this is some fancy code.
 
@@ -37,4 +37,4 @@ Inline `code` works too!
 
 > Blockquote...
 
-::CustomBlock
+..CustomBlock
