@@ -6,6 +6,9 @@
   "scripts": {
     "test": "make lint check test"
   },
+  "bin": {
+    "reactdown": "./lib/bin/reactdown-render"
+  },
   "babel": {
     "presets": [
       "prometheusresearch"
