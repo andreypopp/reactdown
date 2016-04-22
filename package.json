@@ -43,6 +43,7 @@
     "collapse-white-space": "^1.0.0",
     "commander": "^2.9.0",
     "detab": "^1.0.2",
+    "flow-bin": "^0.23.1",
     "invariant": "^2.2.1",
     "js-yaml": "^3.5.5",
     "json5": "^0.5.0",
