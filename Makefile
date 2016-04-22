@@ -32,6 +32,11 @@ ci::
 sloc::
 	@$(BIN)/sloc -e __tests__ src
 
+site-develop:
+	@$(MAKE) -C site develop
+
+site-publish:
+	@$(BIN)/gh-pages -d ./site
 
 version-major version-minor version-patch:: lint test
 	@npm version $(@:version-%=%)
