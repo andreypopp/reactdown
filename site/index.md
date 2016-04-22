@@ -54,7 +54,7 @@ utility:
 
 The following Webpack configuration would suit the needs and would allow to
 compile any `*.md` file into JavaScript modules which then could be imported and
-processed liek regular React components:
+processed like regular React components:
 
 ..ref webpack-config
 
