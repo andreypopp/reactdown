@@ -6,5 +6,5 @@
 Reactdown provides a set of syntax extensions on top of Markdown to include
 React components in documents. It also provides an extendable document model.
 
-See [https://andreypopp.github.io](https://andreypopp.github.io) for more info.
+See [https://andreypopp.github.io/reactdown](https://andreypopp.github.io/reactdown) for more info.
 
