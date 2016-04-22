@@ -48,7 +48,7 @@ site-build:
 site-develop:
 	@$(MAKE) -C site develop
 
-site-publish:
+site-publish: site-build
 	@$(BIN)/gh-pages -d ./site
 
 version-major version-minor version-patch:: lint test
