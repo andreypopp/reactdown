@@ -35,7 +35,7 @@ sloc::
 
 _publish-git:
 	git tag $(VERSION)
-	git push --tags origin HEAD:develop
+	git push --tags origin HEAD:master
 
 _publish-alpha-npm: build
 	npm publish --tag alpha
