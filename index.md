@@ -5,22 +5,28 @@ title: Reactdown
 ## Overview & Motivation
 
 Ever wanted to write with Markdown syntax but then include rich user
-interactions in documents using React components?
+interactions in documents using React components? You can do this with
+Reactdown.
 
-You can do this with Reactdown.
+What is Reactdown:
 
-Reactdown provides a set of syntax extensions on top of Markdown to include
-React components in documents. It also provides an extendable document model.
+* A set of syntax extensions for Markdown ([directives](#Directives) for
+  block-level and [roles](#Roles) inline markup).
 
-It is implemented as a compiler from Markdown to React components, which has
-bindings to Webpack. Your documents are just one "import-away":
+* An extensible [document model](#Document Model).
 
-    import Document, {metadata, model} from './blog-post.md'
+* A compiler from Markdown to JavaScript modules which export a React component,
+  a document model and metadata.
+
+What does it mean in practice? The document is the React component, you can
+render it like a regular one:
+
+    import Document from './blog-post.md'
 
     <Document />
 
-That means that you can use all the power of Webpack and npm ecosystems to write
-your documents.
+The all power of JavaScript (think React, Webpack and a myriad of other package
+on npm) can be used to process and render your documents.
 
 ## Installation & Usage
 
@@ -54,7 +60,7 @@ utility:
 
 The following Webpack configuration would suit the needs and would allow to
 compile any `*.md` file into JavaScript modules which then could be imported and
-processed liek regular React components:
+processed like regular React components:
 
 ..ref webpack-config
 
@@ -71,9 +77,9 @@ processed liek regular React components:
 
 ..note Babel is Required
 
-  Currently Reactdown emits ES2015 code which must be compiled by Babel before
-  it can be execute in browsers. You will need a corresponding Webpack loader
-  and a set of presets:
+  Currently Reactdown compiler emits ES2015 code which must be compiled by Babel
+  before it can be execute in browsers. You will need a corresponding Webpack
+  loader and a set of presets:
 
       npm install babel-loader babel-preset-es2015 babel-preset-stage-1
 
@@ -159,7 +165,7 @@ module:
 
 The metadata would be an object (JSON) parsed from YAML.
 
-### Document model
+### Document Model
 
 It is useful to have the representation of a document as a data structure. While
 React component represents the UI of the document, the data part of the document
@@ -177,29 +183,40 @@ TK How to extend document model.
 
 ## Directives
 
-Directives are used to insert block-level markup constructs into
-document. They are modelled after [ReStructured Text][] directives.
+Directives are an extensions to markdown syntax which allows to extends a
+document with new block-level constructs. They are modelled after [ReST directives][].
 
-The simplest form of a custom directive is:
+Reactdown compiler can be configured to map a directive to a React component
+which is used to render the directive.
+
+The simplest syntax for a directive is:
 
     ..toc
 
-### Syntax
-
-They also could have any other markdown content. It is up to directives to
-process the content. The rule is everything which is indented up to a directive
-name becomes a directive's content:
+Directives can contain arbitrary markdown content:
 
     ..note Title
 
       Some *markdown* content.toc
 
-Metadata, encoded as YAML document:
+By default the content is parsed as markdown by parser but directive authors can
+instruct parser not to do that and instead treat content as preformatted
+(similar to how preformatted code blocks works in Markdown):
+
+    ..componenteditor
+
+      <Button style="success">Submit</Button>
+
+Directives can accept addiitonal attributes through a frontmatter-like syntax:
 
     ..toc
       ---
       depth: 3
+      scrollspy: yes
       ---
+
+The content between the `---` is parsed as a [YAML][] which then can be
+processed by directive components.
 
 ### Built-in Directives
 
@@ -217,7 +234,7 @@ Example:
 #### Ref
 
 Directive `..ref` can be used to place anchors within a document which then can
-be references using hyperlinks.
+be referenced using hyperlinks.
 
 Example:
 
@@ -246,5 +263,6 @@ TK How to contribute?
 
 [Webpack]: https://webpack.github.io/
 [Babel]: http://babeljs.io/
-[ReStructured Text]: http://docutils.sourceforge.net/rst.html
+[ReST directives]: http://docutils.sourceforge.net/docs/ref/rst/directives.html
 [GitHub]: https://github.com/andreypopp/reactdown
+[YAML]: http://yaml.org/
