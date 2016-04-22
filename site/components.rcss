@@ -56,10 +56,24 @@ Paragraph {
 
 OrderedList {
   base: ol;
+  padding-left: 0;
 }
 
 UnorderedList {
   base: ul;
+  padding-left: 0;
+}
+
+UnorderedList > ListItem {
+  list-style-type: square;
+}
+
+ListItem {
+  base: li;
+}
+
+ListItem > Paragraph {
+  margin-bottom: 1em;
 }
 
 InlineCode {

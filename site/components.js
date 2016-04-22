@@ -89,5 +89,6 @@ export {
   Emphasis,
   Strong,
   Code,
-  Link
+  Link,
+  ListItem
 } from './components.rcss';
