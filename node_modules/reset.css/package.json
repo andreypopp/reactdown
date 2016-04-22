@@ -1,0 +1,26 @@
+{
+  "name": "reset.css",
+  "version": "2.0.2",
+  "description": "Genuine Eric Meyer's Reset CSS bundled as npm package",
+  "main": "reset.css",
+  "style": "reset.css",
+  "scripts": {
+    "update": "rm -f ./reset.css && curl -O http://meyerweb.com/eric/tools/css/reset/reset.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kossnocorp/reset.css.git"
+  },
+  "keywords": [
+    "css",
+    "reset",
+    "meyer"
+  ],
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "license": "SEE LICENSE IN reset.css",
+  "bugs": {
+    "url": "https://github.com/kossnocorp/reset.css/issues"
+  },
+  "homepage": "https://github.com/kossnocorp/reset.css"
+}
+

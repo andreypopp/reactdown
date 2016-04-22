@@ -1,0 +1,203 @@
+@import 'normalize.css/normalize.css';
+
+@import url(https://fonts.googleapis.com/css?family=Ovo);
+@import url(https://fonts.googleapis.com/css?family=Muli:400,400italic,300,300italic);
+
+body {
+  color: #B7B8BF;
+  background: #2E334A;
+  overflow-x: hidden;
+}
+
+Root {
+  base: div;
+
+  width: 400px;
+  margin: 0 auto;
+  padding: 15% 0;
+  padding-left: 200px;
+
+  font-family: Muli, sans-serif;
+  font-weight: 300;
+  font-size: 11pt;
+}
+
+Paragraph, OrderedList, UnorderedList, Code, NoteRoot, TKRoot {
+  margin-top: 0em;
+  margin-bottom: 1.7em;
+  text-align: justify;
+}
+
+Emphasis {
+  base: em;
+  font-style: italic;
+}
+
+Strong {
+  base: strong;
+  font-weight: 400;
+}
+
+Link {
+  base: a;
+  color: #AF9453;
+  text-decoration: none;
+}
+Link:hover {
+  background: #AF9453;
+  color: #2E334A;
+}
+
+Paragraph {
+  base: p;
+
+  line-height: 1.4em;
+}
+
+OrderedList {
+  base: ol;
+}
+
+UnorderedList {
+  base: ul;
+}
+
+InlineCode {
+  base: code;
+  font-family: Menlo, Monaco, monospace;
+  font-size: 10pt;
+}
+
+Code {
+  base: pre;
+
+  background: #393F5A;
+  font-family: Menlo, Monaco, monospace;
+  font-size: 9pt;
+  padding: 1.5em 0;
+  margin-right: -10000px;
+  margin-left: -20px;
+  padding-left: 20px;
+}
+
+Heading {
+  base: reactdown/components?Heading;
+
+  position: relative;
+  margin-top: 3em;
+  margin-bottom: 1em;
+  font-family: Ovo, serif;
+  color: #7FB3BB;
+}
+
+Heading:prop(level == 1) {
+  margin-top: 0;
+  font-size: 3rem;
+}
+
+Heading:prop(level == 2) {
+  font-size: 1.75rem;
+}
+
+Heading:prop(level == 3) {
+  font-size: 1.2rem;
+}
+
+Heading:prop(level >= 4) {
+  font-size: 1rem;
+}
+
+Sidebar {
+  position: fixed;
+  top: 0;
+  max-width: 200px;
+  left: calc(50% - 550px);
+  background: #393F5A;
+  padding: 20px;
+}
+
+Sidebar Heading {
+  text-align: center;
+  margin-top: 1em;
+}
+
+ToC {
+}
+
+ToCItem {
+  font-size: 10pt;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+ToCItem:prop(level >= 2) {
+  font-size: 9pt;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+ToCItem:prop(level == 2):before {
+  content: '— ';
+}
+ToCItem:prop(level == 3):before {
+  content: '—— ';
+}
+ToCItem:prop(level >= 4):before {
+  content: '——— ';
+}
+
+ToCItem Link {
+  color: #B7B8BF;
+}
+ToCItem Link:hover {
+  color: #2E334A;
+  background: #B7B8BF;
+}
+
+NoteRoot {
+  background: #393F5A;
+  font-size: 9pt;
+  padding: 1.5em 0;
+  margin-right: -10000px;
+  padding-right: 10000px;
+  margin-left: -20px;
+  padding-left: 20px;
+}
+
+NoteTitle {
+  font-weight: bold;
+  font-size: 10pt;
+  margin-bottom: 1em;
+}
+
+NoteContent InlineCode,
+NoteContent Code {
+  font-size: 8pt;
+}
+
+NoteContent Paragraph,
+NoteContent Code,
+NoteContent UnorderedList,
+NoteContent OrderedList {
+  margin: 0;
+}
+
+TKRoot {
+  background: #8A1E1E;
+  color: #D29F9F;
+
+  font-size: 9pt;
+  font-weight: bold;
+
+  padding: 1.5em 0;
+  margin-right: -10000px;
+  padding-right: 10000px;
+  margin-left: -20px;
+  padding-left: 20px;
+}
+
+TKTitle {
+  base: span;
+  font-size: 15pt;
+  margin-right: 0.5em;
+}
