@@ -3,16 +3,13 @@
  * @flow
  */
 
-import type {MDASTAnyNode} from '../types';
+import type {Eat} from './types';
 
 import invariant from 'invariant';
 
 const ROLE_TAG_RE = /^:([a-zA-Z\_\-]+):/;
 const WORD_RE = /^([^\s\.\,\?!:]+)/;
 const QUOTED_WORD_RE = /^`([^`]+)`/;
-
-type ProduceNode = (node: MDASTAnyNode) => void;
-type Eat = (value: string) => ProduceNode;
 
 /**
  * Find a possible role.

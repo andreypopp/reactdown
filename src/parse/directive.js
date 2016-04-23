@@ -9,12 +9,11 @@ const NEWLINE = '\n';
 
 import jsYAML from 'js-yaml';
 import type {MDASTAnyNode} from '../types';
-
-type ProduceNode = (node: MDASTAnyNode) => void;
-type Eat = (value: string) => ProduceNode;
+import type {Node} from '../schema';
+import type {Eat} from './types';
 
 export type CompleteDirectiveConfig = {
-  preformatted: ?boolean;
+  preformatted: boolean;
 };
 
 export type DirectiveConfig = $Shape<CompleteDirectiveConfig>;
