@@ -9,8 +9,19 @@ const PARSE_NAMED_REF_RE = /^([a-zA-Z0-9_]+)=([a-zA-Z0-9_\.\-\/]+)(\?([a-zA-Z0-9
 
 export type ComponentRef = {
   source: string;
-  name: string;
+  name: ?string;
 };
+
+export class ComponentReference {
+
+  source: string;
+  name: ?string;
+
+  constructor(source: string, name: ?string) {
+    this.source = source;
+    this.name = name;
+  }
+}
 
 export function parse(ref: string): ?ComponentRef {
   let match = PARSE_REF_RE.exec(ref);
@@ -18,7 +29,7 @@ export function parse(ref: string): ?ComponentRef {
     return null;
   }
   let [_everything, source, _nothing, name = 'default'] = match;
-  return {source, name};
+  return new ComponentReference(source, name);
 }
 
 export function parseNamed(ref: string): ?{id: string; ref: ComponentRef} {
@@ -27,7 +38,7 @@ export function parseNamed(ref: string): ?{id: string; ref: ComponentRef} {
     return null;
   }
   let [_everything, id, source, _nothing, name = 'default'] = match;
-  return {id, ref: {source, name}};
+  return {id, ref: new ComponentReference(source, name)};
 }
 
 export function resolve(ref: string | ?ComponentRef): any {
