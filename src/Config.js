@@ -43,7 +43,7 @@ export type RoleMapping = {
 };
 
 export type CompleteConfig = {
-  components: string;
+  components: ?string;
   directives: DirectiveMapping;
   roles: RoleMapping;
   model: ModelConfig;
@@ -55,7 +55,7 @@ const CONFIG_FILENAME = '.reactdownrc';
 const PACKAGE_FILENAME = 'package.json';
 
 export const defaultConfig: CompleteConfig = {
-  components: 'reactdown/lib/components',
+  components: null,
   directives: {},
   roles: {},
   model: model,

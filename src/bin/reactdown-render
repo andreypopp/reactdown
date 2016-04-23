@@ -50,7 +50,7 @@ program
   .option(
     '-e, --components [module-ref]',
     'Module with HTML components',
-    String, 'reactdown/lib/components'
+    String, null
   )
   .parse(process.argv);
 
@@ -63,7 +63,7 @@ let config = findConfig(dirname).config;
 config = mergeConfig(config, {
   directives: program.directive,
   roles: program.role,
-  components: program.components === 'reactdown/lib/components' ?
+  components: program.components === null ?
     program.components :
     resolveSync(program.components)
 });
