@@ -1,8 +1,6 @@
 import React from "react";
-import DocumentContext from "reactdown/lib/DocumentContext";
-import * as defaultComponents from "reactdown/lib/components";
-import * as customComponents from "reactdown/lib/components";
-let components = { ...defaultComponents, ...customComponents };
+import { DocumentContext, directives as defaultDirectives, components as defaultComponents } from "reactdown/runtime";
+let components = defaultComponents;
 import { GHIssue } from "roles";
 import { GHBranch } from "roles";
 export default function Document() {
