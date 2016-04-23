@@ -34,7 +34,7 @@ export type ModelConfig = {
 
 type CompleteRenderConfig = {
   build: JSASTFactory;
-  components: string;
+  components: ?string;
   directives: ComponentMapping;
   roles: ComponentMapping;
   model: ModelConfig;
@@ -48,17 +48,10 @@ const defaultRendererConfig: RendererConfig = {
   roles: {},
 };
 
-function directive(name: string): ComponentRef {
-  return {source: `reactdown/lib/directives/${name}`, name: 'default'};
-}
-
 const defaultRenderConfig: CompleteRenderConfig = {
   build: build,
-  components: 'reactdown/lib/components',
-  directives: {
-    'meta': directive('meta'),
-    'ref': directive('ref'),
-  },
+  components: null,
+  directives: {},
   roles: {},
   model: {toc, title},
 };
@@ -100,7 +93,11 @@ export function renderToProgram(
   let {build, components, directives, roles} = config;
   let rendererConfig = {
     build,
-    directives: keyMirrorToJSAST(build, directives),
+    directives: {
+      ...keyMirrorToJSAST(build, directives),
+      meta: expr`defaultDirectives.meta`,
+      ref: expr`defaultDirectives.ref`,
+    },
     roles: keyMirrorToJSAST(build, roles),
   };
 
@@ -151,16 +148,27 @@ export function renderToProgram(
     }
   });
 
-  statements = stmt`
+  let prelude = stmt`
     import React from "react";
-    import DocumentContext from "reactdown/lib/DocumentContext";
-    import * as defaultComponents from "reactdown/lib/components";
-    import * as customComponents from "${build.stringLiteral(components)}";
+    import {
+      DocumentContext,
+      directives as defaultDirectives,
+      components as defaultComponents
+    } from "reactdown/runtime";
+  `;
 
-    let components = {...defaultComponents, ...customComponents};
-  `.concat(statements);
+  if (components) {
+    prelude = prelude.concat(stmt`
+      import * as customComponents from "${build.stringLiteral(components)}";
+      let components = {...defaultComponents, ...customComponents};
+    `);
+  } else {
+    prelude = prelude.concat(stmt`
+      let components = defaultComponents;
+    `);
+  }
 
-  return build.program(statements);
+  return build.program(prelude.concat(statements));
 }
 
 export function renderToParts(
