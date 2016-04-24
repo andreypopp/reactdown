@@ -51,9 +51,16 @@
         },
         "indent": []
       },
-      "name": "pre",
+      "name": "Pre",
       "line": null,
-      "value": "ok, *this* is **just** some code",
+      "children": [
+        {
+          "type": "text",
+          "value": "ok, *this* is **just** some code",
+          "data": null,
+          "position": null
+        }
+      ],
       "data": null
     },
     {

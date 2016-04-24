@@ -31,9 +31,12 @@ function readFixtures(dir) {
 
 let config = {
   directives: {
-    Block: {source: 'lib', name: 'Block'},
-    SubBlock: {source: 'lib/SubBlock', name: 'default'},
-    pre: {source: 'lib/pre', name: 'default'},
+    Pre: {source: 'lib', name: 'Pre'},
+    Children: {source: 'lib', name: 'Children'},
+    Line: {source: 'lib', name: 'Line'},
+    Data: {source: 'lib', name: 'Data'},
+    DataChildren: {source: 'lib', name: 'DataChildren'},
+    Plain: {source: 'lib', name: 'Plain'},
   },
   roles: {
     mod: {source: 'roles', name: 'mod'},
