@@ -64,7 +64,7 @@ config = mergeConfig(config, {
   directives: program.directive,
   roles: program.role,
   components: program.components === null ?
-    program.components :
+    undefined :
     resolveSync(program.components)
 });
 
