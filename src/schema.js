@@ -267,23 +267,31 @@ export function validate(schema: Node, value: any): any {
 
 export function parse(spec: NodeSpec): Node {
   switch (spec.type) {
-    case 'boolean':
+    case 'boolean': {
       return boolean;
-    case 'string':
+    }
+    case 'string': {
       return string;
-    case 'number':
+    }
+    case 'number': {
       return number;
-    case 'any':
+    }
+    case 'any': {
       return any;
-    case 'reference':
+    }
+    case 'reference': {
       return reference;
-    case 'maybe':
+    }
+    case 'maybe': {
       return maybe(parse(spec.value));
-    case 'mapping':
+    }
+    case 'mapping': {
       return mapping(parse(spec.value));
-    case 'sequence':
+    }
+    case 'sequence': {
       return sequence(parse(spec.value));
-    case 'object':
+    }
+    case 'object': {
       let values = {};
       for (let key in spec.values) {
         if (spec.values.hasOwnProperty(key)) {
@@ -291,10 +299,12 @@ export function parse(spec: NodeSpec): Node {
         }
       }
       return object(values, spec.defaults);
-    default:
+    }
+    default: {
       invariant(
         false,
         'Unable to parse schema, unknown type: %s', spec.type
       );
+    }
   }
 }
