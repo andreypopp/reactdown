@@ -5,21 +5,15 @@
 
 import type {MDASTRootNode, JSAST, JSASTFactory} from '../types';
 import type {ComponentRef} from '../ComponentRef';
-import type {RendererConfig} from './Renderer';
 
 import * as build from 'babel-types';
 import invariant from 'invariant';
 
-import Renderer from './Renderer';
+import {render as renderNode} from './Renderer';
 import buildJSON from './buildJSON';
 import toc from '../model/toc';
 import title from '../model/title';
-
-type RenderPartsResult = {
-  expression: JSAST;
-  identifiersUsed: Array<JSAST>;
-  metadata: ?JSON;
-};
+import {mapValue} from '../utils';
 
 export type DirectiveConfig = ComponentRef;
 export type RoleConfig = ComponentRef;
@@ -42,12 +36,6 @@ type CompleteRenderConfig = {
 
 export type RenderConfig = $Shape<CompleteRenderConfig>;
 
-const defaultRendererConfig: RendererConfig = {
-  build: build,
-  directives: {},
-  roles: {},
-};
-
 const defaultRenderConfig: CompleteRenderConfig = {
   build: build,
   components: null,
@@ -56,7 +44,7 @@ const defaultRenderConfig: CompleteRenderConfig = {
   model: {toc, title},
 };
 
-function applyDefaultConfig<T: {directives: any; roles: any}>(config: T, defaultConfig: T): T {
+function applyDefaultConfig(config: RenderConfig, defaultConfig: CompleteRenderConfig): CompleteRenderConfig {
   if (config !== defaultConfig) {
     config = {
       ...defaultConfig,
@@ -74,18 +62,16 @@ function applyDefaultConfig<T: {directives: any; roles: any}>(config: T, default
   return config;
 }
 
-function keyMirrorToJSAST(build, obj): {[name: string]: JSAST} {
-  let result = {};
-  for (let key in obj) {
-    if (typeof obj[key] === 'string') {
-      result[key] = build.stringLiteral(obj[key]);
-    } else if (build.isNode(obj[key])) {
-      result[key] = obj[key];
+function mapToJSAST(build, obj): {[name: string]: JSAST} {
+  return mapValue(obj, (value, key) => {
+    if (build.isNode(value)) {
+      return value;
+    } else if (typeof value === 'string') {
+      return build.stringLiteral(value);
     } else {
-      result[key] = build.identifier(key);
+      return build.identifier(key);
     }
-  }
-  return result;
+  });
 }
 
 export function renderToProgram(
@@ -95,15 +81,15 @@ export function renderToProgram(
   let {build, components, directives, roles} = config;
   let rendererConfig = {
     build,
-    directives: keyMirrorToJSAST(build, directives),
-    roles: keyMirrorToJSAST(build, roles),
+    directives: mapToJSAST(build, directives),
+    roles: mapToJSAST(build, roles),
   };
 
   let {
     expression,
     identifiersUsed,
     metadata
-  } = renderToParts(node, rendererConfig);
+  } = renderNode(node, rendererConfig);
 
   let model = {};
 
@@ -167,21 +153,4 @@ export function renderToProgram(
   }
 
   return build.program(prelude.concat(statements));
-}
-
-export function renderToParts(
-    node: MDASTRootNode,
-    config: RendererConfig = defaultRendererConfig): RenderPartsResult {
-  config = applyDefaultConfig(config, defaultRendererConfig);
-  let renderer = new Renderer(config);
-  renderer.render(node);
-  invariant(
-    renderer.expression != null,
-    'Renderer should result in a not null expression after render() call'
-  );
-  return {
-    expression: renderer.expression,
-    identifiersUsed: renderer.identifiersUsed,
-    metadata: renderer.metadata,
-  };
 }

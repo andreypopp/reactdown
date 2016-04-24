@@ -5,7 +5,7 @@
 
 import assert from 'assert';
 import * as build from 'babel-types';
-import Renderer from '../Renderer';
+import {Renderer} from '../Renderer';
 
 declare function describe(description: string, body: any): void;
 declare function it(description: string, body: any): void;
