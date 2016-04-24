@@ -30,10 +30,7 @@ export type ModelConfig
   = {[attribute: string]: string}
   | ModelRenderConfig;
 
-export type DirectiveConfig = $Shape<{
-  render: DirectiveRenderConfig;
-  parse: DirectiveParseConfig;
-}>;
+export type DirectiveConfig = $Shape<DirectiveRenderConfig & DirectiveParseConfig>;
 
 export type RoleConfig = RoleRenderConfig;
 
@@ -61,14 +58,11 @@ export const defaultConfig: CompleteConfig = {
   components: null,
   directives: {
     ref: {
-      render: expr`defaultDirectives.ref`,
-      parse: {
-        line: 'required'
-      }
+      component: expr`defaultDirectives.ref`,
+      line: 'required'
     },
     meta: {
-      render: expr`defaultDirectives.meta`,
-      parse: {},
+      component: expr`defaultDirectives.meta`,
     },
   },
   roles: {},
@@ -141,7 +135,7 @@ export function parseConfigFromQuery(query: string): Config {
 export function toRenderConfig(config: CompleteConfig): RenderConfig {
   let renderConfig = {
     components: config.components,
-    directives: mapObject(config.directives, config => config.render),
+    directives: config.directives,
     roles: config.roles,
     model: mapObject(config.model, analyzer => {
       if (typeof analyzer === 'string') {
@@ -155,10 +149,7 @@ export function toRenderConfig(config: CompleteConfig): RenderConfig {
 }
 
 export function toParseConfig(config: CompleteConfig): ParseConfig {
-  let parseConfig = {
-    directives: mapObject(config.directives, config => config.parse),
-  };
-  return parseConfig;
+  return config;
 }
 
 function readJSON(loc, syntax = JSON) {

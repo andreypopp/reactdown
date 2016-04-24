@@ -15,11 +15,11 @@ import toc from '../model/toc';
 import title from '../model/title';
 import {mapValue} from '../utils';
 
-export type DirectiveConfig = ComponentRef;
-export type RoleConfig = ComponentRef;
-
-type ComponentMapping = {
-  [name: string]: ComponentRef;
+export type DirectiveConfig = {
+  component: ComponentRef;
+};
+export type RoleConfig = {
+  component: ComponentRef;
 };
 
 export type ModelConfig = {
@@ -29,8 +29,8 @@ export type ModelConfig = {
 type CompleteRenderConfig = {
   build: JSASTFactory;
   components: ?string;
-  directives: ComponentMapping;
-  roles: ComponentMapping;
+  directives: {[name: string]: DirectiveConfig};
+  roles: {[name: string]: RoleConfig};
   model: ModelConfig;
 };
 
@@ -64,10 +64,10 @@ function applyDefaultConfig(config: RenderConfig, defaultConfig: CompleteRenderC
 
 function mapToJSAST(build, obj): {[name: string]: JSAST} {
   return mapValue(obj, (value, key) => {
-    if (build.isNode(value)) {
+    if (build.isNode(value.component)) {
       return value;
     } else if (typeof value === 'string') {
-      return build.stringLiteral(value);
+      return build.stringLiteral(value.component);
     } else {
       return build.identifier(key);
     }
@@ -118,16 +118,17 @@ export function renderToProgram(
       spec !== undefined,
       'Cannot resolve identifier to spec'
     );
-    if (typeof spec === 'string') {
+    let component = spec.component;
+    if (typeof component === 'string') {
       return;
     }
-    if (spec.name === 'default') {
+    if (component.name === 'default') {
       statements.unshift(
-        stmt`import ${identifier} from "${build.stringLiteral(spec.source)}"`
+        stmt`import ${identifier} from "${build.stringLiteral(component.source)}"`
       );
     } else {
       statements.unshift(
-        stmt`import { ${build.identifier(spec.name)} as ${identifier} } from "${build.stringLiteral(spec.source)}"`
+        stmt`import { ${build.identifier(component.name)} as ${identifier} } from "${build.stringLiteral(component.source)}"`
       );
     }
   });

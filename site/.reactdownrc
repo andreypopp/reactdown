@@ -5,18 +5,16 @@
   directives: {
 
     note: {
-      parse: {
-        children: 'required',
-        line: 'optional',
-      },
-      render: {
+      children: 'required',
+      line: 'optional',
+      component: {
         source: './components',
         name: 'Note',
       }
     },
 
     TK: {
-      render: {
+      component: {
         source: './components',
         name: 'TK',
       }

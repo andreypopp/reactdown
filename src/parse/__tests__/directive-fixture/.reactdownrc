@@ -1,48 +1,31 @@
 {
   directives: {
     Plain: {
-      parse: {}
     },
     Children: {
-      parse: {
-        children: 'required',
-      }
+      children: 'required',
     },
     ChildrenOptional: {
-      parse: {
-        children: 'optional',
-      }
+      children: 'optional',
     },
     Pre: {
-      parse: {
-        children: 'required-preformatted',
-      }
+      children: 'required-preformatted',
     },
     PreOptional: {
-      parse: {
-        children: 'optional-preformatted',
-      }
+      children: 'optional-preformatted',
     },
     Line: {
-      parse: {
-        line: 'required',
-      }
+      line: 'required',
     },
     LineOptional: {
-      parse: {
-        line: 'optional',
-      }
+      line: 'optional',
     },
     Data: {
-      parse: {
-        data: {type: 'any'}
-      }
+      data: {type: 'any'}
     },
     DataChildren: {
-      parse: {
-        data: {type: 'any'},
-        children: 'required',
-      }
+      data: {type: 'any'},
+      children: 'required',
     }
   }
 }

@@ -31,17 +31,35 @@ function readFixtures(dir) {
 
 let config = {
   directives: {
-    Pre: {source: 'lib', name: 'Pre'},
-    Children: {source: 'lib', name: 'Children'},
-    Line: {source: 'lib', name: 'Line'},
-    Data: {source: 'lib', name: 'Data'},
-    DataChildren: {source: 'lib', name: 'DataChildren'},
-    Plain: {source: 'lib', name: 'Plain'},
+    Pre: {
+      component: {source: 'lib', name: 'Pre'},
+    },
+    Children: {
+      component: {source: 'lib', name: 'Children'},
+    },
+    Line: {
+      component: {source: 'lib', name: 'Line'},
+    },
+    Data: {
+      component: {source: 'lib', name: 'Data'},
+    },
+    DataChildren: {
+      component: {source: 'lib', name: 'DataChildren'},
+    },
+    Plain: {
+      component: {source: 'lib', name: 'Plain'},
+    },
   },
   roles: {
-    mod: {source: 'roles', name: 'mod'},
-    GHIssue: {source: 'roles', name: 'GHIssue'},
-    GHBranch: {source: 'roles', name: 'GHBranch'},
+    mod: {
+      component: {source: 'roles', name: 'mod'},
+    },
+    GHIssue: {
+      component: {source: 'roles', name: 'GHIssue'},
+    },
+    GHBranch: {
+      component: {source: 'roles', name: 'GHBranch'},
+    },
   }
 };
 
