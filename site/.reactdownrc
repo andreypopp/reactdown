@@ -5,6 +5,10 @@
   directives: {
 
     note: {
+      parse: {
+        children: 'required',
+        line: 'optional',
+      },
       render: {
         source: './components',
         name: 'Note',
