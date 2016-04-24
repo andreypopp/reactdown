@@ -13,6 +13,9 @@ import type {
   RoleConfig as RoleRenderConfig,
   ModelConfig as ModelRenderConfig
 } from './render';
+import {
+  filterUndefined
+} from './utils';
 
 import fs from 'fs';
 import path from 'path';
@@ -56,7 +59,18 @@ const PACKAGE_FILENAME = 'package.json';
 
 export const defaultConfig: CompleteConfig = {
   components: null,
-  directives: {},
+  directives: {
+    ref: {
+      render: expr`defaultDirectives.ref`,
+      parse: {
+        line: true
+      }
+    },
+    meta: {
+      render: expr`defaultDirectives.meta`,
+      parse: {},
+    },
+  },
   roles: {},
   model: model,
 };
@@ -65,6 +79,7 @@ export function mergeConfig(config: CompleteConfig, merge: ?Config): CompleteCon
   if (!merge) {
     return config;
   }
+  merge = filterUndefined(merge);
   return {
     ...config,
     ...merge,

@@ -79,6 +79,8 @@ function keyMirrorToJSAST(build, obj): {[name: string]: JSAST} {
   for (let key in obj) {
     if (typeof obj[key] === 'string') {
       result[key] = build.stringLiteral(obj[key]);
+    } else if (build.isNode(obj[key])) {
+      result[key] = obj[key];
     } else {
       result[key] = build.identifier(key);
     }
@@ -93,11 +95,7 @@ export function renderToProgram(
   let {build, components, directives, roles} = config;
   let rendererConfig = {
     build,
-    directives: {
-      ...keyMirrorToJSAST(build, directives),
-      meta: expr`defaultDirectives.meta`,
-      ref: expr`defaultDirectives.ref`,
-    },
+    directives: keyMirrorToJSAST(build, directives),
     roles: keyMirrorToJSAST(build, roles),
   };
 
