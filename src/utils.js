@@ -19,7 +19,7 @@ export function mapValue<A, B>(
   return result;
 }
 
-export function filterUndefined(value) {
+export function filterUndefined(value: Object): Object {
   return mapValue(value, value => value);
 }
 

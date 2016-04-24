@@ -13,7 +13,7 @@ import {
 /**
  * Webpack loader for reactdown documents.
  */
-function reactdown(source: string): string {
+function reactdown(source: string): ?string {
   this.cacheable();
 
   let compiler = this._compiler;

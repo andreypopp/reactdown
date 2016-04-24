@@ -63,7 +63,7 @@ export const defaultConfig: CompleteConfig = {
     ref: {
       render: expr`defaultDirectives.ref`,
       parse: {
-        line: true
+        line: 'required'
       }
     },
     meta: {
