@@ -3,17 +3,31 @@
  * @flow
  */
 
-const CUSTOM_BLOCK_TEST = /^\.\.([a-zA-Z]+) *([^\n]*)?\n/;
-const CUSTOM_BLOCK_INDENT = 2;
-const NEWLINE = '\n';
-
 import jsYAML from 'js-yaml';
 import type {MDASTAnyNode} from '../types';
-import type {Node} from '../schema';
+import type {NodeSpec, Node} from '../schema';
 import type {Eat} from './types';
 
+import {
+  parse as parseSchema,
+  validate as validateSchema,
+  any
+} from '../schema';
+import {
+  mapValue,
+  hasIndent
+} from '../utils';
+
 export type CompleteDirectiveConfig = {
-  preformatted: boolean;
+  line: null
+      | 'required'
+      | 'optional';
+  children: null
+          | 'required'
+          | 'required-preformatted'
+          | 'optional'
+          | 'optional-preformatted',
+  data: ?NodeSpec;
 };
 
 export type DirectiveConfig = $Shape<CompleteDirectiveConfig>;
@@ -22,11 +36,55 @@ export type DirectiveMapping = {
   [name: string]: DirectiveConfig;
 };
 
-const defautlDirectiveConfig: CompleteDirectiveConfig = {
-  preformatted: false,
+type NormalizedDirectiveConfig = {
+  lineAllowed: boolean;
+  lineRequired: boolean;
+  childrenAllowed: boolean;
+  childrenRequired: boolean;
+  childrenPreformatted: boolean;
+  dataAllowed: boolean;
+  dataSchema: ?Node;
 };
 
-function parseDirective(directives: DirectiveMapping, eat: Eat, value: string): void {
+type NormalizedDirectiveMapping = {
+  [name: string]: NormalizedDirectiveConfig;
+};
+
+const CUSTOM_BLOCK_TEST = /^\.\.([a-zA-Z]+) *([^\n]*)?\n/;
+const CUSTOM_BLOCK_INDENT = 2;
+const TRIPLE_DASH = '---';
+const NEWLINE = '\n';
+
+const defautlDirectiveConfig: NormalizedDirectiveConfig = {
+  lineAllowed: false,
+  lineRequired: false,
+  childrenAllowed: false,
+  childrenRequired: false,
+  childrenPreformatted: false,
+  dataAllowed: false,
+  dataSchema: any,
+};
+
+function normalizeDirectiveConfig(directive: DirectiveConfig): NormalizedDirectiveConfig {
+  let {line, children, data} = directive;
+  return {
+    lineAllowed: line !== null,
+    lineRequired: line === 'required',
+    childrenAllowed: children !== null,
+    childrenRequired: (
+      children  === 'required' ||
+      children === 'required-preformatted'
+    ),
+    childrenPreformatted: (
+      children  === 'required-preformatted' ||
+      children === 'optional-preformatted'
+    ),
+    dataAllowed: data !== null,
+    dataSchema: data ? parseSchema(data) : any,
+  };
+}
+
+function parseDirective(directives: NormalizedDirectiveMapping, eat: Eat, value: string): void {
 
   // Get next line and shift value.
   function nextLine() {
@@ -66,7 +124,10 @@ function parseDirective(directives: DirectiveMapping, eat: Eat, value: string): 
   let [_, name, line = null] = match;
 
   let config = {...defautlDirectiveConfig, ...directives[name]};
-  let preformatted = config.preformatted;
+
+  if (line && !config.lineAllowed) {
+    eat.file.fail('Unexpected directive line');
+  }
 
   eatLine(bannerLine);
 
@@ -79,8 +140,11 @@ function parseDirective(directives: DirectiveMapping, eat: Eat, value: string): 
   if (
     currentLine !== null &&
     hasIndent(currentLine, CUSTOM_BLOCK_INDENT) &&
-    currentLine.trim() === '---'
+    currentLine.trim() === TRIPLE_DASH
   ) {
+    if (!config.dataAllowed) {
+      eat.file.fail('Unexpected data section');
+    }
     eatLine(currentLine);
     currentLine = nextLine();
     while (currentLine !== null) {
@@ -89,7 +153,7 @@ function parseDirective(directives: DirectiveMapping, eat: Eat, value: string): 
         dataContent.push(currentLine);
       } else if (hasIndent(currentLine, CUSTOM_BLOCK_INDENT)) {
         eatLine(currentLine);
-        if (currentLine.trim() === '---') {
+        if (currentLine.trim() === TRIPLE_DASH) {
           currentLine = nextLine();
           break;
         } else {
@@ -112,6 +176,9 @@ function parseDirective(directives: DirectiveMapping, eat: Eat, value: string): 
              !hasIndent(currentLine, 5) &&
              !content.some(line => line !== '\n'))
     ) {
+      if (!config.childrenAllowed) {
+        eat.file.fail('Unexpected children');
+      }
       eatLine(currentLine);
       content.push(currentLine.slice(CUSTOM_BLOCK_INDENT));
     } else {
@@ -120,45 +187,47 @@ function parseDirective(directives: DirectiveMapping, eat: Eat, value: string): 
     currentLine = nextLine();
   }
 
-  let children: Array<MDASTAnyNode> = [];
   let data = null;
 
   if (dataContent.length > 0) {
     dataContent = dataContent.join(NEWLINE);
     data = jsYAML.safeLoad(dataContent);
+    data = validateSchema(config.dataSchema, data);
   }
 
+  let children: Array<MDASTAnyNode> = [];
+
   content = content.join(NEWLINE);
-  if (content.length > 0 && !preformatted) {
-    children = this.tokenizeBlock(content, childrenPosition);
+
+  if (content.length > 0) {
+    if (!config.childrenAllowed) {
+      eat.file.fail('Unexpected children');
+    } else if (config.childrenPreformatted) {
+      children = [{type: 'text', value: content.trim(), data: null, position: null}];
+    } else {
+      children = this.tokenizeBlock(content, childrenPosition);
+    }
+  } else {
+    if (config.childrenRequired) {
+      eat.file.fail('Expected children');
+    }
   }
 
   eat('')({
     type: 'directive',
     position: null,
-    name,
-    line: line ? line.trim() : line,
-    children: preformatted ? undefined : children,
-    value: preformatted ? content.trim() : undefined,
-    data,
+    name, line, children, data
   });
-}
-
-function hasIndent(line, size) {
-  for (let i = 0; i < size; i++) {
-    if (line.charAt(i) !== ' ') {
-      return false;
-    }
-  }
-  return true;
 }
 
 export default function directive(directives: DirectiveMapping = {}) {
 
+  let normalizedDirectives = mapValue(directives, normalizeDirectiveConfig);
+
   return function(remark: any) {
 
     function directive(...args) {
-      return parseDirective.call(this, directives, ...args);
+      return parseDirective.call(this, normalizedDirectives, ...args);
     }
 
     let ParserPrototype = remark.Parser.prototype;

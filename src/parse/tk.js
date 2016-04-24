@@ -3,12 +3,9 @@
  * @flow
  */
 
+import type {Eat} from './types';
+
 const TK_TEST = /^TK\s+([^\n]+)\n/;
-
-import type {MDASTAnyNode} from '../types';
-
-type ProduceNode = (node: MDASTAnyNode) => void;
-type Eat = (value: string) => ProduceNode;
 
 function parseTK(eat: Eat, value: string): void {
   let match = TK_TEST.exec(value);

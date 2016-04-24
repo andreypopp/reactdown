@@ -38,7 +38,7 @@ export type MDASTParentNode = MDASTNode & {
   children: Array<MDASTAnyNode>;
 };
 
-export type MDASTTextNode = MDASTNode & {
+export type MDASTValueNode = MDASTNode & {
   value: string;
 };
 
@@ -46,7 +46,6 @@ export type MDASTDirectiveNode = MDASTNode & {
   type: 'directive';
   name: string;
   children: ?Array<MDASTAnyNode>;
-  value: ?string;
   line: ?string;
 };
 
@@ -72,7 +71,7 @@ export type MDASTHeadingNode = MDASTParentNode & {
   depth: number;
 };
 
-export type MDASTCodeNode = MDASTTextNode & {
+export type MDASTCodeNode = MDASTValueNode & {
   type: 'code';
 };
 
@@ -96,12 +95,16 @@ export type MDASTRuleNode = MDASTNode & {
   type: 'rule';
 };
 
-export type MDASTHTMLNode = MDASTTextNode & {
+export type MDASTHTMLNode = MDASTValueNode & {
   type: 'html';
 };
 
-export type MDASTYAMLNode = MDASTTextNode & {
+export type MDASTYAMLNode = MDASTValueNode & {
   type: 'yaml';
+};
+
+export type MDASTTextNode = MDASTValueNode & {
+  type: 'text';
 };
 
 type MDASTTableAlign = 'left' | 'right' | 'center';
@@ -165,7 +168,7 @@ export type MDASTEmphasisNode = MDASTParentNode & {
   type: 'emphasis';
 };
 
-export type MDASTInlineCodeNode = MDASTTextNode & {
+export type MDASTInlineCodeNode = MDASTValueNode & {
   type: 'inlineCode';
 };
 
@@ -209,6 +212,7 @@ export type MDASTAnyNode
   | MDASTRuleNode
   | MDASTHTMLNode
   | MDASTYAMLNode
+  | MDASTTextNode
   | MDASTFootnoteNode
   | MDASTFootnoteReferenceNode
   | MDASTFootnoteDefinitionNode

@@ -10,6 +10,17 @@ import {
   parse as parseReference
 } from './ComponentRef';
 
+export type NodeSpec
+  = {type: 'boolean'}
+  | {type: 'string'}
+  | {type: 'number'}
+  | {type: 'any'}
+  | {type: 'reference'}
+  | {type: 'maybe', value: NodeSpec}
+  | {type: 'mapping', value: NodeSpec}
+  | {type: 'sequence', value: NodeSpec}
+  | {type: 'object', values: {[key: string]: NodeSpec}, defaults: {[key: string]: any}}
+
 export class ValidationError extends Error {
 
   isValidationError: boolean;
@@ -68,14 +79,14 @@ export function mapping(valueNode: Node) {
 
 class ObjectNode extends Node {
 
-  spec: {[name: string]: Node};
-  specKeys: Array<string>;
+  values: {[name: string]: Node};
+  valuesKeys: Array<string>;
   defaults: Object;
 
-  constructor(spec: {[name: string]: Node}, defaults: Object = {}) {
+  constructor(values: {[name: string]: Node}, defaults: Object = {}) {
     super();
-    this.spec = spec;
-    this.specKeys = Object.keys(spec);
+    this.values = values;
+    this.valuesKeys = Object.keys(values);
     this.defaults = defaults;
   }
 
@@ -85,8 +96,8 @@ class ObjectNode extends Node {
     }
 
     let result = {};
-    for (let i = 0; i < this.specKeys.length; i++) {
-      let key = this.specKeys[i];
+    for (let i = 0; i < this.valuesKeys.length; i++) {
+      let key = this.valuesKeys[i];
       if (value[key] === undefined) {
         if (this.defaults[key] !== undefined) {
           result[key] = this.defaults[key];
@@ -94,14 +105,14 @@ class ObjectNode extends Node {
           throw new ValidationError(`expected a value for key: ${key}`);
         }
       } else {
-        result[key] = this.spec[key].validate(value[key]);
+        result[key] = this.values[key].validate(value[key]);
       }
     }
 
     let keys = Object.keys(value);
     for (let i = 0; i < keys.length; i++) {
       let key = keys[i];
-      if (this.spec[key] === undefined) {
+      if (this.values[key] === undefined) {
         if (this.defaults[key] !== undefined) {
           result[key] = this.defaults[key];
         } else {
@@ -114,8 +125,8 @@ class ObjectNode extends Node {
   }
 }
 
-export function object(spec: {[name: string]: Node}, defaults: {[name: string]: any}) {
-  return new ObjectNode(spec, defaults);
+export function object(values: {[name: string]: Node}, defaults: {[name: string]: any}) {
+  return new ObjectNode(values, defaults);
 }
 
 class SequenceNode extends Node {
@@ -252,4 +263,38 @@ export let reference = new ReferenceNode();
 
 export function validate(schema: Node, value: any): any {
   return schema.validate(value);
+}
+
+export function parse(spec: NodeSpec): Node {
+  switch (spec.type) {
+    case 'boolean':
+      return boolean;
+    case 'string':
+      return string;
+    case 'number':
+      return number;
+    case 'any':
+      return any;
+    case 'reference':
+      return reference;
+    case 'maybe':
+      return maybe(parse(spec.value));
+    case 'mapping':
+      return mapping(parse(spec.value));
+    case 'sequence':
+      return sequence(parse(spec.value));
+    case 'object':
+      let values = {};
+      for (let key in spec.values) {
+        if (spec.values.hasOwnProperty(key)) {
+          values[key] = parse(spec.values[key]);
+        }
+      }
+      return object(values, spec.defaults);
+    default:
+      invariant(
+        false,
+        'Unable to parse schema, unknown type: %s', spec.type
+      );
+  }
 }

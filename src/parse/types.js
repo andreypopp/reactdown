@@ -5,7 +5,14 @@
  * @flow
  */
 
-import type {MDASTAnyNode} from '../types';
+import type {MDASTAnyNode, MDASTPosition} from '../types';
 
-export type ProduceNode = (node: MDASTAnyNode) => void;
-export type Eat = (value: string) => ProduceNode;
+export type File = {
+  fail(message: string): void;
+};
+
+export type Eat = {
+  (value: string): (node: MDASTAnyNode) => void;
+  now(): MDASTPosition;
+  file: File;
+};
