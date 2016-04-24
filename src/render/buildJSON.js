@@ -5,8 +5,12 @@
 
 import type {JSON, JSAST, JSASTFactory} from '../types';
 
-export default function buildJSON(build: JSASTFactory, value: JSON): JSAST {
-  if (build.isNode(value)) {
+type Buildable = JSON | {toJSAST(): JSAST};
+
+export default function buildJSON(build: JSASTFactory, value: Buildable): JSAST {
+  if (value && typeof value.toJSAST === 'function') {
+    return value.toJSAST(build);
+  } else if (build.isNode(value)) {
     return value;
   } else if (value === undefined) {
     return build.identifier('undefined');
