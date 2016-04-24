@@ -1,9 +1,9 @@
 ok,
 
-..code
+..Pre
 
   some code goes here, ok!!!
 
-..non-code
+..Pre
 
     this should be outside of a directive!!!

@@ -30,7 +30,32 @@ function readFixtures(dir) {
 
 let config = {
   directives: {
-    pre: {preformatted: true},
+    Plain: {},
+    Children: {
+      children: 'required',
+    },
+    ChildrenOptional: {
+      children: 'optional',
+    },
+    Pre: {
+      children: 'required-preformatted',
+    },
+    PreOptional: {
+      children: 'optional-preformatted',
+    },
+    Line: {
+      line: 'required',
+    },
+    LineOptional: {
+      line: 'optional',
+    },
+    Data: {
+      data: {type: 'any'}
+    },
+    DataChildren: {
+      data: {type: 'any'},
+      children: 'required',
+    }
   },
 };
 

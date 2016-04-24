@@ -1,6 +1,6 @@
 Prologue
 
-..Block
+..DataChildren
   ---
   a: 1
   b: 2
