@@ -14,7 +14,8 @@ import type {
   ModelConfig as ModelRenderConfig
 } from './render';
 import {
-  filterUndefined
+  filterUndefined,
+  mapValue
 } from './utils';
 
 import fs from 'fs';
@@ -137,7 +138,7 @@ export function toRenderConfig(config: CompleteConfig): RenderConfig {
     components: config.components,
     directives: config.directives,
     roles: config.roles,
-    model: mapObject(config.model, analyzer => {
+    model: mapValue(config.model, analyzer => {
       if (typeof analyzer === 'string') {
         return ComponentRef.resolve(analyzer);
       } else {
@@ -154,17 +155,4 @@ export function toParseConfig(config: CompleteConfig): ParseConfig {
 
 function readJSON(loc, syntax = JSON) {
   return syntax.parse(fs.readFileSync(loc, {flag: 'r'}).toString('utf8'));
-}
-
-function mapObject<V1, V2>(object: {[k: string]: V1}, map: (v: V1) => V2): {[k: string]: V2} {
-  let result = {};
-  for (let key in object) {
-    if (object.hasOwnProperty(key)) {
-      let value = map(object[key]);
-      if (value !== undefined) {
-        result[key] = value;
-      }
-    }
-  }
-  return result;
 }

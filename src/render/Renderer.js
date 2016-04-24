@@ -865,7 +865,7 @@ export class Renderer {
     if (component === undefined) {
       return this.unknown(node);
     } else if (component === null) {
-      return  this.renderNothing();
+      return this.renderNothing();
     } else {
       let props = node.data;
       if (node.line != null) {

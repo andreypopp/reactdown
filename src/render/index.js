@@ -65,7 +65,7 @@ function applyDefaultConfig(config: RenderConfig, defaultConfig: CompleteRenderC
 function mapToJSAST(build, obj): {[name: string]: JSAST} {
   return mapValue(obj, (value, key) => {
     if (build.isNode(value.component)) {
-      return value;
+      return value.component;
     } else if (typeof value === 'string') {
       return build.stringLiteral(value.component);
     } else {
