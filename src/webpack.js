@@ -32,7 +32,21 @@ function reactdown(source: string): string {
     parseConfigFromQuery(this.query)
   );
 
-  return renderToString(source, config).code;
+  let code;
+  try {
+    code = renderToString(source, config).code;
+  } catch(error) {
+    this.emitError(formatError(error));
+  }
+  return code;
+}
+
+function formatError(error) {
+  let message = error.message || error;
+  if (error.line !== undefined && error.column !== undefined) {
+    message = `${message} at line ${error.line} column ${error.column}`;
+  }
+  return message;
 }
 
 module.exports = reactdown;
