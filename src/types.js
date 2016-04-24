@@ -42,10 +42,9 @@ export type MDASTValueNode = MDASTNode & {
   value: string;
 };
 
-export type MDASTDirectiveNode = MDASTNode & {
+export type MDASTDirectiveNode = MDASTParentNode & {
   type: 'directive';
   name: string;
-  children: ?Array<MDASTAnyNode>;
   line: ?string;
 };
 

@@ -865,24 +865,12 @@ export default class Renderer {
       return this.unknown(node);
     } else if (component === null) {
       return  this.renderNothing();
-    } else if (node.children !== undefined) {
-      let props = node.data;
-      if (node.line != null) {
-        props = {line: node.line, ...props};
-      }
-      return this.renderElement(component, props, ...this.all(node));
-    } else if (node.value !== undefined) {
-      let props = node.data;
-      if (node.line != null) {
-        props = {line: node.line, ...props};
-      }
-      return this.renderElement(component, props, this.renderText(node.value));
     } else {
       let props = node.data;
       if (node.line != null) {
         props = {line: node.line, ...props};
       }
-      return this.renderElement(component, props);
+      return this.renderElement(component, props, ...this.all(node));
     }
   }
 
