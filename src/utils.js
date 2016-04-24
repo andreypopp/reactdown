@@ -10,10 +10,17 @@ export function mapValue<A, B>(
   let result = {};
   for (let key in value) {
     if (value.hasOwnProperty(key)) {
-      result[key] = func(value[key], key);
+      let nextValue = func(value[key], key);
+      if (nextValue !== undefined) {
+        result[key] = nextValue;
+      }
     }
   }
   return result;
+}
+
+export function filterUndefined(value) {
+  return mapValue(value, value => value);
 }
 
 export function hasIndent(line: string, size: number): boolean {
