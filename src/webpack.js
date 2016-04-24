@@ -35,8 +35,13 @@ function reactdown(source: string): ?string {
   let code;
   try {
     code = renderToString(source, config).code;
-  } catch(error) {
-    this.emitError(formatError(error));
+  } catch (error) {
+    // TODO: this is a hackyway how we distinguish errors from parser
+    if (error.ruleId !== undefined) {
+      this.emitError(formatError(error));
+    } else {
+      throw error;
+    }
   }
   return code;
 }
