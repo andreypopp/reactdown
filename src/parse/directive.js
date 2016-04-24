@@ -126,7 +126,10 @@ function parseDirective(directives: NormalizedDirectiveMapping, eat: Eat, value:
   let config = {...defautlDirectiveConfig, ...directives[name]};
 
   if (line && !config.lineAllowed) {
-    eat.file.fail('Unexpected directive line');
+    eat.file.fail(
+      `Found an unexpected line value while parsing ..${name} directive`,
+      eat.now()
+    );
   }
 
   eatLine(bannerLine);
@@ -143,7 +146,10 @@ function parseDirective(directives: NormalizedDirectiveMapping, eat: Eat, value:
     currentLine.trim() === TRIPLE_DASH
   ) {
     if (!config.dataAllowed) {
-      eat.file.fail('Unexpected data section');
+      eat.file.fail(
+        `Found an unexpected data value while parsing ..${name} directive`,
+        eat.now()
+      );
     }
     eatLine(currentLine);
     currentLine = nextLine();
@@ -177,7 +183,10 @@ function parseDirective(directives: NormalizedDirectiveMapping, eat: Eat, value:
              !content.some(line => line !== '\n'))
     ) {
       if (!config.childrenAllowed) {
-        eat.file.fail('Unexpected children');
+        eat.file.fail(
+          `Found an unexpected children value while parsing ..${name} directive`,
+          eat.now()
+        );
       }
       eatLine(currentLine);
       content.push(currentLine.slice(CUSTOM_BLOCK_INDENT));
@@ -201,7 +210,10 @@ function parseDirective(directives: NormalizedDirectiveMapping, eat: Eat, value:
 
   if (content.length > 0) {
     if (!config.childrenAllowed) {
-      eat.file.fail('Unexpected children');
+      eat.file.fail(
+        `Found an unexpected children value while parsing ..${name} directive`,
+        eat.now()
+      );
     } else if (config.childrenPreformatted) {
       children = [{type: 'text', value: content.trim(), data: null, position: null}];
     } else {
@@ -209,7 +221,10 @@ function parseDirective(directives: NormalizedDirectiveMapping, eat: Eat, value:
     }
   } else {
     if (config.childrenRequired) {
-      eat.file.fail('Expected children');
+      eat.file.fail(
+        `Children value expected but found while parsing ..${name} directive`,
+        eat.now()
+      );
     }
   }
 
