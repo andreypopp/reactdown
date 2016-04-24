@@ -1,0 +1,48 @@
+{
+  directives: {
+    Plain: {
+      parse: {}
+    },
+    Children: {
+      parse: {
+        children: 'required',
+      }
+    },
+    ChildrenOptional: {
+      parse: {
+        children: 'optional',
+      }
+    },
+    Pre: {
+      parse: {
+        children: 'required-preformatted',
+      }
+    },
+    PreOptional: {
+      parse: {
+        children: 'optional-preformatted',
+      }
+    },
+    Line: {
+      parse: {
+        line: 'required',
+      }
+    },
+    LineOptional: {
+      parse: {
+        line: 'optional',
+      }
+    },
+    Data: {
+      parse: {
+        data: {type: 'any'}
+      }
+    },
+    DataChildren: {
+      parse: {
+        data: {type: 'any'},
+        children: 'required',
+      }
+    }
+  }
+}
