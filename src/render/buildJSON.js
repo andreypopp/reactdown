@@ -5,7 +5,9 @@
 
 import type {JSON, JSAST, JSASTFactory} from '../types';
 
-type Buildable = JSON | {toJSAST(): JSAST};
+type Buildable
+  = JSON
+  | {toJSAST(): JSAST};
 
 export default function buildJSON(build: JSASTFactory, value: Buildable): JSAST {
   if (value && typeof value.toJSAST === 'function') {
