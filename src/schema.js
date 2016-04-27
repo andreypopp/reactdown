@@ -175,6 +175,29 @@ export function maybe(valueNode: Node) {
   return new MaybeNode(valueNode);
 }
 
+class EnumerationNode extends Node {
+
+  constructor(values: Array<any>) {
+    super();
+    this.values = values;
+  }
+
+  validate(value: any) {
+    let errors = [];
+    for (let i = 0; i < this.values.length; i++) {
+      if (value === this.values[i]) {
+        return value;
+      }
+    }
+    let expectation = this.values.map(v => JSON.stringify(v)).join(', ');
+    throw new ValidationError(`expected value to be one of: ${expectation}`);
+  }
+}
+
+export function enumeration(...values) {
+  return new EnumerationNode(values);
+}
+
 class OneOfNode extends Node {
 
   nodes: Array<Node>;

@@ -62,15 +62,15 @@ const defautlDirectiveConfig: NormalizedDirectiveConfig = {
   childrenRequired: false,
   childrenPreformatted: false,
   dataAllowed: false,
-  dataSchema: any,
+  dataSchema: null,
 };
 
 function normalizeDirectiveConfig(directive: DirectiveConfig): NormalizedDirectiveConfig {
   let {line, children, data} = directive;
   return {
-    lineAllowed: line !== null,
+    lineAllowed: line != null,
     lineRequired: line === 'required',
-    childrenAllowed: children !== null,
+    childrenAllowed: children != null,
     childrenRequired: (
       children  === 'required' ||
       children === 'required-preformatted'
@@ -79,7 +79,7 @@ function normalizeDirectiveConfig(directive: DirectiveConfig): NormalizedDirecti
       children  === 'required-preformatted' ||
       children === 'optional-preformatted'
     ),
-    dataAllowed: data !== null,
+    dataAllowed: data != null,
     dataSchema: data ? parseSchema(data) : any,
   };
 }
@@ -123,11 +123,23 @@ function parseDirective(directives: NormalizedDirectiveMapping, eat: Eat, value:
   }
   let [_, name, line = null] = match;
 
+  if (directives[name] === undefined) {
+    eat.file.fail(
+      `Found unknown directive ..${name}`,
+      eat.now()
+    );
+  }
+
   let config = {...defautlDirectiveConfig, ...directives[name]};
 
   if (line && !config.lineAllowed) {
     eat.file.fail(
       `Found an unexpected line value while parsing ..${name} directive`,
+      eat.now()
+    );
+  } else if (!line && config.lineRequired) {
+    eat.file.fail(
+      `Line value required but not found while parsing ..${name} directive`,
       eat.now()
     );
   }
@@ -180,7 +192,7 @@ function parseDirective(directives: NormalizedDirectiveMapping, eat: Eat, value:
         hasIndent(currentLine, CUSTOM_BLOCK_INDENT)
         && !(hasIndent(currentLine, 4) &&
              !hasIndent(currentLine, 5) &&
-             !content.some(line => line !== '\n'))
+             !isEmpty(content))
     ) {
       if (!config.childrenAllowed) {
         eat.file.fail(
@@ -201,7 +213,9 @@ function parseDirective(directives: NormalizedDirectiveMapping, eat: Eat, value:
   if (dataContent.length > 0) {
     dataContent = dataContent.join(NEWLINE);
     data = jsYAML.safeLoad(dataContent);
-    data = validateSchema(config.dataSchema, data);
+  }
+  if (config.dataSchema) {
+    //data = validateSchema(config.dataSchema, data);
   }
 
   let children: Array<MDASTAnyNode> = [];
@@ -209,7 +223,7 @@ function parseDirective(directives: NormalizedDirectiveMapping, eat: Eat, value:
   content = content.join(NEWLINE);
 
   if (content.length > 0) {
-    if (!config.childrenAllowed) {
+    if (!config.childrenAllowed && content.trim().length > 0) {
       eat.file.fail(
         `Found an unexpected children value while parsing ..${name} directive`,
         eat.now()
@@ -222,7 +236,7 @@ function parseDirective(directives: NormalizedDirectiveMapping, eat: Eat, value:
   } else {
     if (config.childrenRequired) {
       eat.file.fail(
-        `Children value expected but found while parsing ..${name} directive`,
+        `Children value expected but not found while parsing ..${name} directive`,
         eat.now()
       );
     }
@@ -233,6 +247,10 @@ function parseDirective(directives: NormalizedDirectiveMapping, eat: Eat, value:
     position: null,
     name, line, children, data
   });
+}
+
+function isEmpty(content) {
+  return content.some(line => line !== '\n');
 }
 
 export default function directive(directives: DirectiveMapping = {}) {
