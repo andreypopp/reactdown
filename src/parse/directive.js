@@ -3,16 +3,10 @@
  * @flow
  */
 
-import jsYAML from 'js-yaml';
 import type {MDASTAnyNode} from '../types';
-import type {NodeSpec, Node} from '../schema';
 import type {Eat} from './types';
 
-import {
-  parse as parseSchema,
-  validate as validateSchema,
-  any
-} from '../schema';
+import jsYAML from 'js-yaml';
 import {
   mapValue,
   hasIndent
@@ -27,7 +21,7 @@ export type CompleteDirectiveConfig = {
           | 'required-preformatted'
           | 'optional'
           | 'optional-preformatted',
-  data: ?NodeSpec;
+  data: any,
 };
 
 export type DirectiveConfig = $Shape<CompleteDirectiveConfig>;
@@ -80,7 +74,7 @@ function normalizeDirectiveConfig(directive: DirectiveConfig): NormalizedDirecti
       children === 'optional-preformatted'
     ),
     dataAllowed: data != null,
-    dataSchema: data ? parseSchema(data) : any,
+    dataSchema: data,
   };
 }
 
@@ -215,7 +209,7 @@ function parseDirective(directives: NormalizedDirectiveMapping, eat: Eat, value:
     data = jsYAML.safeLoad(dataContent);
   }
   if (config.dataSchema) {
-    //data = validateSchema(config.dataSchema, data);
+    // TODO: validate schema
   }
 
   let children: Array<MDASTAnyNode> = [];
