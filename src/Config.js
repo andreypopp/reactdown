@@ -206,8 +206,9 @@ export function readConfigSync(
     return validateJSON5(schema, source);
   } catch (error) {
     if (error instanceof ValidationError) {
-      error = error.addContextMessage(`While reading configuration from ${filename}`);
+      throw error.withContext(`While reading configuration from ${filename}`);
+    } else {
+      throw error;
     }
-    throw error;
   }
 }

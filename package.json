@@ -59,7 +59,7 @@
     "trim": "0.0.1",
     "trim-lines": "^1.0.0",
     "unist-util-visit": "^1.1.0",
-    "validated": "^0.6.0"
+    "validated": "^0.7.0"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
