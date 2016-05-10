@@ -13,18 +13,26 @@ import type {
   RoleConfig as RoleRenderConfig,
   ModelConfig as ModelRenderConfig
 } from './render';
+
+import fs from 'fs';
+import path from 'path';
+import {
+  maybe, string, enumeration, any,
+  object, partialObject, mapping
+} from 'validated/schema';
+import {
+  validate as validateJSON5
+} from 'validated/json5';
+import {
+  parseQuery
+} from 'loader-utils';
+
+import * as model from './model';
+import * as ComponentRef from './ComponentRef';
 import {
   filterUndefined,
   mapValue
 } from './utils';
-
-import fs from 'fs';
-import path from 'path';
-import JSON5 from 'json5';
-import {parseQuery} from 'loader-utils';
-
-import * as model from './model';
-import * as ComponentRef from './ComponentRef';
 
 export type ModelConfig
   // $FlowIssue: report it
@@ -54,6 +62,33 @@ export type Config = $Shape<CompleteConfig>;
 
 const CONFIG_FILENAME = '.reactdownrc';
 const PACKAGE_FILENAME = 'package.json';
+
+let DirectiveConfigSchema = object({
+  component: object({
+    source: string,
+    name: maybe(string),
+  }),
+  line: maybe(enumeration(
+    'required',
+    'optional',
+  )),
+  children: maybe(enumeration(
+    'required',
+    'required-preformatted',
+    'optional',
+    'optional-preformatted',
+  )),
+  data: maybe(any),
+});
+
+export let ConfigSchema = object({
+  components: maybe(string),
+  directives: maybe(mapping(DirectiveConfigSchema)),
+});
+
+let ConfigSchemaWithinPackageJSON = partialObject({
+  reactdown: maybe(ConfigSchema),
+}).andThen(pkg => pkg.reactdown);
 
 export const defaultConfig: CompleteConfig = {
   components: null,
@@ -101,14 +136,14 @@ export function findConfig(loc: string): {config: CompleteConfig, sourceList: Ar
   while (!(seenPackage && seenConfig) && loc !== path.dirname(loc)) {
     let configLoc = path.join(loc, CONFIG_FILENAME);
     if (fs.existsSync(configLoc)) {
-      config = mergeConfig(config, readJSON(configLoc, JSON5));
+      config = mergeConfig(config, readConfigSync(configLoc, ConfigSchema));
       sourceList.push(configLoc);
       seenConfig = true;
     }
 
     let pkgLoc = path.join(loc, PACKAGE_FILENAME);
     if (fs.existsSync(pkgLoc)) {
-      config = mergeConfig(config, readJSON(pkgLoc, JSON)['reactdown']);
+      config = mergeConfig(config, readConfigSync(pkgLoc, ConfigSchemaWithinPackageJSON));
       sourceList.push(pkgLoc);
       seenPackage = true;
     }
@@ -153,6 +188,7 @@ export function toParseConfig(config: CompleteConfig): ParseConfig {
   return config;
 }
 
-function readJSON(loc, syntax = JSON) {
-  return syntax.parse(fs.readFileSync(loc, {flag: 'r'}).toString('utf8'));
+export function readConfigSync(filename, schema = ConfigSchema) {
+  let source = fs.readFileSync(filename, {flag: 'r'}).toString('utf8');
+  return validateJSON5(schema, source);
 }
