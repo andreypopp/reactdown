@@ -38,24 +38,22 @@ import {
 
 export {ValidationError} from 'validated/schema';
 
-export type ModelConfig
+type ModelConfig
   // $FlowIssue: report it
   = {[attribute: string]: string}
   | ModelRenderConfig;
 
-export type DirectiveConfig = $Shape<DirectiveRenderConfig & DirectiveParseConfig>;
+type DirectiveConfig = $Shape<DirectiveRenderConfig & DirectiveParseConfig>;
 
-export type RoleConfig = RoleRenderConfig;
-
-export type DirectiveMapping = {
+type DirectiveMapping = {
   [name: string]: DirectiveConfig;
 };
 
-export type RoleMapping = {
-  [name: string]: RoleConfig;
+type RoleMapping = {
+  [name: string]: RoleRenderConfig;
 };
 
-export type CompleteConfig = {
+type CompleteConfig = {
   components: ?string;
   directives: DirectiveMapping;
   roles: RoleMapping;
