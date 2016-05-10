@@ -3,6 +3,7 @@
  * @flow
  */
 
+import type {Node} from 'validated/schema';
 import type {
   ParseConfig,
   DirectiveConfig as DirectiveParseConfig
@@ -188,7 +189,7 @@ export function toParseConfig(config: CompleteConfig): ParseConfig {
   return config;
 }
 
-export function readConfigSync(filename, schema = ConfigSchema) {
+export function readConfigSync(filename: string, schema: Node = ConfigSchema) {
   let source = fs.readFileSync(filename, {flag: 'r'}).toString('utf8');
   return validateJSON5(schema, source);
 }
