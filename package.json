@@ -48,6 +48,7 @@
     "collapse-white-space": "^1.0.0",
     "commander": "^2.9.0",
     "detab": "^1.0.2",
+    "indent-string": "^2.1.0",
     "invariant": "^2.2.1",
     "js-yaml": "^3.5.5",
     "json5": "^0.5.0",
@@ -58,7 +59,7 @@
     "trim": "0.0.1",
     "trim-lines": "^1.0.0",
     "unist-util-visit": "^1.1.0",
-    "validated": "^0.5.0"
+    "validated": "^0.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",

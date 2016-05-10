@@ -19,7 +19,8 @@ import fs from 'fs';
 import path from 'path';
 import {
   maybe, string, enumeration, any,
-  object, partialObject, mapping
+  object, partialObject, mapping,
+  ValidationError
 } from 'validated/schema';
 import {
   validate as validateJSON5
@@ -34,6 +35,8 @@ import {
   filterUndefined,
   mapValue
 } from './utils';
+
+export {ValidationError} from 'validated/schema';
 
 export type ModelConfig
   // $FlowIssue: report it
@@ -199,5 +202,12 @@ export function readConfigSync(
     schemaFactory: (filename: string) => Node = createConfigSchema) {
   let schema = schemaFactory(filename);
   let source = fs.readFileSync(filename, {flag: 'r'}).toString('utf8');
-  return validateJSON5(schema, source);
+  try {
+    return validateJSON5(schema, source);
+  } catch (error) {
+    if (error instanceof ValidationError) {
+      error = error.addContextMessage(`While reading configuration from ${filename}`);
+    }
+    throw error;
+  }
 }
