@@ -64,33 +64,6 @@ export type Config = $Shape<CompleteConfig>;
 const CONFIG_FILENAME = '.reactdownrc';
 const PACKAGE_FILENAME = 'package.json';
 
-let DirectiveConfigSchema = object({
-  component: object({
-    source: string,
-    name: maybe(string),
-  }),
-  line: maybe(enumeration(
-    'required',
-    'optional',
-  )),
-  children: maybe(enumeration(
-    'required',
-    'required-preformatted',
-    'optional',
-    'optional-preformatted',
-  )),
-  data: maybe(any),
-});
-
-export let ConfigSchema = object({
-  components: maybe(string),
-  directives: maybe(mapping(DirectiveConfigSchema)),
-});
-
-let ConfigSchemaWithinPackageJSON = partialObject({
-  reactdown: maybe(ConfigSchema),
-}).andThen(pkg => pkg.reactdown);
-
 export const defaultConfig: CompleteConfig = {
   components: null,
   directives: {
@@ -137,14 +110,14 @@ export function findConfig(loc: string): {config: CompleteConfig, sourceList: Ar
   while (!(seenPackage && seenConfig) && loc !== path.dirname(loc)) {
     let configLoc = path.join(loc, CONFIG_FILENAME);
     if (fs.existsSync(configLoc)) {
-      config = mergeConfig(config, readConfigSync(configLoc, ConfigSchema));
+      config = mergeConfig(config, readConfigSync(configLoc, createConfigSchema));
       sourceList.push(configLoc);
       seenConfig = true;
     }
 
     let pkgLoc = path.join(loc, PACKAGE_FILENAME);
     if (fs.existsSync(pkgLoc)) {
-      config = mergeConfig(config, readConfigSync(pkgLoc, ConfigSchemaWithinPackageJSON));
+      config = mergeConfig(config, readConfigSync(pkgLoc, createConfigSchemaWithinPackageJSON));
       sourceList.push(pkgLoc);
       seenPackage = true;
     }
@@ -189,7 +162,42 @@ export function toParseConfig(config: CompleteConfig): ParseConfig {
   return config;
 }
 
-export function readConfigSync(filename: string, schema: Node = ConfigSchema) {
+export function createConfigSchema(filename: string): Node {
+  let moduleReference = string.andThen(loc => path.resolve(path.dirname(filename), loc));
+  let directive = object({
+    component: object({
+      source: moduleReference,
+      name: maybe(string),
+    }),
+    line: maybe(enumeration(
+      'required',
+      'optional',
+    )),
+    children: maybe(enumeration(
+      'required',
+      'required-preformatted',
+      'optional',
+      'optional-preformatted',
+    )),
+    data: maybe(any),
+  });
+  let schema = object({
+    components: maybe(moduleReference),
+    directives: maybe(mapping(directive)),
+  });
+  return schema;
+}
+
+function createConfigSchemaWithinPackageJSON(filename: string): Node {
+  return partialObject({
+    reactdown: maybe(createConfigSchema(filename)),
+  }).andThen(pkg => pkg.reactdown);
+}
+
+export function readConfigSync(
+    filename: string,
+    schemaFactory: (filename: string) => Node = createConfigSchema) {
+  let schema = schemaFactory(filename);
   let source = fs.readFileSync(filename, {flag: 'r'}).toString('utf8');
   return validateJSON5(schema, source);
 }
