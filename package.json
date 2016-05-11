@@ -4,7 +4,8 @@
   "description": "Markdown and React based live document format",
   "main": "lib/index.js",
   "scripts": {
-    "test": "make lint check test"
+    "test": "make lint check test",
+    "prepublish": "make"
   },
   "bin": {
     "reactdown": "./lib/bin/reactdown-render"
