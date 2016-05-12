@@ -18,7 +18,7 @@ import type {
 import fs from 'fs';
 import path from 'path';
 import {
-  maybe, string, enumeration, any,
+  maybe, enumeration, any,
   object, partialObject, mapping,
   ValidationError
 } from 'validated/schema';
