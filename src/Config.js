@@ -163,8 +163,7 @@ export function toParseConfig(config: CompleteConfig): ParseConfig {
   return config;
 }
 
-export function createConfigSchema(filename: string): Node {
-  let basedir = path.dirname(filename);
+export function createConfigSchema(basedir: string): Node {
   let moduleReference = string.andThen(loc => path.resolve(basedir, loc));
   let directive = object({
     component: CodeRef.schema(basedir),
@@ -187,16 +186,17 @@ export function createConfigSchema(filename: string): Node {
   return schema;
 }
 
-function createConfigSchemaWithinPackageJSON(filename: string): Node {
+function createConfigSchemaWithinPackageJSON(basedir: string): Node {
   return partialObject({
-    reactdown: maybe(createConfigSchema(filename)),
+    reactdown: maybe(createConfigSchema(basedir)),
   }).andThen(pkg => pkg.reactdown);
 }
 
 export function readConfigSync(
     filename: string,
     schemaFactory: (filename: string) => Node = createConfigSchema) {
-  let schema = schemaFactory(filename);
+  let basedir = path.dirname(filename);
+  let schema = schemaFactory(basedir);
   let source = fs.readFileSync(filename, {flag: 'r'}).toString('utf8');
   try {
     return validateJSON5(schema, source);
