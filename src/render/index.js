@@ -99,14 +99,11 @@ export function renderToProgram(
     }
   }
 
-  expression = expr`
-    React.createElement(DocumentContext, {context: {metadata, model}},
-      ${expression})
-  `;
-
   let statements = stmt`
-    export default function Document() {
-      return ${expression};
+    export default function Document({className, style}) {
+      return React.createElement(DocumentContext,
+        {context: {metadata, model}},
+        React.cloneElement(${expression}, {className, style}));
     }
     export let metadata = ${buildJSON(build, metadata)};
     export let model = ${buildJSON(build, model)};
