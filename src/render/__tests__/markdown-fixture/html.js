@@ -1,13 +1,16 @@
 import React from "react";
 import { DocumentContext, directives as defaultDirectives, components as defaultComponents } from "reactdown/runtime";
 let components = defaultComponents;
-export default function Document() {
+export default function Document({
+  className,
+  style
+}) {
   return React.createElement(DocumentContext, {
     context: {
       metadata,
       model
     }
-  }, React.createElement(components.Root, null, React.createElement(components.HTML, {
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.HTML, {
     "html": "<h1>Alpha</h1>"
   }), React.createElement(components.Paragraph, null, React.createElement(components.HTML, {
     "html": "<strong>"
@@ -25,7 +28,10 @@ export default function Document() {
     "html": "<sub>"
   }), "qux", React.createElement(components.HTML, {
     "html": "</sub>"
-  }), ".")));
+  }), ".")), {
+    className,
+    style
+  }));
 }
 export let metadata = {};
 export let model = {

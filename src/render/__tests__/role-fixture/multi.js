@@ -3,19 +3,25 @@ import { DocumentContext, directives as defaultDirectives, components as default
 let components = defaultComponents;
 import { GHIssue } from "roles";
 import { GHBranch } from "roles";
-export default function Document() {
+export default function Document({
+  className,
+  style
+}) {
   return React.createElement(DocumentContext, {
     context: {
       metadata,
       model
     }
-  }, React.createElement(components.Root, null, React.createElement(components.Paragraph, null, "Link to GitHub issue: ", React.createElement(GHBranch, {
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, "Link to GitHub issue: ", React.createElement(GHBranch, {
     "words": ["123", "next"]
   }), "."), React.createElement(components.Paragraph, null, "Link to GitHub issue: ", React.createElement(GHIssue, {
     "words": ["123", "Important issue"]
   }), "."), React.createElement(components.Paragraph, null, "Link to GitHub issue: ", React.createElement(GHIssue, {
     "words": ["Important issue", "123"]
-  }), ".")));
+  }), ".")), {
+    className,
+    style
+  }));
 }
 export let metadata = {};
 export let model = {

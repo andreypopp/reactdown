@@ -1,13 +1,16 @@
 import React from "react";
 import { DocumentContext, directives as defaultDirectives, components as defaultComponents } from "reactdown/runtime";
 let components = defaultComponents;
-export default function Document() {
+export default function Document({
+  className,
+  style
+}) {
   return React.createElement(DocumentContext, {
     context: {
       metadata,
       model
     }
-  }, React.createElement(components.Root, null, React.createElement(components.Heading, {
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Heading, {
     "level": 1
   }, "Entities"), React.createElement(components.Paragraph, null, "Plain text:"), React.createElement(components.Paragraph, null, "AT", "&", "T with entity, AT", "&", "T with numeric entity, AT&T without entity."), React.createElement(components.Paragraph, null, "Fenced code language flags:"), React.createElement(components.Code, null, "Something in the AT&amp;T language\n"), React.createElement(components.Code, null, "Something in the AT&#x26;T language\n"), React.createElement(components.Code, null, "Something in the AT&T language\n"), React.createElement(components.Paragraph, null, "Automatic links:"), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
     "href": "http://at&t.com",
@@ -126,7 +129,10 @@ export default function Document() {
     "src": "http://at&t.com/fav.ico",
     "alt": "AT&T without entity",
     "title": "AT&T favicon"
-  }), "."), React.createElement(components.Paragraph, null, "Definitions:"), null, null, null, null, null, null, null));
+  }), "."), React.createElement(components.Paragraph, null, "Definitions:"), null, null, null, null, null, null, null), {
+    className,
+    style
+  }));
 }
 export let metadata = {};
 export let model = {
