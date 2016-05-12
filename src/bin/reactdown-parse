@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import program from 'commander';
 import {parse} from '../';
-import {parseNamed} from '../ComponentRef';
+import {parseNamed} from '../CodeRef';
 import pkg from '../../package.json';
 import {findConfig, mergeConfig, toParseConfig} from '../Config';
 
