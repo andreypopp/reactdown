@@ -74,29 +74,29 @@ lib/bin/%: src/bin/%
 PARSE_FIXTURES_MD := $(shell find src/parse/__tests__ -name '*.md')
 PARSE_FIXTURES_JSON := $(PARSE_FIXTURES_MD:%.md=%.json)
 
-build-parse-fixtures:: $(PARSE_FIXTURES_JSON)
+build-parse-fixtures:: build $(PARSE_FIXTURES_JSON)
 clean-parse-fixtures::
 	rm -f $(PARSE_FIXTURES_JSON)
 
 src/parse/__tests__/%.json: src/parse/__tests__/%.md
 	@echo "Parsing $<"
-	@$(BIN)/babel-node ./src/bin/reactdown-parse $< > $@
+	@./lib/bin/reactdown-parse $< > $@
 
 RENDER_FIXTURES_MD := $(shell find src/render/__tests__ -name '*.md')
 RENDER_FIXTURES_JSON := $(RENDER_FIXTURES_MD:%.md=%.json)
 RENDER_FIXTURES_JS := $(RENDER_FIXTURES_MD:%.md=%.js)
 
-build-render-fixtures:: $(RENDER_FIXTURES_JS) $(RENDER_FIXTURES_JSON)
+build-render-fixtures:: build $(RENDER_FIXTURES_JS) $(RENDER_FIXTURES_JSON)
 clean-render-fixtures::
 	rm -f $(RENDER_FIXTURES_JSON) $(RENDER_FIXTURES_JS)
 
 src/render/__tests__/%.json: src/render/__tests__/%.md
 	@echo "Parsing $<"
-	@$(BIN)/babel-node ./src/bin/reactdown-parse $< > $@
+	@./lib/bin/reactdown-parse $< > $@
 
 src/render/__tests__/%.js: src/render/__tests__/%.md
 	@echo "Rendering $<"
-	@$(BIN)/babel-node ./src/bin/reactdown-render \
+	@./lib/bin/reactdown-render \
 		--directive Block=lib?Block \
 		--directive SubBlock=lib/SubBlock \
 		$< > $@
