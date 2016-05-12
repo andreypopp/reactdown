@@ -164,9 +164,12 @@ export function toParseConfig(config: CompleteConfig): ParseConfig {
 }
 
 export function createConfigSchema(basedir: string): Node {
-  let moduleReference = string.andThen(loc => path.resolve(basedir, loc));
+  let codeRef = CodeRef.schema(basedir);
+  let role = object({
+    component: codeRef,
+  });
   let directive = object({
-    component: CodeRef.schema(basedir),
+    component: codeRef,
     line: maybe(enumeration(
       'required',
       'optional',
@@ -180,8 +183,9 @@ export function createConfigSchema(basedir: string): Node {
     data: maybe(any),
   });
   let schema = object({
-    components: maybe(moduleReference),
+    components: maybe(codeRef.andThen(ref => ref.source)),
     directives: maybe(mapping(directive)),
+    roles: maybe(mapping(role)),
   });
   return schema;
 }

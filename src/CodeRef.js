@@ -63,7 +63,7 @@ export function relativeTo(ref: string | ?CodeRef, basedir: ?string): ?CodeRef {
   }
   if (ref == null) {
     return null;
-  } else if (basedir == null) {
+  } else if (basedir == null || ref.source[0] !== '.') {
     return ref;
   } else {
     return new TaggedCodeRef(path.resolve(basedir, ref.source), ref.name);
