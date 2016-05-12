@@ -4,7 +4,7 @@
  */
 
 import type {MDASTRootNode, JSAST, JSASTFactory} from '../types';
-import type {ComponentRef} from '../ComponentRef';
+import type {CodeRef} from '../CodeRef';
 
 import * as build from 'babel-types';
 import invariant from 'invariant';
@@ -16,10 +16,10 @@ import title from '../model/title';
 import {mapValue} from '../utils';
 
 export type DirectiveConfig = {
-  component: ComponentRef;
+  component: CodeRef;
 };
 export type RoleConfig = {
-  component: ComponentRef;
+  component: CodeRef;
 };
 
 export type ModelConfig = {

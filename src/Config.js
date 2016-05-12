@@ -30,7 +30,7 @@ import {
 } from 'loader-utils';
 
 import * as model from './model';
-import * as ComponentRef from './ComponentRef';
+import * as CodeRef from './CodeRef';
 import {
   filterUndefined,
   mapValue
@@ -150,7 +150,7 @@ export function toRenderConfig(config: CompleteConfig): RenderConfig {
     roles: config.roles,
     model: mapValue(config.model, analyzer => {
       if (typeof analyzer === 'string') {
-        return ComponentRef.resolve(analyzer);
+        return CodeRef.resolve(analyzer);
       } else {
         return analyzer;
       }
@@ -164,12 +164,10 @@ export function toParseConfig(config: CompleteConfig): ParseConfig {
 }
 
 export function createConfigSchema(filename: string): Node {
-  let moduleReference = string.andThen(loc => path.resolve(path.dirname(filename), loc));
+  let basedir = path.dirname(filename);
+  let moduleReference = string.andThen(loc => path.resolve(basedir, loc));
   let directive = object({
-    component: object({
-      source: moduleReference,
-      name: maybe(string),
-    }),
+    component: CodeRef.schema(basedir),
     line: maybe(enumeration(
       'required',
       'optional',
