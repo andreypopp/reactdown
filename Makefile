@@ -71,7 +71,7 @@ lib/bin/%: src/bin/%
 	@$(BIN)/babel $(BABEL_OPTIONS) -o $@ $<
 	@chmod +x $@
 
-PARSE_FIXTURES_MD := $(shell find src/parse/__tests__ -name '*.md')
+PARSE_FIXTURES_MD := $(filter-out %.failure.md,$(shell find src/parse/__tests__ -name '*.md'))
 PARSE_FIXTURES_JSON := $(PARSE_FIXTURES_MD:%.md=%.json)
 
 build-parse-fixtures:: build $(PARSE_FIXTURES_JSON)
