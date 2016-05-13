@@ -58,14 +58,12 @@ type ComponentSymbolRegistry = {
   [key: string]: ?JSAST;
 };
 
-type CompleteRendererConfig = {
+export type RendererConfig = {
   build: JSASTFactory;
   directives: ComponentSymbolRegistry;
   roles: ComponentSymbolRegistry;
   buildImageURL: (url: string) => Buildable;
 };
-
-export type RendererConfig = $Shape<CompleteRendererConfig>;
 
 export class Renderer {
 
@@ -891,35 +889,7 @@ export class Renderer {
 
 }
 
-function applyDefaultConfig(config: RendererConfig, defaultConfig: CompleteRendererConfig): CompleteRendererConfig {
-  if (config !== defaultConfig) {
-    config = {
-      ...defaultConfig,
-      ...config,
-      directives: {
-        ...defaultConfig.directives,
-        ...config.directives,
-      },
-      roles: {
-        ...defaultConfig.roles,
-        ...config.roles,
-      },
-    };
-  }
-  return config;
-}
-
-const defaultRendererConfig: RendererConfig = {
-  build: build,
-  directives: {},
-  roles: {},
-  buildImageURL: (url) => url,
-};
-
-export function render(
-    node: MDASTRootNode,
-    config: RendererConfig = defaultRendererConfig) {
-  config = applyDefaultConfig(config, defaultRendererConfig);
+export function render(node: MDASTRootNode, config: RendererConfig) {
   let renderer = new Renderer(config);
   renderer.render(node);
   invariant(

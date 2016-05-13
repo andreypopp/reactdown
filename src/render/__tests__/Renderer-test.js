@@ -18,7 +18,10 @@ describe('reactdown/render', function() {
       let renderer = new Renderer({
         directives: {
           Paragraph: build.identifier('Paragraph')
-        }
+        },
+        roles: {},
+        build: build,
+        buildImageURL: url => url,
       });
       renderer.render({
         type: 'root',
@@ -40,7 +43,10 @@ describe('reactdown/render', function() {
       let renderer = new Renderer({
         directives: {
           Paragraph: build.identifier('Paragraph')
-        }
+        },
+        roles: {},
+        build: build,
+        buildImageURL: url => url,
       });
       renderer.render({
         type: 'root',
