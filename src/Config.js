@@ -4,6 +4,7 @@
  */
 
 import type {Node} from 'validated/schema';
+import type {Buildable} from './render/buildJSON';
 import type {
   ParseConfig,
   DirectiveConfig as DirectiveParseConfig
@@ -57,6 +58,7 @@ type CompleteConfig = {
   directives: DirectiveMapping;
   roles: RoleMapping;
   model: ModelConfig;
+  buildImageURL: (url: string) => Buildable;
 };
 
 export type Config = $Shape<CompleteConfig>;
@@ -77,6 +79,7 @@ export const defaultConfig: CompleteConfig = {
   },
   roles: {},
   model: model,
+  buildImageURL: url => url,
 };
 
 export function mergeConfig(config: CompleteConfig, merge: ?Config): CompleteConfig {
@@ -165,6 +168,7 @@ export function toRenderConfig(config: CompleteConfig): RenderConfig {
         return analyzer;
       }
     }),
+    buildImageURL: config.buildImageURL,
   };
   return renderConfig;
 }

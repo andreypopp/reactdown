@@ -5,7 +5,7 @@
 
 import type {JSON, JSAST, JSASTFactory} from '../types';
 
-type Buildable
+export type Buildable
   = JSON
   | {toJSAST(): JSAST};
 

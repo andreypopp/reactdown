@@ -5,6 +5,7 @@
 
 import type {MDASTRootNode, JSAST, JSASTFactory} from '../types';
 import type {CodeRef} from '../CodeRef';
+import type {Buildable} from './buildJSON';
 
 import * as build from 'babel-types';
 import invariant from 'invariant';
@@ -32,6 +33,7 @@ type CompleteRenderConfig = {
   directives: {[name: string]: DirectiveConfig};
   roles: {[name: string]: RoleConfig};
   model: ModelConfig;
+  buildImageURL: (url: string) => Buildable;
 };
 
 export type RenderConfig = $Shape<CompleteRenderConfig>;
@@ -42,6 +44,7 @@ const defaultRenderConfig: CompleteRenderConfig = {
   directives: {},
   roles: {},
   model: {toc, title},
+  buildImageURL: (url) => url,
 };
 
 function applyDefaultConfig(config: RenderConfig, defaultConfig: CompleteRenderConfig): CompleteRenderConfig {
@@ -83,6 +86,7 @@ export function renderToProgram(
     build,
     directives: mapToJSAST(build, directives),
     roles: mapToJSAST(build, roles),
+    buildImageURL: config.buildImageURL,
   };
 
   let {

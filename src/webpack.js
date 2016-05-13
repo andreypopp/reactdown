@@ -5,6 +5,7 @@
 
 import indentString from 'indent-string';
 import {renderToString} from './index';
+import {TaggedCodeRef} from './CodeRef';
 import {
   discoverConfig,
   mergeConfig,
@@ -41,6 +42,8 @@ function reactdown(source: string): ?string {
     compiler.__reactdownConfig,
     parseConfigFromQuery(this.query)
   );
+
+  config.buildImageURL = url => new TaggedCodeRef(url);
 
   let code;
   try {

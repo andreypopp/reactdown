@@ -6,6 +6,7 @@
 import type {Node} from 'validated/schema';
 
 import path from 'path';
+import * as types from 'babel-types';
 import {oneOf, object, string, maybe} from 'validated/schema';
 
 // TODO: More robust regexpes required!
@@ -25,6 +26,14 @@ export class TaggedCodeRef {
   constructor(source: string, name: ?string) {
     this.source = source;
     this.name = name;
+  }
+
+  toJSAST() {
+    let res = expr`require("${types.stringLiteral(this.source)}")`;
+    if (this.name != null) {
+      res = expr`${res}.${types.identifier(this.name)}`;
+    }
+    return res;
   }
 }
 

@@ -3,6 +3,8 @@
  * @flow
  */
 
+import type {Buildable} from './buildJSON';
+
 import detab from 'detab';
 import invariant from 'invariant';
 import collapse from 'collapse-white-space';
@@ -60,6 +62,7 @@ type CompleteRendererConfig = {
   build: JSASTFactory;
   directives: ComponentSymbolRegistry;
   roles: ComponentSymbolRegistry;
+  buildImageURL: (url: string) => Buildable;
 };
 
 export type RendererConfig = $Shape<CompleteRendererConfig>;
@@ -67,6 +70,7 @@ export type RendererConfig = $Shape<CompleteRendererConfig>;
 export class Renderer {
 
   build: JSASTFactory;
+  buildImageURL: (url: string) => Buildable;
   directives: ComponentSymbolRegistry;
   roles: ComponentSymbolRegistry;
 
@@ -78,6 +82,7 @@ export class Renderer {
 
   constructor(config: RendererConfig) {
     this.build = config.build || build;
+    this.buildImageURL = config.buildImageURL;
     this.directives = config.directives || {};
     this.roles = config.roles || {};
 
@@ -768,7 +773,7 @@ export class Renderer {
     let def = this.definitions[node.identifier.toUpperCase()] || {};
 
     return this.renderElement('Image', {
-      src: normalizeURI(def.url || ''),
+      src: this.buildImageURL(normalizeURI(def.url || '')),
       alt: node.alt || '',
       title: def.title
     });
@@ -788,7 +793,7 @@ export class Renderer {
    */
   image(node: MDASTImageNode): JSAST {
     return this.renderElement('Image', {
-      src: normalizeURI(node.url || ''),
+      src: this.buildImageURL(normalizeURI(node.url || '')),
       alt: node.alt || '',
       title: node.title
     });
@@ -908,6 +913,7 @@ const defaultRendererConfig: RendererConfig = {
   build: build,
   directives: {},
   roles: {},
+  buildImageURL: (url) => url,
 };
 
 export function render(
