@@ -6,7 +6,7 @@
 import indentString from 'indent-string';
 import {renderToString} from './index';
 import {
-  findConfig,
+  discoverConfig,
   mergeConfig,
   parseConfigFromQuery,
   ValidationError
@@ -27,7 +27,7 @@ function reactdown(source: string): ?string {
   // Webpack compiler.
   if (compiler.__reactdownConfig === undefined) {
     try {
-      compiler.__reactdownConfig = findConfig(compiler.context).config;
+      compiler.__reactdownConfig = discoverConfig(compiler.context).config;
     } catch (error) {
       if (error instanceof ValidationError) {
         this.emitError(formatConfigurationError(error));

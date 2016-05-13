@@ -103,31 +103,37 @@ export function mergeConfig(config: CompleteConfig, merge: ?Config): CompleteCon
   };
 }
 
-export function findConfig(loc: string): {config: CompleteConfig, sourceList: Array<string>} {
+/**
+ * Discover config for a directory `dirname`.
+ */
+export function discoverConfig(dirname: string): {config: CompleteConfig, sourceList: Array<string>} {
   let seenConfig = false;
   let seenPackage = false;
   let config = defaultConfig;
   let sourceList = [];
-  while (!(seenPackage && seenConfig) && loc !== path.dirname(loc)) {
-    let configLoc = path.join(loc, CONFIG_FILENAME);
+  while (!(seenPackage && seenConfig) && dirname !== path.dirname(dirname)) {
+    let configLoc = path.join(dirname, CONFIG_FILENAME);
     if (fs.existsSync(configLoc)) {
       config = mergeConfig(config, readConfigSync(configLoc, createConfigSchema));
       sourceList.push(configLoc);
       seenConfig = true;
     }
 
-    let pkgLoc = path.join(loc, PACKAGE_FILENAME);
+    let pkgLoc = path.join(dirname, PACKAGE_FILENAME);
     if (fs.existsSync(pkgLoc)) {
       config = mergeConfig(config, readConfigSync(pkgLoc, createConfigSchemaWithinPackageJSON));
       sourceList.push(pkgLoc);
       seenPackage = true;
     }
 
-    loc = path.dirname(loc);
+    dirname = path.dirname(dirname);
   }
   return {config, sourceList};
 }
 
+/**
+ * Parse config out of query string.
+ */
 export function parseConfigFromQuery(query: string): Config {
   let config = {};
   query = parseQuery(query);
@@ -143,6 +149,11 @@ export function parseConfigFromQuery(query: string): Config {
   return config;
 }
 
+/**
+ * Convert config to render config.
+ *
+ * @private
+ */
 export function toRenderConfig(config: CompleteConfig): RenderConfig {
   let renderConfig = {
     components: config.components,
@@ -159,11 +170,16 @@ export function toRenderConfig(config: CompleteConfig): RenderConfig {
   return renderConfig;
 }
 
+/**
+ * Convert config to parse config.
+ *
+ * @private
+ */
 export function toParseConfig(config: CompleteConfig): ParseConfig {
   return config;
 }
 
-export function createConfigSchema(basedir: string): Node {
+function createConfigSchema(basedir: string): Node {
   let codeRef = CodeRef.schema(basedir);
   let role = object({
     component: codeRef,
@@ -196,6 +212,9 @@ function createConfigSchemaWithinPackageJSON(basedir: string): Node {
   }).andThen(pkg => pkg.reactdown);
 }
 
+/**
+ * React config from `filename`.
+ */
 export function readConfigSync(
     filename: string,
     schemaFactory: (filename: string) => Node = createConfigSchema) {

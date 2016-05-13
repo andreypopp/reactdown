@@ -7,7 +7,7 @@ import {renderToString} from '../';
 import {parseNamed} from '../CodeRef';
 import {sync as resolveSync} from 'resolve';
 import pkg from '../../package.json';
-import {findConfig, mergeConfig} from '../Config';
+import {discoverConfig, mergeConfig} from '../Config';
 
 function error(message) {
   console.error('error:', message);
@@ -59,7 +59,7 @@ let dirname = path.dirname(filename);
 
 let src = fs.readFileSync(filename, 'utf8');
 
-let config = findConfig(dirname).config;
+let config = discoverConfig(dirname).config;
 config = mergeConfig(config, {
   directives: program.directive,
   roles: program.role,
