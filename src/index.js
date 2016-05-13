@@ -15,7 +15,6 @@ import {
   toParseConfig
 } from './Config';
 
-
 export function renderToString(value: string, config: Config = {}): {code: string} {
   config = mergeConfig(defaultConfig, config);
   let renderConfig = toRenderConfig(config);
