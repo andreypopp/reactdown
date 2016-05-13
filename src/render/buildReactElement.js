@@ -3,11 +3,12 @@
  * @flow
  */
 
-import type {JSON, JSAST, JSASTFactory} from '../types';
+import type {JSON, JSAST} from '../types';
+
+import * as build from 'babel-types';
 import buildJSON from './buildJSON';
 
 export default function buildReactElement(
-    build: JSASTFactory,
     name: JSAST,
     props: JSON,
     ...children: Array<JSAST>
@@ -15,6 +16,6 @@ export default function buildReactElement(
   let createElement = expr`React.createElement`;
   return build.callExpression(
     createElement,
-    [name, buildJSON(build, props), ...children]
+    [name, buildJSON(props), ...children]
   );
 }

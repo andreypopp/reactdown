@@ -50,8 +50,7 @@ import type {
   MDASTBlockquoteNode,
   MDASTRootNode,
 
-  JSAST,
-  JSASTFactory
+  JSAST
 } from '../types';
 
 type ComponentSymbolRegistry = {
@@ -59,7 +58,6 @@ type ComponentSymbolRegistry = {
 };
 
 export type RendererConfig = {
-  build: JSASTFactory;
   directives: ComponentSymbolRegistry;
   roles: ComponentSymbolRegistry;
   buildImageURL: (url: string) => Buildable;
@@ -67,7 +65,6 @@ export type RendererConfig = {
 
 export class Renderer {
 
-  build: JSASTFactory;
   buildImageURL: (url: string) => Buildable;
   directives: ComponentSymbolRegistry;
   roles: ComponentSymbolRegistry;
@@ -79,7 +76,6 @@ export class Renderer {
   metadata: ?Object;
 
   constructor(config: RendererConfig) {
-    this.build = config.build || build;
     this.buildImageURL = config.buildImageURL;
     this.directives = config.directives || {};
     this.roles = config.roles || {};
@@ -95,29 +91,29 @@ export class Renderer {
       component: null | string | JSAST,
       props: any = null, ...children: Array<JSAST>): JSAST {
     if (typeof component === 'string') {
-      component = expr`components.${this.build.identifier(component)}`;
+      component = expr`components.${build.identifier(component)}`;
     }
     if (component === null) {
       return this.renderNothing();
     }
-    if (component !== null && this.build.isIdentifier(component)) {
+    if (component !== null && build.isIdentifier(component)) {
       if (this.identifiersUsed.indexOf(component) === -1) {
         this.identifiersUsed.push(component);
       }
     }
-    return buildReactElement(this.build, component, props, ...children);
+    return buildReactElement(component, props, ...children);
   }
 
   renderText(value: ?string): JSAST {
     if (value === null) {
-      return this.build.nullLiteral();
+      return build.nullLiteral();
     } else {
-      return this.build.stringLiteral(value);
+      return build.stringLiteral(value);
     }
   }
 
   renderNothing(): JSAST {
-    return this.build.nullLiteral();
+    return build.nullLiteral();
   }
 
   /**

@@ -16,7 +16,7 @@ describe('reactdown/render', function() {
   describe('buildJSON', function() {
 
     function render(value) {
-      return generate(buildJSON(build, value)).code;
+      return generate(buildJSON(value)).code;
     }
 
     class Custom {

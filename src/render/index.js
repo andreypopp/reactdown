@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type {MDASTRootNode, JSAST, JSASTFactory} from '../types';
+import type {MDASTRootNode, JSAST} from '../types';
 import type {CodeRef} from '../CodeRef';
 import type {Buildable} from './buildJSON';
 
@@ -12,8 +12,6 @@ import invariant from 'invariant';
 
 import {render as renderNode} from './Renderer';
 import buildJSON from './buildJSON';
-import toc from '../model/toc';
-import title from '../model/title';
 import {mapValue} from '../utils';
 
 export type DirectiveConfig = {
@@ -27,8 +25,7 @@ export type ModelConfig = {
   [attribute: string]: (node: MDASTRootNode) => any
 };
 
-type CompleteRenderConfig = {
-  build: JSASTFactory;
+export type RenderConfig = {
   components: ?string;
   directives: {[name: string]: DirectiveConfig};
   roles: {[name: string]: RoleConfig};
@@ -36,36 +33,7 @@ type CompleteRenderConfig = {
   buildImageURL: (url: string) => Buildable;
 };
 
-export type RenderConfig = $Shape<CompleteRenderConfig>;
-
-const defaultRenderConfig: CompleteRenderConfig = {
-  build: build,
-  components: null,
-  directives: {},
-  roles: {},
-  model: {toc, title},
-  buildImageURL: (url) => url,
-};
-
-function applyDefaultConfig(config: RenderConfig, defaultConfig: CompleteRenderConfig): CompleteRenderConfig {
-  if (config !== defaultConfig) {
-    config = {
-      ...defaultConfig,
-      ...config,
-      directives: {
-        ...defaultConfig.directives,
-        ...config.directives,
-      },
-      roles: {
-        ...defaultConfig.roles,
-        ...config.roles,
-      },
-    };
-  }
-  return config;
-}
-
-function mapToJSAST(build, obj): {[name: string]: JSAST} {
+function mapToJSAST(obj): {[name: string]: JSAST} {
   return mapValue(obj, (value, key) => {
     if (build.isNode(value.component)) {
       return value.component;
@@ -77,15 +45,11 @@ function mapToJSAST(build, obj): {[name: string]: JSAST} {
   });
 }
 
-export function renderToProgram(
-    node: MDASTRootNode,
-    config: RenderConfig = defaultRenderConfig): JSAST {
-  config = applyDefaultConfig(config, defaultRenderConfig);
-  let {build, components, directives, roles} = config;
+export function renderToProgram(node: MDASTRootNode, config: RenderConfig): JSAST {
+  let {components, directives, roles} = config;
   let rendererConfig = {
-    build,
-    directives: mapToJSAST(build, directives),
-    roles: mapToJSAST(build, roles),
+    directives: mapToJSAST(directives),
+    roles: mapToJSAST(roles),
     buildImageURL: config.buildImageURL,
   };
 
@@ -109,8 +73,8 @@ export function renderToProgram(
         {context: {metadata, model}},
         React.cloneElement(${expression}, {className, style}));
     }
-    export let metadata = ${buildJSON(build, metadata)};
-    export let model = ${buildJSON(build, model)};
+    export let metadata = ${buildJSON(metadata)};
+    export let model = ${buildJSON(model)};
   `;
 
   identifiersUsed.forEach(identifier => {

@@ -7,6 +7,7 @@ import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
 import generate from 'babel-generator';
+import * as model from '../../model';
 import {renderToProgram as render} from '../index';
 
 declare function describe(description: string, body: any): void;
@@ -60,7 +61,11 @@ let config = {
     GHBranch: {
       component: {source: 'roles', name: 'GHBranch'},
     },
-  }
+  },
+  build: null,
+  buildImageURL: url => url,
+  components: null,
+  model: model,
 };
 
 function generateCases(dir, only = null) {

@@ -3,13 +3,15 @@
  * @flow
  */
 
-import type {JSON, JSAST, JSASTFactory} from '../types';
+import type {JSON, JSAST} from '../types';
+
+import * as build from 'babel-types';
 
 export type Buildable
   = JSON
   | {toJSAST(): JSAST};
 
-export default function buildJSON(build: JSASTFactory, value: Buildable): JSAST {
+export default function buildJSON(value: Buildable): JSAST {
   if (value && typeof value.toJSAST === 'function') {
     return value.toJSAST(build);
   } else if (build.isNode(value)) {
@@ -28,7 +30,7 @@ export default function buildJSON(build: JSASTFactory, value: Buildable): JSAST 
     return build.stringLiteral(value.toISOString());
   } else if (Array.isArray(value)) {
     return build.arrayExpression(value.map(item =>
-      buildJSON(build, item)));
+      buildJSON(item)));
   } else if (typeof value === 'object') {
     let properties = [];
     for (let key in value) {
@@ -36,7 +38,7 @@ export default function buildJSON(build: JSASTFactory, value: Buildable): JSAST 
         properties.push(
           build.objectProperty(
             build.stringLiteral(key),
-            buildJSON(build, value[key])
+            buildJSON(value[key])
           )
         );
       }
