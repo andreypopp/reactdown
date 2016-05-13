@@ -8,6 +8,7 @@ import fs from 'fs';
 import path from 'path';
 import parse from '../index';
 import {loadFront as getMeta} from 'yaml-front-matter';
+import {any, object, string, mapping} from 'validated/schema';
 
 declare function describe(description: string, body: any): void;
 declare function it(description: string, body: any): void;
@@ -31,7 +32,8 @@ function readFixtures(dir) {
 
 let config = {
   directives: {
-    Plain: {},
+    Plain: {
+    },
     Children: {
       children: 'required',
     },
@@ -51,14 +53,17 @@ let config = {
       line: 'optional',
     },
     Data: {
-      data: {type: 'any'}
+      data: any,
     },
     DataRequired: {
-      data: {type: 'mapping', value: {type: 'any'}}
+      data: mapping(any),
     },
     DataChildren: {
-      data: {type: 'any'},
+      data: any,
       children: 'required',
+    },
+    DataPerson: {
+      data: object({name: string}),
     }
   },
 };

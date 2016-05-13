@@ -18,13 +18,12 @@ import type {
 import fs from 'fs';
 import path from 'path';
 import {
-  maybe, enumeration, any,
+  maybe, enumeration,
   object, partialObject, mapping,
   ValidationError
 } from 'validated/schema';
-import {
-  validate as validateJSON5
-} from 'validated/json5';
+import {schema as schemaSchema} from 'validated/repr';
+import {validate as validateJSON5} from 'validated/json5';
 import {
   parseQuery
 } from 'loader-utils';
@@ -196,7 +195,7 @@ function createConfigSchema(basedir: string): Node {
       'optional',
       'optional-preformatted',
     )),
-    data: maybe(any),
+    data: maybe(schemaSchema),
   });
   let schema = object({
     components: maybe(codeRef.andThen(ref => ref.source)),

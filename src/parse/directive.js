@@ -6,6 +6,7 @@
 import type {MDASTAnyNode} from '../types';
 import type {Eat} from './types';
 
+import {validate as validateWithSchema} from 'validated/object';
 import jsYAML from 'js-yaml';
 import {
   mapValue,
@@ -209,7 +210,7 @@ function parseDirective(directives: NormalizedDirectiveMapping, eat: Eat, value:
     data = jsYAML.safeLoad(dataContent);
   }
   if (config.dataSchema) {
-    // TODO: validate schema
+    data = validateWithSchema(config.dataSchema, data);
   }
 
   let children: Array<MDASTAnyNode> = [];
