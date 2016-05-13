@@ -1,13 +1,67 @@
 {
   directives: {
-    pre: {
-      render: {
-        source: 'lib/pre',
-        name: 'default',
+    Plain: {
+      component: {
+        source: 'lib',
+        name: 'Plain'
       },
-      parse: {
-        preformatted: true,
-      }
+    },
+    Children: {
+      component: {
+        source: 'lib',
+        name: 'Children'
+      },
+      children: 'required',
+    },
+    ChildrenOptional: {
+      component: {
+        source: 'lib',
+        name: 'ChildrenOptional'
+      },
+      children: 'optional',
+    },
+    Pre: {
+      component: {
+        source: 'lib',
+        name: 'Pre'
+      },
+      children: 'required-preformatted',
+    },
+    PreOptional: {
+      component: {
+        source: 'lib',
+        name: 'PreOptional'
+      },
+      children: 'optional-preformatted',
+    },
+    Line: {
+      component: {
+        source: 'lib',
+        name: 'Line'
+      },
+      line: 'required',
+    },
+    LineOptional: {
+      component: {
+        source: 'lib',
+        name: 'LineOptional'
+      },
+      line: 'optional',
+    },
+    Data: {
+      component: {
+        source: 'lib',
+        name: 'Data'
+      },
+      data: {type: 'any'}
+    },
+    DataChildren: {
+      component: {
+        source: 'lib',
+        name: 'DataChildren'
+      },
+      data: {type: 'any'},
+      children: 'required',
     }
   }
 }

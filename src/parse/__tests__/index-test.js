@@ -7,6 +7,8 @@ import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
 import parse from '../index';
+import {loadFront as getMeta} from 'yaml-front-matter';
+import {any, object, string, mapping} from 'validated/schema';
 
 declare function describe(description: string, body: any): void;
 declare function it(description: string, body: any): void;
@@ -30,7 +32,39 @@ function readFixtures(dir) {
 
 let config = {
   directives: {
-    pre: {preformatted: true},
+    Plain: {
+    },
+    Children: {
+      children: 'required',
+    },
+    ChildrenOptional: {
+      children: 'optional',
+    },
+    Pre: {
+      children: 'required-preformatted',
+    },
+    PreOptional: {
+      children: 'optional-preformatted',
+    },
+    Line: {
+      line: 'required',
+    },
+    LineOptional: {
+      line: 'optional',
+    },
+    Data: {
+      data: any,
+    },
+    DataRequired: {
+      data: mapping(any),
+    },
+    DataChildren: {
+      data: any,
+      children: 'required',
+    },
+    DataPerson: {
+      data: object({name: string}),
+    }
   },
 };
 
@@ -40,8 +74,14 @@ function generateCases(dir, only = null) {
     let test = only === fixture ? it.only : it;
     test(`parses ${fixture}`, function() {
       let src = fs.readFileSync(fixtureFilename(fixture, 'md'), 'utf8');
-      let node = parse(src, config);
-      assert.equal(JSON.stringify(node, null, 2).trim(), expectedOutput(fixture));
+      if (/\.failure/.exec(fixture)) {
+        let meta = getMeta(src);
+        let message = new RegExp(meta.message);
+        assert.throws(() => parse(src, config), message);
+      } else {
+        let node = parse(src, config);
+        assert.equal(JSON.stringify(node, null, 2).trim(), expectedOutput(fixture));
+      }
     });
   });
 }

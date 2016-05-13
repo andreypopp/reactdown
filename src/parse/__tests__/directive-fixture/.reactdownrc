@@ -1,0 +1,44 @@
+{
+  directives: {
+    Plain: {
+      component: 'directives?Plain',
+    },
+    Children: {
+      component: 'directives?Children',
+      children: 'required',
+    },
+    ChildrenOptional: {
+      component: 'directives?ChildrenOptional',
+      children: 'optional',
+    },
+    Pre: {
+      component: 'directives?Pre',
+      children: 'required-preformatted',
+    },
+    PreOptional: {
+      component: 'directives?PreOptional',
+      children: 'optional-preformatted',
+    },
+    Line: {
+      component: 'directives?Line',
+      line: 'required',
+    },
+    LineOptional: {
+      component: 'directives?LineOptional',
+      line: 'optional',
+    },
+    Data: {
+      component: 'directives?Data',
+      data: 'any',
+    },
+    DataChildren: {
+      component: 'directives?DataChildren',
+      data: 'any',
+      children: 'required',
+    },
+    DataPerson: {
+      component: 'directives?DataPerson',
+      data: {object: {name: 'string'}},
+    }
+  }
+}

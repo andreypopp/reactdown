@@ -1,13 +1,16 @@
 import React from "react";
 import { DocumentContext, directives as defaultDirectives, components as defaultComponents } from "reactdown/runtime";
 let components = defaultComponents;
-export default function Document() {
+export default function Document({
+  className,
+  style
+}) {
   return React.createElement(DocumentContext, {
     context: {
       metadata,
       model
     }
-  }, React.createElement(components.Root, null, React.createElement(components.Heading, {
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Heading, {
     "level": 1
   }, "References"), React.createElement(components.Paragraph, null, "Entities contains some serious entity tests relating to titles and links\nin definitions."), React.createElement(components.Paragraph, null, "However, the ", React.createElement(components.Link, {
     "href": "",
@@ -37,7 +40,10 @@ export default function Document() {
     "src": "",
     "alt": "",
     "title": undefined
-  }), "."), null));
+  }), "."), null), {
+    className,
+    style
+  }));
 }
 export let metadata = {};
 export let model = {

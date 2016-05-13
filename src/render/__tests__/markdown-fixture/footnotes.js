@@ -1,13 +1,16 @@
 import React from "react";
 import { DocumentContext, directives as defaultDirectives, components as defaultComponents } from "reactdown/runtime";
 let components = defaultComponents;
-export default function Document() {
+export default function Document({
+  className,
+  style
+}) {
   return React.createElement(DocumentContext, {
     context: {
       metadata,
       model
     }
-  }, React.createElement(components.Root, null, React.createElement(components.Heading, {
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Heading, {
     "level": 1
   }, "Footnotes"), React.createElement(components.Paragraph, null, "Alpha bravo", React.createElement(components.Link, {
     "href": "",
@@ -24,7 +27,10 @@ export default function Document() {
   }, "^1"), ": This reference style footnote can contains paragraphs."), React.createElement(components.UnorderedList, null, React.createElement(components.ListItem, null, "and lists")), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
     "href": "",
     "title": undefined
-  }, "^2"), ": Normal footnote.")));
+  }, "^2"), ": Normal footnote.")), {
+    className,
+    style
+  }));
 }
 export let metadata = {};
 export let model = {

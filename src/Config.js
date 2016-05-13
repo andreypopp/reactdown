@@ -3,6 +3,7 @@
  * @flow
  */
 
+import type {Node} from 'validated/schema';
 import type {
   ParseConfig,
   DirectiveConfig as DirectiveParseConfig
@@ -16,33 +17,42 @@ import type {
 
 import fs from 'fs';
 import path from 'path';
-import JSON5 from 'json5';
-import {parseQuery} from 'loader-utils';
+import {
+  maybe, enumeration,
+  object, partialObject, mapping,
+  ValidationError
+} from 'validated/schema';
+import {schema as schemaSchema} from 'validated/repr';
+import {validate as validateJSON5} from 'validated/json5';
+import {
+  parseQuery
+} from 'loader-utils';
 
 import * as model from './model';
-import * as ComponentRef from './ComponentRef';
+import * as CodeRef from './CodeRef';
+import {
+  filterUndefined,
+  mapValue
+} from './utils';
 
-export type ModelConfig
+export {ValidationError} from 'validated/schema';
+
+type ModelConfig
   // $FlowIssue: report it
   = {[attribute: string]: string}
   | ModelRenderConfig;
 
-export type DirectiveConfig = $Shape<{
-  render: DirectiveRenderConfig;
-  parse: DirectiveParseConfig;
-}>;
+type DirectiveConfig = $Shape<DirectiveRenderConfig & DirectiveParseConfig>;
 
-export type RoleConfig = RoleRenderConfig;
-
-export type DirectiveMapping = {
+type DirectiveMapping = {
   [name: string]: DirectiveConfig;
 };
 
-export type RoleMapping = {
-  [name: string]: RoleConfig;
+type RoleMapping = {
+  [name: string]: RoleRenderConfig;
 };
 
-export type CompleteConfig = {
+type CompleteConfig = {
   components: ?string;
   directives: DirectiveMapping;
   roles: RoleMapping;
@@ -56,7 +66,15 @@ const PACKAGE_FILENAME = 'package.json';
 
 export const defaultConfig: CompleteConfig = {
   components: null,
-  directives: {},
+  directives: {
+    ref: {
+      component: expr`defaultDirectives.ref`,
+      line: 'required'
+    },
+    meta: {
+      component: expr`defaultDirectives.meta`,
+    },
+  },
   roles: {},
   model: model,
 };
@@ -65,6 +83,7 @@ export function mergeConfig(config: CompleteConfig, merge: ?Config): CompleteCon
   if (!merge) {
     return config;
   }
+  merge = filterUndefined(merge);
   return {
     ...config,
     ...merge,
@@ -83,31 +102,37 @@ export function mergeConfig(config: CompleteConfig, merge: ?Config): CompleteCon
   };
 }
 
-export function findConfig(loc: string): {config: CompleteConfig, sourceList: Array<string>} {
+/**
+ * Discover config for a directory `dirname`.
+ */
+export function discoverConfig(dirname: string): {config: CompleteConfig, sourceList: Array<string>} {
   let seenConfig = false;
   let seenPackage = false;
   let config = defaultConfig;
   let sourceList = [];
-  while (!(seenPackage && seenConfig) && loc !== path.dirname(loc)) {
-    let configLoc = path.join(loc, CONFIG_FILENAME);
+  while (!(seenPackage && seenConfig) && dirname !== path.dirname(dirname)) {
+    let configLoc = path.join(dirname, CONFIG_FILENAME);
     if (fs.existsSync(configLoc)) {
-      config = mergeConfig(config, readJSON(configLoc, JSON5));
+      config = mergeConfig(config, readConfigSync(configLoc, createConfigSchema));
       sourceList.push(configLoc);
       seenConfig = true;
     }
 
-    let pkgLoc = path.join(loc, PACKAGE_FILENAME);
+    let pkgLoc = path.join(dirname, PACKAGE_FILENAME);
     if (fs.existsSync(pkgLoc)) {
-      config = mergeConfig(config, readJSON(pkgLoc, JSON)['reactdown']);
+      config = mergeConfig(config, readConfigSync(pkgLoc, createConfigSchemaWithinPackageJSON));
       sourceList.push(pkgLoc);
       seenPackage = true;
     }
 
-    loc = path.dirname(loc);
+    dirname = path.dirname(dirname);
   }
   return {config, sourceList};
 }
 
+/**
+ * Parse config out of query string.
+ */
 export function parseConfigFromQuery(query: string): Config {
   let config = {};
   query = parseQuery(query);
@@ -123,14 +148,19 @@ export function parseConfigFromQuery(query: string): Config {
   return config;
 }
 
+/**
+ * Convert config to render config.
+ *
+ * @private
+ */
 export function toRenderConfig(config: CompleteConfig): RenderConfig {
   let renderConfig = {
     components: config.components,
-    directives: mapObject(config.directives, config => config.render),
+    directives: config.directives,
     roles: config.roles,
-    model: mapObject(config.model, analyzer => {
+    model: mapValue(config.model, analyzer => {
       if (typeof analyzer === 'string') {
-        return ComponentRef.resolve(analyzer);
+        return CodeRef.resolve(analyzer);
       } else {
         return analyzer;
       }
@@ -139,26 +169,64 @@ export function toRenderConfig(config: CompleteConfig): RenderConfig {
   return renderConfig;
 }
 
+/**
+ * Convert config to parse config.
+ *
+ * @private
+ */
 export function toParseConfig(config: CompleteConfig): ParseConfig {
-  let parseConfig = {
-    directives: mapObject(config.directives, config => config.parse),
-  };
-  return parseConfig;
+  return config;
 }
 
-function readJSON(loc, syntax = JSON) {
-  return syntax.parse(fs.readFileSync(loc, {flag: 'r'}).toString('utf8'));
+function createConfigSchema(basedir: string): Node {
+  let codeRef = CodeRef.schema(basedir);
+  let role = object({
+    component: codeRef,
+  });
+  let directive = object({
+    component: codeRef,
+    line: maybe(enumeration(
+      'required',
+      'optional',
+    )),
+    children: maybe(enumeration(
+      'required',
+      'required-preformatted',
+      'optional',
+      'optional-preformatted',
+    )),
+    data: maybe(schemaSchema),
+  });
+  let schema = object({
+    components: maybe(codeRef.andThen(ref => ref.source)),
+    directives: maybe(mapping(directive)),
+    roles: maybe(mapping(role)),
+  });
+  return schema;
 }
 
-function mapObject<V1, V2>(object: {[k: string]: V1}, map: (v: V1) => V2): {[k: string]: V2} {
-  let result = {};
-  for (let key in object) {
-    if (object.hasOwnProperty(key)) {
-      let value = map(object[key]);
-      if (value !== undefined) {
-        result[key] = value;
-      }
+function createConfigSchemaWithinPackageJSON(basedir: string): Node {
+  return partialObject({
+    reactdown: maybe(createConfigSchema(basedir)),
+  }).andThen(pkg => pkg.reactdown);
+}
+
+/**
+ * React config from `filename`.
+ */
+export function readConfigSync(
+    filename: string,
+    schemaFactory: (filename: string) => Node = createConfigSchema) {
+  let basedir = path.dirname(filename);
+  let schema = schemaFactory(basedir);
+  let source = fs.readFileSync(filename, {flag: 'r'}).toString('utf8');
+  try {
+    return validateJSON5(schema, source);
+  } catch (error) {
+    if (error instanceof ValidationError) {
+      throw error.withContext(`While reading configuration from ${filename}`);
+    } else {
+      throw error;
     }
   }
-  return result;
 }

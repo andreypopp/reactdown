@@ -3,17 +3,19 @@
  * @flow
  */
 
+import indentString from 'indent-string';
 import {renderToString} from './index';
 import {
-  findConfig,
+  discoverConfig,
   mergeConfig,
-  parseConfigFromQuery
+  parseConfigFromQuery,
+  ValidationError
 } from './Config';
 
 /**
  * Webpack loader for reactdown documents.
  */
-function reactdown(source: string): string {
+function reactdown(source: string): ?string {
   this.cacheable();
 
   let compiler = this._compiler;
@@ -24,7 +26,15 @@ function reactdown(source: string): string {
   // TODO: Improve on that, so changes to configration do not require restarting
   // Webpack compiler.
   if (compiler.__reactdownConfig === undefined) {
-    compiler.__reactdownConfig = findConfig(compiler.context).config;
+    try {
+      compiler.__reactdownConfig = discoverConfig(compiler.context).config;
+    } catch (error) {
+      if (error instanceof ValidationError) {
+        this.emitError(formatConfigurationError(error));
+        return;
+      }
+      throw error;
+    }
   }
 
   let config = mergeConfig(
@@ -32,7 +42,30 @@ function reactdown(source: string): string {
     parseConfigFromQuery(this.query)
   );
 
-  return renderToString(source, config).code;
+  let code;
+  try {
+    code = renderToString(source, config).code;
+  } catch (error) {
+    // TODO: this is a hackyway how we distinguish errors from parser
+    if (error.ruleId !== undefined) {
+      this.emitError(formatSyntaxError(error));
+    } else {
+      throw error;
+    }
+  }
+  return code;
+}
+
+function formatSyntaxError(error) {
+  let message = error.message || error;
+  if (error.line !== undefined && error.column !== undefined) {
+    message = `${message} at line ${error.line} column ${error.column}`;
+  }
+  return message;
+}
+
+function formatConfigurationError(error) {
+  return 'Invalid reactdown configuration:\n' + indentString(error.message, '  ', 1);
 }
 
 module.exports = reactdown;

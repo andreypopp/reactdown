@@ -113,18 +113,17 @@ An complete example of available configuration:
       // Configure available directives
       directives: {
         TwitterFeed: {
-          render: {
-            name: 'TwitterFeed',
-            source: './module/with/directives'
-          }
+          component: './module/with/directives?TwitterFeed',
+          children: 'required',
+          line: 'optional',
+          data: {mapping: 'any'}
         }
       },
 
       // Configure available roles
       roles: {
         GHIssue: {
-          name: 'GHIssue',
-          source: './module/with/roles'
+          component: './module/with/roles?GHIssue',
         }
       },
     }

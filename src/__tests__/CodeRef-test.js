@@ -4,14 +4,14 @@
  */
 
 import assert from 'assert';
-import {parse, parseNamed} from '../ComponentRef';
+import {parse, parseNamed} from '../CodeRef';
 
 declare function describe(description: string, body: any): void;
 declare function it(description: string, body: any): void;
 
 describe('reactdown', function() {
 
-  describe('ComponentRef', function() {
+  describe('CodeRef', function() {
 
     function generateCases(func, cases: any) {
       cases.forEach(c => {

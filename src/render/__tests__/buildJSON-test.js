@@ -19,28 +19,42 @@ describe('reactdown/render', function() {
       return generate(buildJSON(build, value)).code;
     }
 
-    it('parses null', function() {
+    class Custom {
+      toJSAST(build) {
+        return build.identifier('Custom');
+      }
+    }
+
+    it('builds via toJSAST() call', function() {
+      assert.equal(render(new Custom()), 'Custom');
+    });
+
+    it('builds JSAST nodes', function() {
+      assert.equal(render(build.identifier('ok')), 'ok');
+    });
+
+    it('builds null', function() {
       assert.equal(render(null), 'null');
     });
 
-    it('parses strings', function() {
+    it('builds strings', function() {
       assert.equal(render('some string'), '"some string"');
     });
 
-    it('parses numbers', function() {
+    it('builds numbers', function() {
       assert.equal(render(42), '42');
     });
 
-    it('parses booleans', function() {
+    it('builds booleans', function() {
       assert.equal(render(true), 'true');
       assert.equal(render(false), 'false');
     });
 
-    it('parses arrays', function() {
+    it('builds arrays', function() {
       assert.equal(render([1, 'x']), '[1, "x"]');
     });
 
-    it('parses objects', function() {
+    it('builds objects', function() {
       assert.equal(render({a: 42, b: ['x']}), '{\n  "a": 42,\n  "b": ["x"]\n}');
     });
 

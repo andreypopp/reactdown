@@ -1,18 +1,64 @@
 #!/usr/bin/env node
 
 import fs from 'fs';
+import path from 'path';
+import program from 'commander';
 import {parse} from '../';
+import {parseNamed} from '../CodeRef';
+import pkg from '../../package.json';
+import {discoverConfig, mergeConfig, toParseConfig} from '../Config';
 
-let filename = process.argv[2];
-
-if (!filename) {
-  console.error('usage: parse <filename>');
+function error(message) {
+  console.error('error:', message);
   process.exit(1);
 }
 
-let src = fs.readFileSync(filename, 'utf8');
-let node = parse(src);
+function collectDirective(value, config) {
+  let ref = parseNamed(value);
+  if (ref === null) {
+    error('directive should be in form of: <id>=<source>(:<name>)?');
+  }
+  config[ref.id] = {
+    render: ref.ref
+  };
+  return config;
+}
 
-console.log(JSON.stringify(node, null, 2));
+function collectRole(value, config) {
+  let ref = parseNamed(value);
+  if (ref === null) {
+    error('role should be in form of: <id>=<source>(:<name>)?');
+  }
+  config[ref.id] = ref.ref;
+  return config;
+}
+
+program
+  .version(pkg.version)
+  .arguments('<file>')
+  .option(
+    '-d, --directive [component-ref]',
+    'Register component for a directive',
+    collectDirective, {}
+  )
+  .option(
+    '-r, --role [component-ref]',
+    'Register component for a role',
+    collectRole, {}
+  )
+  .parse(process.argv);
+
+let filename = path.resolve(program.args[0]);
+let dirname = path.dirname(filename);
+
+let src = fs.readFileSync(filename, 'utf8');
+
+let config = discoverConfig(dirname).config;
+config = mergeConfig(config, {
+  directives: program.directive,
+  roles: program.role,
+});
+
+console.log(JSON.stringify(parse(src, toParseConfig(config)), null, 2));
 
 // vim: set ft=javascript:

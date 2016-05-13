@@ -1,0 +1,3 @@
+..LineOptional
+
+..LineOptional ok

@@ -5,14 +5,13 @@
   directives: {
 
     note: {
-      render: {
-        source: './components',
-        name: 'Note',
-      }
+      children: 'required',
+      line: 'optional',
+      component: './components?Note',
     },
 
     TK: {
-      render: {
+      component: {
         source: './components',
         name: 'TK',
       }

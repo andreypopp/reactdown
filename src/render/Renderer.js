@@ -4,6 +4,7 @@
  */
 
 import detab from 'detab';
+import invariant from 'invariant';
 import collapse from 'collapse-white-space';
 import normalizeURI from 'normalize-uri';
 import trimLines from 'trim-lines';
@@ -63,7 +64,7 @@ type CompleteRendererConfig = {
 
 export type RendererConfig = $Shape<CompleteRendererConfig>;
 
-export default class Renderer {
+export class Renderer {
 
   build: JSASTFactory;
   directives: ComponentSymbolRegistry;
@@ -864,25 +865,13 @@ export default class Renderer {
     if (component === undefined) {
       return this.unknown(node);
     } else if (component === null) {
-      return  this.renderNothing();
-    } else if (node.children !== undefined) {
-      let props = node.data;
-      if (node.line != null) {
-        props = {line: node.line, ...props};
-      }
-      return this.renderElement(component, props, ...this.all(node));
-    } else if (node.value !== undefined) {
-      let props = node.data;
-      if (node.line != null) {
-        props = {line: node.line, ...props};
-      }
-      return this.renderElement(component, props, this.renderText(node.value));
+      return this.renderNothing();
     } else {
       let props = node.data;
       if (node.line != null) {
         props = {line: node.line, ...props};
       }
-      return this.renderElement(component, props);
+      return this.renderElement(component, props, ...this.all(node));
     }
   }
 
@@ -895,4 +884,45 @@ export default class Renderer {
     this.expression = this.visit(node);
   }
 
+}
+
+function applyDefaultConfig(config: RendererConfig, defaultConfig: CompleteRendererConfig): CompleteRendererConfig {
+  if (config !== defaultConfig) {
+    config = {
+      ...defaultConfig,
+      ...config,
+      directives: {
+        ...defaultConfig.directives,
+        ...config.directives,
+      },
+      roles: {
+        ...defaultConfig.roles,
+        ...config.roles,
+      },
+    };
+  }
+  return config;
+}
+
+const defaultRendererConfig: RendererConfig = {
+  build: build,
+  directives: {},
+  roles: {},
+};
+
+export function render(
+    node: MDASTRootNode,
+    config: RendererConfig = defaultRendererConfig) {
+  config = applyDefaultConfig(config, defaultRendererConfig);
+  let renderer = new Renderer(config);
+  renderer.render(node);
+  invariant(
+    renderer.expression != null,
+    'Renderer should result in a not null expression after render() call'
+  );
+  return {
+    expression: renderer.expression,
+    identifiersUsed: renderer.identifiersUsed,
+    metadata: renderer.metadata,
+  };
 }
