@@ -1,6 +1,9 @@
 /**
  * @copyright 2016-present, Reactdown team
+ * @flow
  */
 
-export ref from './ref';
-export meta from './meta';
+import ref from './ref';
+import meta from './meta';
+
+export {ref, meta};
