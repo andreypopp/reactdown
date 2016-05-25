@@ -53,21 +53,18 @@ type RoleMapping = {
   [name: string]: RoleRenderConfig;
 };
 
-type CompleteConfig = {
-  components: ?string;
-  directives: DirectiveMapping;
-  roles: RoleMapping;
-  model: ModelConfig;
-  buildImageURL: (url: string) => Buildable;
+export type Config = {
+  components?: string;
+  directives?: DirectiveMapping;
+  roles?: RoleMapping;
+  model?: ModelConfig;
+  buildImageURL?: (url: string) => Buildable;
 };
-
-export type Config = $Shape<CompleteConfig>;
 
 const CONFIG_FILENAME = '.reactdownrc';
 const PACKAGE_FILENAME = 'package.json';
 
-export const defaultConfig: CompleteConfig = {
-  components: null,
+export const defaultConfig: Config = {
   directives: {
     ref: {
       component: expr`defaultDirectives.ref`,
@@ -82,7 +79,7 @@ export const defaultConfig: CompleteConfig = {
   buildImageURL: url => url,
 };
 
-export function mergeConfig(config: CompleteConfig, merge: ?Config): CompleteConfig {
+export function mergeConfig(config: Config, merge: ?Config): Config {
   if (!merge) {
     return config;
   }
@@ -108,7 +105,7 @@ export function mergeConfig(config: CompleteConfig, merge: ?Config): CompleteCon
 /**
  * Discover config for a directory `dirname`.
  */
-export function discoverConfig(dirname: string): {config: CompleteConfig, sourceList: Array<string>} {
+export function discoverConfig(dirname: string): {config: Config, sourceList: Array<string>} {
   let seenConfig = false;
   let seenPackage = false;
   let config = defaultConfig;
@@ -156,19 +153,19 @@ export function parseConfigFromQuery(query: string): Config {
  *
  * @private
  */
-export function toRenderConfig(config: CompleteConfig): RenderConfig {
+export function toRenderConfig(config: Config): RenderConfig {
   let renderConfig = {
     components: config.components,
-    directives: config.directives,
-    roles: config.roles,
-    model: mapValue(config.model, analyzer => {
+    directives: config.directives || {},
+    roles: config.roles || {},
+    model: mapValue(config.model || {}, analyzer => {
       if (typeof analyzer === 'string') {
         return CodeRef.resolve(analyzer);
       } else {
         return analyzer;
       }
     }),
-    buildImageURL: config.buildImageURL,
+    buildImageURL: config.buildImageURL || (url => url),
   };
   return renderConfig;
 }
@@ -178,8 +175,10 @@ export function toRenderConfig(config: CompleteConfig): RenderConfig {
  *
  * @private
  */
-export function toParseConfig(config: CompleteConfig): ParseConfig {
-  return config;
+export function toParseConfig(config: Config): ParseConfig {
+  return {
+    directives: config.directives || {},
+  };
 }
 
 function createConfigSchema(basedir: string): Node {
