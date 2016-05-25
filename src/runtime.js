@@ -6,8 +6,11 @@
  * them separately.
  *
  * @copyright 2016-present, Reactdown team
+ * @flow
  */
 
-export * as components from './components';
-export * as directives from './directives';
-export DocumentContext from './DocumentContext';
+import * as components from './components';
+import * as directives from './directives';
+import DocumentContext from './DocumentContext';
+
+export {components, directives, DocumentContext};
