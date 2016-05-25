@@ -1,4 +1,5 @@
 [ignore]
+<PROJECT_ROOT>/lib/.*
 .*/node_modules/esformatter/.*
 .*/node_modules/fbjs/.*.flow
 .*/node_modules/.store/fbjs@.*/.*.flow
