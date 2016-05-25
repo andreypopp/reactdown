@@ -7,7 +7,6 @@ import type {MDASTRootNode} from '../types';
 import type {
   DirectiveMapping,
   DirectiveConfig,
-  CompleteDirectiveConfig
 } from './directive';
 
 import remark from 'remark';
@@ -15,7 +14,7 @@ import directive from './directive';
 import tk from './tk';
 import role from './role';
 
-export type {DirectiveConfig, CompleteDirectiveConfig};
+export type {DirectiveConfig};
 
 export type ParseConfig = {
   directives: DirectiveMapping;

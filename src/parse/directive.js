@@ -13,19 +13,15 @@ import {
   hasIndent
 } from '../utils';
 
-export type CompleteDirectiveConfig = {
-  line: null
-      | 'required'
-      | 'optional';
-  children: null
-          | 'required'
-          | 'required-preformatted'
-          | 'optional'
-          | 'optional-preformatted',
-  data: any,
+export type DirectiveConfig = {
+  line?: 'required'
+       | 'optional';
+  children?: 'required'
+           | 'required-preformatted'
+           | 'optional'
+           | 'optional-preformatted',
+  data?: any,
 };
-
-export type DirectiveConfig = $Shape<CompleteDirectiveConfig>;
 
 export type DirectiveMapping = {
   [name: string]: DirectiveConfig;
