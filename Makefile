@@ -6,17 +6,21 @@ FIXTURES      = $(shell find src -path '*/__tests__/*-fixture/*.js')
 SRC           = $(filter-out $(TESTS) $(FIXTURES), $(shell find src -name '*.js'))
 SRC_CMD       = $(shell find src/bin -type f -name '*')
 LIB           = $(SRC:src/%=lib/%)
+LIB_DECL      = $(SRC:src/%=lib/%.flow)
 LIB_CMD       = $(SRC_CMD:src/%=lib/%)
 MOCHA_OPTS    = -R dot --require babel-core/register
 VERSION       = $(shell node -e 'console.log(require("./package.json").version)')
 
-build:: build-lib build-cmd
+build:: build-lib build-cmd build-decl
 
 build-lib::
 	@$(MAKE) -j 8 $(LIB)
 
 build-cmd::
 	@$(MAKE) -j 8 $(LIB_CMD)
+
+build-decl::
+	@$(MAKE) -j 8 $(LIB_DECL)
 
 lint::
 	@$(BIN)/eslint src
@@ -64,6 +68,11 @@ lib/%.js: src/%.js
 	@echo "Building $<"
 	@mkdir -p $(@D)
 	@$(BIN)/babel $(BABEL_OPTIONS) -o $@ $<
+
+lib/%.js.flow: src/%.js
+	@echo "Building type declarations $<"
+	@mkdir -p $(@D)
+	@cp $< $@
 
 lib/bin/%: src/bin/%
 	@echo "Building command $<"
