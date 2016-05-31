@@ -7,8 +7,7 @@ export default function Document({
 }) {
   return React.createElement(DocumentContext, {
     context: {
-      metadata,
-      model
+      meta
     }
   }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, "Hello", React.createElement(components.Break, null), "world"), React.createElement(components.Break, null), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
     "src": "http://exaple.com/fav.ico",
@@ -19,8 +18,10 @@ export default function Document({
     style
   }));
 }
-export let metadata = {};
-export let model = {
-  "toc": [],
-  "title": null
+export let meta = {
+  data: {},
+  model: {
+    "toc": [],
+    "title": null
+  }
 };

@@ -53,14 +53,14 @@
         source: 'lib',
         name: 'Data'
       },
-      data: {type: 'any'}
+      data: 'any'
     },
     DataChildren: {
       component: {
         source: 'lib',
         name: 'DataChildren'
       },
-      data: {type: 'any'},
+      data: 'any',
       children: 'required',
     }
   }

@@ -7,8 +7,7 @@ export default function Document({
 }) {
   return React.createElement(DocumentContext, {
     context: {
-      metadata,
-      model
+      meta
     }
   }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, React.createElement(components.Link, {
     "href": "http://example.com",
@@ -33,8 +32,10 @@ export default function Document({
     style
   }));
 }
-export let metadata = {};
-export let model = {
-  "toc": [],
-  "title": null
+export let meta = {
+  data: {},
+  model: {
+    "toc": [],
+    "title": null
+  }
 };

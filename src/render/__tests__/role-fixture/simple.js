@@ -8,8 +8,7 @@ export default function Document({
 }) {
   return React.createElement(DocumentContext, {
     context: {
-      metadata,
-      model
+      meta
     }
   }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, "OK, this is just some ", React.createElement(mod, {
     "words": ["react-dom/server"]
@@ -22,8 +21,10 @@ export default function Document({
     style
   }));
 }
-export let metadata = {};
-export let model = {
-  "toc": [],
-  "title": null
+export let meta = {
+  data: {},
+  model: {
+    "toc": [],
+    "title": null
+  }
 };

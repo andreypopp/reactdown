@@ -7,8 +7,7 @@ export default function Document({
 }) {
   return React.createElement(DocumentContext, {
     context: {
-      metadata,
-      model
+      meta
     }
   }, React.cloneElement(React.createElement(components.Root, null, null, React.createElement(components.Heading, {
     "level": 1
@@ -17,13 +16,15 @@ export default function Document({
     style
   }));
 }
-export let metadata = {
-  "YAML": "cool"
-};
-export let model = {
-  "toc": [{
-    "value": "Hello world",
-    "depth": 1
-  }],
-  "title": "Hello world"
+export let meta = {
+  data: {
+    "YAML": "cool"
+  },
+  model: {
+    "toc": [{
+      "value": "Hello world",
+      "depth": 1
+    }],
+    "title": "Hello world"
+  }
 };

@@ -7,8 +7,7 @@ export default function Document({
 }) {
   return React.createElement(DocumentContext, {
     context: {
-      metadata,
-      model
+      meta
     }
   }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Table, null, React.createElement(components.TableHead, null, React.createElement(components.TableRow, null, React.createElement(components.TableHeaderCell, {
     "align": null
@@ -63,8 +62,10 @@ export default function Document({
     style
   }));
 }
-export let metadata = {};
-export let model = {
-  "toc": [],
-  "title": null
+export let meta = {
+  data: {},
+  model: {
+    "toc": [],
+    "title": null
+  }
 };
