@@ -29,7 +29,7 @@ export default class meta extends React.Component {
   static contextTypes = contextTypes;
 
   render() {
-    let metadata = JSON.stringify(this.context.reactdown.metadata, null, 2);
+    let metadata = JSON.stringify(this.context.reactdown.meta.data, null, 2);
     return (
       <div style={metaStyle.root}>
         <div style={metaStyle.heading}>Document metadata:</div>

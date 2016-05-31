@@ -26,7 +26,7 @@ import {
 } from './components.rcss';
 
 function ToC({fromDepth = 1, toDepth = 6}, context) {
-  let {toc} = context.reactdown.model;
+  let {toc} = context.reactdown.meta.model;
   let items = toc
     .filter(item => item.depth >= fromDepth && item.depth <= toDepth)
     .map(item =>
@@ -62,11 +62,10 @@ export function Note({children, line}) {
   );
 }
 
-export function Root({children, ...props}, {reactdown: {model, metadata}}) {
-  console.log(model, metadata);
+export function Root({children, ...props}, {reactdown: {meta}}) {
   return (
     <BaseRoot>
-      <Helmet title={metadata.title || model.title} />
+      <Helmet title={meta.data.title || meta.model.title} />
       <Sidebar>
         <Heading level={2}>Reactdown</Heading>
         <ToC fromDepth={2} />
