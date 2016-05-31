@@ -70,11 +70,13 @@ export function renderToProgram(node: MDASTRootNode, config: RenderConfig): JSAS
   let statements = stmt`
     export default function Document({className, style}) {
       return React.createElement(DocumentContext,
-        {context: {metadata, model}},
+        {context: {meta}},
         React.cloneElement(${expression}, {className, style}));
     }
-    export let metadata = ${buildJSON(metadata)};
-    export let model = ${buildJSON(model)};
+    export let meta = {
+      data: ${buildJSON(metadata)},
+      model: ${buildJSON(model)},
+    };
   `;
 
   identifiersUsed.forEach(identifier => {
