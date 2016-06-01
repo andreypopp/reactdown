@@ -26,7 +26,8 @@ export type ModelConfig = {
 };
 
 export type RenderConfig = {
-  components: ?string;
+  defaultComponents?: string;
+  components?: string;
   directives: {[name: string]: DirectiveConfig};
   roles: {[name: string]: RoleConfig};
   model: ModelConfig;
@@ -46,7 +47,7 @@ function mapToJSAST(obj): {[name: string]: JSAST} {
 }
 
 export function renderToProgram(node: MDASTRootNode, config: RenderConfig): JSAST {
-  let {components, directives, roles} = config;
+  let {defaultComponents, components, directives, roles} = config;
   let rendererConfig = {
     directives: mapToJSAST(directives),
     roles: mapToJSAST(roles),
@@ -104,10 +105,19 @@ export function renderToProgram(node: MDASTRootNode, config: RenderConfig): JSAS
     import React from "react";
     import {
       DocumentContext,
-      directives as defaultDirectives,
-      components as defaultComponents
+      directives as defaultDirectives
     } from "reactdown/runtime";
   `;
+
+  if (defaultComponents) {
+    prelude = prelude.concat(stmt`
+      import * as defaultComponents from "${defaultComponents}";
+    `);
+  } else {
+    prelude = prelude.concat(stmt`
+      import {components as defaultComponents} from "reactdown/runtime";
+    `);
+  }
 
   if (components) {
     prelude = prelude.concat(stmt`

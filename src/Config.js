@@ -54,6 +54,7 @@ type RoleMapping = {
 };
 
 export type Config = {
+  defaultComponents?: string;
   components?: string;
   directives?: DirectiveMapping;
   roles?: RoleMapping;
@@ -155,6 +156,7 @@ export function parseConfigFromQuery(query: string): Config {
  */
 export function toRenderConfig(config: Config): RenderConfig {
   let renderConfig = {
+    defaultComponents: config.defaultComponents,
     components: config.components,
     directives: config.directives || {},
     roles: config.roles || {},
