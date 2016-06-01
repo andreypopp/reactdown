@@ -1,5 +1,6 @@
 import React from "react";
-import { DocumentContext, directives as defaultDirectives, components as defaultComponents } from "reactdown/runtime";
+import { DocumentContext, directives as defaultDirectives } from "reactdown/runtime";
+import { components as defaultComponents } from "reactdown/runtime";
 let components = defaultComponents;
 import { mod } from "roles";
 export default function Document({

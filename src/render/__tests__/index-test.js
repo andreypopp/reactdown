@@ -64,7 +64,6 @@ let config = {
   },
   build: null,
   buildImageURL: url => url,
-  components: null,
   model: model,
 };
 
