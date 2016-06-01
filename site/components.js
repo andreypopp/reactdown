@@ -31,9 +31,9 @@ function ToC({fromDepth = 1, toDepth = 6}, context) {
     .filter(item => item.depth >= fromDepth && item.depth <= toDepth)
     .map(item =>
       <ToCItem
-        key={item.value}
+        key={item.name}
         level={item.depth - fromDepth + 1}>
-        <Link href={'#' + item.value}>{item.value}</Link>
+        <Link href={'#' + item.name}>{item.title}</Link>
       </ToCItem>
     );
   return (
@@ -44,10 +44,10 @@ function ToC({fromDepth = 1, toDepth = 6}, context) {
 }
 ToC.contextTypes = contextTypes;
 
-export function Heading({children, ...props}) {
+export function Heading({children, name, ...props}) {
   return (
     <BaseHeading {...props}>
-      <Ref name={children} />
+      <Ref name={name} />
       {children}
     </BaseHeading>
   );
