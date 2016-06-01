@@ -10,7 +10,8 @@ export default function Document({
       meta
     }
   }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Heading, {
-    "level": 1
+    "level": 1,
+    "name": "Horizontal-Rules"
   }, "Horizontal Rules"), React.createElement(components.Break, null), React.createElement(components.Break, null), React.createElement(components.Break, null)), {
     className,
     style
@@ -20,7 +21,8 @@ export let meta = {
   data: {},
   model: {
     "toc": [{
-      "value": "Horizontal Rules",
+      "title": "Horizontal Rules",
+      "name": "Horizontal-Rules",
       "depth": 1
     }],
     "title": "Horizontal Rules"

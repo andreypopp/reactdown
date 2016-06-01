@@ -10,7 +10,8 @@ export default function Document({
       meta
     }
   }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Heading, {
-    "level": 1
+    "level": 1,
+    "name": "Footnotes"
   }, "Footnotes"), React.createElement(components.Paragraph, null, "Alpha bravo", React.createElement(components.Link, {
     "href": "",
     "title": undefined
@@ -35,7 +36,8 @@ export let meta = {
   data: {},
   model: {
     "toc": [{
-      "value": "Footnotes",
+      "title": "Footnotes",
+      "name": "Footnotes",
       "depth": 1
     }],
     "title": "Footnotes"

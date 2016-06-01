@@ -10,7 +10,8 @@ export default function Document({
       meta
     }
   }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Heading, {
-    "level": 1
+    "level": 1,
+    "name": "Code"
   }, "Code"), React.createElement(components.Code, null, "alert('some JavaScript code.');\n"), React.createElement(components.Code, null, "foo bar baz\n"), React.createElement(components.Code, null, "alpha bravo charlie\n"), React.createElement(components.Code, null, ""), React.createElement(components.Code, null, "  two spaces\n    one\n        two\n    one\n      mixed.\n")), {
     className,
     style
@@ -20,7 +21,8 @@ export let meta = {
   data: {},
   model: {
     "toc": [{
-      "value": "Code",
+      "title": "Code",
+      "name": "Code",
       "depth": 1
     }],
     "title": "Code"

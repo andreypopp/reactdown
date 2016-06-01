@@ -10,7 +10,8 @@ export default function Document({
       meta
     }
   }, React.cloneElement(React.createElement(components.Root, null, null, React.createElement(components.Heading, {
-    "level": 1
+    "level": 1,
+    "name": "Hello-world"
   }, "Hello world")), {
     className,
     style
@@ -22,7 +23,8 @@ export let meta = {
   },
   model: {
     "toc": [{
-      "value": "Hello world",
+      "title": "Hello world",
+      "name": "Hello-world",
       "depth": 1
     }],
     "title": "Hello world"

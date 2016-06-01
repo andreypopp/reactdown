@@ -10,7 +10,8 @@ export default function Document({
       meta
     }
   }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Heading, {
-    "level": 1
+    "level": 1,
+    "name": "Entities"
   }, "Entities"), React.createElement(components.Paragraph, null, "Plain text:"), React.createElement(components.Paragraph, null, "AT", "&", "T with entity, AT", "&", "T with numeric entity, AT&T without entity."), React.createElement(components.Paragraph, null, "Fenced code language flags:"), React.createElement(components.Code, null, "Something in the AT&amp;T language\n"), React.createElement(components.Code, null, "Something in the AT&#x26;T language\n"), React.createElement(components.Code, null, "Something in the AT&T language\n"), React.createElement(components.Paragraph, null, "Automatic links:"), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
     "href": "http://at&t.com",
     "title": null
@@ -137,7 +138,8 @@ export let meta = {
   data: {},
   model: {
     "toc": [{
-      "value": "Entities",
+      "title": "Entities",
+      "name": "Entities",
       "depth": 1
     }],
     "title": "Entities"
