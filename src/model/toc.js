@@ -5,13 +5,15 @@
 
 import visit from 'unist-util-visit';
 import nodeToString from 'mdast-util-to-string';
+import slug from 'slug';
 import type {MDASTRootNode, MDASTHeadingNode} from '../types';
 
 export default function toc(node: MDASTRootNode) {
-  let toc: Array<{value: ?string; depth: number}> = [];
+  let toc: Array<{title: string; name: string; depth: number}> = [];
   visit(node, 'heading', (node: MDASTHeadingNode) => {
-    let value = nodeToString(node);
-    toc.push({value, depth: node.depth});
+    let title = nodeToString(node);
+    let name = slug(title);
+    toc.push({title, name, depth: node.depth});
   });
   return toc;
 }
