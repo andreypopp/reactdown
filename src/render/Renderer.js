@@ -12,6 +12,8 @@ import normalizeURI from 'normalize-uri';
 import trimLines from 'trim-lines';
 import * as build from 'babel-types';
 import visit from 'unist-util-visit';
+import nodeToString from 'mdast-util-to-string';
+import slug from 'slug';
 import jsYAML from 'js-yaml';
 import buildReactElement from './buildReactElement';
 
@@ -475,7 +477,11 @@ export class Renderer {
    * @this {HTMLCompiler}
    */
   heading(node: MDASTHeadingNode): JSAST {
-    return this.renderElement('Heading', {level: node.depth}, ...this.all(node));
+    let props = {
+      level: node.depth,
+      name: slug(nodeToString(node)),
+    };
+    return this.renderElement('Heading', props, ...this.all(node));
   }
 
   /**
