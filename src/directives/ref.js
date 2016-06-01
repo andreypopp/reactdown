@@ -15,7 +15,13 @@ let refStyle = {
   }
 };
 
-export default function ref({line, name, style}: {name: string; line: string; style: Object}) {
+type Props = {
+  name?: string;
+  line?: string;
+  style?: Object;
+};
+
+export default function ref({line, name, style}: Props) {
   return <div style={{...refStyle.root, ...style}}><a name={name || line}>#</a></div>;
 }
 
