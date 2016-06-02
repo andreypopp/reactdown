@@ -12,7 +12,6 @@ import {stmt} from 'babel-plugin-ast-literal/api';
 import invariant from 'invariant';
 
 import {render as renderNode} from './Renderer';
-import buildJSON from './buildJSON';
 import {mapValue} from '../utils';
 
 export type DirectiveConfig = {
