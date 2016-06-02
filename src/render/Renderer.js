@@ -15,6 +15,7 @@ import visit from 'unist-util-visit';
 import nodeToString from 'mdast-util-to-string';
 import slug from 'slug';
 import jsYAML from 'js-yaml';
+import {expr} from 'babel-plugin-ast-literal/api';
 import buildReactElement from './buildReactElement';
 
 import type {

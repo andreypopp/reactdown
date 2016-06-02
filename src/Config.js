@@ -28,6 +28,7 @@ import {validate as validateJSON5} from 'validated/json5';
 import {
   parseQuery
 } from 'loader-utils';
+import {expr} from 'babel-plugin-ast-literal/api';
 
 import * as model from './model';
 import * as CodeRef from './CodeRef';

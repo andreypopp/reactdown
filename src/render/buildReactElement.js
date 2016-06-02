@@ -6,6 +6,7 @@
 import type {JSON, JSAST} from '../types';
 
 import * as build from 'babel-types';
+import {expr} from 'babel-plugin-ast-literal/api';
 import buildJSON from './buildJSON';
 
 export default function buildReactElement(

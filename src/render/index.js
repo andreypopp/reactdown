@@ -8,6 +8,7 @@ import type {CodeRef} from '../CodeRef';
 import type {Buildable} from './buildJSON';
 
 import * as build from 'babel-types';
+import {stmt} from 'babel-plugin-ast-literal/api';
 import invariant from 'invariant';
 
 import {render as renderNode} from './Renderer';
@@ -75,8 +76,8 @@ export function renderToProgram(node: MDASTRootNode, config: RenderConfig): JSAS
         React.cloneElement(${expression}, {className, style}));
     }
     export let meta = {
-      data: ${buildJSON(metadata)},
-      model: ${buildJSON(model)},
+      data: ${metadata},
+      model: ${model},
     };
   `;
 
@@ -92,11 +93,11 @@ export function renderToProgram(node: MDASTRootNode, config: RenderConfig): JSAS
     }
     if (component.name === 'default') {
       statements.unshift(
-        stmt`import ${identifier} from "${build.stringLiteral(component.source)}"`
+        stmt`import ${identifier} from "${component.source}"`
       );
     } else {
       statements.unshift(
-        stmt`import { ${build.identifier(component.name)} as ${identifier} } from "${build.stringLiteral(component.source)}"`
+        stmt`import { ${build.identifier(component.name)} as ${identifier} } from "${component.source}"`
       );
     }
   });
@@ -121,7 +122,7 @@ export function renderToProgram(node: MDASTRootNode, config: RenderConfig): JSAS
 
   if (components) {
     prelude = prelude.concat(stmt`
-      import * as customComponents from "${build.stringLiteral(components)}";
+      import * as customComponents from "${components}";
       let components = {...defaultComponents, ...customComponents};
     `);
   } else {

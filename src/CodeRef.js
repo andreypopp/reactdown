@@ -4,6 +4,7 @@
  */
 
 import type {Node} from 'validated/schema';
+import {expr} from 'babel-plugin-ast-literal/api';
 
 import path from 'path';
 import * as types from 'babel-types';
@@ -29,7 +30,7 @@ export class TaggedCodeRef {
   }
 
   toJSAST() {
-    let res = expr`require("${types.stringLiteral(this.source)}")`;
+    let res = expr`require("${this.source}")`;
     if (this.name != null) {
       res = expr`${res}.${types.identifier(this.name)}`;
     }
