@@ -1,6 +1,6 @@
 {
   "name": "reactdown",
-  "version": "1.0.0-alpha11",
+  "version": "1.0.0-alpha12",
   "description": "Markdown and React based live document format",
   "main": "lib/index.js",
   "scripts": {
