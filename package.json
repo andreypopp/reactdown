@@ -45,7 +45,7 @@
   "homepage": "https://github.com/andreypopp/reactdown#readme",
   "dependencies": {
     "babel-generator": "^6.7.5",
-    "babel-plugin-ast-literal": "^0.5.3",
+    "babel-plugin-ast-literal": "^0.5.4",
     "collapse-white-space": "^1.0.0",
     "commander": "^2.9.0",
     "detab": "^1.0.2",
