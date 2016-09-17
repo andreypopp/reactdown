@@ -7,16 +7,11 @@
     "test": "make lint check test",
     "prepublish": "make"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "bin": {
     "reactdown": "./lib/bin/reactdown-render"
-  },
-  "babel": {
-    "presets": [
-      "prometheusresearch"
-    ],
-    "plugins": [
-      "ast-literal"
-    ]
   },
   "eslintConfig": {
     "extends": "prometheusresearch",
@@ -74,6 +69,7 @@
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-generator": "^6.7.2",
+    "babel-jest": "^15.0.0",
     "babel-preset-prometheusresearch": "^0.1.0",
     "babel-types": "^6.7.2",
     "eslint": "^2.5.3",
@@ -82,8 +78,7 @@
     "eslint-plugin-react": "^6.2.2",
     "flow-bin": "^0.32.0",
     "gh-pages": "^0.11.0",
-    "mocha": "^2.4.5",
-    "nyc": "^6.1.1",
+    "jest-cli": "^15.1.1",
     "react": "^15.0.2",
     "sloc": "^0.1.10",
     "yaml-front-matter": "^3.4.0"

@@ -8,7 +8,6 @@ SRC_CMD       = $(shell find src/bin -type f -name '*')
 LIB           = $(SRC:src/%=lib/%)
 LIB_DECL      = $(SRC:src/%=lib/%.flow)
 LIB_CMD       = $(SRC_CMD:src/%=lib/%)
-MOCHA_OPTS    = -R dot --require babel-core/register
 VERSION       = $(shell node -e 'console.log(require("./package.json").version)')
 
 build:: build-lib build-cmd build-decl
@@ -29,10 +28,13 @@ check::
 	@$(BIN)/flow --show-all-errors src
 
 test::
-	@$(BIN)/mocha $(MOCHA_OPTS) $(TESTS)
+	@$(BIN)/jest
+
+test-cov::
+	@$(BIN)/jest --coverage
 
 ci::
-	@$(BIN)/mocha $(MOCHA_OPTS) --watch --watch-extensions json,md $(TESTS)
+	@$(BIN)/jest --watch
 
 sloc::
 	@$(BIN)/sloc -e __tests__ src

@@ -3,7 +3,6 @@
  * @flow
  */
 
-import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
 import parse from '../index';
@@ -77,10 +76,10 @@ function generateCases(dir, only = null) {
       if (/\.failure/.exec(fixture)) {
         let meta = getMeta(src);
         let message = new RegExp(meta.message);
-        assert.throws(() => parse(src, config), message);
+        expect(() => parse(src, config)).toThrowError(message);
       } else {
         let node = parse(src, config);
-        assert.equal(JSON.stringify(node, null, 2).trim(), expectedOutput(fixture));
+        expect(node).toMatchSnapshot();
       }
     });
   });

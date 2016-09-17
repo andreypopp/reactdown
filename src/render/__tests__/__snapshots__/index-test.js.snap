@@ -1,0 +1,1416 @@
+exports[`reactdown/render directive renders directive-fixture/at-the-end 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+import { Children } from \"lib\";
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"Hello,\"), React.createElement(Children, null, React.createElement(components.Paragraph, null, \"Bye!\"))), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render directive renders directive-fixture/at-the-start 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+import { Children } from \"lib\";
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(Children, null, React.createElement(components.Paragraph, null, \"Hello\")), React.createElement(components.Paragraph, null, \"Bye!\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render directive renders directive-fixture/children-multi-line 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+import { Children } from \"lib\";
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"Prologue\"), React.createElement(Children, null, React.createElement(components.Paragraph, null, \"Hello,\"), React.createElement(components.Paragraph, null, \"This is \", React.createElement(components.Emphasis, null, \"just\"), \" some\\nparagraph.\"), React.createElement(components.Paragraph, null, \"Cheers!\")), React.createElement(components.Paragraph, null, \"Epilogue\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render directive renders directive-fixture/children-nested 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+import { Children } from \"lib\";
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"Prologue\"), React.createElement(Children, null, React.createElement(components.Paragraph, null, \"Hello,\"), React.createElement(Children, null, React.createElement(components.Paragraph, null, \"ok\")), React.createElement(components.Paragraph, null, \"bye!\")), React.createElement(components.Paragraph, null, \"Epilogue\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render directive renders directive-fixture/children-single-line 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+import { Children } from \"lib\";
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"Prologue\"), React.createElement(Children, null, React.createElement(components.Paragraph, null, \"Content\")), React.createElement(components.Paragraph, null, \"Epilogue\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render directive renders directive-fixture/preformatted 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+import { Pre } from \"lib\";
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"Hello,\"), React.createElement(Pre, null, \"ok, *this* is **just** some code\"), React.createElement(components.Paragraph, null, \"Bye\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render directive renders directive-fixture/simplest 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+import { Plain } from \"lib\";
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"Prologue\"), React.createElement(Plain, null), React.createElement(components.Paragraph, null, \"Epilogue\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render directive renders directive-fixture/with-data 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+import { Data } from \"lib\";
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"Prologue\"), React.createElement(Data, {
+    \"a\": 1,
+    \"b\": [1, 2, 3],
+    \"c\": {
+      \"d\": 4
+    }
+  })), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render directive renders directive-fixture/with-data-children 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+import { DataChildren } from \"lib\";
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"Prologue\"), React.createElement(DataChildren, {
+    \"a\": 1,
+    \"b\": 2
+  }, React.createElement(components.Paragraph, null, \"Ok, \", React.createElement(components.Emphasis, null, \"some\"), \" paragraph.\"))), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render directive renders directive-fixture/with-line 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+import { Line } from \"lib\";
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"Ok\"), React.createElement(Line, {
+    \"line\": \"some-ref\"
+  }), React.createElement(components.Paragraph, null, \"wow\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render directive renders directive-fixture/within-blockquote 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+import { Children } from \"lib\";
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"Hello,\"), React.createElement(components.Blockquote, null, React.createElement(Children, null, React.createElement(components.Paragraph, null, \"Hello\"))), React.createElement(components.Paragraph, null, \"Bye!\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render directive renders directive-fixture/within-list-item 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+import { Children } from \"lib\";
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"List:\"), React.createElement(components.UnorderedList, null, React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, \"List item\"), React.createElement(Children, null, React.createElement(components.Paragraph, null, \"Hello\")))), React.createElement(components.Paragraph, null, \"Bye!\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/blockquote 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Heading, {
+    \"level\": 1,
+    \"name\": \"Block-Quote\"
+  }, \"Block Quote\"), React.createElement(components.Blockquote, null, React.createElement(components.UnorderedList, null, React.createElement(components.ListItem, null, React.createElement(components.Code, null, \"code.in.a.list();\\n\")), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, \"Paragraph.\")), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, \"Normal list\"), React.createElement(components.Paragraph, null, \"Paragraph.\"))))), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [{
+      \"title\": \"Block Quote\",
+      \"name\": \"Block-Quote\",
+      \"depth\": 1
+    }],
+    \"title\": \"Block Quote\"
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/code 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Heading, {
+    \"level\": 1,
+    \"name\": \"Code\"
+  }, \"Code\"), React.createElement(components.Code, null, \"alert(\'some JavaScript code.\');\\n\"), React.createElement(components.Code, null, \"foo bar baz\\n\"), React.createElement(components.Code, null, \"alpha bravo charlie\\n\"), React.createElement(components.Code, null, \"\"), React.createElement(components.Code, null, \"  two spaces\\n    one\\n        two\\n    one\\n      mixed.\\n\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [{
+      \"title\": \"Code\",
+      \"name\": \"Code\",
+      \"depth\": 1
+    }],
+    \"title\": \"Code\"
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/entities 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"Lots of entities are supported: \", \" \", \", \", \"&\", \", \", \"©\", \", \", \"Æ\", \",\\n\", \"Ď\", \", \", \"¾\", \", \", \"ℋ\", \", \", \"ⅆ\", \",\\n\", \"∲\", \", &c.  Even some entities with a missing\\nterminal semicolon are parsed correctly (as per the HTML5 spec):\\n\", \"ÿ\", \", \", \"á\", \", \", \"©\", \", and \", \"&\", \".\"), React.createElement(components.Paragraph, null, \"However, &MadeUpEntities; are kept in the document.\"), React.createElement(components.Paragraph, null, \"Entities even work in the language flag of fenced code blocks:\"), React.createElement(components.Code, null, \"alert(\'Hello\');\\n\"), React.createElement(components.Paragraph, null, \"Or in \", React.createElement(components.Link, {
+    \"href\": \"~/some%E2%80%94file\",
+    \"title\": \"in some plæce\"
+  }, \"l\", \"í\", \"nks\")), React.createElement(components.Paragraph, null, \"Or in \", React.createElement(components.Image, {
+    \"src\": \"~/an%E2%80%93image.png\",
+    \"alt\": \"ímages\",
+    \"title\": \"© Someone\"
+  })), React.createElement(components.Paragraph, null, \"But, entities are not interpreted in \", React.createElement(components.InlineCode, null, \"inline c&ouml;de\"), \", or in\\ncode blocks:\"), React.createElement(components.Code, null, \"C&Ouml;DE block.\\n\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/entities-named 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Heading, {
+    \"level\": 1,
+    \"name\": \"Entities\"
+  }, \"Entities\"), React.createElement(components.Paragraph, null, \"Plain text:\"), React.createElement(components.Paragraph, null, \"AT\", \"&\", \"T with entity, AT\", \"&\", \"T with numeric entity, AT&T without entity.\"), React.createElement(components.Paragraph, null, \"Fenced code language flags:\"), React.createElement(components.Code, null, \"Something in the AT&amp;T language\\n\"), React.createElement(components.Code, null, \"Something in the AT&#x26;T language\\n\"), React.createElement(components.Code, null, \"Something in the AT&T language\\n\"), React.createElement(components.Paragraph, null, \"Automatic links:\"), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"http://at&t.com\",
+    \"title\": null
+  }, \"http://at\", \"&\", \"t.com\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://at&t.com\",
+    \"title\": null
+  }, \"http://at\", \"&\", \"t.com\"), \", and \", React.createElement(components.Link, {
+    \"href\": \"http://at&t.com\",
+    \"title\": null
+  }, \"http://at&t.com\"), \".\"), React.createElement(components.Paragraph, null, \"Link \", React.createElement(components.InlineCode, null, \"href\"), \":\"), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"http://at&t.com\",
+    \"title\": null
+  }, \"With entity\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://at&t.com\",
+    \"title\": null
+  }, \"numeric entity\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://at&t.com\",
+    \"title\": null
+  }, \"without entity\"), \".\"), React.createElement(components.Paragraph, null, \"Link \", React.createElement(components.InlineCode, null, \"title\"), \":\"), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"http://att.com\",
+    \"title\": \"AT&T\"
+  }, \"With entity\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://att.com\",
+    \"title\": \"AT&T\"
+  }, \"numeric entity\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://example.com\",
+    \"title\": \"AT&T\"
+  }, \"without entity\"), \".\"), React.createElement(components.Paragraph, null, \"Image \", React.createElement(components.InlineCode, null, \"src\"), \":\"), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"With entity\",
+    \"title\": null
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"numeric entity\",
+    \"title\": null
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"without entity\",
+    \"title\": null
+  }), \".\"), React.createElement(components.Paragraph, null, \"Image \", React.createElement(components.InlineCode, null, \"alt\"), \":\"), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"http://att.com/fav.ico\",
+    \"alt\": \"AT&T with entity\",
+    \"title\": null
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://att.com/fav.ico\",
+    \"alt\": \"AT&T with numeric entity\",
+    \"title\": null
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://att.com/fav.ico\",
+    \"alt\": \"AT&T without entity\",
+    \"title\": null
+  }), \".\"), React.createElement(components.Paragraph, null, \"Image \", React.createElement(components.InlineCode, null, \"title\"), \":\"), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"http://att.com/fav.ico\",
+    \"alt\": \"With entity\",
+    \"title\": \"AT&T\"
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://att.com/fav.ico\",
+    \"alt\": \"numeric entity\",
+    \"title\": \"AT&T\"
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://att.com/fav.ico\",
+    \"alt\": \"without entity\",
+    \"title\": \"AT&T\"
+  }), \".\"), React.createElement(components.Paragraph, null, \"Reference \", React.createElement(components.InlineCode, null, \"link\"), \":\"), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"http://at&t.com/fav.ico\",
+    \"title\": \"ATT favicon\"
+  }, \"Entity\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://at&t.com/fav.ico\",
+    \"title\": \"ATT favicon\"
+  }, \"Numeric entity\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://at&t.com/fav.ico\",
+    \"title\": \"ATT favicon\"
+  }, \"Literal\"), \".\"), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"Entity\",
+    \"title\": \"ATT favicon\"
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"Numeric entity\",
+    \"title\": \"ATT favicon\"
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"Literal\",
+    \"title\": \"ATT favicon\"
+  }), \".\"), React.createElement(components.Paragraph, null, \"Reference \", React.createElement(components.InlineCode, null, \"title\"), \":\"), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"http://at&t.com/fav.ico\",
+    \"title\": \"AT&T favicon\"
+  }, \"Entity\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://at&t.com/fav.ico\",
+    \"title\": \"AT&T favicon\"
+  }, \"Numeric entity\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://at&t.com/fav.ico\",
+    \"title\": \"AT&T favicon\"
+  }, \"Literal\"), \".\"), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"Entity\",
+    \"title\": \"AT&T favicon\"
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"Numeric entity\",
+    \"title\": \"AT&T favicon\"
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"Literal\",
+    \"title\": \"AT&T favicon\"
+  }), \".\"), React.createElement(components.Paragraph, null, \"Image Reference \", React.createElement(components.InlineCode, null, \"alt\"), \":\"), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"AT&T with entity\",
+    \"title\": \"AT&T favicon\"
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"AT&T with numeric entity\",
+    \"title\": \"AT&T favicon\"
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"AT&T without entity\",
+    \"title\": \"AT&T favicon\"
+  }), \".\"), React.createElement(components.Paragraph, null, \"Definitions:\"), null, null, null, null, null, null, null), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [{
+      \"title\": \"Entities\",
+      \"name\": \"Entities\",
+      \"depth\": 1
+    }],
+    \"title\": \"Entities\"
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/entities-numerical 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Heading, {
+    \"level\": 1,
+    \"name\": \"Entities\"
+  }, \"Entities\"), React.createElement(components.Paragraph, null, \"Plain text:\"), React.createElement(components.Paragraph, null, \"AT\", \"&\", \"T with entity, AT\", \"&\", \"T with numeric entity, AT&T without entity.\"), React.createElement(components.Paragraph, null, \"Fenced code language flags:\"), React.createElement(components.Code, null, \"Something in the AT&amp;T language\\n\"), React.createElement(components.Code, null, \"Something in the AT&#x26;T language\\n\"), React.createElement(components.Code, null, \"Something in the AT&T language\\n\"), React.createElement(components.Paragraph, null, \"Automatic links:\"), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"http://at&t.com\",
+    \"title\": null
+  }, \"http://at\", \"&\", \"t.com\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://at&t.com\",
+    \"title\": null
+  }, \"http://at\", \"&\", \"t.com\"), \", and \", React.createElement(components.Link, {
+    \"href\": \"http://at&t.com\",
+    \"title\": null
+  }, \"http://at&t.com\"), \".\"), React.createElement(components.Paragraph, null, \"Link \", React.createElement(components.InlineCode, null, \"href\"), \":\"), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"http://at&t.com\",
+    \"title\": null
+  }, \"With entity\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://at&t.com\",
+    \"title\": null
+  }, \"numeric entity\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://at&t.com\",
+    \"title\": null
+  }, \"without entity\"), \".\"), React.createElement(components.Paragraph, null, \"Link \", React.createElement(components.InlineCode, null, \"title\"), \":\"), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"http://att.com\",
+    \"title\": \"AT&T\"
+  }, \"With entity\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://att.com\",
+    \"title\": \"AT&T\"
+  }, \"numeric entity\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://example.com\",
+    \"title\": \"AT&T\"
+  }, \"without entity\"), \".\"), React.createElement(components.Paragraph, null, \"Image \", React.createElement(components.InlineCode, null, \"src\"), \":\"), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"With entity\",
+    \"title\": null
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"numeric entity\",
+    \"title\": null
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"without entity\",
+    \"title\": null
+  }), \".\"), React.createElement(components.Paragraph, null, \"Image \", React.createElement(components.InlineCode, null, \"alt\"), \":\"), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"http://att.com/fav.ico\",
+    \"alt\": \"AT&T with entity\",
+    \"title\": null
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://att.com/fav.ico\",
+    \"alt\": \"AT&T with numeric entity\",
+    \"title\": null
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://att.com/fav.ico\",
+    \"alt\": \"AT&T without entity\",
+    \"title\": null
+  }), \".\"), React.createElement(components.Paragraph, null, \"Image \", React.createElement(components.InlineCode, null, \"title\"), \":\"), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"http://att.com/fav.ico\",
+    \"alt\": \"With entity\",
+    \"title\": \"AT&T\"
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://att.com/fav.ico\",
+    \"alt\": \"numeric entity\",
+    \"title\": \"AT&T\"
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://att.com/fav.ico\",
+    \"alt\": \"without entity\",
+    \"title\": \"AT&T\"
+  }), \".\"), React.createElement(components.Paragraph, null, \"Reference \", React.createElement(components.InlineCode, null, \"link\"), \":\"), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"http://at&t.com/fav.ico\",
+    \"title\": \"ATT favicon\"
+  }, \"Entity\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://at&t.com/fav.ico\",
+    \"title\": \"ATT favicon\"
+  }, \"Numeric entity\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://at&t.com/fav.ico\",
+    \"title\": \"ATT favicon\"
+  }, \"Literal\"), \".\"), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"Entity\",
+    \"title\": \"ATT favicon\"
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"Numeric entity\",
+    \"title\": \"ATT favicon\"
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"Literal\",
+    \"title\": \"ATT favicon\"
+  }), \".\"), React.createElement(components.Paragraph, null, \"Reference \", React.createElement(components.InlineCode, null, \"title\"), \":\"), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"http://at&t.com/fav.ico\",
+    \"title\": \"AT&T favicon\"
+  }, \"Entity\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://at&t.com/fav.ico\",
+    \"title\": \"AT&T favicon\"
+  }, \"Numeric entity\"), \", \", React.createElement(components.Link, {
+    \"href\": \"http://at&t.com/fav.ico\",
+    \"title\": \"AT&T favicon\"
+  }, \"Literal\"), \".\"), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"Entity\",
+    \"title\": \"AT&T favicon\"
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"Numeric entity\",
+    \"title\": \"AT&T favicon\"
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"Literal\",
+    \"title\": \"AT&T favicon\"
+  }), \".\"), React.createElement(components.Paragraph, null, \"Image Reference \", React.createElement(components.InlineCode, null, \"alt\"), \":\"), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"AT&T with entity\",
+    \"title\": \"AT&T favicon\"
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"AT&T with numeric entity\",
+    \"title\": \"AT&T favicon\"
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"http://at&t.com/fav.ico\",
+    \"alt\": \"AT&T without entity\",
+    \"title\": \"AT&T favicon\"
+  }), \".\"), React.createElement(components.Paragraph, null, \"Definitions:\"), null, null, null, null, null, null, null), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [{
+      \"title\": \"Entities\",
+      \"name\": \"Entities\",
+      \"depth\": 1
+    }],
+    \"title\": \"Entities\"
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/escape 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"These should all get escaped:\"), React.createElement(components.Paragraph, null, \"Backslash: \", \"\\\\\"), React.createElement(components.Paragraph, null, \"Backtick: \", \"\`\"), React.createElement(components.Paragraph, null, \"Asterisk: \", \"*\"), React.createElement(components.Paragraph, null, \"Underscore: \", \"_\"), React.createElement(components.Paragraph, null, \"Left brace: \", \"{\"), React.createElement(components.Paragraph, null, \"Right brace: \", \"}\"), React.createElement(components.Paragraph, null, \"Left bracket: \", \"[\"), React.createElement(components.Paragraph, null, \"Right bracket: \", \"]\"), React.createElement(components.Paragraph, null, \"Left paren: \", \"(\"), React.createElement(components.Paragraph, null, \"Right paren: \", \")\"), React.createElement(components.Paragraph, null, \"Greater-than: \", \">\"), React.createElement(components.Paragraph, null, \"Hash: \", \"#\"), React.createElement(components.Paragraph, null, \"Period: \", \".\"), React.createElement(components.Paragraph, null, \"Bang: \", \"!\"), React.createElement(components.Paragraph, null, \"Plus: \", \"+\"), React.createElement(components.Paragraph, null, \"Minus: \", \"-\"), React.createElement(components.Paragraph, null, React.createElement(components.Strong, null, \"GFM:\")), React.createElement(components.Paragraph, null, \"Pipe: \", \"|\"), React.createElement(components.Paragraph, null, \"Tilde: \", \"~\"), React.createElement(components.Paragraph, null, React.createElement(components.Strong, null, \"Commonmark:\")), React.createElement(components.Paragraph, null, \"Quote: \\\\\\\"\"), React.createElement(components.Paragraph, null, \"Dollar: \\\\$\"), React.createElement(components.Paragraph, null, \"Percentage: \\\\%\"), React.createElement(components.Paragraph, null, \"Ampersand: \\\\&\"), React.createElement(components.Paragraph, null, \"Single quote: \\\\\'\"), React.createElement(components.Paragraph, null, \"Comma: \\\\,\"), React.createElement(components.Paragraph, null, \"Forward slash: \\\\/\"), React.createElement(components.Paragraph, null, \"Colon: \\\\:\"), React.createElement(components.Paragraph, null, \"Semicolon: \\\\;\"), React.createElement(components.Paragraph, null, \"Less-than: \\\\<\"), React.createElement(components.Paragraph, null, \"Equals: \\\\=\"), React.createElement(components.Paragraph, null, \"Question mark: \\\\?\"), React.createElement(components.Paragraph, null, \"At-sign: \\\\@\"), React.createElement(components.Paragraph, null, \"Caret: \\\\^\"), React.createElement(components.Paragraph, null, \"New line: \\\\\\nonly works in paragraphs.\"), React.createElement(components.Paragraph, null, \"Two spaces:\", React.createElement(components.Break, null), \"only works in paragraphs.\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/escape-commonmark 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"These should all get escaped:\"), React.createElement(components.Paragraph, null, \"Backslash: \", \"\\\\\"), React.createElement(components.Paragraph, null, \"Backtick: \", \"\`\"), React.createElement(components.Paragraph, null, \"Asterisk: \", \"*\"), React.createElement(components.Paragraph, null, \"Underscore: \", \"_\"), React.createElement(components.Paragraph, null, \"Left brace: \", \"{\"), React.createElement(components.Paragraph, null, \"Right brace: \", \"}\"), React.createElement(components.Paragraph, null, \"Left bracket: \", \"[\"), React.createElement(components.Paragraph, null, \"Right bracket: \", \"]\"), React.createElement(components.Paragraph, null, \"Left paren: \", \"(\"), React.createElement(components.Paragraph, null, \"Right paren: \", \")\"), React.createElement(components.Paragraph, null, \"Greater-than: \", \">\"), React.createElement(components.Paragraph, null, \"Hash: \", \"#\"), React.createElement(components.Paragraph, null, \"Period: \", \".\"), React.createElement(components.Paragraph, null, \"Bang: \", \"!\"), React.createElement(components.Paragraph, null, \"Plus: \", \"+\"), React.createElement(components.Paragraph, null, \"Minus: \", \"-\"), React.createElement(components.Paragraph, null, React.createElement(components.Strong, null, \"GFM:\")), React.createElement(components.Paragraph, null, \"Pipe: \", \"|\"), React.createElement(components.Paragraph, null, \"Tilde: \", \"~\"), React.createElement(components.Paragraph, null, React.createElement(components.Strong, null, \"Commonmark:\")), React.createElement(components.Paragraph, null, \"Quote: \\\\\\\"\"), React.createElement(components.Paragraph, null, \"Dollar: \\\\$\"), React.createElement(components.Paragraph, null, \"Percentage: \\\\%\"), React.createElement(components.Paragraph, null, \"Ampersand: \\\\&\"), React.createElement(components.Paragraph, null, \"Single quote: \\\\\'\"), React.createElement(components.Paragraph, null, \"Comma: \\\\,\"), React.createElement(components.Paragraph, null, \"Forward slash: \\\\/\"), React.createElement(components.Paragraph, null, \"Colon: \\\\:\"), React.createElement(components.Paragraph, null, \"Semicolon: \\\\;\"), React.createElement(components.Paragraph, null, \"Less-than: \\\\<\"), React.createElement(components.Paragraph, null, \"Equals: \\\\=\"), React.createElement(components.Paragraph, null, \"Question mark: \\\\?\"), React.createElement(components.Paragraph, null, \"At-sign: \\\\@\"), React.createElement(components.Paragraph, null, \"Caret: \\\\^\"), React.createElement(components.Paragraph, null, \"New line: \\\\\\nonly works in paragraphs.\"), React.createElement(components.Paragraph, null, \"Two spaces:\", React.createElement(components.Break, null), \"only works in paragraphs.\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/footnotes 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Heading, {
+    \"level\": 1,
+    \"name\": \"Footnotes\"
+  }, \"Footnotes\"), React.createElement(components.Paragraph, null, \"Alpha bravo\", React.createElement(components.Link, {
+    \"href\": \"\",
+    \"title\": undefined
+  }, \"^charlie india\"), \".\"), React.createElement(components.Paragraph, null, \"Delta Echo\", React.createElement(components.Link, {
+    \"href\": \"\",
+    \"title\": undefined
+  }, \"^1\"), \".\"), React.createElement(components.Paragraph, null, \"Foxtrot Golf Hotel\", React.createElement(components.Link, {
+    \"href\": \"\",
+    \"title\": undefined
+  }, \"^2\"), \".\"), React.createElement(components.Paragraph, null, \"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"), React.createElement(components.Paragraph, null, \"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"), React.createElement(components.Paragraph, null, \"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"), React.createElement(components.Paragraph, null, \"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"), React.createElement(components.Paragraph, null, \"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"), React.createElement(components.Paragraph, null, \"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"), React.createElement(components.Paragraph, null, \"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"), React.createElement(components.Paragraph, null, \"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"), React.createElement(components.Paragraph, null, \"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"), React.createElement(components.Paragraph, null, \"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"\",
+    \"title\": undefined
+  }, \"^1\"), \": This reference style footnote can contains paragraphs.\"), React.createElement(components.UnorderedList, null, React.createElement(components.ListItem, null, \"and lists\")), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"\",
+    \"title\": undefined
+  }, \"^2\"), \": Normal footnote.\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [{
+      \"title\": \"Footnotes\",
+      \"name\": \"Footnotes\",
+      \"depth\": 1
+    }],
+    \"title\": \"Footnotes\"
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/html 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.HTML, {
+    \"html\": \"<h1>Alpha</h1>\"
+  }), React.createElement(components.Paragraph, null, React.createElement(components.HTML, {
+    \"html\": \"<strong>\"
+  }), \"Foo\", React.createElement(components.HTML, {
+    \"html\": \"</strong>\"
+  }), \" \", React.createElement(components.HTML, {
+    \"html\": \"<em>\"
+  }), \"bar\", React.createElement(components.HTML, {
+    \"html\": \"</em>\"
+  }), \" \", React.createElement(components.HTML, {
+    \"html\": \"<sup>\"
+  }), \"baz\", React.createElement(components.HTML, {
+    \"html\": \"</sup>\"
+  }), \" \", React.createElement(components.HTML, {
+    \"html\": \"<sub>\"
+  }), \"qux\", React.createElement(components.HTML, {
+    \"html\": \"</sub>\"
+  }), \".\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/html-sanitize 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.HTML, {
+    \"html\": \"<h1>Alpha</h1>\"
+  }), React.createElement(components.Paragraph, null, React.createElement(components.HTML, {
+    \"html\": \"<strong>\"
+  }), \"Foo\", React.createElement(components.HTML, {
+    \"html\": \"</strong>\"
+  }), \" \", React.createElement(components.HTML, {
+    \"html\": \"<em>\"
+  }), \"bar\", React.createElement(components.HTML, {
+    \"html\": \"</em>\"
+  }), \" \", React.createElement(components.HTML, {
+    \"html\": \"<sup>\"
+  }), \"baz\", React.createElement(components.HTML, {
+    \"html\": \"</sup>\"
+  }), \" \", React.createElement(components.HTML, {
+    \"html\": \"<sub>\"
+  }), \"qux\", React.createElement(components.HTML, {
+    \"html\": \"</sub>\"
+  }), \".\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/images 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"http://example.com/favicon.ico\",
+    \"alt\": \"Example\",
+    \"title\": \"Example Image\"
+  })), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"http://example.com/favicon.ico\",
+    \"alt\": \"Example\",
+    \"title\": null
+  })), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"http://example.com/favicon.ico\",
+    \"alt\": \"\",
+    \"title\": null
+  })), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"\",
+    \"alt\": \"\",
+    \"title\": \"Example Image\"
+  })), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"\",
+    \"alt\": \"\",
+    \"title\": null
+  })), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"\",
+    \"alt\": \"\",
+    \"title\": null
+  }))), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/links 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"http://example.com\",
+    \"title\": \"Example Link\"
+  }, \"Example\")), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"http://example.com\",
+    \"title\": null
+  }, \"Example\")), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"http://example.com\",
+    \"title\": null
+  })), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"\",
+    \"title\": \"Example Link\"
+  })), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"\",
+    \"title\": null
+  })), React.createElement(components.Paragraph, null, React.createElement(components.Link, {
+    \"href\": \"\",
+    \"title\": null
+  }))), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/list 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Heading, {
+    \"level\": 1,
+    \"name\": \"List\"
+  }, \"List\"), React.createElement(components.UnorderedList, null, React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, React.createElement(components.Strong, null, \"One\"), \";\")), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, React.createElement(components.Emphasis, null, \"Two\"), \";\")), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, React.createElement(components.Strikethrough, null, \"Three\"), \".\")), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, \"One;\")), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, \"Two;\"))), React.createElement(components.HTML, {
+    \"html\": \"<!--  -->\"
+  }), React.createElement(components.OrderedList, null, React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, \"Four.\")), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, \"Five.\")), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, \"Loose:\"), React.createElement(components.UnorderedList, null, React.createElement(components.ListItem, null, \"Alpha;\"), React.createElement(components.ListItem, null, \"Bravo;\"), React.createElement(components.ListItem, null, \"Charlie.\"))), React.createElement(components.ListItem, null, React.createElement(components.Paragraph, null, \"Loose 2:\"), React.createElement(components.UnorderedList, null, React.createElement(components.ListItem, null, \"Delta;\"), React.createElement(components.ListItem, null, \"Echo;\"), React.createElement(components.ListItem, null, \"Foxtrot.\")))), React.createElement(components.Break, null), React.createElement(components.Code, null, \"And a rule.\\n\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [{
+      \"title\": \"List\",
+      \"name\": \"List\",
+      \"depth\": 1
+    }],
+    \"title\": \"List\"
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/references 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Heading, {
+    \"level\": 1,
+    \"name\": \"References\"
+  }, \"References\"), React.createElement(components.Paragraph, null, \"Entities contains some serious entity tests relating to titles and links\\nin definitions.\"), React.createElement(components.Paragraph, null, \"However, the \", React.createElement(components.Link, {
+    \"href\": \"\",
+    \"title\": undefined
+  }, \"missing\"), \", \", React.createElement(components.Link, {
+    \"href\": \"\",
+    \"title\": undefined
+  }, \"missing\"), \", and \", React.createElement(components.Link, {
+    \"href\": \"\",
+    \"title\": undefined
+  }, \"missing\"), \" are omitted.\"), React.createElement(components.Paragraph, null, \"However, the \", React.createElement(components.Image, {
+    \"src\": \"\",
+    \"alt\": \"missing\",
+    \"title\": undefined
+  }), \", \", React.createElement(components.Image, {
+    \"src\": \"\",
+    \"alt\": \"missing\",
+    \"title\": undefined
+  }), \", and \", React.createElement(components.Image, {
+    \"src\": \"\",
+    \"alt\": \"missing\",
+    \"title\": undefined
+  }), \" are omitted.\"), React.createElement(components.Paragraph, null, \"Same goes for \", React.createElement(components.Link, {
+    \"href\": \"\",
+    \"title\": undefined
+  }), \" and \", React.createElement(components.Image, {
+    \"src\": \"\",
+    \"alt\": \"\",
+    \"title\": undefined
+  }), \".\"), null), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [{
+      \"title\": \"References\",
+      \"name\": \"References\",
+      \"depth\": 1
+    }],
+    \"title\": \"References\"
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/rule 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Heading, {
+    \"level\": 1,
+    \"name\": \"Horizontal-Rules\"
+  }, \"Horizontal Rules\"), React.createElement(components.Break, null), React.createElement(components.Break, null), React.createElement(components.Break, null)), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [{
+      \"title\": \"Horizontal Rules\",
+      \"name\": \"Horizontal-Rules\",
+      \"depth\": 1
+    }],
+    \"title\": \"Horizontal Rules\"
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/tables 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Table, null, React.createElement(components.TableHead, null, React.createElement(components.TableRow, null, React.createElement(components.TableHeaderCell, {
+    \"align\": null
+  }, \"Alpha\"), React.createElement(components.TableHeaderCell, {
+    \"align\": \"left\"
+  }, \"Bravo\"), React.createElement(components.TableHeaderCell, {
+    \"align\": \"right\"
+  }, \"Charlie\"), React.createElement(components.TableHeaderCell, {
+    \"align\": \"center\"
+  }, \"Delta\"))), React.createElement(components.TableBody, null, React.createElement(components.TableRow, null, React.createElement(components.TableCell, {
+    \"align\": null
+  }, \"Echo\"), React.createElement(components.TableCell, {
+    \"align\": \"left\"
+  }, \"Foxtrot\"), React.createElement(components.TableCell, {
+    \"align\": \"right\"
+  }, React.createElement(components.Strong, null, \"Golf\")), React.createElement(components.TableCell, {
+    \"align\": \"center\"
+  })), React.createElement(components.TableRow, null, React.createElement(components.TableCell, {
+    \"align\": null
+  }, \"India\"), React.createElement(components.TableCell, {
+    \"align\": \"left\"
+  }, \"Juliett\"), React.createElement(components.TableCell, {
+    \"align\": \"right\"
+  }, \"Kilo\"), React.createElement(components.TableCell, {
+    \"align\": \"center\"
+  }, \"Lima\")), React.createElement(components.TableRow, null, React.createElement(components.TableCell, {
+    \"align\": null
+  }, \"Mike\"), React.createElement(components.TableCell, {
+    \"align\": \"left\"
+  }, \"November\"), React.createElement(components.TableCell, {
+    \"align\": \"right\"
+  }, \"Oscar\"), React.createElement(components.TableCell, {
+    \"align\": \"center\"
+  }, React.createElement(components.Strikethrough, null, \"Papa\"))), React.createElement(components.TableRow, null, React.createElement(components.TableCell, {
+    \"align\": null
+  }, \"Quebec\"), React.createElement(components.TableCell, {
+    \"align\": \"left\"
+  }, React.createElement(components.Emphasis, null, \"Romeo\")), React.createElement(components.TableCell, {
+    \"align\": \"right\"
+  }, \"Sierra\"), React.createElement(components.TableCell, {
+    \"align\": \"center\"
+  }, \"Tango\")), React.createElement(components.TableRow, null, React.createElement(components.TableCell, {
+    \"align\": null
+  }, \"Uniform\"), React.createElement(components.TableCell, {
+    \"align\": \"left\"
+  }, \"Victor\"), React.createElement(components.TableCell, {
+    \"align\": \"right\"
+  }, \"Whiskey\"), React.createElement(components.TableCell, {
+    \"align\": \"center\"
+  }))))), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/xhtml 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"Hello\", React.createElement(components.Break, null), \"world\"), React.createElement(components.Break, null), React.createElement(components.Paragraph, null, React.createElement(components.Image, {
+    \"src\": \"http://exaple.com/fav.ico\",
+    \"alt\": \"Favicon\",
+    \"title\": \"Example Favicon\"
+  }))), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render markdown renders markdown-fixture/yaml 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, null, React.createElement(components.Heading, {
+    \"level\": 1,
+    \"name\": \"Hello-world\"
+  }, \"Hello world\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {
+    \"YAML\": \"cool\"
+  },
+  model: {
+    \"toc\": [{
+      \"title\": \"Hello world\",
+      \"name\": \"Hello-world\",
+      \"depth\": 1
+    }],
+    \"title\": \"Hello world\"
+  }
+};"
+`;
+
+exports[`reactdown/render role renders role-fixture/multi 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+import { GHIssue } from \"roles\";
+import { GHBranch } from \"roles\";
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"Link to GitHub issue: \", React.createElement(GHBranch, {
+    \"words\": [\"123\", \"next\"]
+  }), \".\"), React.createElement(components.Paragraph, null, \"Link to GitHub issue: \", React.createElement(GHIssue, {
+    \"words\": [\"123\", \"Important issue\"]
+  }), \".\"), React.createElement(components.Paragraph, null, \"Link to GitHub issue: \", React.createElement(GHIssue, {
+    \"words\": [\"Important issue\", \"123\"]
+  }), \".\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render role renders role-fixture/quoted 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+import { mod } from \"roles\";
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"OK, this is just some \", React.createElement(mod, {
+    \"words\": [\"react-dom ok\"]
+  })), React.createElement(components.Paragraph, null, React.createElement(mod, {
+    \"words\": [\"react-dom start\"]
+  }), \" start\"), React.createElement(components.Paragraph, null, \"In between \", React.createElement(mod, {
+    \"words\": [\"between ok\"]
+  }), \"...\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;
+
+exports[`reactdown/render role renders role-fixture/simple 1`] = `
+"import React from \"react\";
+import { DocumentContext, directives as defaultDirectives } from \"reactdown/runtime\";
+import { components as defaultComponents } from \"reactdown/runtime\";
+let components = defaultComponents;
+import { mod } from \"roles\";
+export default function Document({
+  className,
+  style
+}) {
+  return React.createElement(DocumentContext, {
+    context: {
+      meta
+    }
+  }, React.cloneElement(React.createElement(components.Root, null, React.createElement(components.Paragraph, null, \"OK, this is just some \", React.createElement(mod, {
+    \"words\": [\"react-dom/server\"]
+  })), React.createElement(components.Paragraph, null, React.createElement(mod, {
+    \"words\": [\"react-dom/start\"]
+  }), \" start\"), React.createElement(components.Paragraph, null, \"In between \", React.createElement(mod, {
+    \"words\": [\"between\"]
+  }), \" ok...\")), {
+    className,
+    style
+  }));
+}
+export let meta = {
+  data: {},
+  model: {
+    \"toc\": [],
+    \"title\": null
+  }
+};"
+`;

@@ -1,7 +1,0 @@
-Hello,
-
-> ..Children
->
->   Hello
-
-Bye!

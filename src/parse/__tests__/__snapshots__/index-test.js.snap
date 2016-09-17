@@ -1,0 +1,2799 @@
+exports[`reactdown/parse directive parses directive-fixture/at-the-end 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0
+            }
+          },
+          "type": "text",
+          "value": "Hello,"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 7,
+          "line": 1,
+          "offset": 6
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 5,
+                  "line": 6,
+                  "offset": 31
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 1,
+                  "line": 6,
+                  "offset": 27
+                }
+              },
+              "type": "text",
+              "value": "Bye!"
+            }
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 5,
+              "line": 6,
+              "offset": 31
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 6,
+              "offset": 27
+            }
+          },
+          "type": "paragraph"
+        }
+      ],
+      "data": null,
+      "line": null,
+      "name": "Children",
+      "position": Position {
+        "end": Object {
+          "column": 7,
+          "line": 5,
+          "offset": 26
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 7,
+          "line": 5,
+          "offset": 26
+        }
+      },
+      "type": "directive"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 6,
+      "offset": 27
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;
+
+exports[`reactdown/parse directive parses directive-fixture/at-the-start 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 6,
+                  "line": 4,
+                  "offset": 25
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 1,
+                  "line": 4,
+                  "offset": 20
+                }
+              },
+              "type": "text",
+              "value": "Hello"
+            }
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 6,
+              "line": 4,
+              "offset": 25
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 4,
+              "offset": 20
+            }
+          },
+          "type": "paragraph"
+        }
+      ],
+      "data": null,
+      "line": null,
+      "name": "Children",
+      "position": Position {
+        "end": Object {
+          "column": 1,
+          "line": 5,
+          "offset": 21
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 5,
+          "offset": 21
+        }
+      },
+      "type": "directive"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 5,
+              "line": 5,
+              "offset": 25
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 5,
+              "offset": 21
+            }
+          },
+          "type": "text",
+          "value": "Bye!"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 5,
+          "line": 5,
+          "offset": 25
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 5,
+          "offset": 21
+        }
+      },
+      "type": "paragraph"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 6,
+      "offset": 26
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;
+
+exports[`reactdown/parse directive parses directive-fixture/children-multi-line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0
+            }
+          },
+          "type": "text",
+          "value": "Prologue"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 9,
+          "line": 1,
+          "offset": 8
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 7,
+                  "line": 6,
+                  "offset": 37
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 1,
+                  "line": 6,
+                  "offset": 31
+                }
+              },
+              "type": "text",
+              "value": "Hello,"
+            }
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 7,
+              "line": 6,
+              "offset": 37
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 6,
+              "offset": 31
+            }
+          },
+          "type": "paragraph"
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 9,
+                  "line": 9,
+                  "offset": 75
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 1,
+                  "line": 9,
+                  "offset": 67
+                }
+              },
+              "type": "text",
+              "value": "This is "
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "position": Position {
+                    "end": Object {
+                      "column": 14,
+                      "line": 9,
+                      "offset": 80
+                    },
+                    "indent": Array [],
+                    "start": Object {
+                      "column": 10,
+                      "line": 9,
+                      "offset": 76
+                    }
+                  },
+                  "type": "text",
+                  "value": "just"
+                }
+              ],
+              "position": Position {
+                "end": Object {
+                  "column": 15,
+                  "line": 9,
+                  "offset": 81
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 9,
+                  "line": 9,
+                  "offset": 75
+                }
+              },
+              "type": "emphasis"
+            },
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 11,
+                  "line": 10,
+                  "offset": 78
+                },
+                "indent": Array [
+                  1
+                ],
+                "start": Object {
+                  "column": 15,
+                  "line": 9,
+                  "offset": 81
+                }
+              },
+              "type": "text",
+              "value": " some
+paragraph."
+            }
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 11,
+              "line": 10,
+              "offset": 78
+            },
+            "indent": Array [
+              1
+            ],
+            "start": Object {
+              "column": 1,
+              "line": 9,
+              "offset": 67
+            }
+          },
+          "type": "paragraph"
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 8,
+                  "line": 13,
+                  "offset": 95
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 1,
+                  "line": 13,
+                  "offset": 88
+                }
+              },
+              "type": "text",
+              "value": "Cheers!"
+            }
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 8,
+              "line": 13,
+              "offset": 95
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 13,
+              "offset": 88
+            }
+          },
+          "type": "paragraph"
+        }
+      ],
+      "data": null,
+      "line": null,
+      "name": "Children",
+      "position": Position {
+        "end": Object {
+          "column": 1,
+          "line": 12,
+          "offset": 79
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 12,
+          "offset": 79
+        }
+      },
+      "type": "directive"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 9,
+              "line": 12,
+              "offset": 87
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 12,
+              "offset": 79
+            }
+          },
+          "type": "text",
+          "value": "Epilogue"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 9,
+          "line": 12,
+          "offset": 87
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 12,
+          "offset": 79
+        }
+      },
+      "type": "paragraph"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 14,
+      "offset": 89
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;
+
+exports[`reactdown/parse directive parses directive-fixture/children-nested 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0
+            }
+          },
+          "type": "text",
+          "value": "Prologue"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 9,
+          "line": 1,
+          "offset": 8
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 7,
+                  "line": 6,
+                  "offset": 37
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 1,
+                  "line": 6,
+                  "offset": 31
+                }
+              },
+              "type": "text",
+              "value": "Hello,"
+            }
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 7,
+              "line": 6,
+              "offset": 37
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 6,
+              "offset": 31
+            }
+          },
+          "type": "paragraph"
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "position": Position {
+                    "end": Object {
+                      "column": 3,
+                      "line": 14,
+                      "offset": 73
+                    },
+                    "indent": Array [],
+                    "start": Object {
+                      "column": 1,
+                      "line": 14,
+                      "offset": 71
+                    }
+                  },
+                  "type": "text",
+                  "value": "ok"
+                }
+              ],
+              "position": Position {
+                "end": Object {
+                  "column": 3,
+                  "line": 14,
+                  "offset": 73
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 1,
+                  "line": 14,
+                  "offset": 71
+                }
+              },
+              "type": "paragraph"
+            }
+          ],
+          "data": null,
+          "line": null,
+          "name": "Children",
+          "position": Position {
+            "end": Object {
+              "column": 1,
+              "line": 15,
+              "offset": 72
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 15,
+              "offset": 72
+            }
+          },
+          "type": "directive"
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 5,
+                  "line": 15,
+                  "offset": 76
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 1,
+                  "line": 15,
+                  "offset": 72
+                }
+              },
+              "type": "text",
+              "value": "bye!"
+            }
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 5,
+              "line": 15,
+              "offset": 76
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 15,
+              "offset": 72
+            }
+          },
+          "type": "paragraph"
+        }
+      ],
+      "data": null,
+      "line": null,
+      "name": "Children",
+      "position": Position {
+        "end": Object {
+          "column": 1,
+          "line": 13,
+          "offset": 62
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 13,
+          "offset": 62
+        }
+      },
+      "type": "directive"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 9,
+              "line": 13,
+              "offset": 70
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 13,
+              "offset": 62
+            }
+          },
+          "type": "text",
+          "value": "Epilogue"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 9,
+          "line": 13,
+          "offset": 70
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 13,
+          "offset": 62
+        }
+      },
+      "type": "paragraph"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 15,
+      "offset": 72
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;
+
+exports[`reactdown/parse directive parses directive-fixture/children-optional 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "data": null,
+      "line": null,
+      "name": "ChildrenOptional",
+      "position": Position {
+        "end": Object {
+          "column": 1,
+          "line": 3,
+          "offset": 20
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 3,
+          "offset": 20
+        }
+      },
+      "type": "directive"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 4,
+                  "line": 6,
+                  "offset": 49
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 1,
+                  "line": 6,
+                  "offset": 46
+                }
+              },
+              "type": "text",
+              "value": "YEP"
+            }
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 4,
+              "line": 6,
+              "offset": 49
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 6,
+              "offset": 46
+            }
+          },
+          "type": "paragraph"
+        }
+      ],
+      "data": null,
+      "line": null,
+      "name": "ChildrenOptional",
+      "position": Position {
+        "end": Object {
+          "column": 6,
+          "line": 5,
+          "offset": 45
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 6,
+          "line": 5,
+          "offset": 45
+        }
+      },
+      "type": "directive"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 6,
+      "offset": 46
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;
+
+exports[`reactdown/parse directive parses directive-fixture/children-single-line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0
+            }
+          },
+          "type": "text",
+          "value": "Prologue"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 9,
+          "line": 1,
+          "offset": 8
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 8,
+                  "line": 6,
+                  "offset": 39
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 1,
+                  "line": 6,
+                  "offset": 32
+                }
+              },
+              "type": "text",
+              "value": "Content"
+            }
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 8,
+              "line": 6,
+              "offset": 39
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 6,
+              "offset": 32
+            }
+          },
+          "type": "paragraph"
+        }
+      ],
+      "data": null,
+      "line": null,
+      "name": "Children",
+      "position": Position {
+        "end": Object {
+          "column": 1,
+          "line": 7,
+          "offset": 33
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 7,
+          "offset": 33
+        }
+      },
+      "type": "directive"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 9,
+              "line": 7,
+              "offset": 41
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 7,
+              "offset": 33
+            }
+          },
+          "type": "text",
+          "value": "Epilogue"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 9,
+          "line": 7,
+          "offset": 41
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 7,
+          "offset": 33
+        }
+      },
+      "type": "paragraph"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 9,
+      "offset": 43
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;
+
+exports[`reactdown/parse directive parses directive-fixture/data-required 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0
+            }
+          },
+          "type": "text",
+          "value": "Prologue"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 9,
+          "line": 1,
+          "offset": 8
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [],
+      "data": Object {
+        "a": 1,
+        "b": Array [
+          1,
+          2,
+          3
+        ],
+        "c": Object {
+          "d": 4
+        }
+      },
+      "line": null,
+      "name": "Data",
+      "position": Position {
+        "end": Object {
+          "column": 6,
+          "line": 9,
+          "offset": 64
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 6,
+          "line": 9,
+          "offset": 64
+        }
+      },
+      "type": "directive"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 10,
+      "offset": 65
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;
+
+exports[`reactdown/parse directive parses directive-fixture/line-optional 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "data": null,
+      "line": null,
+      "name": "LineOptional",
+      "position": Position {
+        "end": Object {
+          "column": 1,
+          "line": 3,
+          "offset": 16
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 3,
+          "offset": 16
+        }
+      },
+      "type": "directive"
+    },
+    Object {
+      "children": Array [],
+      "data": null,
+      "line": "ok",
+      "name": "LineOptional",
+      "position": Position {
+        "end": Object {
+          "column": 18,
+          "line": 3,
+          "offset": 33
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 18,
+          "line": 3,
+          "offset": 33
+        }
+      },
+      "type": "directive"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 4,
+      "offset": 34
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;
+
+exports[`reactdown/parse directive parses directive-fixture/line-required 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0
+            }
+          },
+          "type": "text",
+          "value": "Ok"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 3,
+          "line": 1,
+          "offset": 2
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [],
+      "data": null,
+      "line": "some-ref",
+      "name": "Line",
+      "position": Position {
+        "end": Object {
+          "column": 1,
+          "line": 5,
+          "offset": 21
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 5,
+          "offset": 21
+        }
+      },
+      "type": "directive"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 4,
+              "line": 5,
+              "offset": 24
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 5,
+              "offset": 21
+            }
+          },
+          "type": "text",
+          "value": "wow"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 4,
+          "line": 5,
+          "offset": 24
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 5,
+          "offset": 21
+        }
+      },
+      "type": "paragraph"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 6,
+      "offset": 25
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;
+
+exports[`reactdown/parse directive parses directive-fixture/preformatted 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0
+            }
+          },
+          "type": "text",
+          "value": "Hello,"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 7,
+          "line": 1,
+          "offset": 6
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "data": null,
+          "position": null,
+          "type": "text",
+          "value": "ok, *this* is **just** some code"
+        }
+      ],
+      "data": null,
+      "line": null,
+      "name": "Pre",
+      "position": Position {
+        "end": Object {
+          "column": 1,
+          "line": 7,
+          "offset": 51
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 7,
+          "offset": 51
+        }
+      },
+      "type": "directive"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 4,
+              "line": 7,
+              "offset": 54
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 7,
+              "offset": 51
+            }
+          },
+          "type": "text",
+          "value": "Bye"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 4,
+          "line": 7,
+          "offset": 54
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 7,
+          "offset": 51
+        }
+      },
+      "type": "paragraph"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 8,
+      "offset": 55
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;
+
+exports[`reactdown/parse directive parses directive-fixture/simplest 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0
+            }
+          },
+          "type": "text",
+          "value": "Prologue"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 9,
+          "line": 1,
+          "offset": 8
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [],
+      "data": null,
+      "line": null,
+      "name": "Plain",
+      "position": Position {
+        "end": Object {
+          "column": 1,
+          "line": 5,
+          "offset": 19
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 5,
+          "offset": 19
+        }
+      },
+      "type": "directive"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 9,
+              "line": 5,
+              "offset": 27
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 5,
+              "offset": 19
+            }
+          },
+          "type": "text",
+          "value": "Epilogue"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 9,
+          "line": 5,
+          "offset": 27
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 5,
+          "offset": 19
+        }
+      },
+      "type": "paragraph"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 6,
+      "offset": 28
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;
+
+exports[`reactdown/parse directive parses directive-fixture/with-code-block 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 4,
+              "line": 1,
+              "offset": 3
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0
+            }
+          },
+          "type": "text",
+          "value": "ok,"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 4,
+          "line": 1,
+          "offset": 3
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "data": null,
+          "position": null,
+          "type": "text",
+          "value": "some code goes here, ok!!!"
+        }
+      ],
+      "data": null,
+      "line": null,
+      "name": "Pre",
+      "position": Position {
+        "end": Object {
+          "column": 1,
+          "line": 7,
+          "offset": 42
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 7,
+          "offset": 42
+        }
+      },
+      "type": "directive"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "data": null,
+          "position": null,
+          "type": "text",
+          "value": ""
+        }
+      ],
+      "data": null,
+      "line": null,
+      "name": "Pre",
+      "position": Position {
+        "end": Object {
+          "column": 1,
+          "line": 9,
+          "offset": 49
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 9,
+          "offset": 49
+        }
+      },
+      "type": "directive"
+    },
+    Object {
+      "lang": null,
+      "position": Position {
+        "end": Object {
+          "column": 45,
+          "line": 9,
+          "offset": 93
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 9,
+          "offset": 49
+        }
+      },
+      "type": "code",
+      "value": "this should be outside of a directive!!!"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 10,
+      "offset": 94
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;
+
+exports[`reactdown/parse directive parses directive-fixture/with-data-children 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0
+            }
+          },
+          "type": "text",
+          "value": "Prologue"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 9,
+          "line": 1,
+          "offset": 8
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 5,
+                  "line": 6,
+                  "offset": 42
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 1,
+                  "line": 6,
+                  "offset": 38
+                }
+              },
+              "type": "text",
+              "value": "Ok, "
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "position": Position {
+                    "end": Object {
+                      "column": 10,
+                      "line": 6,
+                      "offset": 47
+                    },
+                    "indent": Array [],
+                    "start": Object {
+                      "column": 6,
+                      "line": 6,
+                      "offset": 43
+                    }
+                  },
+                  "type": "text",
+                  "value": "some"
+                }
+              ],
+              "position": Position {
+                "end": Object {
+                  "column": 11,
+                  "line": 6,
+                  "offset": 48
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 5,
+                  "line": 6,
+                  "offset": 42
+                }
+              },
+              "type": "emphasis"
+            },
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 22,
+                  "line": 6,
+                  "offset": 59
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 11,
+                  "line": 6,
+                  "offset": 48
+                }
+              },
+              "type": "text",
+              "value": " paragraph."
+            }
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 22,
+              "line": 6,
+              "offset": 59
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 6,
+              "offset": 38
+            }
+          },
+          "type": "paragraph"
+        }
+      ],
+      "data": Object {
+        "a": 1,
+        "b": 2
+      },
+      "line": null,
+      "name": "DataChildren",
+      "position": Position {
+        "end": Object {
+          "column": 24,
+          "line": 9,
+          "offset": 75
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 24,
+          "line": 9,
+          "offset": 75
+        }
+      },
+      "type": "directive"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 10,
+      "offset": 76
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;
+
+exports[`reactdown/parse directive parses directive-fixture/within-blockquote 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0
+            }
+          },
+          "type": "text",
+          "value": "Hello,"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 7,
+          "line": 1,
+          "offset": 6
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "position": Position {
+                    "end": Object {
+                      "column": 6,
+                      "line": 6,
+                      "offset": 38
+                    },
+                    "indent": Array [],
+                    "start": Object {
+                      "column": 1,
+                      "line": 6,
+                      "offset": 33
+                    }
+                  },
+                  "type": "text",
+                  "value": "Hello"
+                }
+              ],
+              "position": Position {
+                "end": Object {
+                  "column": 6,
+                  "line": 6,
+                  "offset": 38
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 1,
+                  "line": 6,
+                  "offset": 33
+                }
+              },
+              "type": "paragraph"
+            }
+          ],
+          "data": null,
+          "line": null,
+          "name": "Children",
+          "position": Position {
+            "end": Object {
+              "column": 10,
+              "line": 5,
+              "offset": 32
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 10,
+              "line": 5,
+              "offset": 32
+            }
+          },
+          "type": "directive"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 10,
+          "line": 5,
+          "offset": 32
+        },
+        "indent": Array [
+          1,
+          1
+        ],
+        "start": Object {
+          "column": 1,
+          "line": 3,
+          "offset": 8
+        }
+      },
+      "type": "blockquote"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 5,
+              "line": 7,
+              "offset": 38
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 7,
+              "offset": 34
+            }
+          },
+          "type": "text",
+          "value": "Bye!"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 5,
+          "line": 7,
+          "offset": 38
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 7,
+          "offset": 34
+        }
+      },
+      "type": "paragraph"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 8,
+      "offset": 39
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;
+
+exports[`reactdown/parse directive parses directive-fixture/within-list-item 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0
+            }
+          },
+          "type": "text",
+          "value": "List:"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 6,
+          "line": 1,
+          "offset": 5
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "checked": null,
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "position": Position {
+                    "end": Object {
+                      "column": 12,
+                      "line": 3,
+                      "offset": 18
+                    },
+                    "indent": Array [],
+                    "start": Object {
+                      "column": 3,
+                      "line": 3,
+                      "offset": 9
+                    }
+                  },
+                  "type": "text",
+                  "value": "List item"
+                }
+              ],
+              "position": Position {
+                "end": Object {
+                  "column": 12,
+                  "line": 3,
+                  "offset": 18
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 3,
+                  "line": 3,
+                  "offset": 9
+                }
+              },
+              "type": "paragraph"
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "position": Position {
+                        "end": Object {
+                          "column": 6,
+                          "line": 8,
+                          "offset": 49
+                        },
+                        "indent": Array [],
+                        "start": Object {
+                          "column": 1,
+                          "line": 8,
+                          "offset": 44
+                        }
+                      },
+                      "type": "text",
+                      "value": "Hello"
+                    }
+                  ],
+                  "position": Position {
+                    "end": Object {
+                      "column": 6,
+                      "line": 8,
+                      "offset": 49
+                    },
+                    "indent": Array [],
+                    "start": Object {
+                      "column": 1,
+                      "line": 8,
+                      "offset": 44
+                    }
+                  },
+                  "type": "paragraph"
+                }
+              ],
+              "data": null,
+              "line": null,
+              "name": "Children",
+              "position": Position {
+                "end": Object {
+                  "column": 10,
+                  "line": 7,
+                  "offset": 43
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 10,
+                  "line": 7,
+                  "offset": 43
+                }
+              },
+              "type": "directive"
+            }
+          ],
+          "loose": true,
+          "position": Position {
+            "end": Object {
+              "column": 10,
+              "line": 7,
+              "offset": 43
+            },
+            "indent": Array [
+              1,
+              1,
+              1,
+              1
+            ],
+            "start": Object {
+              "column": 1,
+              "line": 3,
+              "offset": 7
+            }
+          },
+          "type": "listItem"
+        }
+      ],
+      "loose": true,
+      "ordered": false,
+      "position": Position {
+        "end": Object {
+          "column": 10,
+          "line": 7,
+          "offset": 43
+        },
+        "indent": Array [
+          1,
+          1,
+          1,
+          1
+        ],
+        "start": Object {
+          "column": 1,
+          "line": 3,
+          "offset": 7
+        }
+      },
+      "start": null,
+      "type": "list"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 5,
+              "line": 9,
+              "offset": 49
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 9,
+              "offset": 45
+            }
+          },
+          "type": "text",
+          "value": "Bye!"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 5,
+          "line": 9,
+          "offset": 49
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 9,
+          "offset": 45
+        }
+      },
+      "type": "paragraph"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 10,
+      "offset": 50
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;
+
+exports[`reactdown/parse directive parses role-fixture/multi 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 23,
+              "line": 1,
+              "offset": 22
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0
+            }
+          },
+          "type": "text",
+          "value": "Link to GitHub issue: "
+        },
+        Object {
+          "data": null,
+          "name": "gh-branch",
+          "position": Position {
+            "end": Object {
+              "column": 42,
+              "line": 1,
+              "offset": 41
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 42,
+              "line": 1,
+              "offset": 41
+            }
+          },
+          "type": "role",
+          "words": Array [
+            "123",
+            "next"
+          ]
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 43,
+              "line": 1,
+              "offset": 42
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 42,
+              "line": 1,
+              "offset": 41
+            }
+          },
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 43,
+          "line": 1,
+          "offset": 42
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 23,
+              "line": 3,
+              "offset": 66
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 3,
+              "offset": 44
+            }
+          },
+          "type": "text",
+          "value": "Link to GitHub issue: "
+        },
+        Object {
+          "data": null,
+          "name": "gh-issue",
+          "position": Position {
+            "end": Object {
+              "column": 54,
+              "line": 3,
+              "offset": 97
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 54,
+              "line": 3,
+              "offset": 97
+            }
+          },
+          "type": "role",
+          "words": Array [
+            "123",
+            "Important issue"
+          ]
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 55,
+              "line": 3,
+              "offset": 98
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 54,
+              "line": 3,
+              "offset": 97
+            }
+          },
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 55,
+          "line": 3,
+          "offset": 98
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 3,
+          "offset": 44
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 23,
+              "line": 5,
+              "offset": 122
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 5,
+              "offset": 100
+            }
+          },
+          "type": "text",
+          "value": "Link to GitHub issue: "
+        },
+        Object {
+          "data": null,
+          "name": "gh-issue",
+          "position": Position {
+            "end": Object {
+              "column": 54,
+              "line": 5,
+              "offset": 153
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 54,
+              "line": 5,
+              "offset": 153
+            }
+          },
+          "type": "role",
+          "words": Array [
+            "Important issue",
+            "123"
+          ]
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 55,
+              "line": 5,
+              "offset": 154
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 54,
+              "line": 5,
+              "offset": 153
+            }
+          },
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 55,
+          "line": 5,
+          "offset": 154
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 5,
+          "offset": 100
+        }
+      },
+      "type": "paragraph"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 7,
+      "offset": 156
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;
+
+exports[`reactdown/parse directive parses role-fixture/quoted 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 23,
+              "line": 1,
+              "offset": 22
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0
+            }
+          },
+          "type": "text",
+          "value": "OK, this is just some "
+        },
+        Object {
+          "data": null,
+          "name": "mod",
+          "position": Position {
+            "end": Object {
+              "column": 42,
+              "line": 1,
+              "offset": 41
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 42,
+              "line": 1,
+              "offset": 41
+            }
+          },
+          "type": "role",
+          "words": Array [
+            "react-dom ok"
+          ]
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 42,
+          "line": 1,
+          "offset": 41
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "data": null,
+          "name": "mod",
+          "position": Position {
+            "end": Object {
+              "column": 23,
+              "line": 3,
+              "offset": 65
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 23,
+              "line": 3,
+              "offset": 65
+            }
+          },
+          "type": "role",
+          "words": Array [
+            "react-dom start"
+          ]
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 29,
+              "line": 3,
+              "offset": 71
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 23,
+              "line": 3,
+              "offset": 65
+            }
+          },
+          "type": "text",
+          "value": " start"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 29,
+          "line": 3,
+          "offset": 71
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 3,
+          "offset": 43
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 12,
+              "line": 5,
+              "offset": 84
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 5,
+              "offset": 73
+            }
+          },
+          "type": "text",
+          "value": "In between "
+        },
+        Object {
+          "data": null,
+          "name": "mod",
+          "position": Position {
+            "end": Object {
+              "column": 29,
+              "line": 5,
+              "offset": 101
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 29,
+              "line": 5,
+              "offset": 101
+            }
+          },
+          "type": "role",
+          "words": Array [
+            "between ok"
+          ]
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 32,
+              "line": 5,
+              "offset": 104
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 29,
+              "line": 5,
+              "offset": 101
+            }
+          },
+          "type": "text",
+          "value": "..."
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 32,
+          "line": 5,
+          "offset": 104
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 5,
+          "offset": 73
+        }
+      },
+      "type": "paragraph"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 6,
+      "offset": 105
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;
+
+exports[`reactdown/parse directive parses role-fixture/simple 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 23,
+              "line": 1,
+              "offset": 22
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0
+            }
+          },
+          "type": "text",
+          "value": "OK, this is just some "
+        },
+        Object {
+          "data": null,
+          "name": "mod",
+          "position": Position {
+            "end": Object {
+              "column": 44,
+              "line": 1,
+              "offset": 43
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 44,
+              "line": 1,
+              "offset": 43
+            }
+          },
+          "type": "role",
+          "words": Array [
+            "react-dom/server"
+          ]
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 44,
+          "line": 1,
+          "offset": 43
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "data": null,
+          "name": "mod",
+          "position": Position {
+            "end": Object {
+              "column": 21,
+              "line": 3,
+              "offset": 65
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 21,
+              "line": 3,
+              "offset": 65
+            }
+          },
+          "type": "role",
+          "words": Array [
+            "react-dom/start"
+          ]
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 27,
+              "line": 3,
+              "offset": 71
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 21,
+              "line": 3,
+              "offset": 65
+            }
+          },
+          "type": "text",
+          "value": " start"
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 27,
+          "line": 3,
+          "offset": 71
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 3,
+          "offset": 45
+        }
+      },
+      "type": "paragraph"
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 12,
+              "line": 5,
+              "offset": 84
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 5,
+              "offset": 73
+            }
+          },
+          "type": "text",
+          "value": "In between "
+        },
+        Object {
+          "data": null,
+          "name": "mod",
+          "position": Position {
+            "end": Object {
+              "column": 24,
+              "line": 5,
+              "offset": 96
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 24,
+              "line": 5,
+              "offset": 96
+            }
+          },
+          "type": "role",
+          "words": Array [
+            "between"
+          ]
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 30,
+              "line": 5,
+              "offset": 102
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 24,
+              "line": 5,
+              "offset": 96
+            }
+          },
+          "type": "text",
+          "value": " ok..."
+        }
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 30,
+          "line": 5,
+          "offset": 102
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 5,
+          "offset": 73
+        }
+      },
+      "type": "paragraph"
+    }
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 1,
+      "line": 6,
+      "offset": 103
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
+`;

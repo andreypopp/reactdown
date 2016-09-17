@@ -1,7 +1,0 @@
-{
-  roles: {
-    mod: {component: 'roles?mod'},
-    GHIssue: {component: 'roles?GHIssue'},
-    GHBranch: {component: 'roles?GHBranch'},
-  }
-}

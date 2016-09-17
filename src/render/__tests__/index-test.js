@@ -3,15 +3,11 @@
  * @flow
  */
 
-import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
 import generate from 'babel-generator';
 import * as model from '../../model';
 import {renderToProgram as render} from '../index';
-
-declare function describe(description: string, body: any): void;
-declare function it(description: string, body: any): void;
 
 function expectedOutput(name) {
   return fs
@@ -76,7 +72,7 @@ function generateCases(dir, only = null) {
       let node = JSON.parse(src);
       let jsnode = render(node, config);
       let {code} = generate(jsnode);
-      assert.equal(code, expectedOutput(fixture));
+      expect(code).toMatchSnapshot();
     });
   });
 }

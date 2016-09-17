@@ -1,5 +1,0 @@
-Prologue
-
-..Plain
-
-Epilogue
