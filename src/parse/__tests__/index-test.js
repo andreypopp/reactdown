@@ -12,12 +12,6 @@ import {any, object, string, mapping} from 'validated/schema';
 declare function describe(description: string, body: any): void;
 declare function it(description: string, body: any): void;
 
-function expectedOutput(name) {
-  return fs
-    .readFileSync(fixtureFilename(name, 'json'), 'utf8')
-    .trim();
-}
-
 function fixtureFilename(name, ext) {
   return path.join(__dirname, name) + '.' + ext;
 }

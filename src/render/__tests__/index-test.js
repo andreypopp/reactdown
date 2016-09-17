@@ -9,12 +9,6 @@ import generate from 'babel-generator';
 import * as model from '../../model';
 import {renderToProgram as render} from '../index';
 
-function expectedOutput(name) {
-  return fs
-    .readFileSync(fixtureFilename(name, 'js'), 'utf8')
-    .trim();
-}
-
 function fixtureFilename(name, ext) {
   return path.join(__dirname, name) + '.' + ext;
 }
