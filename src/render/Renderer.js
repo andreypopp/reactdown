@@ -445,7 +445,7 @@ export class Renderer {
    * @return {string} - Compiled node.
    * @this {HTMLCompiler}
    */
-  listItem(node: MDASTListItemNode, parent: ?MDASTParentNode): JSAST {
+  listItem(node: MDASTListItemNode, parent: ?MDASTListNode): JSAST {
     let single = (
       (!parent || !parent.loose) &&
       node.children.length === 1 &&

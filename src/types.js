@@ -30,8 +30,8 @@ export type MDASTLocation = {
 };
 
 export type MDASTNode = {
-  position: ?MDASTLocation;
-  data: ?any;
+  position?: ?MDASTLocation;
+  data?: any;
 };
 
 export type MDASTParentNode = MDASTNode & {
@@ -45,7 +45,7 @@ export type MDASTValueNode = MDASTNode & {
 export type MDASTDirectiveNode = MDASTParentNode & {
   type: 'directive';
   name: string;
-  line: ?string;
+  line?: ?string;
 };
 
 export type MDASTRoleNode = MDASTNode & {
@@ -151,7 +151,7 @@ export type MDASTFootnoteReferenceNode = MDASTNode & {
   identifier: string;
 };
 
-export type MDASTLinkNode = MDASTNode & {
+export type MDASTLinkNode = MDASTParentNode & {
   type: 'link';
   title: ?string;
   url: string;
