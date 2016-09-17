@@ -58,7 +58,7 @@
     "loader-utils": "^0.2.13",
     "mdast-util-to-string": "^1.0.1",
     "normalize-uri": "^1.0.0",
-    "remark": "^4.1.2",
+    "remark": "^6.0.0",
     "resolve": "^1.1.7",
     "slug": "^0.9.1",
     "trim": "0.0.1",
