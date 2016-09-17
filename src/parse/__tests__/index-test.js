@@ -69,8 +69,7 @@ function generateCases(dir, only = null) {
       let src = fs.readFileSync(fixtureFilename(fixture, 'md'), 'utf8');
       if (/\.failure/.exec(fixture)) {
         let meta = getMeta(src);
-        let message = new RegExp(meta.message);
-        expect(() => parse(src, config)).toThrowError(message);
+        expect(() => parse(src, config)).toThrowError(meta.message);
       } else {
         let node = parse(src, config);
         expect(node).toMatchSnapshot();
