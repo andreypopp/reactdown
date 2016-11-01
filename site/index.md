@@ -157,10 +157,10 @@ Documents can attach arbitrary metadata using YAML frontmatter:
     published: 2017-12-01
     ---
 
-You can get access to document metadata by importing `metadata` name from the
+You can get access to document metadata by importing `meta` name from the
 module:
 
-    import {metadata} from './my-document.md'
+    import {meta} from './my-document.md'
 
 The metadata would be an object (JSON) parsed from YAML.
 
